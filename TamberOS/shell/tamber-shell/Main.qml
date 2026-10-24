@@ -1,114 +1,139 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtCore
 
 ApplicationWindow {
     id: window
     visible: true
-    width: 1280
-    height: 800
-    minimumWidth: 850
-    minimumHeight: 600
-    title: "TamberOS — shell prototype (not a compositor)"
-    color: "#0C0C0E"
-    property int page: 0
-    property bool reduceMotion: false
-    property var pages: ["Home", "AI Studio", "Games", "Files", "System", "Settings"]
-
+    width: 1280; height: 720
+    minimumWidth: 960; minimumHeight: 640
+    title: "Tamber Shell — development session"
+    color: "#111214"
+    property color cream: "#f1ece2"
+    property color muted: "#aaa8a4"
+    property color orange: "#ed8956"
+    property string launchPulse: ""
+    property string clockText: Qt.formatTime(new Date(), "HH:mm")
+    Settings { id: preferences; property bool reducedMotion: false; property bool opaquePanels: false }
+    function openApps() { launcher.open(); search.forceActiveFocus() }
+    Timer { interval: 1000; running: true; repeat: true; onTriggered: window.clockText = Qt.formatTime(new Date(), "HH:mm") }
+    Timer { id: pulseTimer; interval: 1800; onTriggered: window.launchPulse = "" }
+    Connections {
+        target: appLauncher
+        function onLaunchAccepted(id) { window.launchPulse = id; pulseTimer.restart(); launcher.close() }
+    }
+    component ActionButton: Button {
+        id: action
+        focusPolicy: Qt.StrongFocus; hoverEnabled: true
+        Accessible.name: text
+        contentItem: Text { text: action.text; color: window.cream; font.pixelSize: 14; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter; elide: Text.ElideRight }
+        background: Rectangle { radius: 9; color: action.down ? "#443229" : action.hovered ? "#333438" : "transparent"; border.width: action.activeFocus ? 2 : 0; border.color: window.orange }
+    }
     Rectangle {
         anchors.fill: parent
-        color: "#0C0C0E"
+        gradient: Gradient { GradientStop { position: 0; color: "#242528" } GradientStop { position: 0.64; color: "#171819" } GradientStop { position: 1; color: "#25201d" } }
     }
-    RowLayout {
-        anchors.fill: parent
-        spacing: 0
-        Rectangle {
-            Layout.preferredWidth: 232
-            Layout.fillHeight: true
-            color: "#17181C"
-            ColumnLayout {
-                anchors.fill: parent
-                anchors.margins: 22
-                spacing: 14
-                Label { text: "TAMBER"; color: "#F2EEE5"; font.pixelSize: 30; font.bold: true }
-                Label { text: "OS     /     PRE-ALPHA"; color: "#FF9255"; font.pixelSize: 12; font.bold: true }
-                Item { Layout.preferredHeight: 26 }
-                Repeater {
-                    model: window.pages
-                    delegate: Button {
-                        required property int index
-                        required property string modelData
-                        Layout.fillWidth: true
-                        height: 48
-                        text: "  " + modelData
-                        onClicked: window.page = index
-                        background: Rectangle { radius: 10; color: window.page === index ? "#33231E" : "#17181C"; border.color: window.page === index ? "#FF5A1F" : "transparent" }
-                        contentItem: Text { text: parent.text; color: window.page === index ? "#FF9255" : "#F2EEE5"; font.pixelSize: 15; verticalAlignment: Text.AlignVCenter }
-                    }
-                }
-                Item { Layout.fillHeight: true }
-                Label { text: "DESIGN PROTOTYPE"; color: "#AAA7A4"; font.pixelSize: 11 }
-                Label { text: "Mock data — no privileged actions"; color: "#AAA7A4"; wrapMode: Text.Wrap; Layout.fillWidth: true; font.pixelSize: 12 }
-            }
-        }
-        Rectangle {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            color: "#0C0C0E"
-            ColumnLayout {
-                anchors.fill: parent
-                anchors.margins: 38
-                spacing: 24
-                RowLayout {
-                    Label { text: window.pages[window.page].toUpperCase(); color: "#F2EEE5"; font.pixelSize: 40; font.bold: true; Layout.fillWidth: true }
-                    Rectangle { color: "#2B221F"; radius: 18; width: 164; height: 34; Label { anchors.centerIn: parent; text: "●  DESIGN MOCK"; color: "#FF9255"; font.pixelSize: 12 } }
-                }
-                Rectangle { Layout.fillWidth: true; Layout.preferredHeight: 1; color: "#343338" }
-                Label {
-                    text: ["YOUR BOX. YOUR RULES.", "INTELLIGENCE. ON DEVICE.", "PLAY WITHOUT LIMITS.", "YOUR SPACE.", "KNOW YOUR HARDWARE.", "MAKE IT YOURS."][window.page]
-                    font.pixelSize: 30; font.bold: true; color: "#FF5A1F"; wrapMode: Text.Wrap
-                }
-                Label {
-                    Layout.fillWidth: true; Layout.preferredHeight: 70; wrapMode: Text.Wrap
-                    color: "#AAA7A4"; font.pixelSize: 17
-                    text: [
-                        "Welcome to TamberOS. Browse modes, apps and local tools through a focused and responsive interface.",
-                        "The AI integration is a placeholder until a local Ollama installation is explicitly detected.",
-                        "Discover locally configured games. This prototype does not include copyrighted titles or ROMs.",
-                        "The production file browser will use your existing Linux user permissions.",
-                        "A real release will show measured temperatures, CPU frequencies and compatible NPU runtime status.",
-                        "Personalize the OS while preserving privacy and accessibility."
-                    ][window.page]
-                }
-                GridLayout {
-                    Layout.fillWidth: true
-                    columns: 2
-                    columnSpacing: 16; rowSpacing: 16
-                    Repeater {
-                        model: window.page === 0 ? ["AI Studio", "Game Mode", "System Center", "Launch Apps"] :
-                               window.page === 4 ? ["CPU", "Thermals", "Storage", "NPU"] :
-                               window.page === 5 ? ["Appearance", "Accessibility", "Privacy", "Updates"] :
-                               window.page === 1 ? ["Local models", "Chat history", "Privacy", "Settings"] :
-                               window.page === 2 ? ["Library", "Controllers", "Recently played", "Emulators"] :
-                                                   ["Home", "Documents", "Downloads", "Search"]
-                        delegate: Rectangle {
-                            required property string modelData
-                            Layout.fillWidth: true; Layout.preferredHeight: 124
-                            radius: 18; color: "#1A1B20"; border.color: "#313239"
-                            Column { anchors.left: parent.left; anchors.leftMargin: 20; anchors.verticalCenter: parent.verticalCenter; spacing: 8
-                                Text { text: modelData; color: "#F2EEE5"; font.pixelSize: 22; font.bold: true }
-                                Text { text: "Prototype · not yet connected"; color: "#AAA7A4"; font.pixelSize: 13 }
-                            }
-                        }
-                    }
-                }
-                Item { Layout.fillHeight: true }
-                Label { text: "TAMBEROS  /  0.1 DESIGN BUILD     •     ALMALINUX ARM64 TARGET     •     BOARD BOOT UNVERIFIED"; color: "#85858A"; font.pixelSize: 11; wrapMode: Text.Wrap; Layout.fillWidth: true }
-            }
+    Rectangle {
+        anchors.top: parent.top; width: parent.width; height: 44
+        color: preferences.opaquePanels ? "#252629" : "#d9252629"
+        RowLayout {
+            anchors.fill: parent; anchors.leftMargin: 20; anchors.rightMargin: 16; spacing: 20
+            Label { text: "TamberOS"; color: window.cream; font.pixelSize: 15; font.weight: Font.DemiBold }
+            ActionButton { text: "Applications"; onClicked: window.openApps() }
+            Item { Layout.fillWidth: true }
+            Label { text: "Development session"; color: window.muted; font.pixelSize: 12 }
+            ActionButton { text: "Controls"; onClicked: controls.open() }
+            Label { text: window.clockText; color: window.cream; font.pixelSize: 14; font.weight: Font.Medium }
         }
     }
-    Shortcut { sequence: "Ctrl+1"; onActivated: window.page = 0 }
-    Shortcut { sequence: "Ctrl+2"; onActivated: window.page = 1 }
-    Shortcut { sequence: "Ctrl+3"; onActivated: window.page = 2 }
-    Shortcut { sequence: "Escape"; onActivated: window.page = 0 }
+    Column {
+        anchors.left: parent.left; anchors.leftMargin: 68; anchors.verticalCenter: parent.verticalCenter; spacing: 14
+        Label { text: "A space to make your own."; font.pixelSize: 36; font.weight: Font.Medium; color: window.cream }
+        Label { text: "Your applications. One quiet workspace."; font.pixelSize: 17; color: window.muted }
+        ActionButton { text: "Open applications"; width: 180; height: 42; onClicked: window.openApps() }
+    }
+    Image { source: "qrc:/brand/tamber-llama.svg"; width: 150; height: 190; fillMode: Image.PreserveAspectFit; anchors.right: parent.right; anchors.rightMargin: 90; anchors.verticalCenter: parent.verticalCenter; opacity: 0.8 }
+    Label { anchors.left: parent.left; anchors.bottom: parent.bottom; anchors.margins: 20; text: appLauncher.status; color: window.muted; font.pixelSize: 12 }
+    Rectangle {
+        anchors.horizontalCenter: parent.horizontalCenter; anchors.bottom: parent.bottom; anchors.bottomMargin: 18
+        width: dockRow.implicitWidth + 20; height: 74; radius: 22
+        color: preferences.opaquePanels ? "#303033" : "#dc303033"; border.color: "#555052"
+        RowLayout {
+            id: dockRow; anchors.centerIn: parent; spacing: 6
+            ActionButton { text: "Apps"; Layout.preferredWidth: 66; Layout.preferredHeight: 56; onClicked: window.openApps() }
+            Repeater {
+                model: appLauncher.applications.slice(0, 4)
+                delegate: Item {
+                    required property var modelData
+                    Layout.preferredWidth: 88; Layout.preferredHeight: 56
+                    ActionButton { anchors.fill: parent; text: modelData.name; onClicked: appLauncher.launch(modelData.appId); ToolTip.visible: hovered; ToolTip.text: modelData.name }
+                    Rectangle {
+                        anchors.bottom: parent.bottom; anchors.horizontalCenter: parent.horizontalCenter
+                        width: 5; height: 5; radius: 3; color: window.orange
+                        opacity: window.launchPulse === modelData.appId ? 1 : 0
+                        Behavior on opacity { NumberAnimation { duration: preferences.reducedMotion ? 0 : 200 } }
+                    }
+                }
+            }
+            Rectangle { Layout.preferredWidth: 1; Layout.preferredHeight: 28; color: "#5a5553" }
+            ActionButton { text: "Controls"; Layout.preferredWidth: 80; Layout.preferredHeight: 56; onClicked: controls.open() }
+        }
+    }
+    Popup {
+        id: launcher
+        width: Math.min(600, window.width - 80); height: Math.min(480, window.height - 140)
+        anchors.centerIn: parent; modal: true; focus: true; padding: 24
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+        background: Rectangle { color: "#28292c"; radius: 20; border.color: "#555052" }
+        ColumnLayout {
+            anchors.fill: parent; spacing: 18
+            RowLayout {
+                Label { text: "Applications"; color: window.cream; font.pixelSize: 24; font.weight: Font.Medium; Layout.fillWidth: true }
+                ActionButton { text: "Refresh"; onClicked: appLauncher.refresh() }
+                ActionButton { text: "Close"; onClicked: launcher.close() }
+            }
+            TextField {
+                id: search; Layout.fillWidth: true; placeholderText: "Search installed applications"; color: window.cream
+                selectByMouse: true; font.pixelSize: 16
+                background: Rectangle { radius: 10; color: "#1c1d20"; border.color: search.activeFocus ? window.orange : "#555052" }
+                onTextChanged: apps.currentIndex = 0
+                Keys.onDownPressed: { apps.forceActiveFocus(); apps.currentIndex = 0 }
+                onAccepted: { if (apps.count > 0) appLauncher.launch(apps.model[apps.currentIndex].appId) }
+            }
+            ListView {
+                id: apps; Layout.fillWidth: true; Layout.fillHeight: true; clip: true; spacing: 5
+                model: appLauncher.applications.filter(a => a.name.toLowerCase().includes(search.text.toLowerCase()))
+                keyNavigationEnabled: true
+                highlightMoveDuration: preferences.reducedMotion ? 0 : 100
+                Keys.onReturnPressed: { if (count > 0) appLauncher.launch(model[currentIndex].appId) }
+                delegate: ActionButton {
+                    required property var modelData
+                    required property int index
+                    width: apps.width; height: 46; text: modelData.name
+                    background: Rectangle { radius: 9; color: apps.currentIndex === index ? "#43342d" : "transparent"; border.color: parent.activeFocus ? window.orange : "transparent" }
+                    onClicked: appLauncher.launch(modelData.appId)
+                }
+                Label { anchors.centerIn: parent; visible: apps.count === 0; text: "No matching applications"; color: window.muted }
+                ScrollBar.vertical: ScrollBar { }
+            }
+            Label { text: "↑ ↓ to select · Enter to launch · Esc to close"; color: window.muted; font.pixelSize: 12 }
+        }
+    }
+    Popup {
+        id: controls; x: window.width - width - 20; y: 54; width: 330; height: 330; padding: 24; focus: true
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+        background: Rectangle { radius: 18; color: preferences.opaquePanels ? "#28292c" : "#ed28292c"; border.color: "#555052" }
+        ColumnLayout {
+            anchors.fill: parent; spacing: 14
+            Label { text: "Control center"; font.pixelSize: 22; color: window.cream }
+            CheckBox { text: "Reduce motion"; checked: preferences.reducedMotion; onToggled: preferences.reducedMotion = checked }
+            CheckBox { text: "Opaque panels"; checked: preferences.opaquePanels; onToggled: preferences.opaquePanels = checked }
+            Label { text: "Network, audio and display controls remain in your desktop's system settings."; wrapMode: Text.WordWrap; Layout.fillWidth: true; color: window.muted; font.pixelSize: 14 }
+            Item { Layout.fillHeight: true }
+            ActionButton { text: "Close"; Layout.alignment: Qt.AlignRight; onClicked: controls.close() }
+        }
+    }
+    Shortcut { sequence: "Ctrl+Space"; onActivated: window.openApps() }
+    Shortcut { sequence: "Ctrl+,"; onActivated: controls.open() }
 }

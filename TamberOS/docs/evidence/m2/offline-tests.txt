@@ -1,0 +1,70 @@
+test_changed_original_rejected (test_assets.AssetTests.test_changed_original_rejected) ... ok
+test_missing_concepts_cannot_pass_release_gate (test_assets.AssetTests.test_missing_concepts_cannot_pass_release_gate) ... ok
+test_originals_unchanged (test_assets.AssetTests.test_originals_unchanged) ... ok
+test_fake_fixture_and_invalid_thermal_value (test_hardware.HardwareTests.test_fake_fixture_and_invalid_thermal_value) ... ok
+test_memory_units (test_hardware.HardwareTests.test_memory_units) ... ok
+test_safe_missing_sensors (test_hardware.HardwareTests.test_safe_missing_sensors) ... ok
+test_empty_root_is_unknown (test_inventory.InventoryTests.test_empty_root_is_unknown) ... ok
+test_exact_board_and_sensitive_fields_excluded (test_inventory.InventoryTests.test_exact_board_and_sensitive_fields_excluded) ... ok
+test_redaction (test_inventory.InventoryTests.test_redaction) ... ok
+test_download_atomic_verification_and_cleanup (test_qemu.DownloadTests.test_download_atomic_verification_and_cleanup) ... ok
+test_existing_partial_is_preserved (test_qemu.DownloadTests.test_existing_partial_is_preserved) ... ok
+test_pass_then_fail_is_not_success (test_qemu.DownloadTests.test_pass_then_fail_is_not_success) ... ok
+test_rejects_credentials_and_non_gateway_proxy (test_qemu.ProxyTests.test_rejects_credentials_and_non_gateway_proxy) ... ok
+test_checksum_rejects_corruption (test_qemu.VMTests.test_checksum_rejects_corruption) ... ok
+test_cli_errors_do_not_report_success (test_qemu.VMTests.test_cli_errors_do_not_report_success) ... ok
+test_cloud_init_security_and_modes (test_qemu.VMTests.test_cloud_init_security_and_modes) ... ok
+test_dry_run_no_files_or_subprocess (test_qemu.VMTests.test_dry_run_no_files_or_subprocess) ... ok
+test_existing_vm_not_overwritten (test_qemu.VMTests.test_existing_vm_not_overwritten) ... ok
+test_lock_matches_recorded_upstream_checksum (test_qemu.VMTests.test_lock_matches_recorded_upstream_checksum) ... ok
+test_log_parser_requires_exact_all_gates (test_qemu.VMTests.test_log_parser_requires_exact_all_gates) ... ok
+test_network_defaults_and_loopback (test_qemu.VMTests.test_network_defaults_and_loopback) ... ok
+test_rejects_devices_and_symlinks (test_qemu.VMTests.test_rejects_devices_and_symlinks) ... ok
+test_rejects_output_escape (test_qemu.VMTests.test_rejects_output_escape) ... ok
+test_rejects_symlinked_build (test_qemu.VMTests.test_rejects_symlinked_build) ... ok
+test_modified_checksum_rejected (test_signature.SignatureTests.test_modified_checksum_rejected) ... ok
+test_real_upstream_signature_and_pinned_image (test_signature.SignatureTests.test_real_upstream_signature_and_pinned_image) ... ok
+test_wrong_image_lock_rejected (test_signature.SignatureTests.test_wrong_image_lock_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.099s
+
+OK
+PASS: Required project artifacts and SVG syntax exist.
+LIMITATION: hardware boot, Qt6 build and graphical interaction NOT verified by this check.
+PASS: original assets match their recorded SHA256 values
+{
+  "command": [
+    "qemu-system-aarch64",
+    "-machine",
+    "virt-8.2",
+    "-cpu",
+    "neoverse-n1",
+    "-accel",
+    "tcg",
+    "-m",
+    "4096",
+    "-smp",
+    "4",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "file:/workspace/scratch/d318bf58ae4c/m2-work/TamberOS/build/qemu/dev/serial.log",
+    "-drive",
+    "if=pflash,format=raw,readonly=on,file=/workspace/scratch/d318bf58ae4c/m2-work/TamberOS/build/qemu/dev/code.fd",
+    "-drive",
+    "if=pflash,format=raw,file=/workspace/scratch/d318bf58ae4c/m2-work/TamberOS/build/qemu/dev/vars.fd",
+    "-drive",
+    "if=virtio,format=qcow2,file=/workspace/scratch/d318bf58ae4c/m2-work/TamberOS/build/qemu/dev/disk.qcow2",
+    "-drive",
+    "if=virtio,format=raw,readonly=on,file=/workspace/scratch/d318bf58ae4c/m2-work/TamberOS/build/qemu/dev/seed.iso",
+    "-netdev",
+    "user,id=net0,restrict=on",
+    "-device",
+    "virtio-net-pci,netdev=net0,romfile=",
+    "-no-reboot"
+  ],
+  "timeout_seconds": 900
+}

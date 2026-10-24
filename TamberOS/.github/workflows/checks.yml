@@ -14,7 +14,15 @@ jobs:
     steps:
       - run: dnf --releasever=10.2 -y install git
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-      - run: dnf --releasever=10.2 -y install git python3 gnupg2 gcc-c++ cmake ninja-build qt6-qtbase-devel qt6-qtdeclarative-devel rpm-build
+      - run: dnf --releasever=10.2 -y install git python3 gnupg2 gcc-c++ cmake ninja-build qt6-qtbase-devel qt6-qtdeclarative-devel qt6-qtsvg glib2-devel rpm-build
       - run: test "$(uname -m)" = aarch64 && TAMBER_BUILD_SHELL=1 sh scripts/ci.sh
+      - run: ctest --test-dir build/shell --output-on-failure
+      - run: QT_QPA_PLATFORM=offscreen QT_QUICK_BACKEND=software QT_QUICK_CONTROLS_STYLE=Basic build/shell/tamber-shell --screenshot build/shell/desktop.png
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: tamber-shell-runtime
+          path: TamberOS/build/shell/desktop.png
+          if-no-files-found: warn
 # CI container tag and RPM dependencies are not digest/NEVRA locked yet.
 # Native ARM64 CI passed; compilation coverage is not boot or board evidence.
