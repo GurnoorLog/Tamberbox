@@ -1,21 +1,25 @@
-# Official TamberOS final concepts — originals required
+# TamberOS final UI concept references
 
-The user designated **01-bootloader-concept.png**, featuring the sunglasses llama,
-as the official visual reference for the future boot experience. It must not be
-replaced with a generic crown/splash, a recreation, or another generated image.
+The 9-screen concept image was generated in the project conversation after the original starter kit. Each numbered crop is a **visual reference**, not a native bootloader theme or a real application screenshot.
 
-The nine original PNGs are absent from the starter ZIP available in this session.
-No placeholder PNGs have been created. This gate remains blocked until the updated
-starter ZIP containing `references/final-concept/` is provided.
+Key concept: `01-bootloader-concept.png` — black canvas; orange crown; cream `TAMBER` + orange `OS`; sunglasses llama on the right; readable boot menu on the left.
 
-Import those exact bytes with:
+Do not rasterize the entire bootloader illustration into a functional interactive menu. Boot behavior is board- and boot-stage-dependent:
 
-```sh
-python3 scripts/import_concepts.py /path/to/updated-starter.zip
-python3 scripts/check_assets.py --require-final-concepts
-```
+1. RK3588 boot ROM and U-Boot are board-specific; do not assume GRUB exists.
+2. First verify what output is possible in the device's actual bootloader and resolution.
+3. If a graphical boot menu is supported, build an original graphical theme using licensed assets; preserve a plain-text recovery path.
+4. Implement the smooth animated splash in Plymouth **after** the kernel starts and before the login manager; do not confuse it with the bootloader.
+5. The login screen and desktop should reimplement the concepts using QML/SDDM/compositor as validated, not treat these screenshots as production UI.
 
-The importer accepts only nine PNGs numbered 01–09 with the required boot filename,
-records the source archive hash and each image hash, and refuses to overwrite a
-different existing concept. Review the images after import. The preservation check
-also protects the original SVG mascot, crown, logo and supplied poster.
+## Existing editable assets
+
+- `../../branding/tamber-crown.svg`
+- `../../branding/tamber-logo.svg`
+- `../../branding/tamber-llama.svg`
+
+These are original starter-kit vectors; they are simplified placeholders, **not** the detailed mascot art shown in the generated concept image. Recreate original scalable mascot artwork before final production use. Avoid implying endorsement by the Ollama project.
+
+## How to use these in Codex
+
+Read `01-bootloader-concept.png`, the full montage, `docs/branding.md`, `docs/ui-ux.md`, and `prompts/04_BRAND_BOOT.md`. Write a staged implementation plan and a preview for bootloader, Plymouth, and SDDM **separately**, with clear notes on verified board support. Never overwrite the working TamberBox boot media.

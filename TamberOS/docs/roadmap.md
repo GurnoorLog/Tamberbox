@@ -8,16 +8,16 @@
 - [x] Read-only telemetry CLI and offline unit tests
 - [ ] User reviews brand identity / colors / mascot likeness
 
-## M1 · AlmaLinux ARM64 development — in progress, boot blocked
+## M1 · AlmaLinux ARM64 development — in progress, VM package validation pending
 - [x] Dated AlmaLinux 10.2 aarch64 image downloaded and SHA256 checked
 - [x] File-only QEMU lifecycle, cloud-init generation and offline tests implemented
 - [x] Exact-Ultra source research and package listing evidence recorded
-- [ ] Reproducible QEMU aarch64 AlmaLinux 10 guest demonstrated (tools unavailable here)
+- [x] Pinned QEMU aarch64 AlmaLinux 10 guest boots with matching firmware
 - [ ] Boot/login/network/package manager demonstrated with log capture
 - [x] Qt6/QML and RPM toolchain candidates chosen from official 10.2 aarch64 listings
 - [ ] Toolchain installation and compilation verified inside AlmaLinux ARM64
 - [x] CI workflow defined for offline tests and ARM64 AlmaLinux shell compilation
-- [ ] CI executed remotely and ARM64 compilation passes
+- [x] CI executed remotely and native ARM64 compilation passes
 
 ## M2 · Ultra hardware boot (critical path)
 - [ ] Capture known-good exact-board boot inventory

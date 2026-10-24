@@ -7,5 +7,5 @@
   "sha256": "ca65d1c32430acd84e9126c2e48f3b4110cd649a592712bfb570a6650e7e19e7",
   "checksum_source": "https://repo.almalinux.org/almalinux/10/cloud/aarch64/images/CHECKSUM",
   "retrieved": "2026-10-23",
-  "trust": "SHA256 retrieved over HTTPS; detached signature not yet verified"
+  "trust": "Detached CHECKSUM signature verified with GPG against AlmaLinux 10 key EE6DB7B98F5BF5EDD9DA0DE5DEE5C11CC2A1E572; fingerprint cross-checked on official security page and 10.0 release notes"
 }

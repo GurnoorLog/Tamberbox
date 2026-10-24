@@ -5,6 +5,7 @@ import json
 import os
 from pathlib import Path
 import re
+import signal
 import subprocess
 import sys
 import time
@@ -44,15 +45,16 @@ def main():
     report={'boot':False,'ssh':False,'cloud_init':False,'smoke':False,'dnf_transaction':False,'shell_build':False,'proxy':bool(proxy)}
     runner=None
     def ssh(command,filename,timeout=120):
-        cmd=['ssh','-i',str(dest/'id_ed25519'),'-p','2222','-o','BatchMode=yes',
+        cmd=['ssh','-n','-o','ServerAliveInterval=15','-o','ServerAliveCountMax=3','-i',str(dest/'id_ed25519'),'-p','2222','-o','BatchMode=yes',
              '-o','ConnectTimeout=10','-o','StrictHostKeyChecking=yes',
              '-o',f'UserKnownHostsFile={dest / "known_hosts"}','tamber@127.0.0.1',command]
+        print('Running guest check: '+filename,flush=True)
         with (dest/filename).open('w') as f:
             result=subprocess.run(cmd,stdout=f,stderr=subprocess.STDOUT,timeout=timeout)
         return result.returncode
     with (dest/'runner.txt').open('w') as runlog:
         try:
-            runner=subprocess.Popen([sys.executable,str(Path(vm.__file__)),'run','--name',args.name,'--network','--ssh-port','2222','--timeout','7200'],stdout=runlog,stderr=subprocess.STDOUT)
+            runner=subprocess.Popen([sys.executable,str(Path(vm.__file__)),'run','--name',args.name,'--network','--ssh-port','2222','--timeout','7200'],stdout=runlog,stderr=subprocess.STDOUT,start_new_session=True)
             deadline=time.monotonic()+900
             key=None
             while time.monotonic()<deadline:
@@ -73,7 +75,7 @@ def main():
             report['cloud_init']=ssh('cloud-init status --wait --long','cloud-init.txt',180)==0
             proxy_option=f'--proxy {proxy}' if proxy else ''
             ssh(f'ip -brief addr; cat /etc/resolv.conf; curl {proxy_option} --verbose --fail --max-time 25 -I https://repo.almalinux.org/', 'network-diagnostic.txt',60)
-            ssh('sudo /usr/local/bin/tamber-m1-check','guest-smoke.txt',1200)
+            ssh('sudo /usr/local/bin/tamber-m1-check | sudo tee /dev/ttyAMA0','guest-smoke.txt',1800)
             smoke=(dest/'guest-smoke.txt').read_text()
             report['smoke_checks']=vm.check_transcript(smoke)
             report['smoke']=all(report['smoke_checks'].values())
@@ -91,13 +93,15 @@ def main():
                 ssh("rpm -qa --qf '%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\\n' | sort",'rpm-inventory.txt',120)
             ssh('sudo poweroff','poweroff.txt',30)
             runner.wait(timeout=120)
-        except Exception as e:
-            report['error']=str(e)
+        except (Exception, KeyboardInterrupt) as e:
+            report['error']=str(e) or type(e).__name__
         finally:
             if runner and runner.poll() is None:
-                runner.terminate()
-                try:runner.wait(timeout=15)
-                except subprocess.TimeoutExpired:runner.kill();runner.wait()
+                os.killpg(runner.pid, signal.SIGINT)
+                try:runner.wait(timeout=20)
+                except subprocess.TimeoutExpired:
+                    os.killpg(runner.pid, signal.SIGKILL)
+                    runner.wait()
             (dest/'live-result.json').write_text(json.dumps(report,indent=2)+'\n')
             print(json.dumps(report,indent=2),flush=True)
     return 0 if all(report[k] for k in ('boot','ssh','cloud_init','smoke')) and (not args.build_shell or report['shell_build']) else 1

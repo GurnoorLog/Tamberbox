@@ -1,0 +1,3 @@
+Downloaded and extracted tools; no package installation or maintainer scripts ran.
+PATH prefix: /workspace/scratch/d318bf58ae4c/project/TamberOS/build/isolated-host/root/usr/bin
+LD_LIBRARY_PATH prefix: /workspace/scratch/d318bf58ae4c/project/TamberOS/build/isolated-host/root/usr/lib/x86_64-linux-gnu

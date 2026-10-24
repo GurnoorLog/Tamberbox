@@ -1,6 +1,7 @@
 # AlmaLinux ARM64 development VM — M1
 
-Implemented and offline-tested; **guest boot/login not yet tested**. This uses QEMU's
+Real AlmaLinux ARM64 boot, SSH login and cloud-init have been demonstrated.
+See [the dated results](../../docs/status.md) for package and build acceptance. This uses QEMU's
 virtual ARM platform, not an emulated Orange Pi. Never pass a physical device.
 
 ## Host prerequisites
@@ -10,8 +11,8 @@ Python 3.11+, QEMU 8.2+ (`qemu-system-aarch64`, `qemu-img`), cloud-image-utils
 (`cloud-localds` with its ISO-generation dependency), OpenSSH `ssh-keygen`, and
 matching AAVMF UEFI code/variable templates. On Debian/Ubuntu the relevant package
 names are `qemu-system-arm qemu-utils qemu-efi-aarch64 cloud-image-utils`.
-Install these through your development host's package manager; this project never
-installs host dependencies. Run from the repository root:
+Install these through your development host's package manager, or use the
+workspace-only bootstrap below. The project does not install host packages. Run from the repository root:
 
 ```sh
 python3 scripts/qemu/vm.py doctor
@@ -22,17 +23,18 @@ python3 scripts/qemu/vm.py fetch
 
 `fetch` is the explicit network operation. It downloads the dated official image,
 checks its SHA256 against `image.lock.json`, then makes the cached file read-only.
-No `latest` aliases. Failed downloads cannot become a usable base image. The
-upstream checksum was retrieved over HTTPS; its PGP signature has **not** been
-verified. Do not describe this as signature-authenticated provenance. Before
-release, verify the checksum signature with the independently authenticated
-AlmaLinux 10 key. The included checksum snapshot is evidence of what was observed.
+No `latest` aliases. Failed downloads cannot become a usable base image. The detached checksum signature is verified before preparation using the
+included AlmaLinux 10 public key. Its primary fingerprint was independently
+cross-checked against the official security page and 10.0 release notes, separate
+from the image download endpoint. See `trust/` and `verify_signature.py`; this is
+official HTTPS authentication, not an out-of-band human key attestation.
 
 ## Prepare and execute a smoke VM
 
 Resolve the firmware symlinks to real files; paths depend on the host package.
 The example is the Debian/Ubuntu AAVMF layout. Both must be matching 64 MiB pflash
-files from the same firmware package; these sizes/layout have not been tested here.
+files from the same firmware package. AAVMF 2024.02-2ubuntu0.9 with QEMU 8.2.2
+was used for the real boots recorded in the evidence.
 
 ```sh
 python3 scripts/qemu/vm.py prepare --name smoke01 --smoke \
@@ -51,9 +53,8 @@ name or remove only the failed VM directory after reviewing it.
 The smoke guest emits OS/kernel identity, DNS/HTTPS connectivity, DNF cache and
 package-availability results, plus installed RPM versions, to `serial.log`, then
 powers off. `result.json` requires all four exact PASS markers and a clean QEMU
-exit. A timeout is failure, not a boot success. Guest scripts have never been
-executed here; timeout, cloud-init behavior and firmware compatibility need a real
-run. `--network` explicitly enables outbound guest traffic; no inbound forwarding
+exit. A timeout is failure, not a boot success. Real guest execution is recorded in the dated report; failed network
+attempts are retained as failures. `--network` explicitly enables outbound guest traffic; no inbound forwarding
 is added. Without it QEMU restricts user networking and online smoke checks fail.
 The QEMU monitor is disabled, with no host shares or device passthrough.
 
@@ -91,11 +92,46 @@ rpm -qa --qf '%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\n' | sort > build/rpm-invent
 sudo poweroff
 ```
 
-These installation/compilation commands are **not yet validated**. A window or
+Native ARM64 AlmaLinux CI compiled the source successfully. Consult the dated
+report for the separate QEMU installation/compilation outcome. A window or
 Wayland session is a later gate. Source compilation is not a graphical smoke test.
 The dev run will not report overall PASS merely because someone logged in; keep
 an actual login transcript separately. Current run logs are single-use: prepare
 a fresh VM to repeat a smoke test, preserving previous evidence.
+
+## Isolated tools and automated live validation
+
+On an Ubuntu 24.04 x86_64 development host:
+
+```sh
+python3 scripts/qemu/bootstrap_host.py --download
+export PATH="$PWD/build/isolated-host/root/usr/bin:$PATH"
+export LD_LIBRARY_PATH="$PWD/build/isolated-host/root/usr/lib/x86_64-linux-gnu"
+python3 scripts/qemu/verify_signature.py --image build/qemu/cache/AlmaLinux-10-GenericCloud-10.2-20261012.0.aarch64.qcow2
+python3 scripts/qemu/validate_live.py --name live01 \
+  --code "$PWD/build/isolated-host/root/usr/share/AAVMF/AAVMF_CODE.no-secboot.fd" \
+  --vars "$PWD/build/isolated-host/root/usr/share/AAVMF/AAVMF_VARS.fd" \
+  --build-shell
+```
+
+The bootstrap downloads signed packages from the dated Ubuntu snapshot and
+extracts them under `build/isolated-host`; it never invokes package installation
+or maintainer scripts. It reuses libraries already present on the host, so its
+package inventory is not a complete portable host root filesystem.
+
+In a development sandbox with a credential-free loopback HTTP proxy, add
+`--use-host-proxy`. If that proxy requires a private development CA, explicitly
+provide its public PEM bundle with `--host-ca-bundle PATH`. Only the disposable
+guest receives that trust anchor; HTTPS certificate verification remains on.
+Proxy transport does not verify direct guest DNS or unrestricted networking.
+Do not add proxy credentials or private keys to the seed or evidence.
+
+The live validator starts QEMU and SSH within one network namespace, obtains the
+SSH host key from the local serial transcript, verifies it strictly, and records
+SSH, cloud-init, smoke checks, DNF installation and shell compilation separately.
+It emits `live-result.json` even on a handled failure. Preserve this alongside
+`serial.log`, `manifest.json`, `result.json` and text transcripts. Never archive
+the per-VM private key, cloud-init seed or disk overlay.
 
 ## Reproducibility boundary and rollback
 

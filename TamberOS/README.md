@@ -21,7 +21,7 @@ TamberOS combines a Linux kernel, an AlmaLinux userspace, and new Tamber-specifi
 | Product/technical documentation | Complete initial draft |
 | Brand palette, original SVG mascot + crown | Included |
 | Clickable multipage UI mock | Included; **mock data only** |
-| Qt 6/QML desktop application scaffold | Included; needs Qt 6 and compilation/testing |
+| Qt 6/QML desktop application scaffold | Compiled in native AlmaLinux ARM64 CI; GUI runtime unverified |
 | Safe read-only hardware telemetry CLI | Implemented with unit tests |
 | RPM build, system image, NPU integration | **Not implemented** |
 | Boot verified on Orange Pi 5 Ultra | **Not verified** |
@@ -30,18 +30,19 @@ TamberOS combines a Linux kernel, an AlmaLinux userspace, and new Tamber-specifi
 
 Open [`prototype/index.html`](prototype/index.html) locally in a modern browser. The demo does not install anything, modify the machine or communicate with Ollama. Switch between Home, AI, Games, System, Settings, Sign-in and Boot using its navigation.
 
-## M1 implementation update · 2026-10-23
+## M1 implementation update · 2026-10-24
 
-Safe QEMU lifecycle tooling, a pinned AlmaLinux 10.2 ARM64 image lock,
-20 offline tests, a bounded board inventory collector, and CI definitions are
-implemented. The official image downloaded and passed SHA256 verification.
-**QEMU boot/login, Qt compilation, CI execution and hardware support remain
-unverified.** No TamberBox connection or storage modification occurred.
+The signed AlmaLinux 10.2 image boots under workspace-local QEMU/AAVMF. Real
+SSH and cloud-init checks pass; native ARM64 GitHub CI compiled the Qt/QML shell.
+The nine original screen concepts and overview are restored byte-for-byte,
+with a mandatory preservation check. The sunglasses-llama bootloader concept is
+the official future boot reference, not a demonstrated bootloader implementation.
 
-Start with [`scripts/qemu/README.md`](scripts/qemu/README.md). See the
-[`M1 results`](docs/status.md), [`feasibility matrix`](docs/feasibility-matrix.md)
-and [`engineering decisions`](docs/decisions-m1.md). The original brand and UI
-files remain byte-for-byte unchanged.
+See the exact acceptance state and remaining limitations in
+[`M1 results`](docs/status.md), the runnable
+[`QEMU guide`](scripts/qemu/README.md), and
+[`engineering decisions`](docs/decisions-m1.md). No existing TamberBox
+installation was connected to, modified or flashed.
 
 ## Development quick start
 
@@ -91,4 +92,4 @@ See [`prompts/00_WORK_HANDOFF.md`](prompts/00_WORK_HANDOFF.md) for a reusable pr
 
 ## Project status
 
-**2026-10-23** — foundation kit authored. QML build, RPM packaging, actual board boot and driver support all require testing on appropriate environments/hardware.
+**2026-10-23** — foundation kit authored. Native ARM64 QML compilation is now verified; RPM packaging, actual board boot and driver support remain unverified.

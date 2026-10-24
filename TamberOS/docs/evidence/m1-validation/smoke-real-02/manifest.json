@@ -1,0 +1,21 @@
+{
+  "image": {
+    "schema": 1,
+    "architecture": "aarch64",
+    "release": "10.2",
+    "filename": "AlmaLinux-10-GenericCloud-10.2-20261012.0.aarch64.qcow2",
+    "url": "https://repo.almalinux.org/almalinux/10/cloud/aarch64/images/AlmaLinux-10-GenericCloud-10.2-20261012.0.aarch64.qcow2",
+    "sha256": "ca65d1c32430acd84e9126c2e48f3b4110cd649a592712bfb570a6650e7e19e7",
+    "checksum_source": "https://repo.almalinux.org/almalinux/10/cloud/aarch64/images/CHECKSUM",
+    "retrieved": "2026-10-23",
+    "trust": "SHA256 retrieved over HTTPS; detached signature not yet verified"
+  },
+  "firmware_code_sha256": "4a4cb7f6d8106bb2a7dd8c763fab14b1810152136fc4304e5b728f0043e84f12",
+  "firmware_vars_initial_sha256": "b3b855c5a80310168051164986855692d1bdb06e67619856177965cd87c6774f",
+  "smoke": true,
+  "tools": {
+    "qemu-system-aarch64": "QEMU emulator version 8.2.2 (Debian 1:8.2.2+ds-0ubuntu1.18)",
+    "qemu-img": "qemu-img version 8.2.2 (Debian 1:8.2.2+ds-0ubuntu1.18)"
+  },
+  "seed_sha256": "4a3b388a4030f096f7aa405bf5f30b3dbefebacbe6d4b6a48388941a69a03797"
+}

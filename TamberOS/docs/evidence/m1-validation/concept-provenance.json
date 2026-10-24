@@ -1,0 +1,18 @@
+{
+  "archive_sha256": "1027e4b85871188237cd07fe77ab80bc9a6d579977b46901e0be2301ea1c9b0b",
+  "library_file_id": "libfile_4b7e1d4c6c608191b20c80e99c86e589",
+  "version": "2",
+  "byte_identical_to_archive": {
+    "references/final-concept/01-bootloader-concept.png": "71609fb6ad2f7bea0630db346a3f07277236cd30b7f63af8eff5672f51f244a4",
+    "references/final-concept/02-boot-splash-concept.png": "51226ca5db134e3a30ed2f1fc221d6158b22d423265e6711311cf484999b5c71",
+    "references/final-concept/03-login-screen-concept.png": "d9c08a5af51f905bfebe8e41ae7dcc4692158e1acae82c69940e3c004edbe2bb",
+    "references/final-concept/04-desktop-concept.png": "8550cfc3c58970383b83144799aa909b4389542a4d6ade4bd13b3c0ea19610b6",
+    "references/final-concept/05-ai-mode-concept.png": "421a45891bc218f0970646e92e74ec9db215017950f45153659001051677454a",
+    "references/final-concept/06-game-mode-concept.png": "9c33175ac06f81a04756bf8bcfb087030760d5921076092150836278aa8f961d",
+    "references/final-concept/07-settings-concept.png": "09bee9cc09c0c484e019937e4dd0d83a3d9b27388cfeb00b8aa05361adae8a71",
+    "references/final-concept/08-system-monitor-concept.png": "384e0813cf64f1ad00e0b5bd3d71c4905eaa7ee113fa1046fbfe7bfe171b058e",
+    "references/final-concept/09-first-boot-concept.png": "cde23c14f979fdc4496185d75a4c95d9a6c966d9db6ec74b6b13bee58dd68bdc",
+    "references/final-concept/README.md": "6cb64a6ef624637470a945af8f3926351c0662949e25a4a628038e97417ec4c9",
+    "references/final-concept/tamberos-nine-screen-concept.png": "ab68bb0a83cee4ebd868cbcaaa5551388ea5ad491f2964453d8292cff2af6af6"
+  }
+}

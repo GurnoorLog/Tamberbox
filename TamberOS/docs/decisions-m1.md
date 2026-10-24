@@ -32,3 +32,31 @@ original starter is the `main` commit. Revert the M1 commit to undo source chang
 The packaged kit includes a Git bundle preserving both commits. There is no
 remote push/publication, since the code/artwork redistribution policy is still
 undecided. Private logs/keys, downloaded images and host package cache are excluded.
+
+## Validation update · 2026-10-24
+
+The entries above describe the original baseline. They are superseded where
+new evidence exists:
+
+- Workspace-local extraction from signed Ubuntu snapshot packages provides QEMU,
+  qemu-img, cloud-localds and matching AAVMF without host package installation.
+  The bootstrap script itself was executed successfully on the repeat run.
+- The AlmaLinux CHECKSUM signature is now verified; the primary key fingerprint
+  was cross-checked on official security and release-note pages independently
+  of the image endpoint. Trust scope is documented in the signature evidence.
+- Real QEMU boots, cloud-init and SSH now have transcripts. Direct guest DNS is
+  unavailable here; explicit host proxy transport with verified TLS is tested
+  separately. A passed network request alone is not a passed DNF transaction.
+- Native ARM64 AlmaLinux GitHub Actions compiled the shell successfully. The user
+  authorized the dedicated `feature/tamberos-m1-validation` branch in
+  GurnoorLog/Tamberbox. Its main branch and existing installation are untouched.
+- Nine final concepts plus overview and README were restored exactly from updated
+  starter-kit version 2. CI now requires their hashes. The official boot reference
+  is the original sunglasses-llama image, not a generic theme.
+- The requested WhiteSur-inspired desktop layout is recorded in
+  [desktop-direction.md](desktop-direction.md), for M3 after M1 validation.
+
+Revert feature-branch commits to roll back source changes. Delete only stopped,
+explicitly named disposable VM directories to roll back guest writes. Do not
+remove caches/VMs while QEMU is running. No firmware or image binaries, private
+SSH keys or cloud-init seed images are included in source delivery.

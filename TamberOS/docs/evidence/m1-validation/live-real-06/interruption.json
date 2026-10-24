@@ -1,0 +1,4 @@
+{
+  "completed": false,
+  "reason": "Execution was interrupted during DNF metadata processing; no final VM result was produced. Identity/HTTPS/SSH/cloud-init evidence does not establish a passed DNF transaction."
+}

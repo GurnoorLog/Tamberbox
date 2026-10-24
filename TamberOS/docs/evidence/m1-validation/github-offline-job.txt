@@ -1,0 +1,192 @@
+﻿2026-10-24T11:41:27.3176876Z Current runner version: '2.338.0'
+2026-10-24T11:41:27.3202068Z ##[group]Runner Image Provisioner
+2026-10-24T11:41:27.3202963Z Hosted Compute Agent
+2026-10-24T11:41:27.3203632Z Version: 20261021.618
+2026-10-24T11:41:27.3204269Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-24T11:41:27.3204976Z Build Date: 2026-10-21T00:45:21Z
+2026-10-24T11:41:27.3205774Z Worker ID: {d7544b59-b8cc-4be1-9877-0a98221c9ae6}
+2026-10-24T11:41:27.3206836Z Region: eastus
+2026-10-24T11:41:27.3207462Z Cloud: Azure
+2026-10-24T11:41:27.3208056Z ##[endgroup]
+2026-10-24T11:41:27.3209622Z ##[group]Operating System
+2026-10-24T11:41:27.3210487Z Ubuntu
+2026-10-24T11:41:27.3211076Z 24.04.5
+2026-10-24T11:41:27.3211676Z LTS
+2026-10-24T11:41:27.3212263Z ##[endgroup]
+2026-10-24T11:41:27.3212872Z ##[group]Runner Image
+2026-10-24T11:41:27.3213603Z Image: ubuntu-24.04
+2026-10-24T11:41:27.3214228Z Version: 20261012.334.1
+2026-10-24T11:41:27.3215582Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-24T11:41:27.3217424Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-24T11:41:27.3218565Z ##[endgroup]
+2026-10-24T11:41:27.3219758Z ##[group]GITHUB_TOKEN Permissions
+2026-10-24T11:41:27.3222013Z Contents: read
+2026-10-24T11:41:27.3222678Z Metadata: read
+2026-10-24T11:41:27.3223648Z ##[endgroup]
+2026-10-24T11:41:27.3226021Z Secret source: Actions
+2026-10-24T11:41:27.3227234Z Cache mode: write
+2026-10-24T11:41:27.3228215Z Prepare workflow directory
+2026-10-24T11:41:27.3623981Z Prepare all required actions
+2026-10-24T11:41:27.3671777Z Getting action download info
+2026-10-24T11:41:27.5797338Z Download action repository 'actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683' (SHA:11bd71901bbe5b1630ceea73d27597364c9af683)
+2026-10-24T11:41:27.7822912Z Complete job name: offline
+2026-10-24T11:41:27.8818530Z ##[group]Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+2026-10-24T11:41:27.8819667Z with:
+2026-10-24T11:41:27.8820156Z   repository: GurnoorLog/Tamberbox
+2026-10-24T11:41:27.8823818Z   token: ***
+2026-10-24T11:41:27.8824261Z   ssh-strict: true
+2026-10-24T11:41:27.8824813Z   ssh-user: git
+2026-10-24T11:41:27.8825283Z   persist-credentials: true
+2026-10-24T11:41:27.8825787Z   clean: true
+2026-10-24T11:41:27.8826246Z   sparse-checkout-cone-mode: true
+2026-10-24T11:41:27.8827028Z   fetch-depth: 1
+2026-10-24T11:41:27.8827485Z   fetch-tags: false
+2026-10-24T11:41:27.8827938Z   show-progress: true
+2026-10-24T11:41:27.8828401Z   lfs: false
+2026-10-24T11:41:27.8828841Z   submodules: false
+2026-10-24T11:41:27.8829301Z   set-safe-directory: true
+2026-10-24T11:41:27.8830112Z ##[endgroup]
+2026-10-24T11:41:27.9852641Z Syncing repository: GurnoorLog/Tamberbox
+2026-10-24T11:41:27.9855428Z ##[group]Getting Git version info
+2026-10-24T11:41:27.9857072Z Working directory is '/home/runner/work/Tamberbox/Tamberbox'
+2026-10-24T11:41:27.9858977Z [command]/usr/bin/git version
+2026-10-24T11:41:27.9989900Z git version 2.55.0
+2026-10-24T11:41:28.0013063Z ##[endgroup]
+2026-10-24T11:41:28.0030723Z Temporarily overriding HOME='/home/runner/work/_temp/e8093897-b966-448f-a7f6-d72a7c6d1964' before making global git config changes
+2026-10-24T11:41:28.0033369Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-24T11:41:28.0037801Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Tamberbox/Tamberbox
+2026-10-24T11:41:28.0096172Z Deleting the contents of '/home/runner/work/Tamberbox/Tamberbox'
+2026-10-24T11:41:28.0101900Z ##[group]Initializing the repository
+2026-10-24T11:41:28.0106874Z [command]/usr/bin/git init /home/runner/work/Tamberbox/Tamberbox
+2026-10-24T11:41:28.0241024Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-24T11:41:28.0242784Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-24T11:41:28.0244575Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-24T11:41:28.0247073Z hint: call:
+2026-10-24T11:41:28.0248327Z hint:
+2026-10-24T11:41:28.0250121Z hint: 	git config --global init.defaultBranch <name>
+2026-10-24T11:41:28.0251723Z hint:
+2026-10-24T11:41:28.0253102Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-24T11:41:28.0254981Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-24T11:41:28.0258410Z hint:
+2026-10-24T11:41:28.0259654Z hint: 	git branch -m <name>
+2026-10-24T11:41:28.0260833Z hint:
+2026-10-24T11:41:28.0262292Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-24T11:41:28.0264365Z Initialized empty Git repository in /home/runner/work/Tamberbox/Tamberbox/.git/
+2026-10-24T11:41:28.0268449Z [command]/usr/bin/git remote add origin https://github.com/GurnoorLog/Tamberbox
+2026-10-24T11:41:28.0327560Z ##[endgroup]
+2026-10-24T11:41:28.0328882Z ##[group]Disabling automatic garbage collection
+2026-10-24T11:41:28.0332559Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-24T11:41:28.0369028Z ##[endgroup]
+2026-10-24T11:41:28.0370275Z ##[group]Setting up auth
+2026-10-24T11:41:28.0377070Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-24T11:41:28.0415018Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-24T11:41:28.0813454Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-24T11:41:28.0852708Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-24T11:41:28.1092319Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-24T11:41:28.1139639Z ##[endgroup]
+2026-10-24T11:41:28.1140901Z ##[group]Fetching the repository
+2026-10-24T11:41:28.1149930Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +f1d49528a6b44ee9d1bad096c46eb01cb4ab9bd9:refs/remotes/origin/feature/tamberos-m1-validation
+2026-10-24T11:41:28.5396098Z From https://github.com/GurnoorLog/Tamberbox
+2026-10-24T11:41:28.5397944Z  * [new ref]         f1d49528a6b44ee9d1bad096c46eb01cb4ab9bd9 -> origin/feature/tamberos-m1-validation
+2026-10-24T11:41:28.5401369Z ##[endgroup]
+2026-10-24T11:41:28.5402814Z ##[group]Determining the checkout info
+2026-10-24T11:41:28.5404424Z ##[endgroup]
+2026-10-24T11:41:28.5411556Z [command]/usr/bin/git sparse-checkout disable
+2026-10-24T11:41:28.5468448Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-24T11:41:28.5501395Z ##[group]Checking out the ref
+2026-10-24T11:41:28.5505464Z [command]/usr/bin/git checkout --progress --force -B feature/tamberos-m1-validation refs/remotes/origin/feature/tamberos-m1-validation
+2026-10-24T11:41:28.5664686Z Switched to a new branch 'feature/tamberos-m1-validation'
+2026-10-24T11:41:28.5671542Z branch 'feature/tamberos-m1-validation' set up to track 'origin/feature/tamberos-m1-validation'.
+2026-10-24T11:41:28.5677744Z ##[endgroup]
+2026-10-24T11:41:28.5723373Z [command]/usr/bin/git log -1 --format=%H
+2026-10-24T11:41:28.5753164Z f1d49528a6b44ee9d1bad096c46eb01cb4ab9bd9
+2026-10-24T11:41:28.5979802Z ##[group]Run sh scripts/ci.sh
+2026-10-24T11:41:28.5980525Z [36;1msh scripts/ci.sh[0m
+2026-10-24T11:41:28.6258473Z shell: /usr/bin/bash -e {0}
+2026-10-24T11:41:28.6259269Z ##[endgroup]
+2026-10-24T11:41:28.7610905Z test_changed_original_rejected (test_assets.AssetTests.test_changed_original_rejected) ... ok
+2026-10-24T11:41:28.7615620Z test_missing_concepts_cannot_pass_release_gate (test_assets.AssetTests.test_missing_concepts_cannot_pass_release_gate) ... ok
+2026-10-24T11:41:28.7654305Z test_originals_unchanged (test_assets.AssetTests.test_originals_unchanged) ... ok
+2026-10-24T11:41:28.7677308Z test_fake_fixture_and_invalid_thermal_value (test_hardware.HardwareTests.test_fake_fixture_and_invalid_thermal_value) ... ok
+2026-10-24T11:41:28.7680710Z test_memory_units (test_hardware.HardwareTests.test_memory_units) ... ok
+2026-10-24T11:41:28.7682985Z test_safe_missing_sensors (test_hardware.HardwareTests.test_safe_missing_sensors) ... ok
+2026-10-24T11:41:28.7685670Z test_empty_root_is_unknown (test_inventory.InventoryTests.test_empty_root_is_unknown) ... ok
+2026-10-24T11:41:28.7731329Z test_exact_board_and_sensitive_fields_excluded (test_inventory.InventoryTests.test_exact_board_and_sensitive_fields_excluded) ... ok
+2026-10-24T11:41:28.7733910Z test_redaction (test_inventory.InventoryTests.test_redaction) ... ok
+2026-10-24T11:41:28.7752335Z test_download_atomic_verification_and_cleanup (test_qemu.DownloadTests.test_download_atomic_verification_and_cleanup) ... ok
+2026-10-24T11:41:28.7759833Z test_existing_partial_is_preserved (test_qemu.DownloadTests.test_existing_partial_is_preserved) ... ok
+2026-10-24T11:41:28.7762749Z test_pass_then_fail_is_not_success (test_qemu.DownloadTests.test_pass_then_fail_is_not_success) ... ok
+2026-10-24T11:41:28.7768915Z test_rejects_credentials_and_non_gateway_proxy (test_qemu.ProxyTests.test_rejects_credentials_and_non_gateway_proxy) ... ok
+2026-10-24T11:41:28.7776192Z test_checksum_rejects_corruption (test_qemu.VMTests.test_checksum_rejects_corruption) ... ok
+2026-10-24T11:41:28.8448887Z test_cli_errors_do_not_report_success (test_qemu.VMTests.test_cli_errors_do_not_report_success) ... ok
+2026-10-24T11:41:28.8454633Z test_cloud_init_security_and_modes (test_qemu.VMTests.test_cloud_init_security_and_modes) ... ok
+2026-10-24T11:41:28.8469174Z test_dry_run_no_files_or_subprocess (test_qemu.VMTests.test_dry_run_no_files_or_subprocess) ... ok
+2026-10-24T11:41:28.8477575Z test_existing_vm_not_overwritten (test_qemu.VMTests.test_existing_vm_not_overwritten) ... ok
+2026-10-24T11:41:28.8481727Z test_lock_matches_recorded_upstream_checksum (test_qemu.VMTests.test_lock_matches_recorded_upstream_checksum) ... ok
+2026-10-24T11:41:28.8486138Z test_log_parser_requires_exact_all_gates (test_qemu.VMTests.test_log_parser_requires_exact_all_gates) ... ok
+2026-10-24T11:41:28.8490577Z test_network_defaults_and_loopback (test_qemu.VMTests.test_network_defaults_and_loopback) ... ok
+2026-10-24T11:41:28.8494522Z test_rejects_devices_and_symlinks (test_qemu.VMTests.test_rejects_devices_and_symlinks) ... ok
+2026-10-24T11:41:28.8497181Z test_rejects_output_escape (test_qemu.VMTests.test_rejects_output_escape) ... ok
+2026-10-24T11:41:28.8499312Z test_rejects_symlinked_build (test_qemu.VMTests.test_rejects_symlinked_build) ... ok
+2026-10-24T11:41:28.9324858Z test_modified_checksum_rejected (test_signature.SignatureTests.test_modified_checksum_rejected) ... ok
+2026-10-24T11:41:28.9405404Z test_real_upstream_signature_and_pinned_image (test_signature.SignatureTests.test_real_upstream_signature_and_pinned_image) ... ok
+2026-10-24T11:41:28.9483835Z test_wrong_image_lock_rejected (test_signature.SignatureTests.test_wrong_image_lock_rejected) ... ok
+2026-10-24T11:41:28.9486694Z 
+2026-10-24T11:41:28.9487467Z ----------------------------------------------------------------------
+2026-10-24T11:41:28.9489384Z Ran 27 tests in 0.188s
+2026-10-24T11:41:28.9490114Z 
+2026-10-24T11:41:28.9490519Z OK
+2026-10-24T11:41:28.9896202Z PASS: Required project artifacts and SVG syntax exist.
+2026-10-24T11:41:28.9900476Z LIMITATION: hardware boot, Qt6 build and graphical interaction NOT verified by this check.
+2026-10-24T11:41:29.0265788Z PASS: original assets match their recorded SHA256 values
+2026-10-24T11:41:29.0269381Z UNVERIFIED: nine final concepts are unavailable; run --require-final-concepts for the release gate
+2026-10-24T11:41:29.0864120Z {
+2026-10-24T11:41:29.0865233Z   "command": [
+2026-10-24T11:41:29.0866547Z     "qemu-system-aarch64",
+2026-10-24T11:41:29.0867752Z     "-machine",
+2026-10-24T11:41:29.0868708Z     "virt-8.2",
+2026-10-24T11:41:29.0869656Z     "-cpu",
+2026-10-24T11:41:29.0870785Z     "neoverse-n1",
+2026-10-24T11:41:29.0872444Z     "-accel",
+2026-10-24T11:41:29.0873564Z     "tcg",
+2026-10-24T11:41:29.0874564Z     "-m",
+2026-10-24T11:41:29.0875455Z     "4096",
+2026-10-24T11:41:29.0876623Z     "-smp",
+2026-10-24T11:41:29.0877546Z     "4",
+2026-10-24T11:41:29.0878442Z     "-display",
+2026-10-24T11:41:29.0879374Z     "none",
+2026-10-24T11:41:29.0880280Z     "-monitor",
+2026-10-24T11:41:29.0881258Z     "none",
+2026-10-24T11:41:29.0882145Z     "-serial",
+2026-10-24T11:41:29.0883736Z     "file:/home/runner/work/Tamberbox/Tamberbox/TamberOS/build/qemu/dev/serial.log",
+2026-10-24T11:41:29.0885743Z     "-drive",
+2026-10-24T11:41:29.0888004Z     "if=pflash,format=raw,readonly=on,file=/home/runner/work/Tamberbox/Tamberbox/TamberOS/build/qemu/dev/code.fd",
+2026-10-24T11:41:29.0890467Z     "-drive",
+2026-10-24T11:41:29.0892354Z     "if=pflash,format=raw,file=/home/runner/work/Tamberbox/Tamberbox/TamberOS/build/qemu/dev/vars.fd",
+2026-10-24T11:41:29.0894640Z     "-drive",
+2026-10-24T11:41:29.0896890Z     "if=virtio,format=qcow2,file=/home/runner/work/Tamberbox/Tamberbox/TamberOS/build/qemu/dev/disk.qcow2",
+2026-10-24T11:41:29.0899362Z     "-drive",
+2026-10-24T11:41:29.0901481Z     "if=virtio,format=raw,readonly=on,file=/home/runner/work/Tamberbox/Tamberbox/TamberOS/build/qemu/dev/seed.iso",
+2026-10-24T11:41:29.0903927Z     "-netdev",
+2026-10-24T11:41:29.0904982Z     "user,id=net0,restrict=on",
+2026-10-24T11:41:29.0906165Z     "-device",
+2026-10-24T11:41:29.0907500Z     "virtio-net-pci,netdev=net0,romfile=",
+2026-10-24T11:41:29.0908843Z     "-no-reboot"
+2026-10-24T11:41:29.0909828Z   ],
+2026-10-24T11:41:29.0910864Z   "timeout_seconds": 900
+2026-10-24T11:41:29.0912456Z }
+2026-10-24T11:41:29.3382399Z Post job cleanup.
+2026-10-24T11:41:29.4284535Z [command]/usr/bin/git version
+2026-10-24T11:41:29.4329784Z git version 2.55.0
+2026-10-24T11:41:29.4377480Z Temporarily overriding HOME='/home/runner/work/_temp/18b7ea51-a26c-4bc5-b501-c54f3ba71d82' before making global git config changes
+2026-10-24T11:41:29.4381239Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-24T11:41:29.4384570Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Tamberbox/Tamberbox
+2026-10-24T11:41:29.4431230Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-24T11:41:29.4495727Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-24T11:41:29.4730166Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-24T11:41:29.4759734Z http.https://github.com/.extraheader
+2026-10-24T11:41:29.4795909Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-24T11:41:29.4911470Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-24T11:41:29.5348058Z Cleaning up orphan processes
+2026-10-24T11:41:29.5880084Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

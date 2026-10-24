@@ -1,96 +1,71 @@
-# M1 live validation in progress · 2026-10-24
+# M1 verification report · 2026-10-24
 
-The previously missing QEMU tools now run from workspace-local extracted Ubuntu
-packages. A real AlmaLinux 10.2 ARM64 VM booted and powered off cleanly. SSH login
-and cloud-init completed in a subsequent VM. Direct guest DNS is blocked by the
-execution environment; proxy networking and package/build verification are being
-tested. The signed image CHECKSUM passes GPG verification against the AlmaLinux
-10 fingerprint independently cross-checked on its official security page and
-release notes. This does not yet mark all M1 gates complete.
+**M1 is not yet complete.** Real QEMU boot, SSH and cloud-init are demonstrated,
+and native ARM64 CI compiled the Qt/QML shell. The disposable VM DNF transaction
+and final end-to-end smoke result are still pending. No existing TamberBox
+installation was connected to, modified, repartitioned or flashed. M2 is on hold.
 
-GitHub CI is being prepared on a dedicated branch of GurnoorLog/Tamberbox at the
-user's direction. The main branch will not be modified. The nine final concept
-PNGs are still unavailable; the explicit asset gate reports that blocker.
+## Verified results
 
-The following report is the historical M1 baseline, retained until live validation
-results are finalized:
-
-# M1 verification report · 2026-10-23
-
-**M1 is in progress, not complete.** Real VM tooling is implemented and the base
-image is checksum-verified. QEMU execution is blocked by missing host tools.
-No existing TamberBox installation was connected to, modified or flashed.
-
-## Executed results
-
-| Check | Result | Evidence |
+| Check | Result | Evidence under `docs/evidence/m1-validation/` |
 |---|---|---|
-| Starter baseline | PASS: 3 tests and structure check | Initial run before edits |
-| Expanded offline suite | PASS: 20 tests | [offline-tests.txt](evidence/offline-tests.txt) |
-| Required files and SVG parsing | PASS | Same transcript |
-| Browser JavaScript syntax | PASS, `node --check prototype/app.js` | Invoked by `scripts/ci.sh`; exit 0 |
-| Guest script shell syntax | PASS, `bash -n` | Invoked by `scripts/ci.sh`; exit 0 |
-| Guest script refuses this host | PASS: exit 2 before probing/DNF | [guest-host-guard.txt](evidence/guest-host-guard.txt) |
-| VM dry-run | PASS: argv generated without launching or creating a VM | Transcript plus no-side-effect test |
-| Official image download/integrity | PASS: 478,937,088 bytes and matching SHA256 | [image-verification.json](evidence/image-verification.json) |
-| Package/board source retrieval | PASS: pinned board source and official package listings observed | [source-observations.json](evidence/source-observations.json) |
-| Brand/UI preservation | PASS: all supplied branding, prototype, shell and reference files byte-identical | [design-preservation.json](evidence/design-preservation.json) |
-| Git changes | Isolated on `feature/m1-arm64-foundation`, starter on `main` | Git history in delivered bundle |
+| Offline tests | 27 pass; project, asset, shell and JavaScript checks pass | `offline-final.txt` |
+| Isolated tool bootstrap | Script executed successfully, download/extract only | `bootstrap-repeat.txt`, `host-packages.json` |
+| Host tools | QEMU 8.2.2, qemu-img, cloud-localds, genisoimage; AAVMF 2024.02-2ubuntu0.9 with matching 64 MiB code/vars | Package manifest and VM manifest |
+| Image authentication | Detached CHECKSUM signature and actual image SHA256 pass | `signature-verification.json` |
+| Actual QEMU boot | AlmaLinux 10.2 aarch64, kernel 6.12.0-211.64.1.el10_2.aarch64; clean poweroff in initial smoke attempt | `smoke-real-02/serial.log`, `manifest.json`, `result.json` |
+| SSH login | Generated-key authentication, strict host-key validation from local serial channel | `live-real-06/ssh-login.txt` |
+| Cloud-init | Completed, no reported errors | `live-real-06/cloud-init.txt` |
+| HTTPS transport | TLS verified through explicitly configured development proxy | `live-real-06/network-diagnostic.txt`, `guest-smoke.txt` |
+| GitHub Actions | Offline and native ARM64 AlmaLinux container jobs passed | `github-offline-job.txt`, `github-arm64-job.txt` |
+| Qt/QML compilation | Real CMake compilation reached 100% in ARM64 CI | `github-arm64-job.txt` |
+| Original concepts | Nine screens, overview and README restored byte-for-byte from updated starter ZIP | `concept-provenance.json`, `final-concepts-gate.txt` |
 
-The tests exercise checksum corruption rejection, atomic download/caching with
-mocked HTTP, partial-download preservation, path/symlink/device refusal, SSH
-network defaults, cloud-init structure, existing-file protection, exact result
-markers, board fixture detection and redaction. Mock HTTP tests are not VM tests.
-The separately downloaded official image is real and was hashed in full.
+The actual CI run is [40090908353](https://github.com/GurnoorLog/Tamberbox/actions/runs/40090908353),
+for remote commit `f1d49528a6b44ee9d1bad096c46eb01cb4ab9bd9`, on the user-approved
+`feature/tamberos-m1-validation` branch. Main is unchanged. A refreshed CI run
+for the restored-asset gate and latest changes is pending.
 
-## Blocked / unverified
+## Failures and limitations
 
-- `qemu-system-aarch64`, `qemu-img`, `cloud-localds` and CMake are not available.
-  Host: Ubuntu 24.04.3 x86_64. [Doctor output](evidence/host-tools.json).
-- Workspace-scoped APT metadata retrieval failed with `setgroups`, `setegid` and
-  `seteuid` permission errors. No dependencies were installed; no escalation was
-  used. Firmware preparation, overlay creation and cloud-init execution are
-  untested external-tool integrations.
-- No boot, login, guest network, DNF transaction, package installation, Qt build,
-  GUI rendering or RPM build occurred. No serial boot transcript exists.
-- No GitHub remote or CI run exists. The workflow is configured, not proven.
-- Checksum detached signature/key authentication remains unverified.
-- QEMU/firmware binaries and RPM dependency snapshots are not globally pinned.
-  The base image is pinned; byte-identical distro builds are not delivered.
-- Board bootloader, exact kernel/config/modules, hardware I/O, accelerated GPU,
-  Bluetooth/Wi-Fi and NPU remain unverified with AlmaLinux on the actual Ultra.
-- No inference, gaming integration, compositor or real desktop session is added.
+- Initial smoke VM booted and powered off, but guest DNS/network/DNF/package
+  checks failed. Its `result.json` correctly reports failure, not a passed smoke.
+- Run `live-real-06` passed identity and HTTPS, then was interrupted during DNF
+  metadata processing. It did not produce a final VM result. Its partial output
+  cannot establish a passed DNF transaction. A fresh `live-real-07` is underway.
+- Direct guest DNS is not working in this sandbox. Proxy-assisted HTTPS does not
+  establish direct networking. The explicit public host CA bundle is installed
+  only in the disposable guest; TLS verification is not disabled.
+- Shell compilation is verified in a native ARM64 AlmaLinux container, separately
+  from QEMU. No graphical session, rendering, Wayland compositor or RPM package
+  build has been validated.
+- Exact Orange Pi 5 Ultra bootloader, kernel, DTB and driver requirements are
+  researched in `board-support.md` and `feasibility-matrix.md`. No physical-board
+  boot or AlmaLinux GPU/NPU, Wi-Fi/Bluetooth, audio or storage compatibility is
+  claimed. Hardware bring-up has not begun.
+- The base image and Ubuntu snapshot are pinned. RPM repositories and CI container
+  tags still move; this is a repeatable development recipe, not a bit-identical
+  distribution build or complete dependency lock.
+- Key fingerprint `EE6DB7B98F5BF5EDD9DA0DE5DEE5C11CC2A1E572` was cross-checked on
+  the official AlmaLinux security page and 10.0 release notes, separately from the
+  image endpoint. This is HTTPS-based independent source authentication, not an
+  out-of-band human signing-key attestation.
 
-## Exact commands run
+## Reproduction and rollback
 
-```sh
-python3 -m unittest discover -s tests -v
-python3 scripts/check_project.py
-python3 scripts/qemu/vm.py doctor
-python3 scripts/qemu/vm.py fetch
-sh scripts/ci.sh
-bash scripts/qemu/guest-check.sh  # expected refusal on this host, exit 2
-```
+See `scripts/qemu/README.md` for exact commands. The executed live command uses
+`validate_live.py --name live-real-07 --use-host-proxy --host-ca-bundle
+/etc/ssl/certs/ca-certificates.crt --build-shell`, with matching local AAVMF paths.
+Offline checks: `sh scripts/ci.sh`. Signature check: `python3
+scripts/qemu/verify_signature.py --image <the pinned qcow2>`.
 
-`fetch` succeeded; `doctor` returned 1 for missing dependencies. Tests and syntax
-checks returned 0. The guard test intentionally returned 2. Additional source
-retrieval scripts used HTTPS GETs to URLs in the evidence manifest; they did not
-execute downloaded board code. Design preservation was checked directly against
-the supplied ZIP using Python zipfile and SHA256.
+Original branding and concept bytes are protected by `references/assets.lock.json`.
+The sunglasses-llama `01-bootloader-concept.png` is the official future boot
+reference. The requested macOS-like desktop direction is documented separately
+in `desktop-direction.md`; WhiteSur installers were not run.
 
-## Next narrow gate
-
-On a disposable development host with prerequisites, execute the smoke VM recipe
-in [the QEMU guide](../scripts/qemu/README.md), preserve `serial.log`,
-`manifest.json` and `result.json`, then capture a separate real SSH login and Qt
-compile transcript. Only then mark M1 complete. Keep M2 physical-board work on
-hold until exact-board read-only inventory, asset licensing/checksums and a
-separate test-media recovery plan exist.
-
-## Rollback / delivery
-
-Stop the VM before removing its ordinary `build/qemu/<name>` directory. No
-physical disk operation is present. Source rollback is the starter `main`
-commit or reverting the M1 commit. The ZIP includes source, evidence and a Git
-bundle; no VM images, firmware, private keys or package caches are bundled.
-Use `git clone TamberOS-history.bundle TamberOS-history` to restore the history.
+Source changes are isolated on feature branches. Revert those commits to roll
+back code. Stop QEMU before deleting only its named disposable directory. The
+archive excludes VM disks, firmware, private keys and seeds; it includes source,
+evidence and a Git bundle. Restore history with
+`git clone TamberOS-history.bundle TamberOS-history`.

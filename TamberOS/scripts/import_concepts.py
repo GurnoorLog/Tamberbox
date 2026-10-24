@@ -20,13 +20,14 @@ def read_concepts(archive):
             if len(parts) < 3 or parts[-3:-1] != ('references', 'final-concept') or not parts[-1].endswith('.png'):
                 continue
             name = parts[-1]
-            if not re.fullmatch(r'0[1-9]-[a-z0-9-]+\.png', name) or name in images or info.file_size > 25_000_000:
+            if (not re.fullmatch(r'0[1-9]-[a-z0-9-]+\.png', name) and name != 'tamberos-nine-screen-concept.png') or name in images or info.file_size > 25_000_000:
                 raise ValueError('Invalid, duplicate or oversized concept member')
             data = z.read(info)
             if not data.startswith(b'\x89PNG\r\n\x1a\n'):
                 raise ValueError('Not a PNG: ' + name)
             images[name] = data
-    if len(images) != 9 or '01-bootloader-concept.png' not in images or {name[:2] for name in images} != {f'{i:02d}' for i in range(1,10)}:
+    numbered={name for name in images if name != 'tamberos-nine-screen-concept.png'}
+    if len(numbered) != 9 or '01-bootloader-concept.png' not in images or {name[:2] for name in numbered} != {f'{i:02d}' for i in range(1,10)}:
         raise ValueError('Expected original concepts numbered 01..09, including 01-bootloader-concept.png')
     return images
 
@@ -48,7 +49,10 @@ def install(archive, root=ROOT):
         p = folder / name
         if not p.exists():
             with p.open('xb') as f: f.write(data)
-    manifest['final_concepts'] = {name: hashlib.sha256(data).hexdigest() for name, data in sorted(images.items())}
+    manifest['final_concepts'] = {name: hashlib.sha256(data).hexdigest() for name, data in sorted(images.items()) if name != 'tamberos-nine-screen-concept.png'}
+    if 'tamberos-nine-screen-concept.png' in images:
+        manifest['original_assets']['references/final-concept/tamberos-nine-screen-concept.png'] = hashlib.sha256(images['tamberos-nine-screen-concept.png']).hexdigest()
+    manifest['concept_status'] = 'Restored exact original PNG bytes from updated starter archive'
     manifest['concept_source_zip_sha256'] = hashlib.sha256(Path(archive).read_bytes()).hexdigest()
     manifest_path.write_text(json.dumps(manifest, indent=2) + '\n')
 

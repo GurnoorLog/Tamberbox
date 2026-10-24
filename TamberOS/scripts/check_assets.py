@@ -21,7 +21,8 @@ def check(root=ROOT, require_concepts=False):
     if require_concepts and (len(concepts) != 9 or '01-bootloader-concept.png' not in concepts):
         errors.append('BLOCKED: nine original concept PNGs, including 01-bootloader-concept.png, have not been imported')
     actual = {p.name for p in (root / 'references/final-concept').glob('*.png')}
-    if actual != set(concepts):
+    companion={Path(name).name for name in manifest['original_assets'] if name.startswith('references/final-concept/')}
+    if actual != set(concepts) | companion:
         errors.append('Concept directory does not match the locked asset inventory')
     for name, expected in concepts.items():
         if Path(name).name != name:

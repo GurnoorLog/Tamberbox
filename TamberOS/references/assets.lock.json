@@ -4,9 +4,21 @@
     "branding/tamber-crown.svg": "a28adca230a710283f5a93d427136918fb6158a52e14ae35712fd8e01f65c084",
     "branding/tamber-llama.svg": "d890ed130e4ac638c10e15239589321bab1aab7f58d2e526a6f42ec713793f22",
     "branding/tamber-logo.svg": "1b647a4382772701568b97d20f91e0efc1150e3d397fd4880b9a25ae28b59399",
-    "references/tamberbox-poster.png": "98cda53640faa536f4cad861658f97679483d7d058f9d0aba3530dee9dce503b"
+    "references/tamberbox-poster.png": "98cda53640faa536f4cad861658f97679483d7d058f9d0aba3530dee9dce503b",
+    "references/final-concept/tamberos-nine-screen-concept.png": "ab68bb0a83cee4ebd868cbcaaa5551388ea5ad491f2964453d8292cff2af6af6"
   },
-  "final_concepts": {},
+  "final_concepts": {
+    "01-bootloader-concept.png": "71609fb6ad2f7bea0630db346a3f07277236cd30b7f63af8eff5672f51f244a4",
+    "02-boot-splash-concept.png": "51226ca5db134e3a30ed2f1fc221d6158b22d423265e6711311cf484999b5c71",
+    "03-login-screen-concept.png": "d9c08a5af51f905bfebe8e41ae7dcc4692158e1acae82c69940e3c004edbe2bb",
+    "04-desktop-concept.png": "8550cfc3c58970383b83144799aa909b4389542a4d6ade4bd13b3c0ea19610b6",
+    "05-ai-mode-concept.png": "421a45891bc218f0970646e92e74ec9db215017950f45153659001051677454a",
+    "06-game-mode-concept.png": "9c33175ac06f81a04756bf8bcfb087030760d5921076092150836278aa8f961d",
+    "07-settings-concept.png": "09bee9cc09c0c484e019937e4dd0d83a3d9b27388cfeb00b8aa05361adae8a71",
+    "08-system-monitor-concept.png": "384e0813cf64f1ad00e0b5bd3d71c4905eaa7ee113fa1046fbfe7bfe171b058e",
+    "09-first-boot-concept.png": "cde23c14f979fdc4496185d75a4c95d9a6c966d9db6ec74b6b13bee58dd68bdc"
+  },
   "official_boot_reference": "references/final-concept/01-bootloader-concept.png",
-  "concept_status": "BLOCKED: updated starter ZIP not supplied in this workspace"
+  "concept_status": "Restored exact original PNG bytes from updated starter archive",
+  "concept_source_zip_sha256": "1027e4b85871188237cd07fe77ab80bc9a6d579977b46901e0be2301ea1c9b0b"
 }

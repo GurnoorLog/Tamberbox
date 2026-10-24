@@ -207,6 +207,8 @@ def run(args, lock):
                 status = result.returncode
             except subprocess.TimeoutExpired:
                 status = 124
+            except KeyboardInterrupt:
+                status = 130
             text = (dest / 'serial.log').read_text(errors='replace') if (dest / 'serial.log').exists() else ''
             checks = check_transcript(text.replace('\r', ''))
             report = {'qemu_exit_code': status, 'checks': checks,
