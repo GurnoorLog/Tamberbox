@@ -7,8 +7,9 @@ root=/work/build/m2/alma-root
 [[ ! -e "$root" ]] || { echo 'Fresh rootfs required'; exit 2; }
 mkdir -p "$root"
 dnf --releasever=10.2 -y --setopt=install_weak_deps=False install python3 dracut kmod tar xz e2fsprogs shadow-utils
-packages=(almalinux-release dnf rpm bash coreutils systemd systemd-udev NetworkManager openssh-server sudo util-linux e2fsprogs dracut kmod shadow-utils selinux-policy-targeted policycoreutils iproute iputils ethtool pciutils usbutils)
-dnf --installroot="$root" --releasever=10.2 -y --setopt=install_weak_deps=False install "${packages[@]}"
+mapfile -t packages < <(python3 -c 'import json;print("\n".join(json.load(open("scripts/image/rootfs.lock.json"))["packages"]))')
+[[ ${#packages[@]} -gt 100 ]] || { echo 'Missing rootfs package lock'; exit 2; }
+dnf --installroot="$root" --releasever=10.2 -y --setopt=install_weak_deps=False --setopt=keepcache=True install "${packages[@]}"
 cp -a build/m2/donor-assets/boot "$root/"
 cp -a build/m2/donor-assets/usr/lib/modules "$root/usr/lib/"
 cp -a build/m2/donor-assets/usr/lib/firmware "$root/usr/lib/"
@@ -41,4 +42,14 @@ rm -f "$root/etc/ssh/ssh_host_"*
 chroot "$root" systemctl enable NetworkManager sshd serial-getty@ttyS2.service
 chroot "$root" systemctl set-default multi-user.target
 chroot "$root" rpm -qa --qf '%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\n' | sort > build/m2/rpm-inventory.txt
+python3 - <<'CHECK'
+import json,hashlib
+from pathlib import Path
+expected=json.loads(Path('scripts/image/rootfs.lock.json').read_text())['packages']
+actual=Path('build/m2/rpm-inventory.txt').read_text().splitlines()
+if sorted(expected)!=sorted(actual):raise SystemExit('Installed package set differs from lock')
+root=Path('build/m2/alma-root')
+result={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in root.glob('var/cache/dnf/**/*.rpm')}
+Path('build/m2/rpm-checksums.json').write_text(json.dumps(result,indent=2)+'\n')
+CHECK
 chroot "$root" dnf clean all

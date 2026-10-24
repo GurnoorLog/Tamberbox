@@ -43,7 +43,7 @@ def main():
  with donor.open('rb') as a,image.open('rb') as b:
   a.seek(32768);b.seek(32768)
   if a.read(start*512-32768)!=b.read(start*512-32768):raise ValueError('Bootloader region changed')
- report={'hardware_boot_verified':False,'image_sha256':digest(image),'bytes':image.stat().st_size,'root_uuid':ROOT_UUID,'kernel':KVER,'donor_lock':json.loads((ROOT/'scripts/image/donor.lock.json').read_text()),'boot_region_preserved':True,'login_personalized':(root/'home/tamber/.ssh/authorized_keys').exists(),'reproducibility':'Pinned donor; RPM NEVRAs recorded, repository/container snapshots not yet locked; not bit-reproducible'}
+ report={'hardware_boot_verified':False,'image_sha256':digest(image),'bytes':image.stat().st_size,'root_uuid':ROOT_UUID,'kernel':KVER,'donor_lock':json.loads((ROOT/'scripts/image/donor.lock.json').read_text()),'boot_region_preserved':True,'login_personalized':(root/'home/tamber/.ssh/authorized_keys').exists(),'reproducibility':'Pinned donor/container and exact RPM NEVRAs; fail if unavailable; filesystem timestamps and build tools prevent bit-identical output'}
  (WORK/'image-manifest.json').write_text(json.dumps(report,indent=2)+'\n')
  print(json.dumps(report,indent=2))
 if __name__=='__main__':main()

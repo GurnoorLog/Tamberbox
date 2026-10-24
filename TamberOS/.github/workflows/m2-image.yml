@@ -19,9 +19,9 @@ jobs:
       - run: python3 scripts/image/donor.py
       - name: Build AlmaLinux ARM64 userspace and initramfs
         run: |
-          docker pull almalinux:10.2
-          docker image inspect almalinux:10.2 > build/m2/container.json
-          docker run --rm -v "$PWD:/work" almalinux:10.2 bash /work/scripts/image/rootfs.sh
+          docker pull almalinux@sha256:838c2fafefb1a8a0d7f8cdbc3b0551c2a2b1eb0cd87aad6d62aecadb18311f1b
+          docker image inspect almalinux@sha256:838c2fafefb1a8a0d7f8cdbc3b0551c2a2b1eb0cd87aad6d62aecadb18311f1b > build/m2/container.json
+          docker run --rm -v "$PWD:/work" almalinux@sha256:838c2fafefb1a8a0d7f8cdbc3b0551c2a2b1eb0cd87aad6d62aecadb18311f1b bash /work/scripts/image/rootfs.sh
       - name: Assemble only regular image files
         run: sudo python3 scripts/image/assemble.py
       - name: Validate GPT, kernel, DTB, module coherence and filesystem

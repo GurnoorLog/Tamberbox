@@ -21,7 +21,7 @@ jobs:
           sleep 2
           docker run --rm -v "$PWD:/work" -v /tmp/.X11-unix:/tmp/.X11-unix \
             -e DISPLAY=:99 -e QT_QUICK_BACKEND=software -e QT_QUICK_CONTROLS_STYLE=Basic \
-            almalinux:10.2 bash /work/scripts/test_shell_container.sh
+            almalinux@sha256:838c2fafefb1a8a0d7f8cdbc3b0551c2a2b1eb0cd87aad6d62aecadb18311f1b bash /work/scripts/test_shell_container.sh
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
