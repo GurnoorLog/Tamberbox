@@ -7,7 +7,7 @@ root=/work/build/m2/alma-root
 [[ ! -e "$root" ]] || { echo 'Fresh rootfs required'; exit 2; }
 mkdir -p "$root"
 dnf --releasever=10.2 -y --setopt=install_weak_deps=False install python3 dracut kmod tar xz e2fsprogs shadow-utils
-packages=(almalinux-release bash coreutils systemd systemd-udev NetworkManager openssh-server sudo util-linux e2fsprogs dracut kmod shadow-utils selinux-policy-targeted policycoreutils iproute iputils ethtool pciutils usbutils)
+packages=(almalinux-release dnf rpm bash coreutils systemd systemd-udev NetworkManager openssh-server sudo util-linux e2fsprogs dracut kmod shadow-utils selinux-policy-targeted policycoreutils iproute iputils ethtool pciutils usbutils)
 dnf --installroot="$root" --releasever=10.2 -y --setopt=install_weak_deps=False install "${packages[@]}"
 cp -a build/m2/donor-assets/boot "$root/"
 cp -a build/m2/donor-assets/usr/lib/modules "$root/usr/lib/"

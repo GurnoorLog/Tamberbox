@@ -24,6 +24,8 @@ jobs:
           docker run --rm -v "$PWD:/work" almalinux:10.2 bash /work/scripts/image/rootfs.sh
       - name: Assemble only regular image files
         run: sudo python3 scripts/image/assemble.py
+      - name: Validate GPT, kernel, DTB, module coherence and filesystem
+        run: sudo python3 scripts/image/validate.py
       - name: Compress candidate
         run: sudo xz -T2 -3 -k build/m2/TamberOS-M2-ultra.img
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
