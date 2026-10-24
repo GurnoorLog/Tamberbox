@@ -1,0 +1,20 @@
+{
+  "donor_sha256": "ea3f077f076b36792a0600b1c332d7e0bb676ce1e174ffaa81823d6e5038de6b",
+  "prefix_sha256": "0b54f8c0269d13f97e6db7ca52356d44c938c1be67242db72af3b57a6184e48d",
+  "partition_start_sector": 32768,
+  "partition_end_sector": 4765695,
+  "kernel": "6.1.172-vendor-rk35xx",
+  "dtb": "rockchip/rk3588-orangepi-5-ultra.dtb",
+  "build_commit": "fac57a02f1c6ff2221a3f3099a1094dcdf41be26",
+  "uboot_strings": [
+    "U-Boot SPL board init",
+    "U-Boot project: ./scripts/stacktrace.sh dump.txt %s",
+    "U-Boot SPL 2017.09_armbian-2017.09-S39cd-Pa589-H1795-V61a0-Bb936-R448a (Oct 19 2026 - 09:47:28)",
+    "U-Boot project: ./scripts/stacktrace.sh dump.txt %s",
+    "U-Boot 2017.09_armbian-2017.09-S39cd-Pa589-H1795-V61a0-Bb936-R448a",
+    "U-Boot framework",
+    "U-Boot binary, use u-boot-dtb.bin or define CONFIG_OF_EMBED. For sandbox, use -d <file.dtb>",
+    "U-Boot script ${prefix}${script}; run boot_a_script; echo SCRIPT FAILED: continuing...; fi; done",
+    "U-Boot 2017.09_armbian-2017.09-S39cd-Pa589-H1795-V61a0-Bb936-R448a (Oct 19 2026 - 09:47:28 +0000)"
+  ]
+}

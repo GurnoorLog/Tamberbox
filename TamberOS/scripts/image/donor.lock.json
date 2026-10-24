@@ -1,0 +1,8 @@
+{
+  "url": "https://github.com/armbian/community/releases/download/26.11.0-trunk.108/Armbian_community_26.11.0-trunk.108_Orangepi5-ultra_trixie_vendor_6.1.172_minimal.img.xz",
+  "sha256": "ea3f077f076b36792a0600b1c332d7e0bb676ce1e174ffaa81823d6e5038de6b",
+  "bytes": 411146260,
+  "board": "orangepi5-ultra",
+  "kernel": "6.1.172",
+  "provenance": "Armbian community release API asset digest; not an independently verified signature"
+}

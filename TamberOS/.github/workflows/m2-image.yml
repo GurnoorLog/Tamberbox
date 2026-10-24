@@ -1,0 +1,42 @@
+name: TamberOS M2 image candidate
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'TamberOS/scripts/image/**'
+      - 'scripts/image/**'
+      - '.github/workflows/tamberos-m2-image.yml'
+      - '.github/workflows/m2-image.yml'
+permissions:
+  contents: read
+jobs:
+  image:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - run: sudo apt-get update && sudo apt-get install -y e2fsprogs u-boot-tools device-tree-compiler xz-utils
+      - run: python3 scripts/image/donor.py
+      - name: Build AlmaLinux ARM64 userspace and initramfs
+        run: |
+          docker pull almalinux:10.2
+          docker image inspect almalinux:10.2 > build/m2/container.json
+          docker run --rm -v "$PWD:/work" almalinux:10.2 bash /work/scripts/image/rootfs.sh
+      - name: Assemble only regular image files
+        run: sudo python3 scripts/image/assemble.py
+      - name: Compress candidate
+        run: sudo xz -T2 -3 -k build/m2/TamberOS-M2-ultra.img
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: m2-image-evidence
+          path: |
+            TamberOS/build/m2/*.json
+            TamberOS/build/m2/rpm-inventory.txt
+          if-no-files-found: error
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: m2-ultra-unpersonalized-candidate
+          path: TamberOS/build/m2/TamberOS-M2-ultra.img.xz
+          compression-level: 0
+          if-no-files-found: error
