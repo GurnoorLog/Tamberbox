@@ -1,0 +1,3 @@
+# Codex task 04 — boot and sign-in identities
+
+Use original Tamber crown/llama branding to implement a Plymouth theme prototype. Check availability and graphics support in validated target AlmaLinux + board before shipping. Add SDDM theme only if SDDM can actually be installed and used with the chosen compositor; otherwise document another suitable display manager. Explain the distinct boot stages (U-Boot, kernel, Plymouth, login manager). Do not edit actual boot config automatically. Acceptance: install-to-staging script, restore instructions, screenshots / run evidence in a VM, safe default no changes to real bootloader.

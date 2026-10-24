@@ -1,0 +1,14 @@
+{
+  "signature_verified": true,
+  "primary_fingerprint": "EE6DB7B98F5BF5EDD9DA0DE5DEE5C11CC2A1E572",
+  "fingerprint_sources": [
+    "https://almalinux.org/security/",
+    "https://wiki.almalinux.org/release-notes/10.0.html"
+  ],
+  "trust_basis": "Fingerprint cross-checked on official HTTPS security page and release notes; no out-of-band human attestation",
+  "checksum_sha256": "ff3f9c73227edd9daed1502de6200a0d88e519ec38184f108bb624a3533eef12",
+  "gpg_status": "[GNUPG:] NEWSIG\n[GNUPG:] KEY_CONSIDERED EE6DB7B98F5BF5EDD9DA0DE5DEE5C11CC2A1E572 0\n[GNUPG:] SIG_ID 6SYpJdeEQMdD7v1Zj02S+qVpYIA 2026-10-12 1791792610\n[GNUPG:] GOODSIG DEE5C11CC2A1E572 AlmaLinux OS 10 <packager@almalinux.org>\n[GNUPG:] VALIDSIG EE6DB7B98F5BF5EDD9DA0DE5DEE5C11CC2A1E572 2026-10-12 1791792610 0 4 0 1 8 00 EE6DB7B98F5BF5EDD9DA0DE5DEE5C11CC2A1E572\n",
+  "gpg_diagnostics": "gpgv: Signature made Mon Oct 12 10:10:10 2026 CEST\ngpgv:                using RSA key EE6DB7B98F5BF5EDD9DA0DE5DEE5C11CC2A1E572\ngpgv: Good signature from \"AlmaLinux OS 10 <packager@almalinux.org>\"\n",
+  "image_sha256": "ca65d1c32430acd84e9126c2e48f3b4110cd649a592712bfb570a6650e7e19e7",
+  "image_bytes": 478937088
+}

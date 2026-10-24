@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "architecture": "aarch64",
+  "release": "10.2",
+  "filename": "AlmaLinux-10-GenericCloud-10.2-20261012.0.aarch64.qcow2",
+  "url": "https://repo.almalinux.org/almalinux/10/cloud/aarch64/images/AlmaLinux-10-GenericCloud-10.2-20261012.0.aarch64.qcow2",
+  "sha256": "ca65d1c32430acd84e9126c2e48f3b4110cd649a592712bfb570a6650e7e19e7",
+  "checksum_source": "https://repo.almalinux.org/almalinux/10/cloud/aarch64/images/CHECKSUM",
+  "retrieved": "2026-10-23",
+  "trust": "SHA256 retrieved over HTTPS; detached signature not yet verified"
+}

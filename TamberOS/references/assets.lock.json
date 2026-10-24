@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "original_assets": {
+    "branding/tamber-crown.svg": "a28adca230a710283f5a93d427136918fb6158a52e14ae35712fd8e01f65c084",
+    "branding/tamber-llama.svg": "d890ed130e4ac638c10e15239589321bab1aab7f58d2e526a6f42ec713793f22",
+    "branding/tamber-logo.svg": "1b647a4382772701568b97d20f91e0efc1150e3d397fd4880b9a25ae28b59399",
+    "references/tamberbox-poster.png": "98cda53640faa536f4cad861658f97679483d7d058f9d0aba3530dee9dce503b"
+  },
+  "final_concepts": {},
+  "official_boot_reference": "references/final-concept/01-bootloader-concept.png",
+  "concept_status": "BLOCKED: updated starter ZIP not supplied in this workspace"
+}

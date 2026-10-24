@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0C0C0E">
+  <meta name="description" content="TamberOS — interactive, nonfunctional design prototype for a proposed AlmaLinux ARM64 operating system.">
+  <title>TamberOS · Interface Concept</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+<div class="app-shell" id="appShell">
+  <aside class="sidebar" aria-label="Primary navigation">
+    <div class="brand"><img src="../branding/tamber-crown.svg" alt="" class="crown"><div class="brand-text">TAMBER<span>OS</span><small>SYSTEM CONCEPT / 0.1</small></div></div>
+    <p class="menu-label">WORKSPACE</p>
+    <nav class="navigation" id="navigation">
+      <button class="nav-item active" data-screen="home"><span class="nav-icon">⌂</span> Overview <span class="key">01</span></button>
+      <button class="nav-item" data-screen="ai"><span class="nav-icon">✳</span> Tamber AI <span class="key">02</span></button>
+      <button class="nav-item" data-screen="games"><span class="nav-icon">◈</span> Game Mode <span class="key">03</span></button>
+      <button class="nav-item" data-screen="files"><span class="nav-icon">▤</span> Files <span class="key">04</span></button>
+      <button class="nav-item" data-screen="system"><span class="nav-icon">⌁</span> System Center <span class="key">05</span></button>
+      <button class="nav-item" data-screen="settings"><span class="nav-icon">⚙</span> Settings <span class="key">06</span></button>
+    </nav>
+    <div class="side-bottom">
+      <div class="micro-label">DESIGN PREVIEWS</div>
+      <button class="mini-link" data-screen="boot">↗ Boot sequence</button>
+      <button class="mini-link" data-screen="login">↗ Sign-in screen</button>
+      <button class="mini-link" data-screen="welcome">↗ First-run setup</button>
+      <div class="side-user"><span class="user-avatar">T</span><span><b>TamberBox</b><small>Orange Pi 5 Ultra / target</small></span><span class="orange-dot"></span></div>
+    </div>
+  </aside>
+  <div class="main-area">
+    <header class="topbar">
+      <div class="breadcrumb">TAMBEROS <span>/</span> <b id="breadcrumb">OVERVIEW</b></div>
+      <div class="topbar-actions">
+        <span class="prototype-tag">● INTERACTIVE DESIGN MOCK</span>
+        <button id="searchBtn" class="header-button" aria-label="Open app search" title="Search (Ctrl+K)">⌕</button>
+        <button id="quickBtn" class="header-button" aria-label="Open quick settings" title="Quick settings">☷</button>
+        <button id="clockBtn" class="clock-button" title="This is sample time, not device telemetry">10:08 <span>FRI 23 OCT</span></button>
+      </div>
+    </header>
+    <main class="viewport" id="viewport">
+      <section class="screen active" data-page="home" aria-labelledby="homeTitle">
+        <div class="eyebrow"><span class="dash"></span> YOUR PERSONAL MACHINE <span class="tiny-arrow">/ HOME 001</span></div>
+        <div class="home-hero">
+          <div class="hero-copy"><div class="hero-kicker">WELCOME TO THE FUTURE OF YOUR DESKTOP</div><h1 id="homeTitle">YOUR BOX.<br><em>YOUR RULES.</em></h1><p>Local intelligence. Serious performance. An operating system with a personality of its own.</p><div class="hero-actions"><button class="action primary" data-screen="ai">OPEN TAMBER AI <span>↗</span></button><button class="action ghost" data-screen="games">ENTER GAME MODE <span>↗</span></button></div></div>
+          <div class="hero-graphic" aria-label="Original sunglasses llama mascot"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="mascot-large"><img src="../branding/tamber-llama.svg" alt="Illustrated llama wearing orange sunglasses"></div><div class="hero-stamp">POWERED<br>BY CURIOSITY <span>✳</span></div><div class="ghost-type">T / 01</div></div>
+        </div>
+        <div class="section-heading"><h2>FIND YOUR FLOW</h2><span>FOUR MODES. ONE SYSTEM.</span></div>
+        <div class="mode-grid">
+          <button data-screen="ai" class="mode-card"><span class="card-top"><span class="mode-icon">✳</span> /01</span><strong>AI STUDIO</strong><small>Think locally. Work privately.</small><span class="card-arrow">↗</span></button>
+          <button data-screen="games" class="mode-card"><span class="card-top"><span class="mode-icon">◈</span> /02</span><strong>GAME MODE</strong><small>Your collection, your playground.</small><span class="card-arrow">↗</span></button>
+          <button data-screen="files" class="mode-card"><span class="card-top"><span class="mode-icon">▤</span> /03</span><strong>WORKSPACE</strong><small>Make things happen.</small><span class="card-arrow">↗</span></button>
+          <button data-screen="system" class="mode-card"><span class="card-top"><span class="mode-icon">⌁</span> /04</span><strong>SYSTEM</strong><small>Own every layer.</small><span class="card-arrow">↗</span></button>
+        </div>
+        <p class="footnote">TAMBEROS PRE-ALPHA DESIGN SYSTEM — ON-DEVICE FUNCTIONS NOT CONNECTED.</p>
+      </section>
+
+      <section class="screen" data-page="ai" aria-labelledby="aiTitle">
+        <div class="eyebrow"><span class="dash"></span> PRIVATE-FIRST INTELLIGENCE <span class="tiny-arrow">/ AI 002</span></div>
+        <div class="page-title"><h1 id="aiTitle">THINK <em>LOCAL.</em></h1><p>A personal assistant built around privacy and clarity. Connect a local model when the actual service is ready.</p></div>
+        <div class="ai-layout">
+          <div class="ai-profile card-panel"><div class="assistant-badge">TAMBER AI / CONCEPT</div><img src="../branding/tamber-llama.svg" alt="Tamber llama mascot"><h2>HEY, THINKER.</h2><p>Your box. Your ideas. Your models.</p><div class="model-state"><span class="status-ring"></span><div><b>NO MODEL CONNECTED</b><small>Ollama integration not implemented</small></div></div><button class="outlined full" id="aiInfo">ABOUT LOCAL AI ↗</button></div>
+          <div class="chat-panel card-panel"><div class="chat-top"><strong>NEW CONVERSATION</strong><span>DEMO MODE</span></div><div class="chat-contents" id="chatContents"><div class="intro-title">Your next big idea starts here<span>.</span></div><div class="chat-intro">This is a UI prototype. No AI model is running and no messages are transmitted.</div><div class="chip-row"><button class="suggestion">Explore a project</button><button class="suggestion">Explain a concept</button><button class="suggestion">Write some code</button></div></div><form id="chatForm" class="chat-input"><input id="chatText" placeholder="Type a demo prompt…" aria-label="Demo AI message input"><button type="submit">SEND ↗</button></form></div>
+        </div>
+      </section>
+
+      <section class="screen" data-page="games" aria-labelledby="gamesTitle">
+        <div class="eyebrow"><span class="dash"></span> CONTROLLER-READY EXPERIENCE <span class="tiny-arrow">/ GAMES 003</span></div>
+        <div class="page-title"><h1 id="gamesTitle">PRESS START<span class="orange-period">.</span></h1><p>Full-screen focus. Beautiful navigation. The launcher will index locally installed games — these are fictional placeholders.</p></div>
+        <div class="featured-game"><div><div class="featured-overline">FEATURED / VISUAL CONCEPT</div><h2>ORBIT<br>RUNNER</h2><p>A fictional entry to demonstrate the eventual launcher.</p><button class="action primary" id="fakePlay">LAUNCH UNAVAILABLE <span>↗</span></button></div><div class="planet"></div><div class="rings"></div></div>
+        <div class="section-heading"><h2>YOUR LIBRARY</h2><span>PLACEHOLDER CARDS — NOT INSTALLED</span></div>
+        <div class="game-grid"><button class="game-tile" data-game="ORBIT RUNNER"><span class="game-art art1">O<span>R</span></span><strong>ORBIT RUNNER</strong><small>CONCEPT GAME</small></button><button class="game-tile" data-game="NOVA RALLY"><span class="game-art art2">NR</span><strong>NOVA RALLY</strong><small>CONCEPT GAME</small></button><button class="game-tile" data-game="HORIZON ZERO"><span class="game-art art3">HZ</span><strong>HORIZON ZERO</strong><small>CONCEPT GAME</small></button><button class="game-tile" data-game="PIXEL QUEST"><span class="game-art art4">PQ</span><strong>PIXEL QUEST</strong><small>CONCEPT GAME</small></button></div>
+      </section>
+
+      <section class="screen" data-page="files" aria-labelledby="filesTitle">
+        <div class="eyebrow"><span class="dash"></span> FILES / YOUR SPACE <span class="tiny-arrow">/ FILES 004</span></div><div class="page-title"><h1 id="filesTitle">MAKE <em>SPACE.</em></h1><p>Simple, predictable file navigation. This mock does not access your computer's files.</p></div>
+        <div class="files-panel card-panel"><div class="files-breadcrumb">HOME <span>›</span> TAMBERBOX <span>›</span> SAMPLE FILES <small>EXAMPLE ONLY</small></div><div class="folder-grid"><button class="folder"><span>▣</span><b>Projects</b><small>DEMO FOLDER</small></button><button class="folder"><span>▣</span><b>Downloads</b><small>DEMO FOLDER</small></button><button class="folder"><span>▣</span><b>Music</b><small>DEMO FOLDER</small></button><button class="folder"><span>▣</span><b>Documents</b><small>DEMO FOLDER</small></button></div><div class="notice-inline">The real Tamber file browser will work only with user-granted filesystem permissions.</div></div>
+      </section>
+
+      <section class="screen" data-page="system" aria-labelledby="systemTitle">
+        <div class="eyebrow"><span class="dash"></span> MACHINE INSIGHTS <span class="tiny-arrow">/ STATUS 005</span></div><div class="page-title"><h1 id="systemTitle">UNDER THE <em>HOOD.</em></h1><p>No fake sensors: this concept shows measurement types, not live hardware values.</p></div>
+        <div class="system-banner"><div><span>DEVICE TARGET</span><strong>ORANGE PI 5 ULTRA</strong><small>ARM64 / RK3588 / LINUX TARGET</small></div><span class="unverified">HARDWARE CONNECTION NOT VERIFIED</span></div>
+        <div class="stats-grid"><div class="stat-card"><span class="stat-label">CPU / LOAD</span><b>—</b><small>Real measurement not connected</small><div class="stat-stripe"></div></div><div class="stat-card"><span class="stat-label">THERMALS</span><b>— <sup>°C</sup></b><small>Sensor not connected</small><div class="stat-stripe"></div></div><div class="stat-card"><span class="stat-label">MEMORY</span><b>—</b><small>Read-only metrics not connected</small><div class="stat-stripe"></div></div><div class="stat-card"><span class="stat-label">NPU STATUS</span><b class="status-word">UNKNOWN</b><small>RKNN runtime requires verification</small><div class="stat-stripe"></div></div></div>
+        <div class="system-note">SOFTWARE PROVENANCE / AlmaLinux 10 ARM64 target + custom board-specific Linux boot stack. No bootable image has been demonstrated yet.</div>
+      </section>
+
+      <section class="screen" data-page="settings" aria-labelledby="settingsTitle">
+        <div class="eyebrow"><span class="dash"></span> THE EXPERIENCE, YOUR WAY <span class="tiny-arrow">/ SETTINGS 006</span></div><div class="page-title"><h1 id="settingsTitle">YOU'RE IN <em>CONTROL.</em></h1><p>Control your interface and privacy. Demo preferences reset when you reload.</p></div>
+        <div class="settings-layout"><div class="card-panel settings-card"><h2>APPEARANCE</h2><div class="setting-row"><div><b>High contrast focus</b><small>Make navigation states more visible</small></div><label class="switch"><input id="focusMode" type="checkbox"><span></span></label></div><div class="setting-row"><div><b>Reduced motion</b><small>Disable decorative transitions</small></div><label class="switch"><input id="reduceMotion" type="checkbox"><span></span></label></div><div class="setting-row"><div><b>Dark interface</b><small>Default Tamber design language</small></div><span class="token-tag">DEFAULT</span></div></div><div class="card-panel settings-card"><h2>AI & PRIVACY</h2><div class="setting-row"><div><b>Local-first operation</b><small>Network AI not enabled by default</small></div><span class="token-tag">PLANNED</span></div><div class="setting-row"><div><b>Installed models</b><small>No model service connected</small></div><span class="token-tag">OFFLINE</span></div><div class="setting-row"><div><b>System updates</b><small>Signed packages and rollback planned</small></div><span class="token-tag">NOT BUILT</span></div></div></div>
+      </section>
+
+      <section class="screen extra-screen" data-page="boot" aria-labelledby="bootTitle"><div class="eyebrow"><span class="dash"></span> VISUAL DESIGN / BOOT SPLASH</div><div class="boot-preview"><img src="../branding/tamber-crown.svg" alt="Original Tamber crown"><h1 id="bootTitle">TAMBER<span>OS</span></h1><p>BUILT TO BE YOURS.</p><div class="boot-loader"><span></span></div><small>PLYMOUTH DESIGN MOCK — NOT A BOOTLOADER</small></div><button class="outlined return" data-screen="home">← RETURN TO DESKTOP</button></section>
+      <section class="screen extra-screen" data-page="login" aria-labelledby="loginTitle"><div class="eyebrow"><span class="dash"></span> VISUAL DESIGN / SIGN-IN</div><div class="login-preview"><div class="login-art"><img src="../branding/tamber-llama.svg" alt="Original sunglasses llama mascot"><span>MAKE IT<br>YOURS.</span></div><div class="login-form"><span class="micro-label">THE TAMBER EXPERIENCE</span><h1 id="loginTitle">WELCOME<br><em>BACK.</em></h1><p>Sign-in theme concept. This form cannot authenticate.</p><input type="password" placeholder="Password (not stored)" aria-label="Sample password field" id="demoPassword"><button class="action primary" id="loginDemo">SIGN IN / DEMO ONLY ↗</button><small>UNCONNECTED DESIGN PROTOTYPE</small></div></div><button class="outlined return" data-screen="home">← RETURN TO DESKTOP</button></section>
+      <section class="screen extra-screen" data-page="welcome" aria-labelledby="welcomeTitle"><div class="eyebrow"><span class="dash"></span> VISUAL DESIGN / FIRST RUN</div><div class="welcome-preview"><img src="../branding/tamber-llama.svg" alt="Original Tamber mascot"><div><span class="step">01 / 04 — THE BEGINNING</span><h1 id="welcomeTitle">HELLO,<br><em>WORLD.</em></h1><p>Welcome to your new workspace. The production wizard will guide you through language, Wi-Fi, privacy and optional features.</p><button class="action primary" id="welcomeDemo">NEXT STEP (DEMO) ↗</button><small id="stepMessage">This wizard is a visual mock — no settings will change.</small></div></div><button class="outlined return" data-screen="home">← RETURN TO DESKTOP</button></section>
+    </main>
+  </div>
+</div>
+<div id="quickOverlay" class="overlay" hidden role="dialog" aria-modal="true" aria-label="Quick settings concept"><div class="overlay-card"><button class="overlay-close" data-close aria-label="Close">×</button><p class="eyebrow">QUICK CONTROLS</p><h2>YOUR SYSTEM.</h2><p>In production, these controls will reflect actual supported devices.</p><div class="quick-list"><span>WI-FI <b>NOT CONNECTED</b></span><span>AUDIO <b>UNAVAILABLE IN MOCK</b></span><span>BATTERY <b>NOT MEASURED</b></span></div><button class="outlined" data-screen="settings" data-close>OPEN SETTINGS ↗</button></div></div>
+<div id="searchOverlay" class="overlay" hidden role="dialog" aria-modal="true" aria-label="Search destinations"><div class="overlay-card"><button class="overlay-close" data-close aria-label="Close">×</button><p class="eyebrow">QUICK LAUNCHER</p><input id="searchInput" type="search" placeholder="Search TamberOS screens…" aria-label="Search screens"><div class="search-results" id="searchResults"></div><small>DEMO: screen names only, not installed applications.</small></div></div>
+<div id="toast" class="toast" aria-live="polite" hidden></div>
+</body>
+</html>

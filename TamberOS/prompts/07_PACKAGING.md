@@ -1,0 +1,3 @@
+# Codex task 07 — distro packaging
+
+Package Tamber custom components as signed/versioned RPMs with explicit dependencies and licenses, preserving upstream AlmaLinux identity/attribution where legally required. Create reproducible build manifests and an image generation design using a known-good **Ultra** board-specific kernel/boot chain and AlmaLinux aarch64 userspace. Create an image to an ordinary output file by default, never directly to physical storage. Include SBOM/third-party notices, deterministic checksum and rollback instructions. Acceptance: staged RPM built/tested in throwaway VM and image validator; physical boot remains a separate explicit evidence gate.

@@ -1,0 +1,51 @@
+{
+  "retrieved": "2026-10-23",
+  "armbian_commit": "fac57a02f1c6ff2221a3f3099a1094dcdf41be26",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/armbian/build/fac57a02f1c6ff2221a3f3099a1094dcdf41be26/config/boards/orangepi5-ultra.csc",
+      "sha256": "54445cad9536edea36bb929b74afe918f6927080f3ffe5ec1ff84ff2f83c8612",
+      "bytes": 2602
+    },
+    {
+      "url": "https://raw.githubusercontent.com/armbian/build/fac57a02f1c6ff2221a3f3099a1094dcdf41be26/config/sources/families/rockchip-rk3588.conf",
+      "sha256": "1ba89dc82d09bde932e5a27c8be489b9728caf025f5a21b911a319d728b62405",
+      "bytes": 3401
+    },
+    {
+      "url": "https://repo.almalinux.org/almalinux/10.2/AppStream/aarch64/os/Packages/",
+      "sha256": "34b270703f647a5a3bd253d3c7ac00eadc1bb4f0ec9294f4a37ed6917a6a3b91",
+      "bytes": 1138853,
+      "selected_packages": [
+        "cmake-3.31.8-1.el10.aarch64.rpm",
+        "plymouth-24.004.60-17.el10.alma.2.aarch64.rpm",
+        "qt6-qtbase-devel-6.10.1-1.el10.alma.1.aarch64.rpm",
+        "qt6-qtdeclarative-devel-6.10.1-1.el10.aarch64.rpm",
+        "qt6-qtdeclarative-devel-6.10.1-1.el10_2.1.aarch64.rpm",
+        "rpm-build-4.19.1.1-23.el10.alma.1.aarch64.rpm"
+      ]
+    },
+    {
+      "url": "https://repo.almalinux.org/almalinux/10.2/CRB/aarch64/os/Packages/",
+      "sha256": "99e873e2ef4aa711eb934c38ba0dc2bf4ab873ea9f7fe8e0dd74ad94c4849149",
+      "bytes": 270838,
+      "selected_packages": []
+    },
+    {
+      "url": "https://repo.almalinux.org/almalinux/10.2/BaseOS/aarch64/os/Packages/",
+      "sha256": "9446106c23a12f876d5589a78af81f59d3cfcae0fdfbe8400614b917d9b7af4d",
+      "bytes": 550788,
+      "selected_packages": []
+    },
+    {
+      "url": "https://raw.githubusercontent.com/armbian/build/fac57a02f1c6ff2221a3f3099a1094dcdf41be26/config/sources/families/include/rockchip_vendor_common.inc",
+      "sha256": "8863855621dfb2598a3a9a6a2b83bdc9c1bc1b6b4d9577ddc9836a198190b825",
+      "bytes": 1065
+    },
+    {
+      "url": "https://raw.githubusercontent.com/armbian/build/fac57a02f1c6ff2221a3f3099a1094dcdf41be26/config/sources/families/include/rockchip64_common.inc",
+      "sha256": "9e7f205456455ef2ee348e433c36f43f1dc23ccd74ad730234270cca5a5a160f",
+      "bytes": 22924
+    }
+  ]
+}

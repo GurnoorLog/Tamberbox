@@ -1,0 +1,20 @@
+name: TamberOS checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - run: sh scripts/ci.sh
+  arm64-shell:
+    runs-on: ubuntu-24.04-arm
+    container: almalinux:10.2
+    steps:
+      - run: dnf --releasever=10.2 -y install git
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - run: dnf --releasever=10.2 -y install git python3 gnupg2 gcc-c++ cmake ninja-build qt6-qtbase-devel qt6-qtdeclarative-devel rpm-build
+      - run: test "$(uname -m)" = aarch64 && TAMBER_BUILD_SHELL=1 sh scripts/ci.sh
+# CI container tag and RPM dependencies are not digest/NEVRA locked yet.
+# CI has not run here; this is compilation coverage, not boot or board evidence.

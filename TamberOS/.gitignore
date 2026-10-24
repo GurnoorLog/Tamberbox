@@ -1,0 +1,13 @@
+build/
+*.qcow2
+*.img
+*.iso
+*.rpm
+*.log
+*.swp
+__pycache__/
+.pytest_cache/
+.env
+*.secret
+*seed.iso
+.local/

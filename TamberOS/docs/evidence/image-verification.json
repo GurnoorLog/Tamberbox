@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-23",
+  "filename": "AlmaLinux-10-GenericCloud-10.2-20261012.0.aarch64.qcow2",
+  "bytes": 478937088,
+  "sha256": "ca65d1c32430acd84e9126c2e48f3b4110cd649a592712bfb570a6650e7e19e7",
+  "matches_lock": true,
+  "signature_verified": false,
+  "boot_verified": false
+}

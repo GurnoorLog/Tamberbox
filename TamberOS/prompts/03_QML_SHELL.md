@@ -1,0 +1,3 @@
+# Codex task 03 — working Tamber Shell vertical slice
+
+Compile the provided Qt6/QML application and iterate it into a keyboard-accessible single-window prototype for a real Linux development machine. Reuse tokens from `docs/branding.md`, screens from `docs/ui-ux.md`, original SVG marks from `branding/`; no downloaded art by default. Implement Home, Apps, AI placeholder, Games placeholder, System, Settings and overlays. Separately document what is needed for a real desktop compositor/session instead of claiming fullscreen is a shell. Acceptance: build/test logs, screenshot at 1280x720, no clipped text, keyboard focus, mock labels, clean process exit and reasonable memory usage. Keep QML view model testable.

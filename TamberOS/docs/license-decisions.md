@@ -1,0 +1,3 @@
+# Distribution licensing decisions
+
+No license is selected for Tamber's original code in this starter. Choose an appropriate open-source or proprietary policy before publishing. The Linux kernel remains subject to GPLv2; package-level licenses of AlmaLinux RPMs, boot firmware, images, fonts and game-related software vary. Create a complete notice/source-availability manifest and validate each vendor binary's redistribution terms. User-supplied poster is included *only as a design reference*; verify publication rights before pushing to a public repo. The new sunglasses llama vector is a draft concept, not an official Ollama brand asset.

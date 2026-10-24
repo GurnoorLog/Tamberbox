@@ -1,0 +1,6 @@
+{
+  "qemu-system-aarch64": null,
+  "qemu-img": null,
+  "cloud-localds": null,
+  "ssh-keygen": "/usr/bin/ssh-keygen"
+}

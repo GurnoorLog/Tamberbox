@@ -1,0 +1,3 @@
+# Codex task 05 — Tamber AI adapter
+
+Implement an opt-in local API adapter for a user-installed Ollama service bound to loopback. Detect availability and installed models before enabling chat. Present actual status, timeouts, cancellation and errors. Never make up model response or NPU usage. Store history only with permission; provide deletion. Do not expose Ollama to the LAN automatically. Tests should mock HTTP and verify errors/offline handling. NPU runtime acceleration is a separate investigation, not implied by Ollama. Acceptance: live localhost integration test only if Ollama available, robust offline fallback otherwise.

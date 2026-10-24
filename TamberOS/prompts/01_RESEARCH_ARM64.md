@@ -1,0 +1,3 @@
+# Codex task 01 — hardware and package feasibility
+
+Read `AGENTS.md` and current roadmap. Gather authoritative sources about: AlmaLinux 10.2 aarch64 repositories, Qt6 Quick/QML dev RPMs, SDDM/Plymouth availability, Orange Pi **5 Ultra** device tree and boot chain, GPU/Wayland situation, NPU RKNN runtime and license. Produce `docs/feasibility-matrix.md` with SOURCE, TESTED, UNKNOWN columns and pinned URLs/version dates. No install, no write to external drives. Finish with a minimal actionable decision on the initial VM + display stack. Acceptance: every factual statement backed by URLs, version and test instructions; never conflate Ultra with 5 or Plus.

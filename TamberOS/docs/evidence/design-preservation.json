@@ -1,0 +1,17 @@
+{
+  "all_identical_to_starter": true,
+  "sha256": {
+    "branding/tamber-crown.svg": "a28adca230a710283f5a93d427136918fb6158a52e14ae35712fd8e01f65c084",
+    "branding/tamber-llama.svg": "d890ed130e4ac638c10e15239589321bab1aab7f58d2e526a6f42ec713793f22",
+    "branding/tamber-logo.svg": "1b647a4382772701568b97d20f91e0efc1150e3d397fd4880b9a25ae28b59399",
+    "prototype/README.md": "040771ec521d512356136483405fc537d9f20cd0f1d4f673dd20dceda312d95d",
+    "prototype/app.js": "f1388e1f2f236897ff44ae43c15218036ed81cef37a3cadc43b6b0ff3b7f8e6c",
+    "prototype/index.html": "f16ae3f3de912f992ccc870dc412f6970af27cf2695275faf579ebaae9f6aaab",
+    "prototype/style.css": "8089362966868b6a853cb36492b2b1fd28e57764b2bc019877ae7fa96e9d65d6",
+    "references/tamberbox-poster.png": "98cda53640faa536f4cad861658f97679483d7d058f9d0aba3530dee9dce503b",
+    "shell/tamber-shell/CMakeLists.txt": "0a7f844bf8e1a06901049a6a57acc35e99567547cb87f6b9ad787d8907d0f7f0",
+    "shell/tamber-shell/Main.qml": "c57c74d6894106dd9c7e4b01620409cefa2888f9c1fae3b7c2e24f84a173b8b5",
+    "shell/tamber-shell/README.md": "ebb32d4b8fb8360634452e8884803b72e995859c2a63710cbf78d197ade13a46",
+    "shell/tamber-shell/main.cpp": "8f10c621f2c4445b42e57460925ed3e1b5b98b7600e5fc09dd0d29a3cd23295d"
+  }
+}
