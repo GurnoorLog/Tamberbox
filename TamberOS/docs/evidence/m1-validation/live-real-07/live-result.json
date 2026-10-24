@@ -1,0 +1,15 @@
+{
+  "boot": true,
+  "ssh": true,
+  "cloud_init": true,
+  "smoke": true,
+  "dnf_transaction": true,
+  "shell_build": true,
+  "proxy": true,
+  "smoke_checks": {
+    "identity": true,
+    "network": true,
+    "dnf": true,
+    "packages": true
+  }
+}

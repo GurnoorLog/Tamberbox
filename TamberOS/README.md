@@ -33,7 +33,9 @@ Open [`prototype/index.html`](prototype/index.html) locally in a modern browser.
 ## M1 implementation update · 2026-10-24
 
 The signed AlmaLinux 10.2 image boots under workspace-local QEMU/AAVMF. Real
-SSH and cloud-init checks pass; native ARM64 GitHub CI compiled the Qt/QML shell.
+SSH, cloud-init, smoke checks and DNF installation pass. The Qt/QML shell compiled
+both inside QEMU and in native ARM64 GitHub CI. M1 development gates are complete;
+physical board support and graphical runtime remain unverified.
 The nine original screen concepts and overview are restored byte-for-byte,
 with a mandatory preservation check. The sunglasses-llama bootloader concept is
 the official future boot reference, not a demonstrated bootloader implementation.

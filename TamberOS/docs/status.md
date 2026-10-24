@@ -1,8 +1,9 @@
 # M1 verification report · 2026-10-24
 
-**M1 is not yet complete.** Real QEMU boot, SSH and cloud-init are demonstrated,
-and native ARM64 CI compiled the Qt/QML shell. The disposable VM DNF transaction
-and final end-to-end smoke result are still pending. No existing TamberBox
+**M1 development acceptance gates are complete.** A real AlmaLinux ARM64 QEMU
+VM passed boot, SSH, cloud-init, HTTPS, DNF and package checks, installed the
+toolchain, compiled the Qt/QML shell and powered off with QEMU exit code 0.
+Native ARM64 GitHub CI also passed. No existing TamberBox
 installation was connected to, modified, repartitioned or flashed. M2 is on hold.
 
 ## Verified results
@@ -13,18 +14,21 @@ installation was connected to, modified, repartitioned or flashed. M2 is on hold
 | Isolated tool bootstrap | Script executed successfully, download/extract only | `bootstrap-repeat.txt`, `host-packages.json` |
 | Host tools | QEMU 8.2.2, qemu-img, cloud-localds, genisoimage; AAVMF 2024.02-2ubuntu0.9 with matching 64 MiB code/vars | Package manifest and VM manifest |
 | Image authentication | Detached CHECKSUM signature and actual image SHA256 pass | `signature-verification.json` |
-| Actual QEMU boot | AlmaLinux 10.2 aarch64, kernel 6.12.0-211.64.1.el10_2.aarch64; clean poweroff in initial smoke attempt | `smoke-real-02/serial.log`, `manifest.json`, `result.json` |
-| SSH login | Generated-key authentication, strict host-key validation from local serial channel | `live-real-06/ssh-login.txt` |
-| Cloud-init | Completed, no reported errors | `live-real-06/cloud-init.txt` |
-| HTTPS transport | TLS verified through explicitly configured development proxy | `live-real-06/network-diagnostic.txt`, `guest-smoke.txt` |
-| GitHub Actions | Offline and native ARM64 AlmaLinux container jobs passed | `github-offline-job.txt`, `github-arm64-job.txt` |
-| Qt/QML compilation | Real CMake compilation reached 100% in ARM64 CI | `github-arm64-job.txt` |
+| Actual QEMU boot | AlmaLinux 10.2 aarch64, kernel 6.12.0-211.64.1.el10_2.aarch64; clean poweroff in final integrated smoke run | `live-real-07/serial.log`, `manifest.json`, `result.json` |
+| SSH login | Generated-key authentication, strict host-key validation from local serial channel | `live-real-07/ssh-login.txt` |
+| Cloud-init | Completed, no reported errors | `live-real-07/cloud-init.txt` |
+| HTTPS transport | TLS verified through explicitly configured development proxy | `live-real-07/network-diagnostic.txt`, `guest-smoke.txt` |
+| DNF transaction | 140 packages installed successfully inside the disposable VM | `live-real-07/dnf-install.txt`, `rpm-inventory.txt` |
+| VM shell build | CMake reached 100%; executable identified as ARM aarch64 ELF | `live-real-07/shell-build.txt` |
+| Integrated acceptance | All six gates true; QEMU exit 0 | `live-real-07/live-result.json`, `result.json` |
+| GitHub Actions | Offline and native ARM64 AlmaLinux container jobs passed | `github-run2-offline.txt`, `github-run2-arm64.txt` |
+| Qt/QML compilation | Real CMake compilation reached 100% in ARM64 CI | `github-run2-arm64.txt` |
 | Original concepts | Nine screens, overview and README restored byte-for-byte from updated starter ZIP | `concept-provenance.json`, `final-concepts-gate.txt` |
 
-The actual CI run is [40090908353](https://github.com/GurnoorLog/Tamberbox/actions/runs/40090908353),
-for remote commit `f1d49528a6b44ee9d1bad096c46eb01cb4ab9bd9`, on the user-approved
-`feature/tamberos-m1-validation` branch. Main is unchanged. A refreshed CI run
-for the restored-asset gate and latest changes is pending.
+The actual CI run is [40092069770](https://github.com/GurnoorLog/Tamberbox/actions/runs/40092069770),
+for remote commit `c450f29263af4d84beac2a943353b3601246afb6`, on the user-approved
+`feature/tamberos-m1-validation` branch. Main is unchanged. This refreshed run includes the mandatory restored-asset gate and current
+implementation; its full job logs and structured job results are archived.
 
 ## Failures and limitations
 
@@ -32,13 +36,16 @@ for the restored-asset gate and latest changes is pending.
   checks failed. Its `result.json` correctly reports failure, not a passed smoke.
 - Run `live-real-06` passed identity and HTTPS, then was interrupted during DNF
   metadata processing. It did not produce a final VM result. Its partial output
-  cannot establish a passed DNF transaction. A fresh `live-real-07` is underway.
+  cannot establish a passed DNF transaction. Fresh run `live-real-07` subsequently completed all gates successfully.
 - Direct guest DNS is not working in this sandbox. Proxy-assisted HTTPS does not
   establish direct networking. The explicit public host CA bundle is installed
   only in the disposable guest; TLS verification is not disabled.
-- Shell compilation is verified in a native ARM64 AlmaLinux container, separately
-  from QEMU. No graphical session, rendering, Wayland compositor or RPM package
-  build has been validated.
+- Shell compilation is verified both inside QEMU and in native ARM64 AlmaLinux
+  CI. No graphical session, rendering, Wayland compositor or RPM package build
+  has been validated. The VM uses non-secure AAVMF; Secure Boot is untested.
+- `result.json` is the low-level boot/smoke result and deliberately leaves login
+  unverified. The separate `live-result.json` and real `ssh-login.txt` establish
+  SSH login; the low-level file alone cannot make that claim.
 - Exact Orange Pi 5 Ultra bootloader, kernel, DTB and driver requirements are
   researched in `board-support.md` and `feasibility-matrix.md`. No physical-board
   boot or AlmaLinux GPU/NPU, Wi-Fi/Bluetooth, audio or storage compatibility is

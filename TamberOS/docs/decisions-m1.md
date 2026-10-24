@@ -60,3 +60,8 @@ Revert feature-branch commits to roll back source changes. Delete only stopped,
 explicitly named disposable VM directories to roll back guest writes. Do not
 remove caches/VMs while QEMU is running. No firmware or image binaries, private
 SSH keys or cloud-init seed images are included in source delivery.
+
+Final acceptance: `live-real-07` passed all four smoke markers, SSH, cloud-init,
+a 140-package DNF transaction and a Qt/QML compilation to ARM aarch64 ELF, then
+powered off cleanly (QEMU exit 0). M1 development acceptance is complete within
+the stated proxy and reproducibility boundaries. Hardware bring-up stays on hold.

@@ -1,0 +1,43 @@
+{
+  "qemu_exit_code": 0,
+  "checks": {
+    "identity": true,
+    "network": true,
+    "dnf": true,
+    "packages": true
+  },
+  "login": "UNVERIFIED: requires an actual SSH session",
+  "command": [
+    "qemu-system-aarch64",
+    "-machine",
+    "virt-8.2",
+    "-cpu",
+    "neoverse-n1",
+    "-accel",
+    "tcg",
+    "-m",
+    "4096",
+    "-smp",
+    "4",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "file:/workspace/scratch/d318bf58ae4c/project/TamberOS/build/qemu/live-real-07/serial.log",
+    "-drive",
+    "if=pflash,format=raw,readonly=on,file=/workspace/scratch/d318bf58ae4c/project/TamberOS/build/qemu/live-real-07/code.fd",
+    "-drive",
+    "if=pflash,format=raw,file=/workspace/scratch/d318bf58ae4c/project/TamberOS/build/qemu/live-real-07/vars.fd",
+    "-drive",
+    "if=virtio,format=qcow2,file=/workspace/scratch/d318bf58ae4c/project/TamberOS/build/qemu/live-real-07/disk.qcow2",
+    "-drive",
+    "if=virtio,format=raw,readonly=on,file=/workspace/scratch/d318bf58ae4c/project/TamberOS/build/qemu/live-real-07/seed.iso",
+    "-netdev",
+    "user,id=net0,restrict=off,hostfwd=tcp:127.0.0.1:2222-:22",
+    "-device",
+    "virtio-net-pci,netdev=net0,romfile=",
+    "-no-reboot"
+  ],
+  "timeout_seconds": 7200
+}

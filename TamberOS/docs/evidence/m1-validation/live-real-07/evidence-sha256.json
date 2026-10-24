@@ -1,0 +1,15 @@
+{
+  "serial.log": "7ce0d3d35f9a307e534851e7b5e743379c06fad5ddcfe0e423e8b54698c8931d",
+  "manifest.json": "a7e2d0620466c32b5c2eef2866599e6a0ef14d4e3c26c6cd03448c0060251efe",
+  "result.json": "3587ece24cddd5faa9f5a92d15b4b150fc5e04fdb22adaa49f7974c096e5f516",
+  "live-result.json": "b2a4e6d5459ab62e9b8415068c5811e757bfb22cc948a9606fb2a1145afe724c",
+  "ssh-login.txt": "8b2bbc486dea5b3c01fcbb19a1779961c591295ab0984a63d1aa28a03c9b9f94",
+  "cloud-init.txt": "2914df30c27362b800e670b9344b966ad4f48c002d1f996da18f5baaf87e4e30",
+  "network-diagnostic.txt": "9fc1e1fad2ee38318f8c57c6b18d1f68d9cb3df60674567adfe1e98a0845b73b",
+  "guest-smoke.txt": "e70db7eecaa6db95b9ef4060ca88b04cfb7430420a953525677de9ac0f7d5be3",
+  "dnf-install.txt": "03f3b2c8ac96f96a78621bf4e19d9daac2032699f5d1d6a0db40d5b01c6a70b4",
+  "shell-build.txt": "e613258668a9b55e7df4f3d3d154bf1479cf36bf395d2a94ba5048542e008139",
+  "rpm-inventory.txt": "53a2eb4e4ce040182ceb011d32b143df0a0081109a67b4070aaa5ed8cfe2cf0b",
+  "poweroff.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "runner.txt": "3587ece24cddd5faa9f5a92d15b4b150fc5e04fdb22adaa49f7974c096e5f516"
+}
