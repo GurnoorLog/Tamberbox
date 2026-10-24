@@ -54,7 +54,7 @@ Mesa works with this vendor Mali kernel.
 The donor checksum pins its whole boot/kernel/module/firmware combination. Each
 extracted regular file gets a SHA256 manifest. The image manifest records the
 result, and CI records the AlmaLinux container digest and installed RPM NEVRAs.
-The container digest and 179 exact rootfs package NEVRAs are pinned in
+The container digest and 178 exact rootfs package NEVRAs (plus the expected signing-key database entry) are pinned in
 `rootfs.lock.json`; package availability failures stop the build. Downloaded RPM
 checksums are recorded. Build-tool versions, filesystem timestamps and a permanent
 RPM mirror are not frozen, so byte-identical output is not claimed.

@@ -21,6 +21,8 @@ rm -f "$root"/boot/initrd.img-* "$root"/boot/uInitrd*
 kver=6.1.172-vendor-rk35xx
 depmod -b "$root" "$kver"
 dracut --sysroot "$root" --force --no-hostonly --no-hostonly-cmdline --kver "$kver" --add 'rootfs-block kernel-modules' "$root/boot/initramfs-$kver.img"
+lsinitrd "$root/boot/initramfs-$kver.img" > build/m2/initramfs-list.txt
+grep -q "usr/lib/systemd/systemd" build/m2/initramfs-list.txt
 chroot "$root" useradd --create-home --shell /bin/bash --groups wheel tamber
 printf 'tamber ALL=(ALL) NOPASSWD: ALL\n' > "$root/etc/sudoers.d/tamber-development"
 chmod 440 "$root/etc/sudoers.d/tamber-development"
@@ -45,7 +47,7 @@ chroot "$root" rpm -qa --qf '%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\n' | sort > b
 python3 - <<'CHECK'
 import json,hashlib
 from pathlib import Path
-expected=json.loads(Path('scripts/image/rootfs.lock.json').read_text())['packages']
+expected=json.loads(Path('scripts/image/rootfs.lock.json').read_text())['rpm_database']
 actual=Path('build/m2/rpm-inventory.txt').read_text().splitlines()
 if sorted(expected)!=sorted(actual):raise SystemExit('Installed package set differs from lock')
 root=Path('build/m2/alma-root')

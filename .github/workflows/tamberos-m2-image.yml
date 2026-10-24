@@ -38,6 +38,7 @@ jobs:
           path: |
             TamberOS/build/m2/*.json
             TamberOS/build/m2/rpm-inventory.txt
+            TamberOS/build/m2/initramfs-list.txt
           if-no-files-found: error
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
