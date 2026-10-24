@@ -18,7 +18,7 @@ cp -a build/m2/donor-assets/licenses/. "$root/usr/share/tamberos/donor-licenses/
 rm -f "$root"/boot/initrd.img-* "$root"/boot/uInitrd*
 kver=6.1.172-vendor-rk35xx
 depmod -b "$root" "$kver"
-dracut --sysroot "$root" --force --no-hostonly --no-hostonly-cmdline --kver "$kver" --add 'rootfs-block kernel-modules' "/boot/initramfs-$kver.img"
+dracut --sysroot "$root" --force --no-hostonly --no-hostonly-cmdline --kver "$kver" --add 'rootfs-block kernel-modules' "$root/boot/initramfs-$kver.img"
 chroot "$root" useradd --create-home --shell /bin/bash --groups wheel tamber
 printf 'tamber ALL=(ALL) NOPASSWD: ALL\n' > "$root/etc/sudoers.d/tamber-development"
 chmod 440 "$root/etc/sudoers.d/tamber-development"
