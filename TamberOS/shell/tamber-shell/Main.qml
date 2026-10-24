@@ -10,6 +10,12 @@ ApplicationWindow {
     minimumWidth: 960; minimumHeight: 640
     title: "Tamber Shell — development session"
     color: "#111214"
+    palette.windowText: "#f1ece2"
+    palette.text: "#f1ece2"
+    palette.buttonText: "#f1ece2"
+    palette.base: "#1c1d20"
+    palette.button: "#303033"
+    palette.highlight: "#ed8956"
     property color cream: "#f1ece2"
     property color muted: "#aaa8a4"
     property color orange: "#ed8956"
@@ -82,6 +88,7 @@ ApplicationWindow {
     }
     Popup {
         id: launcher
+        objectName: "launcher"
         width: Math.min(600, window.width - 80); height: Math.min(480, window.height - 140)
         anchors.centerIn: parent; modal: true; focus: true; padding: 24
         closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
@@ -94,7 +101,7 @@ ApplicationWindow {
                 ActionButton { text: "Close"; onClicked: launcher.close() }
             }
             TextField {
-                id: search; Layout.fillWidth: true; placeholderText: "Search installed applications"; color: window.cream
+                id: search; objectName: "search"; Layout.fillWidth: true; placeholderText: "Search installed applications"; color: window.cream
                 selectByMouse: true; font.pixelSize: 16
                 background: Rectangle { radius: 10; color: "#1c1d20"; border.color: search.activeFocus ? window.orange : "#555052" }
                 onTextChanged: apps.currentIndex = 0
@@ -121,7 +128,7 @@ ApplicationWindow {
         }
     }
     Popup {
-        id: controls; x: window.width - width - 20; y: 54; width: 330; height: 330; padding: 24; focus: true
+        id: controls; objectName: "controls"; x: window.width - width - 20; y: 54; width: 330; height: 330; padding: 24; focus: true
         closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
         background: Rectangle { radius: 18; color: preferences.opaquePanels ? "#28292c" : "#ed28292c"; border.color: "#555052" }
         ColumnLayout {
