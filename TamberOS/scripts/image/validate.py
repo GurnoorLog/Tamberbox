@@ -29,7 +29,7 @@ def main():
  if magic!=b'ARM\x64':raise ValueError('Kernel is not an uncompressed ARM64 Image')
  dtb=root/'boot'/('dtb-'+KVER)/'rockchip/rk3588-orangepi-5-ultra.dtb'
  compatible=subprocess.check_output(['fdtget',str(dtb),'/','compatible'],text=True).strip()
- if 'xunlong,orangepi-5-ultra' not in compatible:raise ValueError('Wrong DTB compatible')
+ if 'rockchip,rk3588-orangepi-5-ultra' not in compatible.split():raise ValueError('Wrong vendor DTB compatible: '+compatible)
  manifest=json.loads((WORK/'donor-assets.json').read_text())
  matched=0
  for name,sha in manifest.items():

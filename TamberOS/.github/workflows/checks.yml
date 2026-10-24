@@ -10,26 +10,21 @@ jobs:
       - run: sh scripts/ci.sh
   arm64-shell:
     runs-on: ubuntu-24.04-arm
-    container: almalinux:10.2
     steps:
-      - run: dnf --releasever=10.2 -y install git
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-      - run: dnf --releasever=10.2 -y install git python3 gnupg2 gcc-c++ cmake ninja-build qt6-qtbase-devel qt6-qtdeclarative-devel qt6-qtsvg glib2-devel rpm-build xorg-x11-server-Xvfb
-      - run: test "$(uname -m)" = aarch64 && TAMBER_BUILD_SHELL=1 sh scripts/ci.sh
-      - name: X11 graphical and keyboard integration tests
+      - run: sudo apt-get update && sudo apt-get install -y xvfb
+      - name: Build and test against a real X11 server in an isolated ARM64 container
         run: |
-          Xvfb :99 -screen 0 1280x720x24 &
+          Xvfb :99 -screen 0 1280x720x24 -ac -nolisten tcp &
           xvfb_pid=$!
           trap 'kill "$xvfb_pid"' EXIT
-          export DISPLAY=:99 QT_QUICK_BACKEND=software QT_QUICK_CONTROLS_STYLE=Basic
           sleep 2
-          ctest --test-dir build/shell --output-on-failure
-          build/shell/tamber-shell --screenshot build/shell/desktop.png
+          docker run --rm -v "$PWD:/work" -v /tmp/.X11-unix:/tmp/.X11-unix \
+            -e DISPLAY=:99 -e QT_QUICK_BACKEND=software -e QT_QUICK_CONTROLS_STYLE=Basic \
+            almalinux:10.2 bash /work/scripts/test_shell_container.sh
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
           name: tamber-shell-runtime
           path: TamberOS/build/shell/*.png
           if-no-files-found: warn
-# CI container tag and RPM dependencies are not digest/NEVRA locked yet.
-# Native ARM64 CI passed; compilation coverage is not boot or board evidence.

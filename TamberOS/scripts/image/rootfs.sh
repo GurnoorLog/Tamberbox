@@ -12,6 +12,7 @@ dnf --installroot="$root" --releasever=10.2 -y --setopt=install_weak_deps=False 
 cp -a build/m2/donor-assets/boot "$root/"
 cp -a build/m2/donor-assets/usr/lib/modules "$root/usr/lib/"
 cp -a build/m2/donor-assets/usr/lib/firmware "$root/usr/lib/"
+chown -hR root:root "$root/boot" "$root/usr/lib/modules" "$root/usr/lib/firmware"
 mkdir -p "$root/usr/share/tamberos/donor-licenses"
 cp -a build/m2/donor-assets/licenses/. "$root/usr/share/tamberos/donor-licenses/"
 # The Debian initramfs is not reused with an AlmaLinux userspace.
