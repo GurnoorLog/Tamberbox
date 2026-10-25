@@ -1,0 +1,83 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "exclusive": true,
+  "fixed-center": true,
+  "margin-top": 4,
+  "margin-left": 8,
+  "margin-right": 8,
+  "modules-left": [
+    "custom/tamber",
+    "sway/workspaces",
+    "sway/window"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "tray",
+    "cpu",
+    "memory",
+    "network",
+    "pulseaudio",
+    "bluetooth"
+  ],
+  "custom/tamber": {
+    "format": "\u25c6  TamberOS",
+    "tooltip": "Open application launcher",
+    "on-click": "tamber-desktop --command launcher",
+    "on-click-right": "tamber-desktop --command games"
+  },
+  "sway/workspaces": {
+    "all-outputs": true,
+    "disable-scroll": true,
+    "format": "{name}",
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": []
+    }
+  },
+  "sway/window": {
+    "max-length": 18,
+    "format": "{title}",
+    "rewrite": {
+      "^$": "Desktop"
+    }
+  },
+  "clock": {
+    "format": "{:%H:%M  %d %b}",
+    "tooltip-format": "{:%A, %d %B %Y}"
+  },
+  "cpu": {
+    "interval": 3,
+    "format": "CPU {usage}%"
+  },
+  "memory": {
+    "interval": 5,
+    "format": "RAM {percentage}%"
+  },
+  "network": {
+    "format-wifi": "Wi-Fi {signalStrength}%",
+    "format-ethernet": "LAN",
+    "format-disconnected": "Offline",
+    "tooltip": true,
+    "interval": 5
+  },
+  "pulseaudio": {
+    "format": "VOL {volume}%",
+    "format-muted": "Muted",
+    "scroll-step": 5
+  },
+  "bluetooth": {
+    "format": "BT",
+    "format-disabled": "BT off",
+    "format-connected": "BT {num_connections}"
+  },
+  "tray": {
+    "icon-size": 14,
+    "spacing": 7
+  }
+}

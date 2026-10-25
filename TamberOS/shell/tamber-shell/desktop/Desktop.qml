@@ -12,8 +12,9 @@ Item {
     property string clock: Qt.formatDateTime(new Date(), "ddd  d MMM   HH:mm")
     Settings { id: preferences; category: "Desktop"; property bool reducedMotion: false; property bool opaque: false; property real wallpaperOpacity: 1 }
     Timer { interval: 1000; running: true; repeat: true; onTriggered: root.clock = Qt.formatDateTime(new Date(), "ddd  d MMM   HH:mm") }
+    function showGames() { gamesWindow.visible = !gamesWindow.visible; if(gamesWindow.visible) { appLauncher.refresh(); gameSearch.text=""; gameGrid.forceActiveFocus() } }
     function showApps() { appsWindow.visible = !appsWindow.visible; if(appsWindow.visible) { search.text=""; search.forceActiveFocus() } }
-    Connections { target: session; function onOpenLauncher() { root.showApps() } function onOpenControls() { settingsWindow.visible=!settingsWindow.visible } }
+    Connections { target: session; function onOpenLauncher() { root.showApps() } function onOpenControls() { settingsWindow.visible=!settingsWindow.visible } function onOpenGames() { root.showGames() } }
     Connections { target: appLauncher; function onLaunchAccepted(id) { appsWindow.visible=false } }
     component TextLabel: Label { color: root.cream; font.pixelSize: 14 }
     component Action: Button {
@@ -43,7 +44,7 @@ Item {
     }
     Window {
         id: bar; width: Screen.width; height: 40; color: "transparent"; flags: Qt.FramelessWindowHint
-        Component.onCompleted: { session.configure(bar,"bar"); visible=true }
+        Component.onCompleted: { if(!externalBar) { session.configure(bar,"bar"); visible=true } }
         Rectangle { anchors.fill: parent; color: preferences.opaque ? "#252529" : "#c9252529" }
         RowLayout {
             anchors.fill: parent; anchors.leftMargin: 18; anchors.rightMargin: 18; spacing: 14
@@ -87,7 +88,114 @@ Item {
                     Rectangle { width: modelData.focused ? 16 : 5; height: 3; radius: 2; anchors.bottom: parent.bottom; anchors.horizontalCenter: parent.horizontalCenter; color: modelData.minimized ? root.muted : root.accent; Behavior on width { NumberAnimation { duration: preferences.reducedMotion ? 0 : 150 } } }
                 }
             }
+            Action { text: "Games"; Layout.preferredWidth: 64; Layout.preferredHeight: 54; onClicked: root.showGames(); ToolTip.visible: hovered; ToolTip.text: "Game library · Super+G" }
             Action { text: "☷"; Layout.preferredWidth: 40; Layout.preferredHeight: 54; onClicked: settingsWindow.visible=!settingsWindow.visible; ToolTip.visible: hovered; ToolTip.text: "Settings and windows" }
+        }
+    }
+    // Original Tamber Game Library: Omikuji-inspired navigation patterns, not copied code or artwork.
+    Window {
+        id: gamesWindow
+        width: Math.min(1050, Screen.width-50); height: Math.min(680, Screen.height-70)
+        flags: Qt.FramelessWindowHint; color: "transparent"
+        property var games: gameLibrary.games.filter(a => a.name.toLowerCase().includes(gameSearch.text.toLowerCase()))
+        property var selected: games.length ? games[Math.max(0,Math.min(gameGrid.currentIndex,games.length-1))] : null
+        onVisibleChanged: controller.active=visible
+        Connections { target: gameLibrary; function onLaunched() { gamesWindow.visible=false } }
+        Connections { target: controller; function onAction(name) {
+            if(!gamesWindow.visible)return;
+            if(name==="back"){gamesWindow.visible=false;return}
+            if(name==="accept"&&gamesWindow.selected){gameLibrary.launch(gamesWindow.selected.appId);return}
+            if(name==="favorite"&&gamesWindow.selected){gameLibrary.favorite(gamesWindow.selected.appId);return}
+            gameGrid.forceActiveFocus();
+            let step=(name==="left"?-1:name==="right"?1:name==="up"?-Math.max(1,Math.floor(gameGrid.width/gameGrid.cellWidth)):Math.max(1,Math.floor(gameGrid.width/gameGrid.cellWidth)));
+            gameGrid.currentIndex=Math.max(0,Math.min(gameGrid.count-1,gameGrid.currentIndex+step));gameGrid.positionViewAtIndex(gameGrid.currentIndex,GridView.Contain)
+        } }
+        Component.onCompleted: session.configure(gamesWindow,"games")
+        Rectangle { anchors.fill: parent; radius: 24; color: "#ee14171b"; border.color: "#52575d"; border.width: 1 }
+        Item {
+            anchors.fill: parent; focus: true
+            Keys.onEscapePressed: gamesWindow.visible=false
+            ColumnLayout {
+                anchors.fill: parent; anchors.margins: 28; spacing: 14
+                RowLayout {
+                    spacing: 18
+                    ColumnLayout {
+                        Text { text: "TAMBER / PLAY"; font.pixelSize: 13; font.bold: true; font.letterSpacing: 3; color: "#e6a56a" }
+                        Text { text: "Made for play."; font.pixelSize: 29; font.bold: true; color: "#f0f1f3" }
+                    }
+                    Item { Layout.fillWidth: true }
+                    Action { text: "Manage"; onClicked: manage.visible=!manage.visible }
+                    Action { text: "Refresh"; onClicked: { appLauncher.refresh(); gameLibrary.refresh() } }
+                    Action { text: "Close"; onClicked: gamesWindow.visible=false }
+                }
+                Rectangle { Layout.fillWidth: true; height: 1; color: "#394047" }
+                TextField {
+                    id: gameSearch
+                    Layout.fillWidth: true; Layout.preferredHeight: 48
+                    placeholderText: "Search your library · native games and emulators"; onTextChanged: gameGrid.currentIndex=0; color: "#f0f1f3"; font.pixelSize: 16
+                    background: Rectangle { color: "#292f35"; radius: 12; border.color: gameSearch.activeFocus ? "#e6a56a" : "#555e66" }
+                    Keys.onEscapePressed: gamesWindow.visible=false
+                    Keys.onDownPressed: { gameGrid.forceActiveFocus(); gameGrid.currentIndex=0 }
+                    onAccepted: if(gamesWindow.games.length)gameLibrary.launch(gamesWindow.games[0].appId)
+                }
+                GridView {
+                    id: gameGrid; Layout.fillWidth: true; Layout.fillHeight: true; clip: true; focus: true
+                    cellWidth: 196; cellHeight: 258; model: gamesWindow.games; keyNavigationWraps: true
+                    Keys.onReturnPressed: if(currentIndex>=0 && currentIndex<gamesWindow.games.length) gameLibrary.launch(gamesWindow.games[currentIndex].appId)
+                    Keys.onEscapePressed: gamesWindow.visible=false
+                    delegate: Rectangle {
+                        required property var modelData; required property int index
+                        width: 182; height: 242; radius: 15
+                        color: gameGrid.currentIndex===index ? "#394653" : "#252a30"
+                        border.width: gameGrid.currentIndex===index ? 2 : 1
+                        border.color: gameGrid.currentIndex===index ? "#e6a56a" : "#41484e"
+                        ColumnLayout {
+                            anchors.fill: parent; anchors.margins: 14; spacing: 10
+                            Rectangle {
+                                Layout.fillWidth: true; Layout.preferredHeight: 164; color: "#171c22"; radius: 10
+                                clip: true
+                                Image { anchors.fill: parent; anchors.margins: modelData.art ? 0 : 32; source: modelData.art || ("image://apps/"+modelData.appId); fillMode: modelData.art ? Image.PreserveAspectCrop : Image.PreserveAspectFit }
+                                Text { anchors.left: parent.left; anchors.bottom: parent.bottom; anchors.margins: 8; text: modelData.favorite ? "★ FAVORITE" : modelData.platform; color: "#ffffff"; style: Text.Outline; styleColor: "#111111"; font.pixelSize: 10 }
+                            }
+                            Text { text: modelData.name; color: "#f0f1f3"; font.pixelSize: 15; font.bold: true; elide: Text.ElideRight; Layout.fillWidth: true }
+                            Text { text: modelData.platform; color: "#aab4bb"; font.pixelSize: 11 }
+                        }
+                        MouseArea { anchors.fill: parent; hoverEnabled: true; onEntered: gameGrid.currentIndex=index; onClicked: gameLibrary.launch(modelData.appId) }
+                    }
+                    Text { anchors.centerIn: parent; visible: gameGrid.count===0; text: gameSearch.text ? "No matching games" : "No games detected. Install a game with a Game category desktop entry."; color: "#aab4bb"; font.pixelSize: 15; width: parent.width-40; horizontalAlignment: Text.AlignHCenter; wrapMode: Text.Wrap }
+                }
+                RowLayout {
+                    Layout.fillWidth: true
+                    Text { text: "D-pad / arrows  Navigate    A / Enter  Play    B / Esc  Back"; color: "#9ba7ad"; font.pixelSize: 12; Layout.fillWidth: true }
+                    Action { text: gamesWindow.selected && gamesWindow.selected.favorite ? "★ Saved" : "☆ Favorite"; enabled: !!gamesWindow.selected; onClicked: gameLibrary.favorite(gamesWindow.selected.appId) }
+                }
+                Text { text: controller.status; color: "#9ba7ad"; font.pixelSize: 11 }
+                Text { text: gameLibrary.status; color: "#e6a56a"; font.pixelSize: 12 }
+            }
+        }
+
+        Rectangle {
+            id: manage; visible: false; anchors.fill: parent; anchors.margins: 20; radius: 18; color: "#24282e"; border.color: "#69727b"
+            ColumnLayout {
+                anchors.fill: parent; anchors.margins: 24; spacing: 10
+                Text { text: "Library management"; color: "#f0f1f3"; font.pixelSize: 24 }
+                Text { text: "Selected: "+(gamesWindow.selected ? gamesWindow.selected.name : "none"); color: "#c0c8cf" }
+                TextField { id: artPath; Layout.fillWidth: true; placeholderText: "Absolute path to your cover image (PNG / JPG / SVG)" }
+                RowLayout {
+                    Action { text: "Import cover"; enabled: !!gamesWindow.selected; onClicked: gameLibrary.artwork(gamesWindow.selected.appId,artPath.text) }
+                    Action { text: "Hide selected"; enabled: !!gamesWindow.selected; onClicked: gameLibrary.hide(gamesWindow.selected.appId) }
+                    Action { text: "Restore hidden"; onClicked: gameLibrary.restoreHidden() }
+                }
+                Text { text: "Add a RetroArch profile · supply your own legally obtained game and core"; color: "#c0c8cf"; wrapMode: Text.Wrap; Layout.fillWidth: true }
+                TextField { id: profileName; Layout.fillWidth: true; placeholderText: "Game name" }
+                TextField { id: runnerPath; Layout.fillWidth: true; placeholderText: "Absolute path to RetroArch executable" }
+                TextField { id: romPath; Layout.fillWidth: true; placeholderText: "Absolute path to ROM" }
+                TextField { id: corePath; Layout.fillWidth: true; placeholderText: "Absolute path to libretro core (.so)" }
+                Action { text: "Add profile"; onClicked: gameLibrary.addEmulator(profileName.text,runnerPath.text,romPath.text,corePath.text) }
+                Text { text: gameLibrary.status; color: "#e6a56a"; Layout.fillWidth: true; wrapMode: Text.Wrap }
+                Item { Layout.fillHeight: true }
+                Action { text: "Done"; onClicked: manage.visible=false }
+            }
         }
     }
     Window {

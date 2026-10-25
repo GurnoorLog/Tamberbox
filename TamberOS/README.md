@@ -104,3 +104,7 @@ See [verified results and limitations](docs/status.md), [exact boot chain](docs/
 ## M3 desktop
 
 M3 develops a real Qt/QML Wayland session on Sway independently of physical-board access. See [desktop build, controls and limitations](docs/m3-desktop.md) and [current verification](docs/status.md). The M2 image remains unchanged with hardware validation pending.
+
+### M3.5 development add-on (Waybar and games)
+
+This archive also includes a V2.a-inspired Sway-native Waybar configuration and an original Qt/QML Tamber / Play game-library view. See `docs/m3-5-integration.md`. Static checks passed, but GUI runtime testing and ARM64 recompilation of these new changes remain pending. The original M3 Git history bundle is retained unchanged; the add-on edits are not represented as a new Git commit.

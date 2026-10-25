@@ -1,5 +1,7 @@
 #include "Session.h"
 #include "Launcher.h"
+#include "GameLibrary.h"
+#include "Controller.h"
 #include <LayerShellQt/Shell>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
@@ -27,16 +29,16 @@ int main(int argc,char **argv){
  const auto args=app.arguments();const int request=args.indexOf("--command");
  QLocalSocket client;client.connectToServer(socket);
  if(client.waitForConnected(150)){
-  if(request>=0&&request+1<args.size()){const auto value=args[request+1];if(value!="launcher"&&value!="controls")return 2;client.write(value.toUtf8());client.waitForBytesWritten(500);return 0;}return 3;
+  if(request>=0&&request+1<args.size()){const auto value=args[request+1];if(value!="launcher"&&value!="controls"&&value!="games")return 2;client.write(value.toUtf8());client.waitForBytesWritten(500);return 0;}return 3;
  }
  if(request>=0)return 4;
  if(app.platformName()!="wayland"){qCritical("Tamber desktop requires a Wayland session. Use tamber-shell for X11 preview.");return 2;}
  QLocalServer server;server.setSocketOptions(QLocalServer::UserAccessOption);QLocalServer::removeServer(socket);if(!server.listen(socket))return 5;
- LayerShellQt::Shell::useLayerShell();Session session;Launcher launcher;
+ LayerShellQt::Shell::useLayerShell();Session session;Launcher launcher;GameLibrary library(&launcher);Controller controller;
  QObject::connect(&server,&QLocalServer::newConnection,&app,[&]{while(auto *peer=server.nextPendingConnection()){
   QObject::connect(peer,&QLocalSocket::readyRead,&session,[peer,&session]{session.dispatch(QString::fromUtf8(peer->readAll()).left(32));peer->disconnectFromServer();});
   QObject::connect(peer,&QLocalSocket::disconnected,peer,&QObject::deleteLater);
  }});
- QQmlApplicationEngine engine;engine.addImageProvider("apps",new AppIcons(&launcher));engine.rootContext()->setContextProperty("session",&session);engine.rootContext()->setContextProperty("appLauncher",&launcher);
+ QQmlApplicationEngine engine;engine.rootContext()->setContextProperty("gameLibrary",&library);engine.rootContext()->setContextProperty("controller",&controller);engine.addImageProvider("apps",new AppIcons(&launcher));engine.rootContext()->setContextProperty("externalBar",qEnvironmentVariable("TAMBER_EXTERNAL_BAR")=="1");engine.rootContext()->setContextProperty("session",&session);engine.rootContext()->setContextProperty("appLauncher",&launcher);
  engine.load(QUrl("qrc:/desktop/Desktop.qml"));if(engine.rootObjects().isEmpty())return 1;return app.exec();
 }

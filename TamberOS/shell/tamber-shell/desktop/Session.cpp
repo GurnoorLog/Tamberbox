@@ -68,7 +68,7 @@ void Session::scale(double n){if(n==1||n==1.25||n==1.5||n==2)command("output * s
 void Session::volume(int direction){if(direction!=-1&&direction!=1)return;run("wpctl",{"set-volume","-l","1.0","@DEFAULT_AUDIO_SINK@",direction>0?"5%+":"5%-"},[this](bool ok,QString out){message=ok?"":out.left(160);emit changed();refresh();});}
 void Session::mute(){run("wpctl",{"set-mute","@DEFAULT_AUDIO_SINK@","toggle"},[this](bool ok,QString out){message=ok?"":out.left(160);emit changed();refresh();});}
 void Session::wifi(bool on){run("nmcli",{"radio","wifi",on?"on":"off"},[this](bool ok,QString out){message=ok?"":out.left(160);emit changed();refresh();});}
-void Session::dispatch(const QString &c){if(c=="launcher")emit openLauncher();else if(c=="controls")emit openControls();}
+void Session::dispatch(const QString &c){if(c=="launcher")emit openLauncher();else if(c=="controls")emit openControls();else if(c=="games")emit openGames();}
 void Session::configure(QWindow *w,const QString &role){
  if(!w)return;
  if(auto *quick=qobject_cast<QQuickWindow*>(w)){

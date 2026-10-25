@@ -7,4 +7,12 @@ export QT_PLUGIN_PATH="$root/build/session-deps/lib/plugins${QT_PLUGIN_PATH:+:$Q
 export QT_QPA_PLATFORM=wayland
 export QT_QUICK_CONTROLS_STYLE=Basic
 [[ -x "$root/build/shell/tamber-desktop" ]] || { echo 'Build tamber-desktop first'; exit 2; }
+# Prefer the adapted HANCORE V2.a-inspired Waybar when available; keep Qt bar as a safe fallback.
+export TAMBER_ROOT="$root"
+if [[ "${TAMBER_USE_WAYBAR:-1}" == 1 ]] && command -v waybar >/dev/null 2>&1; then
+  export TAMBER_EXTERNAL_BAR=1
+else
+  export TAMBER_EXTERNAL_BAR=0
+  echo "Waybar unavailable or disabled: using Tamber Qt menu bar" >&2
+fi
 exec dbus-run-session sway --config "$root/session/sway.conf"

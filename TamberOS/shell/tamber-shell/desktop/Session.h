@@ -32,6 +32,7 @@ signals:
  void changed();
  void openLauncher();
  void openControls();
+ void openGames();
 private:
  void run(const QString &program,const QStringList &args,std::function<void(bool,QString)> callback);
  void command(const QString &text);
