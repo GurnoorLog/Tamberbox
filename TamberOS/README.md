@@ -100,3 +100,7 @@ See [`prompts/00_WORK_HANDOFF.md`](prompts/00_WORK_HANDOFF.md) for a reusable pr
 ## M2 development delivery
 
 See [verified results and limitations](docs/status.md), [exact boot chain](docs/m2-boot-chain.md), [separate-card build/testing procedure](docs/m2-hardware-testing.md), and [shell instructions](shell/tamber-shell/README.md). No physical storage has been written.
+
+## M3 desktop
+
+M3 develops a real Qt/QML Wayland session on Sway independently of physical-board access. See [desktop build, controls and limitations](docs/m3-desktop.md) and [current verification](docs/status.md). The M2 image remains unchanged with hardware validation pending.

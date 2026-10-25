@@ -26,8 +26,8 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   wait(lambda:(runtime/('tamber-'+display.name)).exists());wait(lambda:'TAMBER_FRAME bar' in (OUT/'sway-session.log').read_text(),30);time.sleep(.5)
   run('grim',str(OUT/'desktop.png'))
   run('tamber-desktop','--command','launcher');wait(lambda:'TAMBER_FRAME launcher' in (OUT/'sway-session.log').read_text(),15);time.sleep(.5)
-  run('wtype','Tamber Test');time.sleep(.3);run('grim',str(OUT/'launcher.png'))
-  run('wtype','-k','Return')
+  run('wtype','-s','400','-d','50','Tamber Test');time.sleep(.3);run('grim',str(OUT/'launcher.png'))
+  run('wtype','-s','400','-k','Return')
   def windows():
    tree=json.loads(run('swaymsg','-r','-t','get_tree').stdout)
    def walk(n):
@@ -36,7 +36,7 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   wait(windows);time.sleep(.5)
   run('grim',str(OUT/'application.png'))
   run('tamber-desktop','--command','controls');time.sleep(.5);run('grim',str(OUT/'settings.png'))
-  run('wtype','-k','Escape');time.sleep(.3)
+  run('wtype','-s','400','-k','Escape');time.sleep(.3)
   env['TAMBER_TEST_SWAY']='1'
   result=run(str(ROOT/'build/shell/session-test'));(OUT/'window-actions.txt').write_text(result.stdout+result.stderr)
   del env['TAMBER_TEST_SWAY']
