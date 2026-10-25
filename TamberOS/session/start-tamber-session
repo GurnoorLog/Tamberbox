@@ -1,0 +1,10 @@
+#!/bin/bash
+set -euo pipefail
+root=$(cd "$(dirname "$0")/.." && pwd)
+export PATH="$root/build/shell:$PATH"
+export LD_LIBRARY_PATH="$root/build/session-deps/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export QT_PLUGIN_PATH="$root/build/session-deps/lib/plugins${QT_PLUGIN_PATH:+:$QT_PLUGIN_PATH}"
+export QT_QPA_PLATFORM=wayland
+export QT_QUICK_CONTROLS_STYLE=Basic
+[[ -x "$root/build/shell/tamber-desktop" ]] || { echo 'Build tamber-desktop first'; exit 2; }
+exec dbus-run-session sway --config "$root/session/sway.conf"
