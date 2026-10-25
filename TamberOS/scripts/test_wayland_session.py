@@ -47,6 +47,9 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   result=run('ctest','--test-dir',str(ROOT/'build/shell'),'--output-on-failure');(OUT/'ctest.txt').write_text(result.stdout+result.stderr)
   (OUT/'outputs.json').write_text(run('swaymsg','-r','-t','get_outputs').stdout)
   (OUT/'versions.txt').write_text(run('sway','--version').stdout+run('qmake6','-query','QT_VERSION').stdout+run('uname','-m').stdout)
+  runtime_log=(OUT/'sway-session.log').read_text()
+  for problem in ['Failed to get image from provider','ReferenceError:','TypeError:']:
+   assert problem not in runtime_log, problem
   (OUT/'result.json').write_text(json.dumps({'passed':True,'backend':'headless Sway / pixman','physical_devices_used':False,'launcher_keyboard_real_process':True,'window_minimize_restore_close':True,'hardware_validation':'pending'},indent=2)+'\n')
  finally:
   if proc.poll() is None:

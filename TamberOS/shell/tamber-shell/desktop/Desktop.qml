@@ -57,11 +57,11 @@ Item {
         }
     }
     Window {
-        id: dock; width: Math.min(Screen.width-32,112+Math.min(appLauncher.applications.length,4)*60+Math.min(session.windows.length,6)*68); height: 76; color: "transparent"; flags: Qt.FramelessWindowHint
+        id: dock; width: Math.min(Screen.width-32,800); height: 76; color: "transparent"; flags: Qt.FramelessWindowHint
         Component.onCompleted: { session.configure(dock,"dock"); visible=true }
-        Surface { anchors.fill: parent; anchors.margins: 4; radius: 20 }
+        Surface { width: dockItems.implicitWidth+24; height: 68; anchors.centerIn: parent; radius: 20 }
         RowLayout {
-            anchors.centerIn: parent; spacing: 5
+            id: dockItems; anchors.centerIn: parent; spacing: 5
             Action { text: "⌘"; Layout.preferredWidth: 48; Layout.preferredHeight: 54; onClicked: root.showApps(); ToolTip.visible: hovered; ToolTip.text: "Applications · Super+Space" }
             Repeater {
                 model: appLauncher.applications.slice(0,4)
@@ -132,14 +132,14 @@ Item {
             ColumnLayout {
                 anchors.fill: parent; anchors.margins: 26; spacing: 14
                 RowLayout { TextLabel { text: "System settings"; font.pixelSize: 25; Layout.fillWidth: true } Action { text: "Close"; onClicked: settingsWindow.visible=false } }
-                TabBar { id: tabs; Layout.fillWidth: true; SettingsTab { text: "Appearance" } SettingsTab { text: "Sound and network" } SettingsTab { text: "Windows" } }
+                TabBar { id: tabs; Layout.fillWidth: true; background: Rectangle { color: "transparent" } SettingsTab { text: "Appearance" } SettingsTab { text: "Sound and network" } SettingsTab { text: "Windows" } }
                 StackLayout {
                     currentIndex: tabs.currentIndex; Layout.fillWidth: true; Layout.fillHeight: true
                     ColumnLayout {
                         spacing: 10
                         TextLabel { text: "Make room for focus."; font.pixelSize: 21 }
-                        CheckBox { text: "Reduce animation"; checked: preferences.reducedMotion; onToggled: preferences.reducedMotion=checked; palette.windowText: root.cream }
-                        CheckBox { text: "Opaque panels"; checked: preferences.opaque; onToggled: preferences.opaque=checked; palette.windowText: root.cream }
+                        CheckBox { text: "Reduce animation"; checked: preferences.reducedMotion; onToggled: preferences.reducedMotion=checked; palette.windowText: root.cream; palette.base: "#383238"; palette.button: "#383238"; palette.highlight: root.accent }
+                        CheckBox { text: "Opaque panels"; checked: preferences.opaque; onToggled: preferences.opaque=checked; palette.windowText: root.cream; palette.base: "#383238"; palette.button: "#383238"; palette.highlight: root.accent }
                         TextLabel { text: "Wallpaper intensity"; color: root.muted }
                         Slider { Layout.fillWidth: true; from: 0; to: 1; value: preferences.wallpaperOpacity; onMoved: preferences.wallpaperOpacity=value }
                         RowLayout { TextLabel { text: "Display scale (all outputs)"; Layout.fillWidth: true } Repeater { model: [1,1.25,1.5,2]; Action { required property var modelData; text: modelData+"×"; onClicked: session.scale(modelData) } } }

@@ -17,7 +17,7 @@ public:
  QPixmap requestPixmap(const QString &id,QSize *size,const QSize &requested) override {
   QString name;for(const auto &v:launcher->applications()){auto m=v.toMap();if(m["appId"].toString()==id){name=m["iconName"].toString();break;}}
   QSize dimensions=requested.isValid()?requested:QSize(40,40);dimensions=dimensions.boundedTo(QSize(128,128));
-  auto result=QIcon::fromTheme(name,QIcon("qrc:/brand/application.svg")).pixmap(dimensions);if(size)*size=result.size();return result;
+  auto result=QIcon::fromTheme(name,QIcon(":/brand/application.svg")).pixmap(dimensions);if(size)*size=result.size();return result;
  }
 };
 int main(int argc,char **argv){
