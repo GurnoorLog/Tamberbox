@@ -1,0 +1,30 @@
+Window.SetBackgroundTopColor(0.065, 0.067, 0.078);
+Window.SetBackgroundBottomColor(0.065, 0.067, 0.078);
+mascot = Image("mascot.png").Scale(130, 165);
+logo = Sprite(mascot);
+logo.SetX(Window.GetWidth()/2 - 65);
+logo.SetY(Window.GetHeight()/2 - 140);
+word = Image.Text("TamberOS", 0.945, 0.925, 0.886);
+label = Sprite(word);
+label.SetX(Window.GetWidth()/2 - word.GetWidth()/2);
+label.SetY(Window.GetHeight()/2 + 45);
+progress_image = Image("progress.png");
+progress = Sprite(progress_image);
+progress.SetX(Window.GetWidth()/2 - 100);
+progress.SetY(Window.GetHeight()/2 + 100);
+fun update_progress(duration, fraction) {
+ if (fraction < 0.005) fraction = 0.005;
+ if (fraction > 1) fraction = 1;
+ progress.SetImage(progress_image.Scale(200*fraction, 3));
+}
+Plymouth.SetBootProgressFunction(update_progress);
+status = Sprite();
+fun message(text) {
+ image = Image.Text(text, 0.945, 0.925, 0.886);
+ status.SetImage(image);
+ status.SetX(Window.GetWidth()/2 - image.GetWidth()/2);
+ status.SetY(Window.GetHeight()/2 + 130);
+}
+Plymouth.SetDisplayMessageFunction(message);
+fun password(prompt, bullets) { message(prompt + " (press Esc for text console)"); }
+Plymouth.SetDisplayPasswordFunction(password);

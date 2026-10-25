@@ -1,0 +1,7 @@
+[Plymouth Theme]
+Name=TamberOS
+Description=TamberOS sunglasses-llama diagnostic splash
+ModuleName=script
+[script]
+ImageDir=/usr/share/plymouth/themes/tamber
+ScriptFile=/usr/share/plymouth/themes/tamber/tamber.script

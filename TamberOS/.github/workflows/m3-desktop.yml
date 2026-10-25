@@ -11,12 +11,18 @@ jobs:
       - name: Install isolated runner dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake ninja-build g++ pkg-config qt6-base-dev qt6-base-private-dev qt6-declarative-dev qt6-wayland-dev qt6-wayland-private-dev qt6-wayland qml6-module-qtqml qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-layouts qml6-module-qtqml-workerscript qml6-module-qtquick-templates qml6-module-qtquick-window qml6-module-qt-labs-settings libglib2.0-dev libqt6svg6 extra-cmake-modules libwayland-dev libxkbcommon-dev wayland-protocols sway grim wtype foot dbus-x11
+          sudo apt-get install -y cmake ninja-build g++ pkg-config qt6-base-dev qt6-base-private-dev qt6-declarative-dev qt6-wayland-dev qt6-wayland-private-dev qt6-wayland qml6-module-qtqml qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-layouts qml6-module-qtqml-workerscript qml6-module-qtquick-templates qml6-module-qtquick-window qml6-module-qt-labs-settings libglib2.0-dev libqt6svg6 extra-cmake-modules libwayland-dev libxkbcommon-dev wayland-protocols sway grim wtype foot dbus-x11 librsvg2-bin
       - name: Build pinned Qt layer-shell and Tamber desktop
         run: |
           bash scripts/build_layer_shell.sh
           cmake -S shell/tamber-shell -B build/shell -G Ninja -DTAMBER_WAYLAND_SESSION=ON -DCMAKE_PREFIX_PATH="$PWD/build/session-deps" -DCMAKE_BUILD_TYPE=Release
           cmake --build build/shell --parallel 2
+      - name: Stage and render login and boot designs
+        run: |
+          python3 scripts/build_themes.py
+          mkdir -p build/m3-evidence
+          QT_QPA_PLATFORM=offscreen QT_QUICK_BACKEND=software QT_QUICK_CONTROLS_STYLE=Basic build/shell/theme-preview "$PWD/themes/sddm/tamber/Main.qml" "$PWD/build/m3-evidence/login-preview.png"
+          QT_QPA_PLATFORM=offscreen QT_QUICK_BACKEND=software QT_QUICK_CONTROLS_STYLE=Basic build/shell/theme-preview "$PWD/themes/BootPreview.qml" "$PWD/build/m3-evidence/boot-design-preview.png"
       - name: Offline checks
         run: sh scripts/ci.sh
       - name: Real headless Wayland session and application interaction
@@ -29,3 +35,18 @@ jobs:
             build/m3-evidence/
             build/shell/*.png
           if-no-files-found: error
+
+  alma-arm64-build:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Compile in pinned AlmaLinux ARM64 container
+        run: |
+          docker run --rm -v "$PWD:/work" almalinux@sha256:838c2fafefb1a8a0d7f8cdbc3b0551c2a2b1eb0cd87aad6d62aecadb18311f1b bash /work/scripts/test_desktop_alma.sh
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: m3-alma-arm64-build
+          path: build/m3-alma-evidence/
+          if-no-files-found: warn

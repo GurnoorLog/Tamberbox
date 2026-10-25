@@ -1,0 +1,8 @@
+[SddmGreeterTheme]
+Name=TamberOS
+Description=Original TamberOS login theme
+Author=Gurnoor Tamber / TamberOS
+Type=sddm-theme
+Version=0.3
+MainScript=Main.qml
+Theme-API=2.0
