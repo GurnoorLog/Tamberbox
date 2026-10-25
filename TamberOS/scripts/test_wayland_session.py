@@ -43,7 +43,7 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
    assert any(text in (n.get('text','')+n['name']) for n in labels), 'Missing Waybar module: '+text
   label=next(n for n in labels if 'TamberOS' in (n.get('text','')+n['name']) and n.get('rect',[0,0,0,0])[2]>0)
   x,y,w,h=label['rect'];run('swaymsg','seat','seat0','cursor','set',str(x+w//2),str(y+h//2))
-  run('swaymsg','seat','seat0','cursor','press','button1');run('swaymsg','seat','seat0','cursor','release','button1');wait(lambda:'TAMBER_FRAME launcher' in (OUT/'sway-session.log').read_text(),15);time.sleep(.5)
+  run('wlrctl','pointer','click','left');wait(lambda:'TAMBER_FRAME launcher' in (OUT/'sway-session.log').read_text(),15);time.sleep(.5)
   keyboard=subprocess.Popen(['wtype','-s','400','-d','50','Tamber Test','-s','1500','-k','Return','-s','500'],env=env)
   time.sleep(1.5);run('grim',str(OUT/'launcher.png'));assert keyboard.wait(timeout=10)==0
   def windows():
@@ -60,6 +60,15 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   run('wtype','-s','400','-k','Escape');time.sleep(.3)
   run('wtype','-M','logo','-k','g','-m','logo');time.sleep(.8)
   wait(lambda:'TAMBER_FRAME games' in (OUT/'sway-session.log').read_text())
+  run('wtype','-k','f')
+  run('wtype','-M','ctrl','-k','m','-m','ctrl');time.sleep(.3)
+  run('wtype',str(ROOT/'branding/play/tiles.svg'))
+  run('wtype','-k','Tab','-k','space');time.sleep(.5)
+  run('grim',str(OUT/'game-management.png'))
+  run('wtype','-k','Escape');time.sleep(.3)
+  library_path=wait(lambda:next(iter((base/'config').rglob('play.json')),None))
+  state=json.loads(library_path.read_text());assert any(p.get('favorite') and p.get('art','').startswith('file:') for p in state['preferences'].values())
+  (OUT/'library-state.json').write_text(json.dumps(state,indent=2))
   run('grim',str(OUT/'game-library.png'))
   run('wtype','-M','ctrl','-k','f','-m','ctrl');time.sleep(.3)
   run('wtype','2048');time.sleep(.5);run('grim',str(OUT/'game-search.png'))

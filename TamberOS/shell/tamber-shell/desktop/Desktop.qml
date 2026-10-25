@@ -58,7 +58,7 @@ Item {
         }
     }
     Window {
-        id: dock; width: Math.min(Screen.width-32,800); height: 76; color: "transparent"; flags: Qt.FramelessWindowHint
+        id: dock; width: Math.min(Screen.width-32,960); height: 76; color: "transparent"; flags: Qt.FramelessWindowHint
         Component.onCompleted: { session.configure(dock,"dock"); visible=true }
         Surface { width: dockItems.implicitWidth+24; height: 68; anchors.centerIn: parent; radius: 20 }
         RowLayout {
@@ -141,7 +141,7 @@ Item {
                 GridView {
                     id: gameGrid; Layout.fillWidth: true; Layout.fillHeight: true; clip: true; focus: true
                     cellWidth: 196; cellHeight: 258; model: gamesWindow.games; keyNavigationWraps: true
-                    Keys.onPressed: function(event) { if(event.key===Qt.Key_F && (event.modifiers & Qt.ControlModifier)){gameSearch.forceActiveFocus();event.accepted=true} }
+                    Keys.onPressed: function(event) { if(event.key===Qt.Key_F && (event.modifiers & Qt.ControlModifier)){gameSearch.forceActiveFocus();event.accepted=true} else if(event.key===Qt.Key_M && (event.modifiers & Qt.ControlModifier)){manage.visible=true;artPath.forceActiveFocus();event.accepted=true} else if(event.key===Qt.Key_F && gamesWindow.selected){gameLibrary.favorite(gamesWindow.selected.appId);event.accepted=true} }
                     Keys.onReturnPressed: if(currentIndex>=0 && currentIndex<gamesWindow.games.length) gameLibrary.launch(gamesWindow.games[currentIndex].appId)
                     Keys.onEscapePressed: { if(manage.visible)manage.visible=false;else gamesWindow.visible=false }
                     delegate: Rectangle {
@@ -176,7 +176,7 @@ Item {
         }
 
         Rectangle {
-            id: manage; visible: false; onVisibleChanged: controller.active=gamesWindow.visible&&!visible; anchors.fill: parent; anchors.margins: 20; radius: 18; color: "#24282e"; border.color: "#69727b"
+            id: manage; visible: false; Keys.onEscapePressed: visible=false; onVisibleChanged: controller.active=gamesWindow.visible&&!visible; anchors.fill: parent; anchors.margins: 20; radius: 18; color: "#24282e"; border.color: "#69727b"
             ColumnLayout {
                 anchors.fill: parent; anchors.margins: 24; spacing: 10
                 Text { text: "Library management"; color: "#f0f1f3"; font.pixelSize: 24 }

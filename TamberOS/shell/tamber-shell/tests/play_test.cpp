@@ -15,6 +15,7 @@ private slots:
  void library(){
   QTemporaryDir temp;QVERIFY(temp.isValid());qputenv("XDG_CONFIG_HOME",temp.path().toUtf8());qputenv("XDG_DATA_HOME",temp.path().toUtf8());qputenv("XDG_DATA_DIRS",temp.path().toUtf8());QDir().mkpath(temp.path()+"/applications");
   QFile desktop(temp.path()+"/applications/game.desktop");QVERIFY(desktop.open(QIODevice::WriteOnly));desktop.write("[Desktop Entry]\nType=Application\nName=Test Game\nExec=/bin/true\nCategories=Game;\n");desktop.close();
+  QFile other(temp.path()+"/applications/not-game.desktop");QVERIFY(other.open(QIODevice::WriteOnly));other.write("[Desktop Entry]\nType=Application\nName=Not Game\nExec=/bin/true\nCategories=NotGame;\n");other.close();
   Launcher apps;GameLibrary library(&apps);QCOMPARE(library.games().size(),1);QString id="game.desktop";
   library.favorite(id);QVERIFY(library.games()[0].toMap()["favorite"].toBool());library.hide(id);QVERIFY(library.games().isEmpty());library.restoreHidden();QCOMPARE(library.games().size(),1);
   QImage image(64,64,QImage::Format_RGB32);image.fill(Qt::blue);QString path=temp.path()+"/cover.png";QVERIFY(image.save(path));QVERIFY(library.artwork(id,path));QVERIFY(!library.artwork(id,"https://example.com/art"));
