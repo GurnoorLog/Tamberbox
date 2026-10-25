@@ -8,7 +8,7 @@ Controller::Controller(QObject*p):QObject(p){connect(&timer,&QTimer::timeout,thi
 Controller::~Controller(){if(descriptor>=0)::close(descriptor);}
 void Controller::attach(int fd){if(descriptor>=0)::close(descriptor);descriptor=fd;axes.clear();emit changed();}
 void Controller::poll(){
- if(descriptor<0){for(const auto &name:QDir("/dev/input").entryList({"js*"},QDir::System|QDir::Files)){int fd=::open(("/dev/input/"+name).toUtf8().constData(),O_RDONLY|O_NONBLOCK|O_CLOEXEC);if(fd>=0){attach(fd);break;}}return;}
+ if(descriptor<0){if(qEnvironmentVariable("WLR_BACKENDS")=="headless")return;if(scanCountdown-- > 0)return;scanCountdown=33;for(const auto &name:QDir("/dev/input").entryList({"js*"},QDir::System|QDir::Files)){int fd=::open(("/dev/input/"+name).toUtf8().constData(),O_RDONLY|O_NONBLOCK|O_CLOEXEC);if(fd>=0){attach(fd);break;}}return;}
  js_event e;for(int count=0;count<128;++count){auto n=::read(descriptor,&e,sizeof(e));if(n<0&&(errno==EAGAIN||errno==EWOULDBLOCK))break;if(n!=sizeof(e)){attach(-1);break;}
  if(e.type&JS_EVENT_INIT)continue;QString command;
  if(e.type==JS_EVENT_BUTTON&&e.value){if(e.number==0)command="accept";if(e.number==1)command="back";if(e.number==2)command="favorite";}

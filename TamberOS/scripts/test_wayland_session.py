@@ -21,7 +21,9 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
  audio=subprocess.run(['pulseaudio','--start','--exit-idle-time=-1'],env=env,capture_output=True)
  subprocess.run(['pactl','load-module','module-null-sink','sink_name=tamber_test'],env=env,capture_output=True)
  proc=subprocess.Popen(['sway','-d','-c',str(config)],env=env,stdout=log,stderr=subprocess.STDOUT)
- def run(*args,check=True):return subprocess.run(args,env=env,text=True,capture_output=True,check=check,timeout=15)
+ def run(*args,check=True):
+  if args[0]=='wtype':args=(args[0],'-s','400')+args[1:]
+  return subprocess.run(args,env=env,text=True,capture_output=True,check=check,timeout=15)
  try:
   sock=wait(lambda:next(iter(runtime.glob('sway-ipc.*.sock')),None));env['SWAYSOCK']=str(sock)
   display=wait(lambda:next((p for p in runtime.glob('wayland-*') if not p.name.endswith('.lock')),None));env['WAYLAND_DISPLAY']=display.name
@@ -34,7 +36,14 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   assert any(w['num']==2 and w['focused'] for w in workspaces)
   run('wtype','-M','logo','-k','1','-m','logo')
   (OUT/'workspaces.json').write_text(json.dumps(workspaces,indent=2))
-  run('tamber-desktop','--command','launcher');wait(lambda:'TAMBER_FRAME launcher' in (OUT/'sway-session.log').read_text(),15);time.sleep(.5)
+  probe=run('/usr/bin/python3',str(ROOT/'scripts/waybar_probe.py'))
+  (OUT/'waybar-accessibility.json').write_text(probe.stdout)
+  labels=json.loads(probe.stdout)
+  for text in ['TamberOS','CPU','RAM','LAN','VOL']:
+   assert any(text in (n.get('text','')+n['name']) for n in labels), 'Missing Waybar module: '+text
+  label=next(n for n in labels if 'TamberOS' in (n.get('text','')+n['name']) and n.get('rect',[0,0,0,0])[2]>0)
+  x,y,w,h=label['rect'];run('swaymsg','seat','seat0','cursor','set',str(x+w//2),str(y+h//2))
+  run('swaymsg','seat','seat0','cursor','press','button1');run('swaymsg','seat','seat0','cursor','release','button1');wait(lambda:'TAMBER_FRAME launcher' in (OUT/'sway-session.log').read_text(),15);time.sleep(.5)
   keyboard=subprocess.Popen(['wtype','-s','400','-d','50','Tamber Test','-s','1500','-k','Return','-s','500'],env=env)
   time.sleep(1.5);run('grim',str(OUT/'launcher.png'));assert keyboard.wait(timeout=10)==0
   def windows():
@@ -52,10 +61,7 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   run('wtype','-M','logo','-k','g','-m','logo');time.sleep(.8)
   wait(lambda:'TAMBER_FRAME games' in (OUT/'sway-session.log').read_text())
   run('grim',str(OUT/'game-library.png'))
-  # Keyboard focus cycles to search; use Tab order from the library focus grid.
-  # Click search through Sway's virtual pointer, then type an installed real game.
-  run('swaymsg','seat','seat0','cursor','set','640','211')
-  run('swaymsg','seat','seat0','cursor','press','button1');run('swaymsg','seat','seat0','cursor','release','button1')
+  run('wtype','-M','ctrl','-k','f','-m','ctrl');time.sleep(.3)
   run('wtype','2048');time.sleep(.5);run('grim',str(OUT/'game-search.png'))
   run('wtype','-k','Return');time.sleep(2)
   tree=run('swaymsg','-t','get_tree','-r').stdout
@@ -68,7 +74,7 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   # Existing launcher and keyboard integration tests now run on real Wayland.
   result=run('ctest','--test-dir',str(ROOT/'build/shell'),'--output-on-failure');(OUT/'ctest.txt').write_text(result.stdout+result.stderr)
   (OUT/'outputs.json').write_text(run('swaymsg','-r','-t','get_outputs').stdout)
-  (OUT/'versions.txt').write_text(run('sway','--version').stdout+run('qmake6','-query','QT_VERSION').stdout+run('uname','-m').stdout)
+  (OUT/'versions.txt').write_text(run('sway','--version').stdout+run('waybar','--version').stdout+run('qmake6','-query','QT_VERSION').stdout+run('uname','-m').stdout)
   runtime_log=(OUT/'sway-session.log').read_text()
   for problem in ['Failed to get image from provider','ReferenceError:','TypeError:']:
    assert problem not in runtime_log, problem

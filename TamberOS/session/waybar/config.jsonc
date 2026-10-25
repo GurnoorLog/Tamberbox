@@ -74,7 +74,9 @@
   "bluetooth": {
     "format": "BT",
     "format-disabled": "BT off",
-    "format-connected": "BT {num_connections}"
+    "format-connected": "BT {num_connections}",
+    "format-no-controller": "BT n/a",
+    "tooltip-format-no-controller": "No Bluetooth controller detected"
   },
   "tray": {
     "icon-size": 14,

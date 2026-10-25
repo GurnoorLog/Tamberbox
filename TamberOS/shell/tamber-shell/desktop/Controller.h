@@ -17,5 +17,5 @@ signals:
  void action(QString name);
  void changed();
 private:
- int descriptor=-1; bool active=false;QTimer timer;QMap<int,int> axes;
+ int scanCountdown=0; int descriptor=-1; bool active=false;QTimer timer;QMap<int,int> axes;
 };

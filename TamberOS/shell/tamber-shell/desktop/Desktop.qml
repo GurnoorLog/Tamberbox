@@ -114,7 +114,7 @@ Item {
         Rectangle { anchors.fill: parent; radius: 24; color: "#ee14171b"; border.color: "#52575d"; border.width: 1 }
         Item {
             anchors.fill: parent; focus: true
-            Keys.onEscapePressed: gamesWindow.visible=false
+            Keys.onEscapePressed: { if(manage.visible)manage.visible=false;else gamesWindow.visible=false }
             ColumnLayout {
                 anchors.fill: parent; anchors.margins: 28; spacing: 14
                 RowLayout {
@@ -132,17 +132,18 @@ Item {
                 TextField {
                     id: gameSearch
                     Layout.fillWidth: true; Layout.preferredHeight: 48
-                    placeholderText: "Search your library · native games and emulators"; onTextChanged: gameGrid.currentIndex=0; color: "#f0f1f3"; font.pixelSize: 16
+                    placeholderTextColor: "#aab4bb"; placeholderText: "Search your library · native games and emulators"; onTextChanged: gameGrid.currentIndex=0; color: "#f0f1f3"; font.pixelSize: 16
                     background: Rectangle { color: "#292f35"; radius: 12; border.color: gameSearch.activeFocus ? "#e6a56a" : "#555e66" }
-                    Keys.onEscapePressed: gamesWindow.visible=false
+                    Keys.onEscapePressed: { if(manage.visible)manage.visible=false;else gamesWindow.visible=false }
                     Keys.onDownPressed: { gameGrid.forceActiveFocus(); gameGrid.currentIndex=0 }
                     onAccepted: if(gamesWindow.games.length)gameLibrary.launch(gamesWindow.games[0].appId)
                 }
                 GridView {
                     id: gameGrid; Layout.fillWidth: true; Layout.fillHeight: true; clip: true; focus: true
                     cellWidth: 196; cellHeight: 258; model: gamesWindow.games; keyNavigationWraps: true
+                    Keys.onPressed: function(event) { if(event.key===Qt.Key_F && (event.modifiers & Qt.ControlModifier)){gameSearch.forceActiveFocus();event.accepted=true} }
                     Keys.onReturnPressed: if(currentIndex>=0 && currentIndex<gamesWindow.games.length) gameLibrary.launch(gamesWindow.games[currentIndex].appId)
-                    Keys.onEscapePressed: gamesWindow.visible=false
+                    Keys.onEscapePressed: { if(manage.visible)manage.visible=false;else gamesWindow.visible=false }
                     delegate: Rectangle {
                         required property var modelData; required property int index
                         width: 182; height: 242; radius: 15
@@ -175,7 +176,7 @@ Item {
         }
 
         Rectangle {
-            id: manage; visible: false; anchors.fill: parent; anchors.margins: 20; radius: 18; color: "#24282e"; border.color: "#69727b"
+            id: manage; visible: false; onVisibleChanged: controller.active=gamesWindow.visible&&!visible; anchors.fill: parent; anchors.margins: 20; radius: 18; color: "#24282e"; border.color: "#69727b"
             ColumnLayout {
                 anchors.fill: parent; anchors.margins: 24; spacing: 10
                 Text { text: "Library management"; color: "#f0f1f3"; font.pixelSize: 24 }
