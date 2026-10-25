@@ -1,6 +1,9 @@
 #include "Session.h"
 #include <LayerShellQt/Window>
 #include <QProcess>
+#include <QQuickWindow>
+#include <QDebug>
+#include <memory>
 #include <QTimer>
 #include <QJsonDocument>
 #include <QJsonArray>
@@ -67,7 +70,12 @@ void Session::mute(){run("wpctl",{"set-mute","@DEFAULT_AUDIO_SINK@","toggle"},[t
 void Session::wifi(bool on){run("nmcli",{"radio","wifi",on?"on":"off"},[this](bool ok,QString out){message=ok?"":out.left(160);emit changed();refresh();});}
 void Session::dispatch(const QString &c){if(c=="launcher")emit openLauncher();else if(c=="controls")emit openControls();}
 void Session::configure(QWindow *w,const QString &role){
- if(!w)return;using L=LayerShellQt::Window;auto *layer=L::get(w);layer->setScope("tamber-"+role);
+ if(!w)return;
+ if(auto *quick=qobject_cast<QQuickWindow*>(w)){
+  auto printed=std::make_shared<bool>(false);
+  connect(quick,&QQuickWindow::frameSwapped,this,[role,printed]{if(!*printed){*printed=true;qInfo().noquote()<<"TAMBER_FRAME"<<role;}},Qt::QueuedConnection);
+ }
+ using L=LayerShellQt::Window;auto *layer=L::get(w);layer->setScope("tamber-"+role);
  layer->setKeyboardInteractivity(L::KeyboardInteractivityNone);
  if(role=="wallpaper"){layer->setLayer(L::LayerBackground);layer->setAnchors(L::Anchors(L::AnchorTop)|L::AnchorBottom|L::AnchorLeft|L::AnchorRight);layer->setExclusiveZone(-1);}
  else if(role=="bar"){layer->setLayer(L::LayerTop);layer->setAnchors(L::Anchors(L::AnchorTop)|L::AnchorLeft|L::AnchorRight);layer->setExclusiveZone(40);}

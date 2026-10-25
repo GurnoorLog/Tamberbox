@@ -23,9 +23,9 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
  try:
   sock=wait(lambda:next(iter(runtime.glob('sway-ipc.*.sock')),None));env['SWAYSOCK']=str(sock)
   display=wait(lambda:next((p for p in runtime.glob('wayland-*') if not p.name.endswith('.lock')),None));env['WAYLAND_DISPLAY']=display.name
-  wait(lambda:(runtime/('tamber-'+display.name)).exists());time.sleep(2)
+  wait(lambda:(runtime/('tamber-'+display.name)).exists());wait(lambda:'TAMBER_FRAME bar' in (OUT/'sway-session.log').read_text(),30);time.sleep(.5)
   run('grim',str(OUT/'desktop.png'))
-  run('tamber-desktop','--command','launcher');time.sleep(.5)
+  run('tamber-desktop','--command','launcher');wait(lambda:'TAMBER_FRAME launcher' in (OUT/'sway-session.log').read_text(),15);time.sleep(.5)
   run('wtype','Tamber Test');time.sleep(.3);run('grim',str(OUT/'launcher.png'))
   run('wtype','-k','Return')
   def windows():
