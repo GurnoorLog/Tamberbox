@@ -1,0 +1,11 @@
+{
+  "offline_checks_passed": true,
+  "hardware_boot_verified": false,
+  "gpt_crc": true,
+  "kernel_arm64_magic": true,
+  "dtb_compatible": "rockchip,rk3588-orangepi-5-ultra rockchip,rk3588",
+  "matched_donor_assets": 3278,
+  "root_uuid_consistent": true,
+  "filesystem_check": true,
+  "image_sha256": "a34411e36ae11c463f546c06ee64c5d5785e69a9ab7bf7446f344bbaf1dbe988"
+}

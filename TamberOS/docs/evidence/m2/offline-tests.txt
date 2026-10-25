@@ -4,6 +4,11 @@ test_originals_unchanged (test_assets.AssetTests.test_originals_unchanged) ... o
 test_fake_fixture_and_invalid_thermal_value (test_hardware.HardwareTests.test_fake_fixture_and_invalid_thermal_value) ... ok
 test_memory_units (test_hardware.HardwareTests.test_memory_units) ... ok
 test_safe_missing_sensors (test_hardware.HardwareTests.test_safe_missing_sensors) ... ok
+test_device_and_symlink_refused (test_image.ImageGuards.test_device_and_symlink_refused) ... ok
+test_gpt_crc_detects_corruption (test_image.ImageGuards.test_gpt_crc_detects_corruption) ... ok
+test_wrong_board_layout_refused (test_image.ImageGuards.test_wrong_board_layout_refused) ... ok
+test_private_key_and_wrong_type_rejected (test_image.PersonalizationGuards.test_private_key_and_wrong_type_rejected) ... ok
+test_valid_ed25519_public_key (test_image.PersonalizationGuards.test_valid_ed25519_public_key) ... ok
 test_empty_root_is_unknown (test_inventory.InventoryTests.test_empty_root_is_unknown) ... ok
 test_exact_board_and_sensitive_fields_excluded (test_inventory.InventoryTests.test_exact_board_and_sensitive_fields_excluded) ... ok
 test_redaction (test_inventory.InventoryTests.test_redaction) ... ok
@@ -27,7 +32,7 @@ test_real_upstream_signature_and_pinned_image (test_signature.SignatureTests.tes
 test_wrong_image_lock_rejected (test_signature.SignatureTests.test_wrong_image_lock_rejected) ... ok
 
 ----------------------------------------------------------------------
-Ran 27 tests in 0.099s
+Ran 32 tests in 0.092s
 
 OK
 PASS: Required project artifacts and SVG syntax exist.

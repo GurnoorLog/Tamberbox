@@ -24,9 +24,9 @@ Capture boot source, exact board revision, kernel/module versions, `dmesg` extra
 
 ## Bring-up stages
 - [ ] Identify boot media, U-Boot version/config, partitions and exact DTB on the known-good Ultra.
-- [ ] Build an AlmaLinux 10 aarch64 VM in QEMU using official checked cloud image; validate DNF and basic services.
+- [x] Build an AlmaLinux 10 aarch64 VM in QEMU using official checked cloud image; validate DNF and basic services.
 - [ ] Choose test SD card. Make backup/recovery plan and confirm target device before any writing.
-- [ ] Produce isolated test image that combines vetted board-specific boot chain/kernel/modules with AlmaLinux rootfs.
+- [x] Produce isolated test image that combines vetted board-specific boot chain/kernel/modules with AlmaLinux rootfs.
 - [ ] Serial console / HDMI verifies boot messages and login.
 - [ ] `uname`, `/etc/os-release` and rootfs packages demonstrate the intended combination.
 - [ ] Check wired/wireless network, HDMI, USB, NVMe and audio, logging successes and failures.
@@ -35,7 +35,7 @@ Capture boot source, exact board revision, kernel/module versions, `dmesg` extra
 - [ ] Test clean shutdown/reboot, filesystem integrity and rollback.
 
 ## Explicit unknowns
-Exact DTB/boot offsets, U-Boot behavior, usable GPU drivers under the chosen AlmaLinux userspace, Qt 6 package source, SDDM availability, GPU accelerated compositors, NPU bindings and power characteristics are **not yet verified**. Codex must investigate rather than assume.
+The selected donor DTB/boot offsets and kernel bundle are inspected in [M2 boot-chain results](m2-boot-chain.md). Qt compilation/X11 runtime and offline image assembly are verified. Actual board boot, driver behavior, SDDM, accelerated graphics, NPU and power characteristics remain unverified.
 
 ## Safeguards
 Never let exploratory agents flash the existing working drive. Use a disposable card and a physical recovery plan. No unattended `dd`, `flashcp`, `fdisk`, `parted`, `mkfs`, `u-boot-install`, `grub-install`, or raw eMMC/SPI write scripts in the default workflow. Any future flash helper must be interactive and opt-in.

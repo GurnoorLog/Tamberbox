@@ -26,5 +26,5 @@ jobs:
         if: always()
         with:
           name: tamber-shell-runtime
-          path: TamberOS/build/shell/*.png
+          path: build/shell/*.png
           if-no-files-found: warn

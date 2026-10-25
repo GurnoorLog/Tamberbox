@@ -33,13 +33,13 @@ jobs:
         with:
           name: m2-image-evidence
           path: |
-            TamberOS/build/m2/*.json
-            TamberOS/build/m2/rpm-inventory.txt
-            TamberOS/build/m2/initramfs-list.txt
+            build/m2/*.json
+            build/m2/rpm-inventory.txt
+            build/m2/initramfs-list.txt
           if-no-files-found: error
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: m2-ultra-unpersonalized-candidate
-          path: TamberOS/build/m2/TamberOS-M2-ultra.img.xz
+          path: build/m2/TamberOS-M2-ultra.img.xz
           compression-level: 0
           if-no-files-found: error

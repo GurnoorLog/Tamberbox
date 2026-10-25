@@ -1,0 +1,18 @@
+{
+  "hardware_boot_verified": false,
+  "image_sha256": "a34411e36ae11c463f546c06ee64c5d5785e69a9ab7bf7446f344bbaf1dbe988",
+  "bytes": 2441084928,
+  "root_uuid": "6b824c82-df58-5da7-922c-764d173a5bca",
+  "kernel": "6.1.172-vendor-rk35xx",
+  "donor_lock": {
+    "url": "https://github.com/armbian/community/releases/download/26.11.0-trunk.108/Armbian_community_26.11.0-trunk.108_Orangepi5-ultra_trixie_vendor_6.1.172_minimal.img.xz",
+    "sha256": "ea3f077f076b36792a0600b1c332d7e0bb676ce1e174ffaa81823d6e5038de6b",
+    "bytes": 411146260,
+    "board": "orangepi5-ultra",
+    "kernel": "6.1.172",
+    "provenance": "Armbian community release API asset digest; not an independently verified signature"
+  },
+  "boot_region_preserved": true,
+  "login_personalized": false,
+  "reproducibility": "Pinned donor/container and exact RPM NEVRAs; fail if unavailable; filesystem timestamps and build tools prevent bit-identical output"
+}

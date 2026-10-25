@@ -6,6 +6,7 @@
 #include <QImage>
 #include "Launcher.h"
 int main(int argc,char *argv[]) {
+ if(qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE"))qputenv("QT_QUICK_CONTROLS_STYLE","Basic");
  QGuiApplication app(argc,argv); app.setApplicationName("Tamber Shell");app.setOrganizationName("TamberOS");
  Launcher launcher;QQmlApplicationEngine engine;engine.rootContext()->setContextProperty("appLauncher",&launcher);
  engine.loadFromModule("TamberShell","Main");if(engine.rootObjects().isEmpty())return 1;

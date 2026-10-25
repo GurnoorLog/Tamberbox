@@ -21,7 +21,7 @@
 
 ## M2 · Ultra hardware boot (critical path)
 - [ ] Capture known-good exact-board boot inventory
-- [ ] Build disposable test image from board-specific boot assets + AlmaLinux rootfs
+- [x] Build disposable test image from board-specific boot assets + AlmaLinux rootfs (offline CI; not board-boot verified)
 - [ ] Serial output and HDMI confirm boot; machine identity recorded
 - [ ] Basic input/network/storage, no fatal regressions; backup recovery tested
 
@@ -29,7 +29,7 @@
 - [ ] Select proven compositor/SDDM availability and graphics path
 - [ ] Custom boot splash / sign-in / desktop launcher
 - [ ] Keyboard and pointer access, reduced motion, shutdown and logout
-- [ ] Functional app launching and settings persistence
+- [x] Functional app launching and settings persistence in a session prototype (ARM64 X11; not board tested)
 
 ## M4 · Tamber modes
 - [ ] AI adapter with explicit permission/connection and installed-model listing

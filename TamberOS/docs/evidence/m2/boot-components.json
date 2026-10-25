@@ -1,0 +1,19 @@
+{
+  "source": "Downloaded CI candidate; compared to previously inspected donor component hashes",
+  "components": [
+    {
+      "name": "idbloader.img",
+      "offset": 32768,
+      "bytes": 321536,
+      "sha256": "f1caba0643079f9b0caa15edc4e5e9df83ed462f3f069ca51100ad601103680e",
+      "matches_previously_inspected_donor": true
+    },
+    {
+      "name": "u-boot.itb",
+      "offset": 8388608,
+      "bytes": 1457152,
+      "sha256": "7c713259c8742cf0e3bfd63c57988ab8c56609218f1e686fd44a8ed188be06d2",
+      "matches_previously_inspected_donor": true
+    }
+  ]
+}

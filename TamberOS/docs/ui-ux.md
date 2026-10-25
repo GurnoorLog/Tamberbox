@@ -17,7 +17,16 @@ Breakpoints: 1920×1080 primary; 1280×720 minimum; display scaling 100–200%. 
 | 11 | **Quick controls** | Compact overlay from panel | Wi-Fi, audio, battery/power, night mode | If hardware data missing show unavailable |
 | 12 | **About / Updates** | Version, hardware info, licensing, update channel | Check updates, view changelog | Signed repositories & tested rollback strategy |
 
-## Navigation model
+## M2 session direction (supersedes the original rail mock)
+
+The implemented session uses a slim translucent top bar, centered floating dock,
+rounded launcher/control panels and restrained charcoal/cream/orange styling.
+Ctrl+Space opens search; arrows/Enter launch and Escape closes; Ctrl+Comma opens
+controls. Appearance settings persist. External window rounding belongs to the
+existing window manager. Original nine references and the official sunglasses-llama
+boot concept remain unchanged; diagnostic boot output is currently used.
+
+## Original navigation model (design mock)
 - Rail: Home / AI / Games / Files / System / Settings; launcher and power controls live in bottom utility area.
 - `Super` opens search/launcher, `Esc` closes overlays, tab navigation has visible focus.
 - Game Mode can be entered from Home and exited through a clear on-screen action, not a hidden key.
