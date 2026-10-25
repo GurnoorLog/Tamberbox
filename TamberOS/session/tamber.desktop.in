@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=TamberOS (development)
+Comment=Original TamberOS desktop on Sway
+Exec=@PREFIX@/session/start-tamber-session
+Type=Application
+DesktopNames=TamberOS;sway

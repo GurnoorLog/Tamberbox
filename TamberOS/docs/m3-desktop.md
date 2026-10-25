@@ -101,3 +101,22 @@ from headless software rendering. Keep M2's candidate as the baseline.
 All changes are on a feature branch. Close the nested compositor and remove only
 its disposable build directory to roll back development. No SDDM, Plymouth,
 firmware, bootloader or physical storage configuration is changed by the build.
+
+## Session registration template
+
+`session/tamber.desktop.in` is a display-manager entry template. On a separate
+validated development installation, replace `@PREFIX@` with the absolute source
+checkout/build prefix before placing it in the display manager's Wayland session
+directory. No registration or service activation is done automatically. An SDDM
+login test must confirm the selected session starts and returns cleanly on exit.
+
+## Dependency compatibility
+
+LayerShellQt is pinned to `395a913581da34f4d10c6b9ae8ba216e8b1f69f9`.
+Two explicit compatibility adaptations are applied by the build script: discovering
+Qt 6.10's separate private module, and the exposure API version split used by
+[upstream v6.5.0](https://github.com/KDE/layer-shell-qt/blob/v6.5.0/src/qwaylandlayersurface.cpp).
+Private Qt APIs require rebuilding the integration against the installed Qt version.
+The AlmaLinux job pins ECM to `09025604cf16a63c8bd0d8d871c7edc44ca47aab`.
+The prototype remains separate from the M2 rootfs; no untested desktop packages
+are silently added to that candidate.

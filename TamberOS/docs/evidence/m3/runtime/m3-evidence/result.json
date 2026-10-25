@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "backend": "headless Sway / pixman",
+  "physical_devices_used": false,
+  "launcher_keyboard_real_process": true,
+  "window_minimize_restore_close": true,
+  "hardware_validation": "pending"
+}

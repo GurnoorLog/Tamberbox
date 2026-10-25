@@ -1,0 +1,1604 @@
+﻿2026-10-25T15:30:21.1512474Z Current runner version: '2.338.0'
+2026-10-25T15:30:21.1540214Z ##[group]Runner Image Provisioner
+2026-10-25T15:30:21.1541391Z Hosted Compute Agent
+2026-10-25T15:30:21.1541997Z Version: 20261021.618
+2026-10-25T15:30:21.1542708Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-25T15:30:21.1543454Z Build Date: 2026-10-21T00:45:21Z
+2026-10-25T15:30:21.1544159Z Worker ID: {6b65fa47-801c-4f1e-ac7f-19d263e15ea6}
+2026-10-25T15:30:21.1544955Z Region: westcentralus
+2026-10-25T15:30:21.1545529Z Cloud: Azure
+2026-10-25T15:30:21.1546086Z ##[endgroup]
+2026-10-25T15:30:21.1547828Z ##[group]Operating System
+2026-10-25T15:30:21.1548533Z Ubuntu
+2026-10-25T15:30:21.1549424Z 24.04.5
+2026-10-25T15:30:21.1549952Z LTS
+2026-10-25T15:30:21.1550442Z ##[endgroup]
+2026-10-25T15:30:21.1551162Z ##[group]Runner Image
+2026-10-25T15:30:21.1551823Z Image: ubuntu-24.04-arm
+2026-10-25T15:30:21.1552527Z Version: 20261012.149.1
+2026-10-25T15:30:21.1553902Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24-arm64/20261012.149/images/ubuntu/Ubuntu2404-Arm64-Readme.md
+2026-10-25T15:30:21.1555650Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24-arm64%2F20261012.149
+2026-10-25T15:30:21.1556622Z ##[endgroup]
+2026-10-25T15:30:21.1557807Z ##[group]GITHUB_TOKEN Permissions
+2026-10-25T15:30:21.1560758Z Contents: read
+2026-10-25T15:30:21.1561810Z Metadata: read
+2026-10-25T15:30:21.1562408Z ##[endgroup]
+2026-10-25T15:30:21.1564885Z Secret source: Actions
+2026-10-25T15:30:21.1565998Z Cache mode: write
+2026-10-25T15:30:21.1566959Z Prepare workflow directory
+2026-10-25T15:30:21.2014899Z Prepare all required actions
+2026-10-25T15:30:21.2066345Z Getting action download info
+2026-10-25T15:30:21.5095727Z Download action repository 'actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683' (SHA:11bd71901bbe5b1630ceea73d27597364c9af683)
+2026-10-25T15:30:21.6376943Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-25T15:30:21.9015684Z Complete job name: alma-arm64-build
+2026-10-25T15:30:21.9933638Z ##[group]Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+2026-10-25T15:30:21.9935301Z with:
+2026-10-25T15:30:21.9935911Z   repository: GurnoorLog/Tamberbox
+2026-10-25T15:30:21.9940136Z   token: ***
+2026-10-25T15:30:21.9940729Z   ssh-strict: true
+2026-10-25T15:30:21.9941335Z   ssh-user: git
+2026-10-25T15:30:21.9941996Z   persist-credentials: true
+2026-10-25T15:30:21.9942601Z   clean: true
+2026-10-25T15:30:21.9943153Z   sparse-checkout-cone-mode: true
+2026-10-25T15:30:21.9943865Z   fetch-depth: 1
+2026-10-25T15:30:21.9944464Z   fetch-tags: false
+2026-10-25T15:30:21.9945131Z   show-progress: true
+2026-10-25T15:30:21.9945703Z   lfs: false
+2026-10-25T15:30:21.9946227Z   submodules: false
+2026-10-25T15:30:21.9946866Z   set-safe-directory: true
+2026-10-25T15:30:21.9948081Z ##[endgroup]
+2026-10-25T15:30:22.0832783Z Syncing repository: GurnoorLog/Tamberbox
+2026-10-25T15:30:22.0835590Z ##[group]Getting Git version info
+2026-10-25T15:30:22.0836633Z Working directory is '/home/runner/work/Tamberbox/Tamberbox'
+2026-10-25T15:30:22.0838073Z [command]/usr/bin/git version
+2026-10-25T15:30:22.0898158Z git version 2.55.0
+2026-10-25T15:30:22.0916774Z ##[endgroup]
+2026-10-25T15:30:22.0931270Z Temporarily overriding HOME='/home/runner/work/_temp/f56ac586-f097-4b7d-9301-1f30133e7159' before making global git config changes
+2026-10-25T15:30:22.0939622Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-25T15:30:22.0941218Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Tamberbox/Tamberbox
+2026-10-25T15:30:22.0973142Z Deleting the contents of '/home/runner/work/Tamberbox/Tamberbox'
+2026-10-25T15:30:22.0980540Z ##[group]Initializing the repository
+2026-10-25T15:30:22.0983489Z [command]/usr/bin/git init /home/runner/work/Tamberbox/Tamberbox
+2026-10-25T15:30:22.1062404Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-25T15:30:22.1076266Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-25T15:30:22.1078152Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-25T15:30:22.1079368Z hint: call:
+2026-10-25T15:30:22.1079939Z hint:
+2026-10-25T15:30:22.1080935Z hint: 	git config --global init.defaultBranch <name>
+2026-10-25T15:30:22.1081794Z hint:
+2026-10-25T15:30:22.1082494Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-25T15:30:22.1083642Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-25T15:30:22.1084473Z hint:
+2026-10-25T15:30:22.1085023Z hint: 	git branch -m <name>
+2026-10-25T15:30:22.1085855Z hint:
+2026-10-25T15:30:22.1086629Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-25T15:30:22.1087834Z Initialized empty Git repository in /home/runner/work/Tamberbox/Tamberbox/.git/
+2026-10-25T15:30:22.1089977Z [command]/usr/bin/git remote add origin https://github.com/GurnoorLog/Tamberbox
+2026-10-25T15:30:22.1120494Z ##[endgroup]
+2026-10-25T15:30:22.1121788Z ##[group]Disabling automatic garbage collection
+2026-10-25T15:30:22.1122619Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-25T15:30:22.1151699Z ##[endgroup]
+2026-10-25T15:30:22.1152795Z ##[group]Setting up auth
+2026-10-25T15:30:22.1154057Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-25T15:30:22.1181809Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-25T15:30:22.1478396Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-25T15:30:22.1511585Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-25T15:30:22.1703594Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-25T15:30:22.1741543Z ##[endgroup]
+2026-10-25T15:30:22.1742554Z ##[group]Fetching the repository
+2026-10-25T15:30:22.1749541Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +bc996e94e11f6375ce65ef1d91d3fcbf80d3940b:refs/remotes/origin/feature/tamberos-m3
+2026-10-25T15:30:23.2820734Z From https://github.com/GurnoorLog/Tamberbox
+2026-10-25T15:30:23.2822234Z  * [new ref]         bc996e94e11f6375ce65ef1d91d3fcbf80d3940b -> origin/feature/tamberos-m3
+2026-10-25T15:30:23.2826230Z ##[endgroup]
+2026-10-25T15:30:23.2827850Z ##[group]Determining the checkout info
+2026-10-25T15:30:23.2829638Z ##[endgroup]
+2026-10-25T15:30:23.2832092Z [command]/usr/bin/git sparse-checkout disable
+2026-10-25T15:30:23.2873183Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-25T15:30:23.2902905Z ##[group]Checking out the ref
+2026-10-25T15:30:23.2906125Z [command]/usr/bin/git checkout --progress --force -B feature/tamberos-m3 refs/remotes/origin/feature/tamberos-m3
+2026-10-25T15:30:23.3191163Z Switched to a new branch 'feature/tamberos-m3'
+2026-10-25T15:30:23.3193300Z branch 'feature/tamberos-m3' set up to track 'origin/feature/tamberos-m3'.
+2026-10-25T15:30:23.3196793Z ##[endgroup]
+2026-10-25T15:30:23.3227047Z [command]/usr/bin/git log -1 --format=%H
+2026-10-25T15:30:23.3250220Z bc996e94e11f6375ce65ef1d91d3fcbf80d3940b
+2026-10-25T15:30:23.3500034Z ##[group]Run docker run --rm -v "$PWD:/work" almalinux@sha256:838c2fafefb1a8a0d7f8cdbc3b0551c2a2b1eb0cd87aad6d62aecadb18311f1b bash /work/scripts/test_desktop_alma.sh
+2026-10-25T15:30:23.3504033Z [36;1mdocker run --rm -v "$PWD:/work" almalinux@sha256:838c2fafefb1a8a0d7f8cdbc3b0551c2a2b1eb0cd87aad6d62aecadb18311f1b bash /work/scripts/test_desktop_alma.sh[0m
+2026-10-25T15:30:23.3604331Z shell: /usr/bin/bash -e {0}
+2026-10-25T15:30:23.3605623Z ##[endgroup]
+2026-10-25T15:30:23.4317077Z Unable to find image 'almalinux@sha256:838c2fafefb1a8a0d7f8cdbc3b0551c2a2b1eb0cd87aad6d62aecadb18311f1b' locally
+2026-10-25T15:30:23.9779997Z docker.io/library/almalinux@sha256:838c2fafefb1a8a0d7f8cdbc3b0551c2a2b1eb0cd87aad6d62aecadb18311f1b: Pulling from library/almalinux
+2026-10-25T15:30:24.1752263Z 72828735570a: Pulling fs layer
+2026-10-25T15:30:24.7570057Z 72828735570a: Verifying Checksum
+2026-10-25T15:30:24.7570812Z 72828735570a: Download complete
+2026-10-25T15:30:26.4575881Z 72828735570a: Pull complete
+2026-10-25T15:30:26.4614467Z Digest: sha256:838c2fafefb1a8a0d7f8cdbc3b0551c2a2b1eb0cd87aad6d62aecadb18311f1b
+2026-10-25T15:30:26.4626506Z Status: Downloaded newer image for almalinux@sha256:838c2fafefb1a8a0d7f8cdbc3b0551c2a2b1eb0cd87aad6d62aecadb18311f1b
+2026-10-25T15:30:30.0983547Z AlmaLinux 10.2 - AppStream                      3.4 MB/s | 2.8 MB     00:00    
+2026-10-25T15:30:31.6099835Z AlmaLinux 10.2 - BaseOS                          59 MB/s |  72 MB     00:01    
+2026-10-25T15:30:37.7349685Z AlmaLinux 10.2 - CRB                            1.4 MB/s | 649 kB     00:00    
+2026-10-25T15:30:38.1292530Z AlmaLinux 10.2 - Extras                          51 kB/s |  13 kB     00:00    
+2026-10-25T15:30:38.7132075Z Package python3-3.12.14-1.el10_2.aarch64 is already installed.
+2026-10-25T15:30:38.7562617Z Dependencies resolved.
+2026-10-25T15:30:38.7654460Z ================================================================================
+2026-10-25T15:30:38.7655686Z  Package                     Arch     Version                  Repository  Size
+2026-10-25T15:30:38.7656414Z ================================================================================
+2026-10-25T15:30:38.7656772Z Installing:
+2026-10-25T15:30:38.7657131Z  cmake                       aarch64  3.31.8-1.el10            appstream  8.6 M
+2026-10-25T15:30:38.7657575Z  file                        aarch64  5.45-9.el10              baseos      48 k
+2026-10-25T15:30:38.7658035Z  gcc-c++                     aarch64  14.3.1-4.4.el10.alma.2   appstream   14 M
+2026-10-25T15:30:38.7658513Z  git                         aarch64  2.52.0-1.el10            appstream   40 k
+2026-10-25T15:30:38.7658947Z  glib2-devel                 aarch64  2.80.4-12.el10_2.22      appstream  1.5 M
+2026-10-25T15:30:38.7659692Z  libxkbcommon-devel          aarch64  1.7.0-4.el10             appstream   67 k
+2026-10-25T15:30:38.7660162Z  ninja-build                 aarch64  1.11.1-9.el10            crb        169 k
+2026-10-25T15:30:38.7660695Z  qt6-qtbase-devel            aarch64  6.10.1-1.el10.alma.1     appstream  3.5 M
+2026-10-25T15:30:38.7661201Z  qt6-qtbase-private-devel    aarch64  6.10.1-1.el10.alma.1     crb        1.0 M
+2026-10-25T15:30:38.7661713Z  qt6-qtdeclarative-devel     aarch64  6.10.1-1.el10_2.1        appstream  4.0 M
+2026-10-25T15:30:38.7662241Z  qt6-qtsvg                   aarch64  6.10.1-1.el10            appstream  291 k
+2026-10-25T15:30:38.7662725Z  qt6-qtwayland-devel         aarch64  6.10.1-1.el10            appstream  228 k
+2026-10-25T15:30:38.7663268Z  wayland-devel               aarch64  1.24.0-1.el10            appstream  146 k
+2026-10-25T15:30:38.7663795Z  wayland-protocols-devel     noarch   1.45-1.el10              appstream  156 k
+2026-10-25T15:30:38.7664186Z Upgrading:
+2026-10-25T15:30:38.7664503Z  python3                     aarch64  3.12.15-1.el10_2         baseos      27 k
+2026-10-25T15:30:38.7664938Z  python3-libs                aarch64  3.12.15-1.el10_2         baseos     9.3 M
+2026-10-25T15:30:38.7665358Z Installing dependencies:
+2026-10-25T15:30:38.7666125Z  authselect                  aarch64  1.5.2-1.el10             baseos     205 k
+2026-10-25T15:30:38.7666625Z  authselect-libs             aarch64  1.5.2-1.el10             baseos     230 k
+2026-10-25T15:30:38.7667169Z  avahi                       aarch64  0.9~rc2-2.el10           baseos     426 k
+2026-10-25T15:30:38.7667629Z  avahi-devel                 aarch64  0.9~rc2-2.el10           appstream   37 k
+2026-10-25T15:30:38.7668135Z  avahi-libs                  aarch64  0.9~rc2-2.el10           baseos      67 k
+2026-10-25T15:30:38.7668815Z  chrpath                     aarch64  0.16-25.el10             baseos      30 k
+2026-10-25T15:30:38.7669515Z  cmake-data                  noarch   3.31.8-1.el10            appstream  1.9 M
+2026-10-25T15:30:38.7669983Z  cmake-filesystem            aarch64  3.31.8-1.el10            appstream   13 k
+2026-10-25T15:30:38.7670508Z  cpp                         aarch64  14.3.1-4.4.el10.alma.2   appstream   11 M
+2026-10-25T15:30:38.7671031Z  cracklib                    aarch64  2.9.11-8.el10            baseos      97 k
+2026-10-25T15:30:38.7671516Z  cracklib-dicts              aarch64  2.9.11-8.el10            baseos     3.6 M
+2026-10-25T15:30:38.7671977Z  cups-devel                  aarch64  1:2.4.10-18.el10_2       appstream   50 k
+2026-10-25T15:30:38.7672433Z  cups-filesystem             noarch   1:2.4.10-18.el10_2       baseos      11 k
+2026-10-25T15:30:38.7672914Z  cups-libs                   aarch64  1:2.4.10-18.el10_2       baseos     260 k
+2026-10-25T15:30:38.7673387Z  cyrus-sasl-lib              aarch64  2.1.28-30.el10_2         baseos     102 k
+2026-10-25T15:30:38.7673828Z  dbus-devel                  aarch64  1:1.14.10-5.el10         appstream   41 k
+2026-10-25T15:30:38.7674361Z  default-fonts-core-sans     noarch   4.1-3.el10               baseos      34 k
+2026-10-25T15:30:38.7674830Z  duktape                     aarch64  2.7.0-10.el10            baseos     171 k
+2026-10-25T15:30:38.7675340Z  emacs-filesystem            noarch   1:29.4-14.el10_2.3       baseos     7.9 k
+2026-10-25T15:30:38.7675842Z  fontconfig                  aarch64  2.15.0-7.el10            appstream  277 k
+2026-10-25T15:30:38.7676294Z  fonts-filesystem            noarch   1:2.0.5-18.el10          baseos     7.7 k
+2026-10-25T15:30:38.7676781Z  freetype                    aarch64  2.13.2-8.el10            baseos     402 k
+2026-10-25T15:30:38.7677202Z  gcc                         aarch64  14.3.1-4.4.el10.alma.2   appstream   34 M
+2026-10-25T15:30:38.7677693Z  gdbm                        aarch64  1:1.23-12.el10_0         baseos     153 k
+2026-10-25T15:30:38.7678124Z  git-core                    aarch64  2.52.0-1.el10            appstream  5.2 M
+2026-10-25T15:30:38.7678560Z  git-core-doc                noarch   2.52.0-1.el10            appstream  2.9 M
+2026-10-25T15:30:38.7679054Z  glibc-devel                 aarch64  2.39-128.el10_2.alma.1   appstream  465 k
+2026-10-25T15:30:38.7679715Z  glx-utils                   aarch64  9.0.0-8.el10             appstream   74 k
+2026-10-25T15:30:38.7680208Z  gnutls-c++                  aarch64  3.8.10-4.el10_2          appstream   27 k
+2026-10-25T15:30:38.7680680Z  gnutls-dane                 aarch64  3.8.10-4.el10_2          appstream   39 k
+2026-10-25T15:30:38.7681135Z  gnutls-devel                aarch64  3.8.10-4.el10_2          appstream  2.2 M
+2026-10-25T15:30:38.7681686Z  google-noto-fonts-common    noarch   20240401-5.el10          baseos      17 k
+2026-10-25T15:30:38.7682200Z  google-noto-sans-vf-fonts   noarch   20240401-5.el10          baseos     593 k
+2026-10-25T15:30:38.7682732Z  graphite2                   aarch64  1.3.14-17.el10           baseos      91 k
+2026-10-25T15:30:38.7683177Z  groff-base                  aarch64  1.23.0-10.el10           baseos     1.1 M
+2026-10-25T15:30:38.7683614Z  harfbuzz                    aarch64  8.4.0-6.el10             baseos     986 k
+2026-10-25T15:30:38.7684067Z  hwdata                      noarch   0.379-10.8.el10          baseos     1.7 M
+2026-10-25T15:30:38.7684706Z  kernel-headers              aarch64  6.12.0-211.68.1.el10_2   appstream  3.6 M
+2026-10-25T15:30:38.7685278Z  keyutils-libs-devel         aarch64  1.6.3-5.el10             appstream   62 k
+2026-10-25T15:30:38.7685834Z  krb5-devel                  aarch64  1.21.3-10.el10_2         appstream  132 k
+2026-10-25T15:30:38.7686273Z  libICE                      aarch64  1.1.1-5.el10             appstream   73 k
+2026-10-25T15:30:38.7686755Z  libSM                       aarch64  1.2.4-5.el10             appstream   43 k
+2026-10-25T15:30:38.7687246Z  libX11                      aarch64  1.8.10-1.el10            appstream  642 k
+2026-10-25T15:30:38.7687880Z  libX11-common               noarch   1.8.10-1.el10            appstream  189 k
+2026-10-25T15:30:38.7688361Z  libX11-devel                aarch64  1.8.10-1.el10            appstream  1.1 M
+2026-10-25T15:30:38.7688821Z  libX11-xcb                  aarch64  1.8.10-1.el10            appstream   12 k
+2026-10-25T15:30:38.7689468Z  libXau                      aarch64  1.0.11-8.el10            appstream   32 k
+2026-10-25T15:30:38.7689945Z  libXau-devel                aarch64  1.0.11-8.el10            appstream   14 k
+2026-10-25T15:30:38.7690382Z  libXext                     aarch64  1.3.6-3.el10             appstream   39 k
+2026-10-25T15:30:38.7690867Z  libXxf86vm                  aarch64  1.1.5-8.el10             appstream   18 k
+2026-10-25T15:30:38.7691326Z  libasan                     aarch64  14.3.1-4.4.el10.alma.2   appstream  524 k
+2026-10-25T15:30:38.7691796Z  libatomic                   aarch64  14.3.1-4.4.el10.alma.2   baseos      51 k
+2026-10-25T15:30:38.7692278Z  libblkid-devel              aarch64  2.40.2-18.el10           appstream   26 k
+2026-10-25T15:30:38.7692723Z  libbrotli                   aarch64  1.1.0-8.el10_2           baseos     344 k
+2026-10-25T15:30:38.7693194Z  libcbor                     aarch64  0.11.0-3.el10            baseos      33 k
+2026-10-25T15:30:38.7693799Z  libcom_err-devel            aarch64  1.47.1-5.el10            appstream   16 k
+2026-10-25T15:30:38.7694300Z  libdaemon                   aarch64  0.14-31.el10             baseos      32 k
+2026-10-25T15:30:38.7694751Z  libdrm                      aarch64  2.4.128-1.el10           baseos     193 k
+2026-10-25T15:30:38.7695170Z  libedit                     aarch64  3.1-52.20230828cvs.el10  baseos     105 k
+2026-10-25T15:30:38.7695639Z  libevdev                    aarch64  1.13.1-6.el10            appstream   37 k
+2026-10-25T15:30:38.7696085Z  libevent                    aarch64  2.1.13-1.el10_2          baseos     255 k
+2026-10-25T15:30:38.7696570Z  libevent-devel              aarch64  2.1.13-1.el10_2          appstream  102 k
+2026-10-25T15:30:38.7697050Z  libffi-devel                aarch64  3.4.4-10.el10            appstream   27 k
+2026-10-25T15:30:38.7697488Z  libfido2                    aarch64  1.14.0-7.el10            baseos      96 k
+2026-10-25T15:30:38.7697954Z  libglvnd                    aarch64  1:1.7.0-7.el10           appstream  109 k
+2026-10-25T15:30:38.7698421Z  libglvnd-core-devel         aarch64  1:1.7.0-7.el10           appstream   17 k
+2026-10-25T15:30:38.7698915Z  libglvnd-devel              aarch64  1:1.7.0-7.el10           appstream  164 k
+2026-10-25T15:30:38.7699575Z  libglvnd-egl                aarch64  1:1.7.0-7.el10           appstream   36 k
+2026-10-25T15:30:38.7700045Z  libglvnd-gles               aarch64  1:1.7.0-7.el10           appstream   30 k
+2026-10-25T15:30:38.7700545Z  libglvnd-glx                aarch64  1:1.7.0-7.el10           appstream  129 k
+2026-10-25T15:30:38.7701005Z  libglvnd-opengl             aarch64  1:1.7.0-7.el10           appstream   40 k
+2026-10-25T15:30:38.7701475Z  libgudev                    aarch64  238-7.el10               baseos      34 k
+2026-10-25T15:30:38.7701925Z  libicu                      aarch64  74.2-5.el10_0            baseos      10 M
+2026-10-25T15:30:38.7702371Z  libidn2-devel               aarch64  2.3.7-3.el10             appstream   74 k
+2026-10-25T15:30:38.7702927Z  libinput                    aarch64  1.30.1-2.el10_2          appstream  236 k
+2026-10-25T15:30:38.7703610Z  libjpeg-turbo               aarch64  3.0.2-4.el10             appstream  261 k
+2026-10-25T15:30:38.7704095Z  libkadm5                    aarch64  1.21.3-10.el10_2         baseos      76 k
+2026-10-25T15:30:38.7704583Z  libmount-devel              aarch64  2.40.2-18.el10           appstream   27 k
+2026-10-25T15:30:38.7705179Z  libmpc                      aarch64  1.3.1-7.el10             appstream   72 k
+2026-10-25T15:30:38.7705674Z  libpciaccess                aarch64  0.16-16.el10             baseos      27 k
+2026-10-25T15:30:38.7706247Z  libpkgconf                  aarch64  2.1.0-3.el10             baseos      38 k
+2026-10-25T15:30:38.7706697Z  libpng                      aarch64  2:1.6.40-11.el10_2.1     baseos     119 k
+2026-10-25T15:30:38.7707170Z  libpq                       aarch64  16.14-1.el10_2           baseos     250 k
+2026-10-25T15:30:38.7708354Z  libproxy                    aarch64  0.5.5-4.el10             baseos      47 k
+2026-10-25T15:30:38.7708937Z  libpwquality                aarch64  1.4.5-12.el10            baseos     123 k
+2026-10-25T15:30:38.7709541Z  libselinux-devel            aarch64  3.10-1.el10              appstream  115 k
+2026-10-25T15:30:38.7710079Z  libsepol-devel              aarch64  3.10-1.el10              appstream   40 k
+2026-10-25T15:30:38.7710616Z  libstdc++-devel             aarch64  14.3.1-4.4.el10.alma.2   appstream  2.6 M
+2026-10-25T15:30:38.7711087Z  libtasn1-devel              aarch64  4.20.0-5.el10_2          appstream   76 k
+2026-10-25T15:30:38.7711604Z  libtasn1-tools              aarch64  4.20.0-5.el10_2          appstream   26 k
+2026-10-25T15:30:38.7712074Z  libtool-ltdl                aarch64  2.4.7-13.el10            appstream   35 k
+2026-10-25T15:30:38.7712531Z  libubsan                    aarch64  14.3.1-4.4.el10.alma.2   appstream  231 k
+2026-10-25T15:30:38.7713456Z  libutempter                 aarch64  1.2.1-15.el10            baseos      26 k
+2026-10-25T15:30:38.7713916Z  libuv                       aarch64  1:1.52.1-1.el10_2        appstream  262 k
+2026-10-25T15:30:38.7714774Z  libverto-devel              aarch64  0.3.2-10.el10            appstream   14 k
+2026-10-25T15:30:38.7715257Z  libwacom                    aarch64  2.14.0-4.el10_1          appstream   46 k
+2026-10-25T15:30:38.7715749Z  libwacom-data               noarch   2.14.0-4.el10_1          appstream  196 k
+2026-10-25T15:30:38.7716270Z  libwayland-client           aarch64  1.24.0-1.el10            appstream   33 k
+2026-10-25T15:30:38.7716753Z  libwayland-cursor           aarch64  1.24.0-1.el10            appstream   19 k
+2026-10-25T15:30:38.7717269Z  libwayland-egl              aarch64  1.24.0-1.el10            appstream   12 k
+2026-10-25T15:30:38.7717751Z  libwayland-server           aarch64  1.24.0-1.el10            appstream   42 k
+2026-10-25T15:30:38.7718228Z  libxcb                      aarch64  1.17.0-3.el10            appstream  246 k
+2026-10-25T15:30:38.7718697Z  libxcb-devel                aarch64  1.17.0-3.el10            appstream  1.6 M
+2026-10-25T15:30:38.7719581Z  libxcrypt-devel             aarch64  4.4.36-10.el10           appstream   33 k
+2026-10-25T15:30:38.7720143Z  libxkbcommon                aarch64  1.7.0-4.el10             appstream  143 k
+2026-10-25T15:30:38.7720658Z  libxkbcommon-x11            aarch64  1.7.0-4.el10             appstream   21 k
+2026-10-25T15:30:38.7721127Z  libxml2-devel               aarch64  2.12.5-10.el10_2.4       appstream  536 k
+2026-10-25T15:30:38.7721622Z  libxshmfence                aarch64  1.3.2-5.el10             appstream   12 k
+2026-10-25T15:30:38.7722099Z  llvm-filesystem             aarch64  21.1.8-1.el10.alma.1     appstream  7.4 k
+2026-10-25T15:30:38.7722558Z  llvm-libs                   aarch64  21.1.8-1.el10.alma.1     appstream   29 M
+2026-10-25T15:30:38.7723025Z  make                        aarch64  1:4.4.1-9.el10           baseos     588 k
+2026-10-25T15:30:38.7723516Z  mariadb-connector-c         aarch64  3.4.4-2.el10_2           baseos     204 k
+2026-10-25T15:30:38.7724237Z  mariadb-connector-c-config  noarch   3.4.4-2.el10_2           baseos     8.3 k
+2026-10-25T15:30:38.7724770Z  mesa-dri-drivers            aarch64  25.2.7-4.el10.alma.5     appstream  8.5 M
+2026-10-25T15:30:38.7725245Z  mesa-filesystem             aarch64  25.2.7-4.el10.alma.5     appstream   11 k
+2026-10-25T15:30:38.7725773Z  mesa-libEGL                 aarch64  25.2.7-4.el10.alma.5     appstream  120 k
+2026-10-25T15:30:38.7726231Z  mesa-libGL                  aarch64  25.2.7-4.el10.alma.5     appstream  120 k
+2026-10-25T15:30:38.7726701Z  mesa-libgbm                 aarch64  25.2.7-4.el10.alma.5     appstream   17 k
+2026-10-25T15:30:38.7727280Z  mtdev                       aarch64  1.1.6-10.el10            appstream   21 k
+2026-10-25T15:30:38.7727698Z  ncurses                     aarch64  6.4-15.20240127.el10_1   baseos     412 k
+2026-10-25T15:30:38.7728192Z  openldap                    aarch64  2.6.10-1.el10            baseos     219 k
+2026-10-25T15:30:38.7728626Z  openssh                     aarch64  9.9p1-29.el10_2.alma.1   baseos     350 k
+2026-10-25T15:30:38.7729259Z  openssh-clients             aarch64  9.9p1-29.el10_2.alma.1   baseos     744 k
+2026-10-25T15:30:38.7729791Z  p11-kit-devel               aarch64  0.26.4-1.el10_2          appstream   88 k
+2026-10-25T15:30:38.7730226Z  pam                         aarch64  1.6.1-9.el10_2.1         baseos     568 k
+2026-10-25T15:30:38.7730748Z  pcre2-devel                 aarch64  10.44-1.el10.3           appstream  535 k
+2026-10-25T15:30:38.7731201Z  pcre2-utf16                 aarch64  10.44-1.el10.3           appstream  208 k
+2026-10-25T15:30:38.7731691Z  pcre2-utf32                 aarch64  10.44-1.el10.3           appstream  195 k
+2026-10-25T15:30:38.7732169Z  perl-AutoLoader             noarch   5.74-515.el10_2          appstream   20 k
+2026-10-25T15:30:38.7732621Z  perl-B                      aarch64  1.89-515.el10_2          appstream  180 k
+2026-10-25T15:30:38.7733107Z  perl-Carp                   noarch   1.54-511.el10            appstream   29 k
+2026-10-25T15:30:38.7733576Z  perl-Class-Struct           noarch   0.68-515.el10_2          appstream   20 k
+2026-10-25T15:30:38.7734090Z  perl-Data-Dumper            aarch64  2.189-512.el10           appstream   55 k
+2026-10-25T15:30:38.7734560Z  perl-Digest                 noarch   1.20-511.el10            appstream   25 k
+2026-10-25T15:30:38.7735037Z  perl-Digest-MD5             aarch64  2.59-6.el10              appstream   36 k
+2026-10-25T15:30:38.7735537Z  perl-DynaLoader             aarch64  1.56-515.el10_2          appstream   24 k
+2026-10-25T15:30:38.7736001Z  perl-Encode                 aarch64  4:3.21-511.el10          appstream  1.0 M
+2026-10-25T15:30:38.7736447Z  perl-Errno                  aarch64  1.38-515.el10_2          appstream   13 k
+2026-10-25T15:30:38.7736938Z  perl-Error                  noarch   1:0.17029-18.el10        appstream   45 k
+2026-10-25T15:30:38.7737436Z  perl-Exporter               noarch   5.78-511.el10            appstream   31 k
+2026-10-25T15:30:38.7737916Z  perl-Fcntl                  aarch64  1.18-515.el10_2          appstream   28 k
+2026-10-25T15:30:38.7738393Z  perl-File-Basename          noarch   2.86-515.el10_2          appstream   15 k
+2026-10-25T15:30:38.7738864Z  perl-File-Path              noarch   2.18-512.el10            appstream   35 k
+2026-10-25T15:30:38.7739677Z  perl-File-Temp              noarch   1:0.231.100-512.el10     appstream   59 k
+2026-10-25T15:30:38.7740167Z  perl-File-stat              noarch   1.14-515.el10_2          appstream   15 k
+2026-10-25T15:30:38.7740665Z  perl-FileHandle             noarch   2.05-515.el10_2          appstream   14 k
+2026-10-25T15:30:38.7741159Z  perl-Getopt-Long            noarch   1:2.58-3.el10            appstream   67 k
+2026-10-25T15:30:38.7741650Z  perl-Getopt-Std             noarch   1.14-515.el10_2          appstream   14 k
+2026-10-25T15:30:38.7742147Z  perl-Git                    noarch   2.52.0-1.el10            appstream   37 k
+2026-10-25T15:30:38.7742635Z  perl-HTTP-Tiny              noarch   0.088-512.el10           appstream   56 k
+2026-10-25T15:30:38.7743298Z  perl-IO                     aarch64  1.55-515.el10_2          appstream   82 k
+2026-10-25T15:30:38.7743793Z  perl-IO-Socket-IP           noarch   0.42-512.el10            appstream   42 k
+2026-10-25T15:30:38.7744285Z  perl-IO-Socket-SSL          noarch   2.085-3.el10             appstream  229 k
+2026-10-25T15:30:38.7744800Z  perl-IPC-Open3              noarch   1.22-515.el10_2          appstream   20 k
+2026-10-25T15:30:38.7745309Z  perl-MIME-Base64            aarch64  3.16-511.el10            appstream   30 k
+2026-10-25T15:30:38.7745940Z  perl-Mozilla-CA             noarch   20231213-5.el10          appstream   14 k
+2026-10-25T15:30:38.7746786Z  perl-Net-SSLeay             aarch64  1.94-8.el10              appstream  357 k
+2026-10-25T15:30:38.7747254Z  perl-POSIX                  aarch64  2.20-515.el10_2          appstream   95 k
+2026-10-25T15:30:38.7747749Z  perl-PathTools              aarch64  3.91-512.el10            appstream   88 k
+2026-10-25T15:30:38.7748251Z  perl-Pod-Escapes            noarch   1:1.07-511.el10          appstream   20 k
+2026-10-25T15:30:38.7748721Z  perl-Pod-Perldoc            noarch   3.28.01-512.el10         appstream   88 k
+2026-10-25T15:30:38.7749449Z  perl-Pod-Simple             noarch   1:3.45-511.el10          appstream  222 k
+2026-10-25T15:30:38.7749933Z  perl-Pod-Usage              noarch   4:2.03-511.el10          appstream   40 k
+2026-10-25T15:30:38.7750512Z  perl-Scalar-List-Utils      aarch64  5:1.63-511.el10          appstream   71 k
+2026-10-25T15:30:38.7751021Z  perl-SelectSaver            noarch   1.02-515.el10_2          appstream   10 k
+2026-10-25T15:30:38.7751487Z  perl-Socket                 aarch64  4:2.038-511.el10         appstream   55 k
+2026-10-25T15:30:38.7751985Z  perl-Storable               aarch64  1:3.32-511.el10          appstream   97 k
+2026-10-25T15:30:38.7752444Z  perl-Symbol                 noarch   1.09-515.el10_2          appstream   12 k
+2026-10-25T15:30:38.7752982Z  perl-Term-ANSIColor         noarch   5.01-512.el10            appstream   48 k
+2026-10-25T15:30:38.7753489Z  perl-Term-Cap               noarch   1.18-511.el10            appstream   22 k
+2026-10-25T15:30:38.7753956Z  perl-TermReadKey            aarch64  2.38-24.el10             appstream   35 k
+2026-10-25T15:30:38.7754504Z  perl-Text-ParseWords        noarch   3.31-511.el10            appstream   16 k
+2026-10-25T15:30:38.7754998Z  perl-Text-Tabs+Wrap         noarch   2024.001-511.el10        appstream   22 k
+2026-10-25T15:30:38.7755534Z  perl-Time-Local             noarch   2:1.350-511.el10         appstream   34 k
+2026-10-25T15:30:38.7755993Z  perl-URI                    noarch   5.27-3.el10_2.1          appstream  136 k
+2026-10-25T15:30:38.7756455Z  perl-Unicode-Normalize      aarch64  1.32-511.el10            appstream   72 k
+2026-10-25T15:30:38.7756965Z  perl-base                   noarch   2.27-515.el10_2          appstream   14 k
+2026-10-25T15:30:38.7757413Z  perl-constant               noarch   1.33-512.el10            appstream   23 k
+2026-10-25T15:30:38.7757929Z  perl-if                     noarch   0.61.000-515.el10_2      appstream   12 k
+2026-10-25T15:30:38.7758388Z  perl-interpreter            aarch64  4:5.40.2-515.el10_2      appstream   71 k
+2026-10-25T15:30:38.7758836Z  perl-lib                    aarch64  0.65-515.el10_2          appstream   13 k
+2026-10-25T15:30:38.7759488Z  perl-libnet                 noarch   3.15-512.el10            appstream  130 k
+2026-10-25T15:30:38.7759941Z  perl-libs                   aarch64  4:5.40.2-515.el10_2      appstream  2.3 M
+2026-10-25T15:30:38.7760445Z  perl-locale                 noarch   1.12-515.el10_2          appstream   12 k
+2026-10-25T15:30:38.7760902Z  perl-mro                    aarch64  1.29-515.el10_2          appstream   28 k
+2026-10-25T15:30:38.7761349Z  perl-overload               noarch   1.37-515.el10_2          appstream   44 k
+2026-10-25T15:30:38.7761862Z  perl-overloading            noarch   0.02-515.el10_2          appstream   11 k
+2026-10-25T15:30:38.7762325Z  perl-parent                 noarch   1:0.241-512.el10         appstream   15 k
+2026-10-25T15:30:38.7763009Z  perl-podlators              noarch   1:5.01-511.el10          appstream  127 k
+2026-10-25T15:30:38.7763487Z  perl-vars                   noarch   1.05-515.el10_2          appstream   11 k
+2026-10-25T15:30:38.7763928Z  pkgconf                     aarch64  2.1.0-3.el10             baseos      43 k
+2026-10-25T15:30:38.7764405Z  pkgconf-m4                  noarch   2.1.0-3.el10             baseos      14 k
+2026-10-25T15:30:38.7764866Z  pkgconf-pkg-config          aarch64  2.1.0-3.el10             baseos     9.7 k
+2026-10-25T15:30:38.7765503Z  protobuf-c                  aarch64  1.5.0-6.el10             baseos      32 k
+2026-10-25T15:30:38.7765970Z  python3-packaging           noarch   24.2-2.el10              baseos     155 k
+2026-10-25T15:30:38.7766444Z  qt6-filesystem              aarch64  6.10.1-1.el10            appstream   11 k
+2026-10-25T15:30:38.7766929Z  qt6-qtbase                  aarch64  6.10.1-1.el10.alma.1     appstream  4.1 M
+2026-10-25T15:30:38.7767422Z  qt6-qtbase-common           noarch   6.10.1-1.el10.alma.1     appstream  9.5 k
+2026-10-25T15:30:38.7767897Z  qt6-qtbase-gui              aarch64  6.10.1-1.el10.alma.1     appstream  8.1 M
+2026-10-25T15:30:38.7768432Z  qt6-qtbase-mysql            aarch64  6.10.1-1.el10.alma.1     appstream   50 k
+2026-10-25T15:30:38.7768923Z  qt6-qtbase-odbc             aarch64  6.10.1-1.el10.alma.1     appstream   62 k
+2026-10-25T15:30:38.7769618Z  qt6-qtbase-postgresql       aarch64  6.10.1-1.el10.alma.1     appstream   56 k
+2026-10-25T15:30:38.7770152Z  qt6-qtdeclarative           aarch64  6.10.1-1.el10_2.1        appstream   14 M
+2026-10-25T15:30:38.7770617Z  qt6-qtwayland               aarch64  6.10.1-1.el10            appstream  750 k
+2026-10-25T15:30:38.7771114Z  qt6-rpm-macros              noarch   6.10.1-1.el10            appstream   12 k
+2026-10-25T15:30:38.7771594Z  redhat-text-vf-fonts        noarch   4.1.0-1.el10             baseos     353 k
+2026-10-25T15:30:38.7772109Z  spirv-tools-libs            aarch64  2025.4-1.el10            appstream  1.6 M
+2026-10-25T15:30:38.7772657Z  sysprof-capture-devel       aarch64  47.2-1.el10              appstream   62 k
+2026-10-25T15:30:38.7773132Z  unbound-libs                aarch64  1.24.2-7.el10_2.6        appstream  537 k
+2026-10-25T15:30:38.7773619Z  unixODBC                    aarch64  2.3.12-6.el10            appstream  476 k
+2026-10-25T15:30:38.7774069Z  util-linux                  aarch64  2.40.2-18.el10           baseos     1.1 M
+2026-10-25T15:30:38.7774546Z  vim-filesystem              noarch   2:9.1.083-9.el10_2.22    baseos      14 k
+2026-10-25T15:30:38.7775047Z  vulkan-headers              noarch   1.4.328.1-1.el10         appstream  1.5 M
+2026-10-25T15:30:38.7775509Z  vulkan-loader               aarch64  1.4.328.1-1.el10         appstream  169 k
+2026-10-25T15:30:38.7776036Z  vulkan-loader-devel         aarch64  1.4.328.1-1.el10         appstream   11 k
+2026-10-25T15:30:38.7776499Z  xcb-util                    aarch64  0.4.1-7.el10             appstream   18 k
+2026-10-25T15:30:38.7776971Z  xcb-util-cursor             aarch64  0.1.4-6.el10             appstream   19 k
+2026-10-25T15:30:38.7777468Z  xcb-util-image              aarch64  0.4.1-7.el10             appstream   19 k
+2026-10-25T15:30:38.7777936Z  xcb-util-keysyms            aarch64  0.4.1-7.el10             appstream   14 k
+2026-10-25T15:30:38.7778460Z  xcb-util-renderutil         aarch64  0.3.10-7.el10            appstream   17 k
+2026-10-25T15:30:38.7778931Z  xcb-util-wm                 aarch64  0.4.2-7.el10             appstream   30 k
+2026-10-25T15:30:38.7779573Z  xkeyboard-config            noarch   2.41-3.el10              appstream  998 k
+2026-10-25T15:30:38.7780131Z  xml-common                  noarch   0.6.3-65.el10            appstream   31 k
+2026-10-25T15:30:38.7780606Z  xorg-x11-proto-devel        noarch   2024.1-3.el10            appstream  314 k
+2026-10-25T15:30:38.7781098Z  xz-devel                    aarch64  1:5.6.2-4.el10_2.1       appstream   67 k
+2026-10-25T15:30:38.7781773Z  zlib-ng-compat-devel        aarch64  2.2.3-3.el10_1           appstream   36 k
+2026-10-25T15:30:38.7782194Z Installing weak dependencies:
+2026-10-25T15:30:38.7782656Z  mesa-vulkan-drivers         aarch64  25.2.7-4.el10.alma.5     appstream   14 M
+2026-10-25T15:30:38.7783142Z  perl-NDBM_File              aarch64  1.17-515.el10_2          appstream   21 k
+2026-10-25T15:30:38.7783683Z  qt6-qttranslations          noarch   6.10.1-1.el10.alma.2     appstream  1.9 M
+2026-10-25T15:30:38.7784168Z  unbound-anchor              aarch64  1.24.2-7.el10_2.6        appstream   37 k
+2026-10-25T15:30:38.7784571Z 
+2026-10-25T15:30:38.7784697Z Transaction Summary
+2026-10-25T15:30:38.7785012Z ================================================================================
+2026-10-25T15:30:38.7785337Z Install  244 Packages
+2026-10-25T15:30:38.7785597Z Upgrade    2 Packages
+2026-10-25T15:30:38.7785758Z 
+2026-10-25T15:30:38.7785909Z Total download size: 237 M
+2026-10-25T15:30:38.7786194Z Downloading Packages:
+2026-10-25T15:30:39.3148158Z (1/246): avahi-devel-0.9~rc2-2.el10.aarch64.rpm 655 kB/s |  37 kB     00:00    
+2026-10-25T15:30:39.3365221Z (2/246): cmake-filesystem-3.31.8-1.el10.aarch64 603 kB/s |  13 kB     00:00    
+2026-10-25T15:30:39.4473101Z (3/246): cmake-data-3.31.8-1.el10.noarch.rpm     10 MB/s | 1.9 MB     00:00    
+2026-10-25T15:30:39.5531466Z (4/246): cmake-3.31.8-1.el10.aarch64.rpm         29 MB/s | 8.6 MB     00:00    
+2026-10-25T15:30:39.5716019Z (5/246): cups-devel-2.4.10-18.el10_2.aarch64.rp 400 kB/s |  50 kB     00:00    
+2026-10-25T15:30:39.5748403Z (6/246): dbus-devel-1.14.10-5.el10.aarch64.rpm  1.9 MB/s |  41 kB     00:00    
+2026-10-25T15:30:39.5961555Z (7/246): fontconfig-2.15.0-7.el10.aarch64.rpm    11 MB/s | 277 kB     00:00    
+2026-10-25T15:30:39.7253542Z (8/246): cpp-14.3.1-4.4.el10.alma.2.aarch64.rpm  29 MB/s |  11 MB     00:00    
+2026-10-25T15:30:39.7462629Z (9/246): git-2.52.0-1.el10.aarch64.rpm          1.9 MB/s |  40 kB     00:00    
+2026-10-25T15:30:39.8069713Z (10/246): gcc-c++-14.3.1-4.4.el10.alma.2.aarch6  65 MB/s |  14 MB     00:00    
+2026-10-25T15:30:39.9590945Z (11/246): gcc-14.3.1-4.4.el10.alma.2.aarch64.rp  90 MB/s |  34 MB     00:00    
+2026-10-25T15:30:39.9855182Z (12/246): git-core-2.52.0-1.el10.aarch64.rpm     22 MB/s | 5.2 MB     00:00    
+2026-10-25T15:30:40.0008534Z (13/246): git-core-doc-2.52.0-1.el10.noarch.rpm  15 MB/s | 2.9 MB     00:00    
+2026-10-25T15:30:40.0091754Z (14/246): glib2-devel-2.80.4-12.el10_2.22.aarch  30 MB/s | 1.5 MB     00:00    
+2026-10-25T15:30:40.0128641Z (15/246): glibc-devel-2.39-128.el10_2.alma.1.aa  17 MB/s | 465 kB     00:00    
+2026-10-25T15:30:40.0218241Z (16/246): glx-utils-9.0.0-8.el10.aarch64.rpm    3.5 MB/s |  74 kB     00:00    
+2026-10-25T15:30:40.0297707Z (17/246): gnutls-c++-3.8.10-4.el10_2.aarch64.rp 1.3 MB/s |  27 kB     00:00    
+2026-10-25T15:30:40.0331025Z (18/246): gnutls-dane-3.8.10-4.el10_2.aarch64.r 1.9 MB/s |  39 kB     00:00    
+2026-10-25T15:30:40.0624160Z (19/246): gnutls-devel-3.8.10-4.el10_2.aarch64.  55 MB/s | 2.2 MB     00:00    
+2026-10-25T15:30:40.0641868Z (20/246): keyutils-libs-devel-1.6.3-5.el10.aarc 2.0 MB/s |  62 kB     00:00    
+2026-10-25T15:30:40.0823003Z (21/246): kernel-headers-6.12.0-211.68.1.el10_2  68 MB/s | 3.6 MB     00:00    
+2026-10-25T15:30:40.0845857Z (22/246): krb5-devel-1.21.3-10.el10_2.aarch64.r 6.0 MB/s | 132 kB     00:00    
+2026-10-25T15:30:40.0858397Z (23/246): libICE-1.1.1-5.el10.aarch64.rpm       3.4 MB/s |  73 kB     00:00    
+2026-10-25T15:30:40.1032865Z (24/246): libSM-1.2.4-5.el10.aarch64.rpm        2.0 MB/s |  43 kB     00:00    
+2026-10-25T15:30:40.1075393Z (25/246): libX11-common-1.8.10-1.el10.noarch.rp 8.6 MB/s | 189 kB     00:00    
+2026-10-25T15:30:40.1136142Z (26/246): libX11-1.8.10-1.el10.aarch64.rpm       22 MB/s | 642 kB     00:00    
+2026-10-25T15:30:40.1306777Z (27/246): libX11-devel-1.8.10-1.el10.aarch64.rp  40 MB/s | 1.1 MB     00:00    
+2026-10-25T15:30:40.1317859Z (28/246): libX11-xcb-1.8.10-1.el10.aarch64.rpm  512 kB/s |  12 kB     00:00    
+2026-10-25T15:30:40.1335394Z (29/246): libXau-1.0.11-8.el10.aarch64.rpm      1.6 MB/s |  32 kB     00:00    
+2026-10-25T15:30:40.1522220Z (30/246): libXext-1.3.6-3.el10.aarch64.rpm      1.9 MB/s |  39 kB     00:00    
+2026-10-25T15:30:40.1533303Z (31/246): libXau-devel-1.0.11-8.el10.aarch64.rp 608 kB/s |  14 kB     00:00    
+2026-10-25T15:30:40.1541919Z (32/246): libXxf86vm-1.1.5-8.el10.aarch64.rpm   865 kB/s |  18 kB     00:00    
+2026-10-25T15:30:40.1750716Z (33/246): libcom_err-devel-1.47.1-5.el10.aarch6 786 kB/s |  16 kB     00:00    
+2026-10-25T15:30:40.1774634Z (34/246): libblkid-devel-2.40.2-18.el10.aarch64 1.1 MB/s |  26 kB     00:00    
+2026-10-25T15:30:40.1805463Z (35/246): libasan-14.3.1-4.4.el10.alma.2.aarch6  18 MB/s | 524 kB     00:00    
+2026-10-25T15:30:40.1955279Z (36/246): libevdev-1.13.1-6.el10.aarch64.rpm    1.8 MB/s |  37 kB     00:00    
+2026-10-25T15:30:40.1979557Z (37/246): libevent-devel-2.1.13-1.el10_2.aarch6 4.9 MB/s | 102 kB     00:00    
+2026-10-25T15:30:40.2011746Z (38/246): libffi-devel-3.4.4-10.el10.aarch64.rp 1.3 MB/s |  27 kB     00:00    
+2026-10-25T15:30:40.2161844Z (39/246): libglvnd-1.7.0-7.el10.aarch64.rpm     5.2 MB/s | 109 kB     00:00    
+2026-10-25T15:30:40.2179205Z (40/246): libglvnd-core-devel-1.7.0-7.el10.aarc 881 kB/s |  17 kB     00:00    
+2026-10-25T15:30:40.2235213Z (41/246): libglvnd-devel-1.7.0-7.el10.aarch64.r 7.3 MB/s | 164 kB     00:00    
+2026-10-25T15:30:40.2362123Z (42/246): libglvnd-egl-1.7.0-7.el10.aarch64.rpm 1.8 MB/s |  36 kB     00:00    
+2026-10-25T15:30:40.2374357Z (43/246): libglvnd-gles-1.7.0-7.el10.aarch64.rp 1.5 MB/s |  30 kB     00:00    
+2026-10-25T15:30:40.2446693Z (44/246): libglvnd-glx-1.7.0-7.el10.aarch64.rpm 6.0 MB/s | 129 kB     00:00    
+2026-10-25T15:30:40.2563290Z (45/246): libglvnd-opengl-1.7.0-7.el10.aarch64. 1.9 MB/s |  40 kB     00:00    
+2026-10-25T15:30:40.2580713Z (46/246): libidn2-devel-2.3.7-3.el10.aarch64.rp 3.5 MB/s |  74 kB     00:00    
+2026-10-25T15:30:40.2668810Z (47/246): libinput-1.30.1-2.el10_2.aarch64.rpm   10 MB/s | 236 kB     00:00    
+2026-10-25T15:30:40.2776585Z (48/246): libjpeg-turbo-3.0.2-4.el10.aarch64.rp  12 MB/s | 261 kB     00:00    
+2026-10-25T15:30:40.2786175Z (49/246): libmount-devel-2.40.2-18.el10.aarch64 1.3 MB/s |  27 kB     00:00    
+2026-10-25T15:30:40.2876751Z (50/246): libmpc-1.3.1-7.el10.aarch64.rpm       3.4 MB/s |  72 kB     00:00    
+2026-10-25T15:30:40.2989998Z (51/246): libselinux-devel-3.10-1.el10.aarch64. 5.4 MB/s | 115 kB     00:00    
+2026-10-25T15:30:40.3000920Z (52/246): libsepol-devel-3.10-1.el10.aarch64.rp 1.8 MB/s |  40 kB     00:00    
+2026-10-25T15:30:40.3241488Z (53/246): libstdc++-devel-14.3.1-4.4.el10.alma.  73 MB/s | 2.6 MB     00:00    
+2026-10-25T15:30:40.3253419Z (54/246): libtasn1-devel-4.20.0-5.el10_2.aarch6 2.9 MB/s |  76 kB     00:00    
+2026-10-25T15:30:40.3259346Z (55/246): libtasn1-tools-4.20.0-5.el10_2.aarch6 1.0 MB/s |  26 kB     00:00    
+2026-10-25T15:30:40.3509995Z (56/246): libtool-ltdl-2.4.7-13.el10.aarch64.rp 1.3 MB/s |  35 kB     00:00    
+2026-10-25T15:30:40.3528283Z (57/246): libubsan-14.3.1-4.4.el10.alma.2.aarch 8.5 MB/s | 231 kB     00:00    
+2026-10-25T15:30:40.3558201Z (58/246): libuv-1.52.1-1.el10_2.aarch64.rpm     8.7 MB/s | 262 kB     00:00    
+2026-10-25T15:30:40.3716180Z (59/246): libverto-devel-0.3.2-10.el10.aarch64. 709 kB/s |  14 kB     00:00    
+2026-10-25T15:30:40.3728633Z (60/246): libwacom-2.14.0-4.el10_1.aarch64.rpm  2.3 MB/s |  46 kB     00:00    
+2026-10-25T15:30:40.3768398Z (61/246): libwacom-data-2.14.0-4.el10_1.noarch. 9.2 MB/s | 196 kB     00:00    
+2026-10-25T15:30:40.3914169Z (62/246): libwayland-client-1.24.0-1.el10.aarch 1.6 MB/s |  33 kB     00:00    
+2026-10-25T15:30:40.3935816Z (63/246): libwayland-cursor-1.24.0-1.el10.aarch 916 kB/s |  19 kB     00:00    
+2026-10-25T15:30:40.3968461Z (64/246): libwayland-egl-1.24.0-1.el10.aarch64. 616 kB/s |  12 kB     00:00    
+2026-10-25T15:30:40.4116033Z (65/246): libwayland-server-1.24.0-1.el10.aarch 2.0 MB/s |  42 kB     00:00    
+2026-10-25T15:30:40.4175529Z (66/246): libxcb-1.17.0-3.el10.aarch64.rpm       10 MB/s | 246 kB     00:00    
+2026-10-25T15:30:40.4270808Z (67/246): libxcb-devel-1.17.0-3.el10.aarch64.rp  53 MB/s | 1.6 MB     00:00    
+2026-10-25T15:30:40.4315369Z (68/246): libxcrypt-devel-4.4.36-10.el10.aarch6 1.6 MB/s |  33 kB     00:00    
+2026-10-25T15:30:40.4410472Z (69/246): libxkbcommon-1.7.0-4.el10.aarch64.rpm 6.3 MB/s | 143 kB     00:00    
+2026-10-25T15:30:40.4478550Z (70/246): libxkbcommon-devel-1.7.0-4.el10.aarch 3.2 MB/s |  67 kB     00:00    
+2026-10-25T15:30:40.4514762Z (71/246): libxkbcommon-x11-1.7.0-4.el10.aarch64 1.0 MB/s |  21 kB     00:00    
+2026-10-25T15:30:40.4650315Z (72/246): libxml2-devel-2.12.5-10.el10_2.4.aarc  21 MB/s | 536 kB     00:00    
+2026-10-25T15:30:40.4675754Z (73/246): libxshmfence-1.3.2-5.el10.aarch64.rpm 624 kB/s |  12 kB     00:00    
+2026-10-25T15:30:40.4706713Z (74/246): llvm-filesystem-21.1.8-1.el10.alma.1. 392 kB/s | 7.4 kB     00:00    
+2026-10-25T15:30:40.4911288Z (75/246): mesa-filesystem-25.2.7-4.el10.alma.5. 528 kB/s |  11 kB     00:00    
+2026-10-25T15:30:40.5135150Z (76/246): mesa-libEGL-25.2.7-4.el10.alma.5.aarc 5.4 MB/s | 120 kB     00:00    
+2026-10-25T15:30:40.5488220Z (77/246): mesa-dri-drivers-25.2.7-4.el10.alma.5 105 MB/s | 8.5 MB     00:00    
+2026-10-25T15:30:40.5501220Z (78/246): mesa-libGL-25.2.7-4.el10.alma.5.aarch 3.2 MB/s | 120 kB     00:00    
+2026-10-25T15:30:40.6898308Z (79/246): llvm-libs-21.1.8-1.el10.alma.1.aarch6 131 MB/s |  29 MB     00:00    
+2026-10-25T15:30:40.6909555Z (80/246): mesa-libgbm-25.2.7-4.el10.alma.5.aarc 121 kB/s |  17 kB     00:00    
+2026-10-25T15:30:40.7110440Z (81/246): mtdev-1.1.6-10.el10.aarch64.rpm       1.0 MB/s |  21 kB     00:00    
+2026-10-25T15:30:40.7129188Z (82/246): p11-kit-devel-0.26.4-1.el10_2.aarch64 4.0 MB/s |  88 kB     00:00    
+2026-10-25T15:30:40.7758749Z (83/246): mesa-vulkan-drivers-25.2.7-4.el10.alm  64 MB/s |  14 MB     00:00    
+2026-10-25T15:30:40.7776703Z (84/246): pcre2-utf16-10.44-1.el10.3.aarch64.rp 3.2 MB/s | 208 kB     00:00    
+2026-10-25T15:30:40.7804612Z (85/246): pcre2-devel-10.44-1.el10.3.aarch64.rp 7.6 MB/s | 535 kB     00:00    
+2026-10-25T15:30:40.7981517Z (86/246): pcre2-utf32-10.44-1.el10.3.aarch64.rp 8.8 MB/s | 195 kB     00:00    
+2026-10-25T15:30:40.7991647Z (87/246): perl-AutoLoader-5.74-515.el10_2.noarc 925 kB/s |  20 kB     00:00    
+2026-10-25T15:30:40.8023245Z (88/246): perl-B-1.89-515.el10_2.aarch64.rpm    8.2 MB/s | 180 kB     00:00    
+2026-10-25T15:30:40.8189777Z (89/246): perl-Carp-1.54-511.el10.noarch.rpm    1.4 MB/s |  29 kB     00:00    
+2026-10-25T15:30:40.8198888Z (90/246): perl-Class-Struct-0.68-515.el10_2.noa 990 kB/s |  20 kB     00:00    
+2026-10-25T15:30:40.8225205Z (91/246): perl-Data-Dumper-2.189-512.el10.aarch 2.7 MB/s |  55 kB     00:00    
+2026-10-25T15:30:40.8401258Z (92/246): perl-Digest-MD5-2.59-6.el10.aarch64.r 1.8 MB/s |  36 kB     00:00    
+2026-10-25T15:30:40.8412817Z (93/246): perl-Digest-1.20-511.el10.noarch.rpm  1.1 MB/s |  25 kB     00:00    
+2026-10-25T15:30:40.8423130Z (94/246): perl-DynaLoader-1.56-515.el10_2.aarch 1.2 MB/s |  24 kB     00:00    
+2026-10-25T15:30:40.8614178Z (95/246): perl-Errno-1.38-515.el10_2.aarch64.rp 675 kB/s |  13 kB     00:00    
+2026-10-25T15:30:40.8624403Z (96/246): perl-Error-0.17029-18.el10.noarch.rpm 2.2 MB/s |  45 kB     00:00    
+2026-10-25T15:30:40.8678259Z (97/246): perl-Encode-3.21-511.el10.aarch64.rpm  38 MB/s | 1.0 MB     00:00    
+2026-10-25T15:30:40.8816432Z (98/246): perl-Exporter-5.78-511.el10.noarch.rp 1.5 MB/s |  31 kB     00:00    
+2026-10-25T15:30:40.8826672Z (99/246): perl-Fcntl-1.18-515.el10_2.aarch64.rp 1.4 MB/s |  28 kB     00:00    
+2026-10-25T15:30:40.8881683Z (100/246): perl-File-Basename-2.86-515.el10_2.n 771 kB/s |  15 kB     00:00    
+2026-10-25T15:30:40.9016337Z (101/246): perl-File-Path-2.18-512.el10.noarch. 1.7 MB/s |  35 kB     00:00    
+2026-10-25T15:30:40.9031033Z (102/246): perl-File-Temp-0.231.100-512.el10.no 2.9 MB/s |  59 kB     00:00    
+2026-10-25T15:30:40.9088578Z (103/246): perl-File-stat-1.14-515.el10_2.noarc 751 kB/s |  15 kB     00:00    
+2026-10-25T15:30:40.9212443Z (104/246): perl-FileHandle-2.05-515.el10_2.noar 716 kB/s |  14 kB     00:00    
+2026-10-25T15:30:40.9247028Z (105/246): perl-Getopt-Long-2.58-3.el10.noarch. 3.1 MB/s |  67 kB     00:00    
+2026-10-25T15:30:40.9294297Z (106/246): perl-Getopt-Std-1.14-515.el10_2.noar 687 kB/s |  14 kB     00:00    
+2026-10-25T15:30:40.9410827Z (107/246): perl-Git-2.52.0-1.el10.noarch.rpm    1.8 MB/s |  37 kB     00:00    
+2026-10-25T15:30:40.9449928Z (108/246): perl-HTTP-Tiny-0.088-512.el10.noarch 2.7 MB/s |  56 kB     00:00    
+2026-10-25T15:30:40.9502932Z (109/246): perl-IO-1.55-515.el10_2.aarch64.rpm  3.9 MB/s |  82 kB     00:00    
+2026-10-25T15:30:40.9611853Z (110/246): perl-IO-Socket-IP-0.42-512.el10.noar 2.1 MB/s |  42 kB     00:00    
+2026-10-25T15:30:40.9668546Z (111/246): perl-IO-Socket-SSL-2.085-3.el10.noar  10 MB/s | 229 kB     00:00    
+2026-10-25T15:30:40.9709031Z (112/246): perl-IPC-Open3-1.22-515.el10_2.noarc 989 kB/s |  20 kB     00:00    
+2026-10-25T15:30:40.9812264Z (113/246): perl-MIME-Base64-3.16-511.el10.aarch 1.5 MB/s |  30 kB     00:00    
+2026-10-25T15:30:40.9871670Z (114/246): perl-Mozilla-CA-20231213-5.el10.noar 689 kB/s |  14 kB     00:00    
+2026-10-25T15:30:40.9922395Z (115/246): perl-NDBM_File-1.17-515.el10_2.aarch 985 kB/s |  21 kB     00:00    
+2026-10-25T15:30:41.0059579Z (116/246): perl-Net-SSLeay-1.94-8.el10.aarch64.  14 MB/s | 357 kB     00:00    
+2026-10-25T15:30:41.0099456Z (117/246): perl-POSIX-2.20-515.el10_2.aarch64.r 4.1 MB/s |  95 kB     00:00    
+2026-10-25T15:30:41.0134871Z (118/246): perl-PathTools-3.91-512.el10.aarch64 4.1 MB/s |  88 kB     00:00    
+2026-10-25T15:30:41.0257889Z (119/246): perl-Pod-Escapes-1.07-511.el10.noarc 1.0 MB/s |  20 kB     00:00    
+2026-10-25T15:30:41.0306623Z (120/246): perl-Pod-Perldoc-3.28.01-512.el10.no 4.2 MB/s |  88 kB     00:00    
+2026-10-25T15:30:41.0355649Z (121/246): perl-Pod-Simple-3.45-511.el10.noarch 9.9 MB/s | 222 kB     00:00    
+2026-10-25T15:30:41.0462663Z (122/246): perl-Pod-Usage-2.03-511.el10.noarch. 1.9 MB/s |  40 kB     00:00    
+2026-10-25T15:30:41.0516595Z (123/246): perl-Scalar-List-Utils-1.63-511.el10 3.3 MB/s |  71 kB     00:00    
+2026-10-25T15:30:41.0559627Z (124/246): perl-SelectSaver-1.02-515.el10_2.noa 498 kB/s |  10 kB     00:00    
+2026-10-25T15:30:41.0667514Z (125/246): perl-Socket-2.038-511.el10.aarch64.r 2.7 MB/s |  55 kB     00:00    
+2026-10-25T15:30:41.0728337Z (126/246): perl-Storable-3.32-511.el10.aarch64. 4.5 MB/s |  97 kB     00:00    
+2026-10-25T15:30:41.0770750Z (127/246): perl-Symbol-1.09-515.el10_2.noarch.r 600 kB/s |  12 kB     00:00    
+2026-10-25T15:30:41.0869247Z (128/246): perl-Term-ANSIColor-5.01-512.el10.no 2.3 MB/s |  48 kB     00:00    
+2026-10-25T15:30:41.0933148Z (129/246): perl-Term-Cap-1.18-511.el10.noarch.r 1.1 MB/s |  22 kB     00:00    
+2026-10-25T15:30:41.0985673Z (130/246): perl-TermReadKey-2.38-24.el10.aarch6 1.6 MB/s |  35 kB     00:00    
+2026-10-25T15:30:41.1066539Z (131/246): perl-Text-ParseWords-3.31-511.el10.n 835 kB/s |  16 kB     00:00    
+2026-10-25T15:30:41.1133532Z (132/246): perl-Text-Tabs+Wrap-2024.001-511.el1 1.1 MB/s |  22 kB     00:00    
+2026-10-25T15:30:41.1188937Z (133/246): perl-Time-Local-1.350-511.el10.noarc 1.7 MB/s |  34 kB     00:00    
+2026-10-25T15:30:41.1285250Z (134/246): perl-URI-5.27-3.el10_2.1.noarch.rpm  6.2 MB/s | 136 kB     00:00    
+2026-10-25T15:30:41.1341345Z (135/246): perl-Unicode-Normalize-1.32-511.el10 3.4 MB/s |  72 kB     00:00    
+2026-10-25T15:30:41.1398057Z (136/246): perl-base-2.27-515.el10_2.noarch.rpm 700 kB/s |  14 kB     00:00    
+2026-10-25T15:30:41.1482402Z (137/246): perl-constant-1.33-512.el10.noarch.r 1.1 MB/s |  23 kB     00:00    
+2026-10-25T15:30:41.1539248Z (138/246): perl-if-0.61.000-515.el10_2.noarch.r 628 kB/s |  12 kB     00:00    
+2026-10-25T15:30:41.1609671Z (139/246): perl-interpreter-5.40.2-515.el10_2.a 3.3 MB/s |  71 kB     00:00    
+2026-10-25T15:30:41.1681597Z (140/246): perl-lib-0.65-515.el10_2.aarch64.rpm 674 kB/s |  13 kB     00:00    
+2026-10-25T15:30:41.1752636Z (141/246): perl-libnet-3.15-512.el10.noarch.rpm 6.1 MB/s | 130 kB     00:00    
+2026-10-25T15:30:41.1885591Z (142/246): perl-locale-1.12-515.el10_2.noarch.r 596 kB/s |  12 kB     00:00    
+2026-10-25T15:30:41.2007083Z (143/246): perl-libs-5.40.2-515.el10_2.aarch64.  59 MB/s | 2.3 MB     00:00    
+2026-10-25T15:30:41.2019703Z (144/246): perl-mro-1.29-515.el10_2.aarch64.rpm 1.0 MB/s |  28 kB     00:00    
+2026-10-25T15:30:41.2093415Z (145/246): perl-overload-1.37-515.el10_2.noarch 2.1 MB/s |  44 kB     00:00    
+2026-10-25T15:30:41.2211324Z (146/246): perl-overloading-0.02-515.el10_2.noa 558 kB/s |  11 kB     00:00    
+2026-10-25T15:30:41.2222188Z (147/246): perl-parent-0.241-512.el10.noarch.rp 747 kB/s |  15 kB     00:00    
+2026-10-25T15:30:41.2332334Z (148/246): perl-podlators-5.01-511.el10.noarch. 5.3 MB/s | 127 kB     00:00    
+2026-10-25T15:30:41.2417552Z (149/246): perl-vars-1.05-515.el10_2.noarch.rpm 557 kB/s |  11 kB     00:00    
+2026-10-25T15:30:41.2423133Z (150/246): qt6-filesystem-6.10.1-1.el10.aarch64 529 kB/s |  11 kB     00:00    
+2026-10-25T15:30:41.2637964Z (151/246): qt6-qtbase-common-6.10.1-1.el10.alma 454 kB/s | 9.5 kB     00:00    
+2026-10-25T15:30:41.2947453Z (152/246): qt6-qtbase-devel-6.10.1-1.el10.alma.  68 MB/s | 3.5 MB     00:00    
+2026-10-25T15:30:41.3156149Z (153/246): qt6-qtbase-6.10.1-1.el10.alma.1.aarc  50 MB/s | 4.1 MB     00:00    
+2026-10-25T15:30:41.3168481Z (154/246): qt6-qtbase-mysql-6.10.1-1.el10.alma. 2.3 MB/s |  50 kB     00:00    
+2026-10-25T15:30:41.3561094Z (155/246): qt6-qtbase-gui-6.10.1-1.el10.alma.1.  88 MB/s | 8.1 MB     00:00    
+2026-10-25T15:30:41.3573170Z (156/246): qt6-qtbase-postgresql-6.10.1-1.el10. 1.4 MB/s |  56 kB     00:00    
+2026-10-25T15:30:41.4527838Z (157/246): qt6-qtdeclarative-6.10.1-1.el10_2.1. 142 MB/s |  14 MB     00:00    
+2026-10-25T15:30:41.4540847Z (158/246): qt6-qtbase-odbc-6.10.1-1.el10.alma.1 448 kB/s |  62 kB     00:00    
+2026-10-25T15:30:41.4727388Z (159/246): qt6-qtdeclarative-devel-6.10.1-1.el1  35 MB/s | 4.0 MB     00:00    
+2026-10-25T15:30:41.4766088Z (160/246): qt6-qtsvg-6.10.1-1.el10.aarch64.rpm   12 MB/s | 291 kB     00:00    
+2026-10-25T15:30:41.4945568Z (161/246): qt6-qttranslations-6.10.1-1.el10.alm  49 MB/s | 1.9 MB     00:00    
+2026-10-25T15:30:41.5030784Z (162/246): qt6-qtwayland-6.10.1-1.el10.aarch64.  24 MB/s | 750 kB     00:00    
+2026-10-25T15:30:41.5326074Z (163/246): spirv-tools-libs-2025.4-1.el10.aarch  53 MB/s | 1.6 MB     00:00    
+2026-10-25T15:30:41.5528639Z (164/246): sysprof-capture-devel-47.2-1.el10.aa 3.0 MB/s |  62 kB     00:00    
+2026-10-25T15:30:41.5731010Z (165/246): unbound-anchor-1.24.2-7.el10_2.6.aar 1.8 MB/s |  37 kB     00:00    
+2026-10-25T15:30:41.5956835Z (166/246): qt6-rpm-macros-6.10.1-1.el10.noarch. 122 kB/s |  12 kB     00:00    
+2026-10-25T15:30:41.5985062Z (167/246): unbound-libs-1.24.2-7.el10_2.6.aarch  21 MB/s | 537 kB     00:00    
+2026-10-25T15:30:41.6014150Z (168/246): qt6-qtwayland-devel-6.10.1-1.el10.aa 1.8 MB/s | 228 kB     00:00    
+2026-10-25T15:30:41.6202200Z (169/246): unixODBC-2.3.12-6.el10.aarch64.rpm    19 MB/s | 476 kB     00:00    
+2026-10-25T15:30:41.6286349Z (170/246): vulkan-headers-1.4.328.1-1.el10.noar  51 MB/s | 1.5 MB     00:00    
+2026-10-25T15:30:41.6298871Z (171/246): vulkan-loader-1.4.328.1-1.el10.aarch 5.8 MB/s | 169 kB     00:00    
+2026-10-25T15:30:41.6502428Z (172/246): wayland-devel-1.24.0-1.el10.aarch64. 6.7 MB/s | 146 kB     00:00    
+2026-10-25T15:30:41.6700653Z (173/246): xcb-util-0.4.1-7.el10.aarch64.rpm    936 kB/s |  18 kB     00:00    
+2026-10-25T15:30:41.6896762Z (174/246): xcb-util-cursor-0.1.4-6.el10.aarch64 969 kB/s |  19 kB     00:00    
+2026-10-25T15:30:41.7097541Z (175/246): xcb-util-image-0.4.1-7.el10.aarch64. 942 kB/s |  19 kB     00:00    
+2026-10-25T15:30:41.7163816Z (176/246): vulkan-loader-devel-1.4.328.1-1.el10 119 kB/s |  11 kB     00:00    
+2026-10-25T15:30:41.7296621Z (177/246): xcb-util-keysyms-0.4.1-7.el10.aarch6 717 kB/s |  14 kB     00:00    
+2026-10-25T15:30:41.7368982Z (178/246): xcb-util-renderutil-0.3.10-7.el10.aa 851 kB/s |  17 kB     00:00    
+2026-10-25T15:30:41.7496056Z (179/246): xcb-util-wm-0.4.2-7.el10.aarch64.rpm 1.5 MB/s |  30 kB     00:00    
+2026-10-25T15:30:41.7638708Z (180/246): xkeyboard-config-2.41-3.el10.noarch.  37 MB/s | 998 kB     00:00    
+2026-10-25T15:30:41.7694662Z (181/246): xml-common-0.6.3-65.el10.noarch.rpm  1.5 MB/s |  31 kB     00:00    
+2026-10-25T15:30:41.7859078Z (182/246): xorg-x11-proto-devel-2024.1-3.el10.n  14 MB/s | 314 kB     00:00    
+2026-10-25T15:30:41.7900934Z (183/246): xz-devel-5.6.2-4.el10_2.1.aarch64.rp 3.2 MB/s |  67 kB     00:00    
+2026-10-25T15:30:41.8067240Z (184/246): zlib-ng-compat-devel-2.2.3-3.el10_1. 1.7 MB/s |  36 kB     00:00    
+2026-10-25T15:30:41.8115935Z (185/246): authselect-1.5.2-1.el10.aarch64.rpm  9.4 MB/s | 205 kB     00:00    
+2026-10-25T15:30:41.8270883Z (186/246): wayland-protocols-devel-1.45-1.el10. 793 kB/s | 156 kB     00:00    
+2026-10-25T15:30:41.8286672Z (187/246): authselect-libs-1.5.2-1.el10.aarch64  10 MB/s | 230 kB     00:00    
+2026-10-25T15:30:41.8369873Z (188/246): avahi-0.9~rc2-2.el10.aarch64.rpm      17 MB/s | 426 kB     00:00    
+2026-10-25T15:30:41.8477769Z (189/246): avahi-libs-0.9~rc2-2.el10.aarch64.rp 3.2 MB/s |  67 kB     00:00    
+2026-10-25T15:30:41.8498278Z (190/246): chrpath-0.16-25.el10.aarch64.rpm     1.4 MB/s |  30 kB     00:00    
+2026-10-25T15:30:41.8572562Z (191/246): cracklib-2.9.11-8.el10.aarch64.rpm   4.7 MB/s |  97 kB     00:00    
+2026-10-25T15:30:41.8710119Z (192/246): cups-filesystem-2.4.10-18.el10_2.noa 507 kB/s |  11 kB     00:00    
+2026-10-25T15:30:41.8910377Z (193/246): cracklib-dicts-2.9.11-8.el10.aarch64  85 MB/s | 3.6 MB     00:00    
+2026-10-25T15:30:41.8926282Z (194/246): cups-libs-2.4.10-18.el10_2.aarch64.r 7.2 MB/s | 260 kB     00:00    
+2026-10-25T15:30:41.8933901Z (195/246): cyrus-sasl-lib-2.1.28-30.el10_2.aarc 4.6 MB/s | 102 kB     00:00    
+2026-10-25T15:30:41.9114872Z (196/246): default-fonts-core-sans-4.1-3.el10.n 1.7 MB/s |  34 kB     00:00    
+2026-10-25T15:30:41.9138478Z (197/246): emacs-filesystem-29.4-14.el10_2.3.no 396 kB/s | 7.9 kB     00:00    
+2026-10-25T15:30:41.9149648Z (198/246): duktape-2.7.0-10.el10.aarch64.rpm    7.9 MB/s | 171 kB     00:00    
+2026-10-25T15:30:41.9311910Z (199/246): file-5.45-9.el10.aarch64.rpm         2.4 MB/s |  48 kB     00:00    
+2026-10-25T15:30:41.9340155Z (200/246): fonts-filesystem-2.0.5-18.el10.noarc 388 kB/s | 7.7 kB     00:00    
+2026-10-25T15:30:41.9378657Z (201/246): freetype-2.13.2-8.el10.aarch64.rpm    17 MB/s | 402 kB     00:00    
+2026-10-25T15:30:41.9518194Z (202/246): gdbm-1.23-12.el10_0.aarch64.rpm      7.3 MB/s | 153 kB     00:00    
+2026-10-25T15:30:41.9543119Z (203/246): google-noto-fonts-common-20240401-5. 850 kB/s |  17 kB     00:00    
+2026-10-25T15:30:41.9615875Z (204/246): google-noto-sans-vf-fonts-20240401-5  25 MB/s | 593 kB     00:00    
+2026-10-25T15:30:41.9729047Z (205/246): graphite2-1.3.14-17.el10.aarch64.rpm 4.3 MB/s |  91 kB     00:00    
+2026-10-25T15:30:41.9877854Z (206/246): harfbuzz-8.4.0-6.el10.aarch64.rpm     37 MB/s | 986 kB     00:00    
+2026-10-25T15:30:41.9931549Z (207/246): groff-base-1.23.0-10.el10.aarch64.rp  28 MB/s | 1.1 MB     00:00    
+2026-10-25T15:30:42.0041181Z (208/246): hwdata-0.379-10.8.el10.noarch.rpm     55 MB/s | 1.7 MB     00:00    
+2026-10-25T15:30:42.0076210Z (209/246): libatomic-14.3.1-4.4.el10.alma.2.aar 2.5 MB/s |  51 kB     00:00    
+2026-10-25T15:30:42.0158683Z (210/246): libbrotli-1.1.0-8.el10_2.aarch64.rpm  15 MB/s | 344 kB     00:00    
+2026-10-25T15:30:42.0245705Z (211/246): libcbor-0.11.0-3.el10.aarch64.rpm    1.6 MB/s |  33 kB     00:00    
+2026-10-25T15:30:42.0273002Z (212/246): libdaemon-0.14-31.el10.aarch64.rpm   1.6 MB/s |  32 kB     00:00    
+2026-10-25T15:30:42.0372885Z (213/246): libdrm-2.4.128-1.el10.aarch64.rpm    8.9 MB/s | 193 kB     00:00    
+2026-10-25T15:30:42.0446697Z (214/246): libedit-3.1-52.20230828cvs.el10.aarc 5.2 MB/s | 105 kB     00:00    
+2026-10-25T15:30:42.0497819Z (215/246): libevent-2.1.13-1.el10_2.aarch64.rpm  11 MB/s | 255 kB     00:00    
+2026-10-25T15:30:42.0579494Z (216/246): libfido2-1.14.0-7.el10.aarch64.rpm   4.6 MB/s |  96 kB     00:00    
+2026-10-25T15:30:42.0648014Z (217/246): libgudev-238-7.el10.aarch64.rpm      1.7 MB/s |  34 kB     00:00    
+2026-10-25T15:30:42.0792580Z (218/246): libkadm5-1.21.3-10.el10_2.aarch64.rp 3.5 MB/s |  76 kB     00:00    
+2026-10-25T15:30:42.0844827Z (219/246): libpciaccess-0.16-16.el10.aarch64.rp 1.3 MB/s |  27 kB     00:00    
+2026-10-25T15:30:42.1001344Z (220/246): libpkgconf-2.1.0-3.el10.aarch64.rpm  1.8 MB/s |  38 kB     00:00    
+2026-10-25T15:30:42.1056327Z (221/246): libpng-1.6.40-11.el10_2.1.aarch64.rp 5.6 MB/s | 119 kB     00:00    
+2026-10-25T15:30:42.1230320Z (222/246): libpq-16.14-1.el10_2.aarch64.rpm      11 MB/s | 250 kB     00:00    
+2026-10-25T15:30:42.1261126Z (223/246): libproxy-0.5.5-4.el10.aarch64.rpm    2.3 MB/s |  47 kB     00:00    
+2026-10-25T15:30:42.1442756Z (224/246): libpwquality-1.4.5-12.el10.aarch64.r 5.9 MB/s | 123 kB     00:00    
+2026-10-25T15:30:42.1465496Z (225/246): libutempter-1.2.1-15.el10.aarch64.rp 1.3 MB/s |  26 kB     00:00    
+2026-10-25T15:30:42.1950943Z (226/246): libicu-74.2-5.el10_0.aarch64.rpm      71 MB/s |  10 MB     00:00    
+2026-10-25T15:30:42.1971476Z (227/246): mariadb-connector-c-3.4.4-2.el10_2.a 4.0 MB/s | 204 kB     00:00    
+2026-10-25T15:30:42.2008454Z (228/246): make-4.4.1-9.el10.aarch64.rpm         10 MB/s | 588 kB     00:00    
+2026-10-25T15:30:42.2154298Z (229/246): mariadb-connector-c-config-3.4.4-2.e 421 kB/s | 8.3 kB     00:00    
+2026-10-25T15:30:42.2199620Z (230/246): ncurses-6.4-15.20240127.el10_1.aarch  18 MB/s | 412 kB     00:00    
+2026-10-25T15:30:42.2235507Z (231/246): openldap-2.6.10-1.el10.aarch64.rpm   9.5 MB/s | 219 kB     00:00    
+2026-10-25T15:30:42.2378740Z (232/246): openssh-9.9p1-29.el10_2.alma.1.aarch  15 MB/s | 350 kB     00:00    
+2026-10-25T15:30:42.2440732Z (233/246): openssh-clients-9.9p1-29.el10_2.alma  31 MB/s | 744 kB     00:00    
+2026-10-25T15:30:42.2469608Z (234/246): pam-1.6.1-9.el10_2.1.aarch64.rpm      24 MB/s | 568 kB     00:00    
+2026-10-25T15:30:42.2576309Z (235/246): pkgconf-2.1.0-3.el10.aarch64.rpm     2.1 MB/s |  43 kB     00:00    
+2026-10-25T15:30:42.2644186Z (236/246): pkgconf-m4-2.1.0-3.el10.noarch.rpm   701 kB/s |  14 kB     00:00    
+2026-10-25T15:30:42.2672666Z (237/246): pkgconf-pkg-config-2.1.0-3.el10.aarc 486 kB/s | 9.7 kB     00:00    
+2026-10-25T15:30:42.2789028Z (238/246): protobuf-c-1.5.0-6.el10.aarch64.rpm  1.5 MB/s |  32 kB     00:00    
+2026-10-25T15:30:42.2856064Z (239/246): python3-packaging-24.2-2.el10.noarch 7.2 MB/s | 155 kB     00:00    
+2026-10-25T15:30:42.2909708Z (240/246): redhat-text-vf-fonts-4.1.0-1.el10.no  15 MB/s | 353 kB     00:00    
+2026-10-25T15:30:42.3055090Z (241/246): vim-filesystem-9.1.083-9.el10_2.22.n 718 kB/s |  14 kB     00:00    
+2026-10-25T15:30:42.3109512Z (242/246): util-linux-2.40.2-18.el10.aarch64.rp  36 MB/s | 1.1 MB     00:00    
+2026-10-25T15:30:42.3125002Z (243/246): ninja-build-1.11.1-9.el10.aarch64.rp 7.8 MB/s | 169 kB     00:00    
+2026-10-25T15:30:42.3308598Z (244/246): python3-3.12.15-1.el10_2.aarch64.rpm 1.4 MB/s |  27 kB     00:00    
+2026-10-25T15:30:42.3878245Z (245/246): python3-libs-3.12.15-1.el10_2.aarch6 124 MB/s | 9.3 MB     00:00    
+2026-10-25T15:30:42.4426421Z (246/246): qt6-qtbase-private-devel-6.10.1-1.el 7.3 MB/s | 1.0 MB     00:00    
+2026-10-25T15:30:42.4440978Z --------------------------------------------------------------------------------
+2026-10-25T15:30:42.4442118Z Total                                            65 MB/s | 237 MB     00:03     
+2026-10-25T15:30:44.5902256Z Running transaction check
+2026-10-25T15:30:44.7297032Z Transaction check succeeded.
+2026-10-25T15:30:44.7297682Z Running transaction test
+2026-10-25T15:30:46.1551412Z Transaction test succeeded.
+2026-10-25T15:30:46.1554561Z Running transaction
+2026-10-25T15:30:47.5572743Z   Preparing        :                                                        1/1 
+2026-10-25T15:30:47.9123436Z   Installing       : cmake-filesystem-3.31.8-1.el10.aarch64               1/248 
+2026-10-25T15:30:47.9302411Z   Upgrading        : python3-libs-3.12.15-1.el10_2.aarch64                2/248 
+2026-10-25T15:30:47.9328312Z   Upgrading        : python3-3.12.15-1.el10_2.aarch64                     3/248 
+2026-10-25T15:30:47.9346781Z   Installing       : libwayland-client-1.24.0-1.el10.aarch64              4/248 
+2026-10-25T15:30:47.9391459Z   Installing       : libX11-xcb-1.8.10-1.el10.aarch64                     5/248 
+2026-10-25T15:30:47.9452070Z   Installing       : libglvnd-1:1.7.0-7.el10.aarch64                      6/248 
+2026-10-25T15:30:47.9497350Z   Installing       : libevent-2.1.13-1.el10_2.aarch64                     7/248 
+2026-10-25T15:30:47.9534175Z   Installing       : avahi-libs-0.9~rc2-2.el10.aarch64                    8/248 
+2026-10-25T15:30:47.9550346Z   Installing       : libglvnd-opengl-1:1.7.0-7.el10.aarch64               9/248 
+2026-10-25T15:30:47.9582693Z   Installing       : fonts-filesystem-1:2.0.5-18.el10.noarch             10/248 
+2026-10-25T15:30:47.9613776Z   Installing       : pcre2-utf16-10.44-1.el10.3.aarch64                  11/248 
+2026-10-25T15:30:47.9636097Z   Installing       : libmpc-1.3.1-7.el10.aarch64                         12/248 
+2026-10-25T15:30:47.9677653Z   Installing       : libwayland-cursor-1.24.0-1.el10.aarch64             13/248 
+2026-10-25T15:30:47.9754261Z   Installing       : vim-filesystem-2:9.1.083-9.el10_2.22.noarch         14/248 
+2026-10-25T15:30:47.9791147Z   Installing       : make-1:4.4.1-9.el10.aarch64                         15/248 
+2026-10-25T15:30:47.9824872Z   Installing       : libpng-2:1.6.40-11.el10_2.1.aarch64                 16/248 
+2026-10-25T15:30:47.9882825Z   Installing       : libedit-3.1-52.20230828cvs.el10.aarch64             17/248 
+2026-10-25T15:30:47.9903529Z   Installing       : libbrotli-1.1.0-8.el10_2.aarch64                    18/248 
+2026-10-25T15:30:47.9965443Z   Installing       : emacs-filesystem-1:29.4-14.el10_2.3.noarch          19/248 
+2026-10-25T15:30:48.0053994Z   Installing       : cracklib-2.9.11-8.el10.aarch64                      20/248 
+2026-10-25T15:30:48.0084341Z   Installing       : authselect-libs-1.5.2-1.el10.aarch64                21/248 
+2026-10-25T15:30:48.0159452Z   Running scriptlet: xml-common-0.6.3-65.el10.noarch                     22/248 
+2026-10-25T15:30:48.0392452Z   Installing       : xml-common-0.6.3-65.el10.noarch                     22/248 
+2026-10-25T15:30:48.0423956Z   Installing       : spirv-tools-libs-2025.4-1.el10.aarch64              23/248 
+2026-10-25T15:30:48.0444393Z   Installing       : mtdev-1.1.6-10.el10.aarch64                         24/248 
+2026-10-25T15:30:48.0464600Z   Installing       : mesa-filesystem-25.2.7-4.el10.alma.5.aarch64        25/248 
+2026-10-25T15:30:48.0489480Z   Installing       : libxshmfence-1.3.2-5.el10.aarch64                   26/248 
+2026-10-25T15:30:48.0512047Z   Installing       : libwayland-server-1.24.0-1.el10.aarch64             27/248 
+2026-10-25T15:30:48.0537109Z   Installing       : libwayland-egl-1.24.0-1.el10.aarch64                28/248 
+2026-10-25T15:30:48.0561047Z   Installing       : libevdev-1.13.1-6.el10.aarch64                      29/248 
+2026-10-25T15:30:48.0712947Z   Installing       : libXau-1.0.11-8.el10.aarch64                        30/248 
+2026-10-25T15:30:48.0754200Z   Installing       : libxcb-1.17.0-3.el10.aarch64                        31/248 
+2026-10-25T15:30:48.0782746Z   Installing       : xcb-util-renderutil-0.3.10-7.el10.aarch64           32/248 
+2026-10-25T15:30:48.0810852Z   Installing       : libICE-1.1.1-5.el10.aarch64                         33/248 
+2026-10-25T15:30:48.0837709Z   Installing       : libSM-1.2.4-5.el10.aarch64                          34/248 
+2026-10-25T15:30:48.0865509Z   Installing       : xcb-util-0.4.1-7.el10.aarch64                       35/248 
+2026-10-25T15:30:48.0889338Z   Installing       : xcb-util-image-0.4.1-7.el10.aarch64                 36/248 
+2026-10-25T15:30:48.0918984Z   Installing       : xcb-util-cursor-0.1.4-6.el10.aarch64                37/248 
+2026-10-25T15:30:48.0947986Z   Installing       : xcb-util-keysyms-0.4.1-7.el10.aarch64               38/248 
+2026-10-25T15:30:48.1334836Z   Installing       : xcb-util-wm-0.4.2-7.el10.aarch64                    39/248 
+2026-10-25T15:30:48.1389999Z   Installing       : cracklib-dicts-2.9.11-8.el10.aarch64                40/248 
+2026-10-25T15:30:48.2496051Z   Installing       : libpwquality-1.4.5-12.el10.aarch64                  41/248 
+2026-10-25T15:30:48.2553481Z   Installing       : cpp-14.3.1-4.4.el10.alma.2.aarch64                  42/248 
+2026-10-25T15:30:48.3118939Z   Installing       : redhat-text-vf-fonts-4.1.0-1.el10.noarch            43/248 
+2026-10-25T15:30:48.3206694Z   Installing       : vulkan-headers-1.4.328.1-1.el10.noarch              44/248 
+2026-10-25T15:30:48.3248943Z   Installing       : python3-packaging-24.2-2.el10.noarch                45/248 
+2026-10-25T15:30:48.3263769Z   Installing       : protobuf-c-1.5.0-6.el10.aarch64                     46/248 
+2026-10-25T15:30:48.3508523Z   Running scriptlet: unbound-libs-1.24.2-7.el10_2.6.aarch64              47/248 
+2026-10-25T15:30:48.3554195Z   Installing       : unbound-libs-1.24.2-7.el10_2.6.aarch64              47/248 
+2026-10-25T15:30:48.3567235Z   Installing       : unbound-anchor-1.24.2-7.el10_2.6.aarch64            48/248 
+2026-10-25T15:30:48.3731788Z   Running scriptlet: unbound-anchor-1.24.2-7.el10_2.6.aarch64            48/248 
+2026-10-25T15:30:48.3733530Z Created symlink '/etc/systemd/system/timers.target.wants/unbound-anchor.timer' → '/usr/lib/systemd/system/unbound-anchor.timer'.
+2026-10-25T15:30:48.3734109Z 
+2026-10-25T15:30:48.3781332Z   Installing       : gnutls-dane-3.8.10-4.el10_2.aarch64                 49/248 
+2026-10-25T15:30:48.3853414Z   Installing       : pkgconf-m4-2.1.0-3.el10.noarch                      50/248 
+2026-10-25T15:30:48.3878618Z   Installing       : ncurses-6.4-15.20240127.el10_1.aarch64              51/248 
+2026-10-25T15:30:48.3952752Z   Installing       : mariadb-connector-c-config-3.4.4-2.el10_2.noarch    52/248 
+2026-10-25T15:30:48.3982128Z   Installing       : mariadb-connector-c-3.4.4-2.el10_2.aarch64          53/248 
+2026-10-25T15:30:48.4103417Z   Running scriptlet: libutempter-1.2.1-15.el10.aarch64                   54/248 
+2026-10-25T15:30:48.4139746Z   Installing       : libutempter-1.2.1-15.el10.aarch64                   54/248 
+2026-10-25T15:30:48.4182225Z   Installing       : libpkgconf-2.1.0-3.el10.aarch64                     55/248 
+2026-10-25T15:30:48.4206651Z   Installing       : pkgconf-2.1.0-3.el10.aarch64                        56/248 
+2026-10-25T15:30:48.4234083Z   Installing       : pkgconf-pkg-config-2.1.0-3.el10.aarch64             57/248 
+2026-10-25T15:30:48.4262087Z   Installing       : zlib-ng-compat-devel-2.2.3-3.el10_1.aarch64         58/248 
+2026-10-25T15:30:48.4470530Z   Installing       : libffi-devel-3.4.4-10.el10.aarch64                  59/248 
+2026-10-25T15:30:48.4522214Z   Installing       : xorg-x11-proto-devel-2024.1-3.el10.noarch           60/248 
+2026-10-25T15:30:48.6281965Z   Installing       : libXau-devel-1.0.11-8.el10.aarch64                  61/248 
+2026-10-25T15:30:48.6485337Z   Installing       : libxcb-devel-1.17.0-3.el10.aarch64                  62/248 
+2026-10-25T15:30:48.6539554Z   Installing       : wayland-devel-1.24.0-1.el10.aarch64                 63/248 
+2026-10-25T15:30:48.6588834Z   Installing       : dbus-devel-1:1.14.10-5.el10.aarch64                 64/248 
+2026-10-25T15:30:48.6620730Z   Installing       : keyutils-libs-devel-1.6.3-5.el10.aarch64            65/248 
+2026-10-25T15:30:48.6647729Z   Installing       : libblkid-devel-2.40.2-18.el10.aarch64               66/248 
+2026-10-25T15:30:48.6704470Z   Installing       : libcom_err-devel-1.47.1-5.el10.aarch64              67/248 
+2026-10-25T15:30:48.6729266Z   Installing       : libevent-devel-2.1.13-1.el10_2.aarch64              68/248 
+2026-10-25T15:30:48.6784473Z   Installing       : libglvnd-core-devel-1:1.7.0-7.el10.aarch64          69/248 
+2026-10-25T15:30:48.6842931Z   Installing       : libidn2-devel-2.3.7-3.el10.aarch64                  70/248 
+2026-10-25T15:30:48.6866841Z   Installing       : libsepol-devel-3.10-1.el10.aarch64                  71/248 
+2026-10-25T15:30:48.6926799Z   Installing       : libverto-devel-0.3.2-10.el10.aarch64                72/248 
+2026-10-25T15:30:48.6970517Z   Installing       : p11-kit-devel-0.26.4-1.el10_2.aarch64               73/248 
+2026-10-25T15:30:48.7010069Z   Installing       : sysprof-capture-devel-47.2-1.el10.aarch64           74/248 
+2026-10-25T15:30:48.7222822Z   Installing       : xz-devel-1:5.6.2-4.el10_2.1.aarch64                 75/248 
+2026-10-25T15:30:48.7285598Z   Installing       : libxml2-devel-2.12.5-10.el10_2.4.aarch64            76/248 
+2026-10-25T15:30:48.8321215Z   Installing       : libkadm5-1.21.3-10.el10_2.aarch64                   77/248 
+2026-10-25T15:30:48.8362146Z   Installing       : libicu-74.2-5.el10_0.aarch64                        78/248 
+2026-10-25T15:30:48.8388265Z   Installing       : libgudev-238-7.el10.aarch64                         79/248 
+2026-10-25T15:30:48.8403528Z   Installing       : libdaemon-0.14-31.el10.aarch64                      80/248 
+2026-10-25T15:30:48.8661890Z   Running scriptlet: avahi-0.9~rc2-2.el10.aarch64                        81/248 
+2026-10-25T15:30:48.8696854Z   Installing       : avahi-0.9~rc2-2.el10.aarch64                        81/248 
+2026-10-25T15:30:48.8837482Z   Running scriptlet: avahi-0.9~rc2-2.el10.aarch64                        81/248 
+2026-10-25T15:30:48.8838689Z Created symlink '/etc/systemd/system/sockets.target.wants/avahi-daemon.socket' → '/usr/lib/systemd/system/avahi-daemon.socket'.
+2026-10-25T15:30:48.8840077Z Created symlink '/etc/systemd/system/dbus-org.freedesktop.Avahi.service' → '/usr/lib/systemd/system/avahi-daemon.service'.
+2026-10-25T15:30:48.8841350Z Created symlink '/etc/systemd/system/multi-user.target.wants/avahi-daemon.service' → '/usr/lib/systemd/system/avahi-daemon.service'.
+2026-10-25T15:30:48.8841863Z 
+2026-10-25T15:30:48.8915268Z   Installing       : avahi-devel-0.9~rc2-2.el10.aarch64                  82/248 
+2026-10-25T15:30:48.8950535Z   Installing       : libcbor-0.11.0-3.el10.aarch64                       83/248 
+2026-10-25T15:30:48.8980746Z   Installing       : libfido2-1.14.0-7.el10.aarch64                      84/248 
+2026-10-25T15:30:48.9260726Z   Installing       : libatomic-14.3.1-4.4.el10.alma.2.aarch64            85/248 
+2026-10-25T15:30:48.9289066Z   Installing       : hwdata-0.379-10.8.el10.noarch                       86/248 
+2026-10-25T15:30:48.9370857Z   Installing       : libpciaccess-0.16-16.el10.aarch64                   87/248 
+2026-10-25T15:30:48.9396647Z   Installing       : libdrm-2.4.128-1.el10.aarch64                       88/248 
+2026-10-25T15:30:48.9767307Z   Running scriptlet: groff-base-1.23.0-10.el10.aarch64                   89/248 
+2026-10-25T15:30:48.9807989Z   Installing       : groff-base-1.23.0-10.el10.aarch64                   89/248 
+2026-10-25T15:30:48.9900744Z   Running scriptlet: groff-base-1.23.0-10.el10.aarch64                   89/248 
+2026-10-25T15:30:48.9939590Z   Installing       : perl-Digest-1.20-511.el10.noarch                    90/248 
+2026-10-25T15:30:49.0008075Z   Installing       : perl-Digest-MD5-2.59-6.el10.aarch64                 91/248 
+2026-10-25T15:30:49.0037439Z   Installing       : perl-B-1.89-515.el10_2.aarch64                      92/248 
+2026-10-25T15:30:49.0093932Z   Installing       : perl-FileHandle-2.05-515.el10_2.noarch              93/248 
+2026-10-25T15:30:49.0131959Z   Installing       : perl-Unicode-Normalize-1.32-511.el10.aarch64        94/248 
+2026-10-25T15:30:49.0188954Z   Installing       : perl-Data-Dumper-2.189-512.el10.aarch64             95/248 
+2026-10-25T15:30:49.0274811Z   Installing       : perl-libnet-3.15-512.el10.noarch                    96/248 
+2026-10-25T15:30:49.0312169Z   Installing       : perl-URI-5.27-3.el10_2.1.noarch                     97/248 
+2026-10-25T15:30:49.0337606Z   Installing       : perl-AutoLoader-5.74-515.el10_2.noarch              98/248 
+2026-10-25T15:30:49.0362492Z   Installing       : perl-Text-Tabs+Wrap-2024.001-511.el10.noarch        99/248 
+2026-10-25T15:30:49.0384128Z   Installing       : perl-Mozilla-CA-20231213-5.el10.noarch             100/248 
+2026-10-25T15:30:49.0401191Z   Installing       : perl-if-0.61.000-515.el10_2.noarch                 101/248 
+2026-10-25T15:30:49.0432277Z   Installing       : perl-locale-1.12-515.el10_2.noarch                 102/248 
+2026-10-25T15:30:49.0465862Z   Installing       : perl-IO-Socket-IP-0.42-512.el10.noarch             103/248 
+2026-10-25T15:30:49.0494731Z   Installing       : perl-Time-Local-2:1.350-511.el10.noarch            104/248 
+2026-10-25T15:30:49.0518291Z   Installing       : perl-File-Path-2.18-512.el10.noarch                105/248 
+2026-10-25T15:30:49.0575441Z   Installing       : perl-Pod-Escapes-1:1.07-511.el10.noarch            106/248 
+2026-10-25T15:30:49.0730895Z   Installing       : perl-IO-Socket-SSL-2.085-3.el10.noarch             107/248 
+2026-10-25T15:30:49.0772189Z   Installing       : perl-Net-SSLeay-1.94-8.el10.aarch64                108/248 
+2026-10-25T15:30:49.0803386Z   Installing       : perl-Class-Struct-0.68-515.el10_2.noarch           109/248 
+2026-10-25T15:30:49.0834544Z   Installing       : perl-Term-ANSIColor-5.01-512.el10.noarch           110/248 
+2026-10-25T15:30:49.0865106Z   Installing       : perl-POSIX-2.20-515.el10_2.aarch64                 111/248 
+2026-10-25T15:30:49.0897015Z   Installing       : perl-IPC-Open3-1.22-515.el10_2.noarch              112/248 
+2026-10-25T15:30:49.0934669Z   Installing       : perl-File-Temp-1:0.231.100-512.el10.noarch         113/248 
+2026-10-25T15:30:49.1007288Z   Installing       : perl-Term-Cap-1.18-511.el10.noarch                 114/248 
+2026-10-25T15:30:49.1056585Z   Installing       : perl-Pod-Simple-1:3.45-511.el10.noarch             115/248 
+2026-10-25T15:30:49.1100324Z   Installing       : perl-HTTP-Tiny-0.088-512.el10.noarch               116/248 
+2026-10-25T15:30:49.1128184Z   Installing       : perl-Socket-4:2.038-511.el10.aarch64               117/248 
+2026-10-25T15:30:49.1147164Z   Installing       : perl-SelectSaver-1.02-515.el10_2.noarch            118/248 
+2026-10-25T15:30:49.1166636Z   Installing       : perl-Symbol-1.09-515.el10_2.noarch                 119/248 
+2026-10-25T15:30:49.1214486Z   Installing       : perl-File-stat-1.14-515.el10_2.noarch              120/248 
+2026-10-25T15:30:49.1278569Z   Installing       : perl-podlators-1:5.01-511.el10.noarch              121/248 
+2026-10-25T15:30:49.1319850Z   Installing       : perl-Pod-Perldoc-3.28.01-512.el10.noarch           122/248 
+2026-10-25T15:30:49.1345482Z   Installing       : perl-Fcntl-1.18-515.el10_2.aarch64                 123/248 
+2026-10-25T15:30:49.1364931Z   Installing       : perl-Text-ParseWords-3.31-511.el10.noarch          124/248 
+2026-10-25T15:30:49.1390920Z   Installing       : perl-base-2.27-515.el10_2.noarch                   125/248 
+2026-10-25T15:30:49.1440061Z   Installing       : perl-mro-1.29-515.el10_2.aarch64                   126/248 
+2026-10-25T15:30:49.1472299Z   Installing       : perl-IO-1.55-515.el10_2.aarch64                    127/248 
+2026-10-25T15:30:49.1501271Z   Installing       : perl-overloading-0.02-515.el10_2.noarch            128/248 
+2026-10-25T15:30:49.1523954Z   Installing       : perl-Pod-Usage-4:2.03-511.el10.noarch              129/248 
+2026-10-25T15:30:49.1546505Z   Installing       : perl-Errno-1.38-515.el10_2.aarch64                 130/248 
+2026-10-25T15:30:49.1567459Z   Installing       : perl-File-Basename-2.86-515.el10_2.noarch          131/248 
+2026-10-25T15:30:49.1600694Z   Installing       : perl-Getopt-Std-1.14-515.el10_2.noarch             132/248 
+2026-10-25T15:30:49.1657035Z   Installing       : perl-MIME-Base64-3.16-511.el10.aarch64             133/248 
+2026-10-25T15:30:49.1694898Z   Installing       : perl-Scalar-List-Utils-5:1.63-511.el10.aarch64     134/248 
+2026-10-25T15:30:49.1731518Z   Installing       : perl-constant-1.33-512.el10.noarch                 135/248 
+2026-10-25T15:30:49.1753225Z   Installing       : perl-Storable-1:3.32-511.el10.aarch64              136/248 
+2026-10-25T15:30:49.1774726Z   Installing       : perl-overload-1.37-515.el10_2.noarch               137/248 
+2026-10-25T15:30:49.1795575Z   Installing       : perl-parent-1:0.241-512.el10.noarch                138/248 
+2026-10-25T15:30:49.1830197Z   Installing       : perl-vars-1.05-515.el10_2.noarch                   139/248 
+2026-10-25T15:30:49.1861114Z   Installing       : perl-Getopt-Long-1:2.58-3.el10.noarch              140/248 
+2026-10-25T15:30:49.1888938Z   Installing       : perl-Carp-1.54-511.el10.noarch                     141/248 
+2026-10-25T15:30:49.1916272Z   Installing       : perl-Exporter-5.78-511.el10.noarch                 142/248 
+2026-10-25T15:30:49.1964009Z   Installing       : perl-NDBM_File-1.17-515.el10_2.aarch64             143/248 
+2026-10-25T15:30:49.1992822Z   Installing       : perl-PathTools-3.91-512.el10.aarch64               144/248 
+2026-10-25T15:30:49.2232265Z   Installing       : perl-DynaLoader-1.56-515.el10_2.aarch64            145/248 
+2026-10-25T15:30:49.3098180Z   Installing       : perl-Encode-4:3.21-511.el10.aarch64                146/248 
+2026-10-25T15:30:49.3220367Z   Installing       : perl-libs-4:5.40.2-515.el10_2.aarch64              147/248 
+2026-10-25T15:30:49.3256605Z   Installing       : perl-interpreter-4:5.40.2-515.el10_2.aarch64       148/248 
+2026-10-25T15:30:49.3290778Z   Installing       : perl-Error-1:0.17029-18.el10.noarch                149/248 
+2026-10-25T15:30:49.3318003Z   Installing       : perl-TermReadKey-2.38-24.el10.aarch64              150/248 
+2026-10-25T15:30:49.3359358Z   Installing       : perl-lib-0.65-515.el10_2.aarch64                   151/248 
+2026-10-25T15:30:49.3476701Z   Installing       : graphite2-1.3.14-17.el10.aarch64                   152/248 
+2026-10-25T15:30:49.3548347Z   Installing       : harfbuzz-8.4.0-6.el10.aarch64                      153/248 
+2026-10-25T15:30:49.3582127Z   Installing       : freetype-2.13.2-8.el10.aarch64                     154/248 
+2026-10-25T15:30:49.3643778Z   Installing       : google-noto-fonts-common-20240401-5.el10.noarch    155/248 
+2026-10-25T15:30:49.3684940Z   Installing       : google-noto-sans-vf-fonts-20240401-5.el10.noarch   156/248 
+2026-10-25T15:30:49.3848663Z   Installing       : default-fonts-core-sans-4.1-3.el10.noarch          157/248 
+2026-10-25T15:30:49.3885649Z   Installing       : fontconfig-2.15.0-7.el10.aarch64                   158/248 
+2026-10-25T15:30:50.4110055Z   Running scriptlet: fontconfig-2.15.0-7.el10.aarch64                   158/248 
+2026-10-25T15:30:50.4483597Z   Installing       : gdbm-1:1.23-12.el10_0.aarch64                      159/248 
+2026-10-25T15:30:50.5143264Z   Installing       : pam-1.6.1-9.el10_2.1.aarch64                       160/248 
+2026-10-25T15:30:50.5144356Z   Installing       : util-linux-2.40.2-18.el10.aarch64                  161/248 
+2026-10-25T15:30:50.5144834Z warning: /etc/adjtime created as /etc/adjtime.rpmnew
+2026-10-25T15:30:50.5145081Z 
+2026-10-25T15:30:50.5353062Z   Running scriptlet: util-linux-2.40.2-18.el10.aarch64                  161/248 
+2026-10-25T15:30:50.5354371Z Created symlink '/etc/systemd/system/timers.target.wants/fstrim.timer' → '/usr/lib/systemd/system/fstrim.timer'.
+2026-10-25T15:30:50.5354807Z 
+2026-10-25T15:30:50.5847947Z   Installing       : openssh-9.9p1-29.el10_2.alma.1.aarch64             162/248 
+2026-10-25T15:30:50.5861505Z   Installing       : openssh-clients-9.9p1-29.el10_2.alma.1.aarch64     163/248 
+2026-10-25T15:30:50.6614609Z   Running scriptlet: openssh-clients-9.9p1-29.el10_2.alma.1.aarch64     163/248 
+2026-10-25T15:30:50.7924741Z   Installing       : git-core-2.52.0-1.el10.aarch64                     164/248 
+2026-10-25T15:30:50.7994711Z   Installing       : git-core-doc-2.52.0-1.el10.noarch                  165/248 
+2026-10-25T15:30:50.8016324Z   Installing       : perl-Git-2.52.0-1.el10.noarch                      166/248 
+2026-10-25T15:30:50.8053339Z   Installing       : git-2.52.0-1.el10.aarch64                          167/248 
+2026-10-25T15:30:50.8083634Z   Installing       : duktape-2.7.0-10.el10.aarch64                      168/248 
+2026-10-25T15:30:50.8138729Z   Installing       : libproxy-0.5.5-4.el10.aarch64                      169/248 
+2026-10-25T15:30:50.8307661Z   Installing       : cyrus-sasl-lib-2.1.28-30.el10_2.aarch64            170/248 
+2026-10-25T15:30:50.8359259Z   Installing       : openldap-2.6.10-1.el10.aarch64                     171/248 
+2026-10-25T15:30:50.8388751Z   Installing       : libpq-16.14-1.el10_2.aarch64                       172/248 
+2026-10-25T15:30:50.8427829Z   Installing       : cups-filesystem-1:2.4.10-18.el10_2.noarch          173/248 
+2026-10-25T15:30:50.8455596Z   Installing       : cups-libs-1:2.4.10-18.el10_2.aarch64               174/248 
+2026-10-25T15:30:50.8830244Z   Installing       : chrpath-0.16-25.el10.aarch64                       175/248 
+2026-10-25T15:30:50.8885327Z   Installing       : xkeyboard-config-2.41-3.el10.noarch                176/248 
+2026-10-25T15:30:50.8917585Z   Installing       : libxkbcommon-1.7.0-4.el10.aarch64                  177/248 
+2026-10-25T15:30:50.8934205Z   Installing       : libxkbcommon-devel-1.7.0-4.el10.aarch64            178/248 
+2026-10-25T15:30:50.9106975Z   Installing       : libxkbcommon-x11-1.7.0-4.el10.aarch64              179/248 
+2026-10-25T15:30:50.9138985Z   Installing       : qt6-qttranslations-6.10.1-1.el10.alma.2.noarch     180/248 
+2026-10-25T15:30:50.9152771Z   Installing       : qt6-filesystem-6.10.1-1.el10.aarch64               181/248 
+2026-10-25T15:30:50.9751966Z   Installing       : qt6-qtbase-common-6.10.1-1.el10.alma.1.noarch      182/248 
+2026-10-25T15:30:50.9795501Z   Installing       : qt6-qtbase-6.10.1-1.el10.alma.1.aarch64            183/248 
+2026-10-25T15:30:50.9821993Z   Installing       : qt6-qtbase-mysql-6.10.1-1.el10.alma.1.aarch64      184/248 
+2026-10-25T15:30:50.9854821Z   Installing       : qt6-qtbase-postgresql-6.10.1-1.el10.alma.1.aarch   185/248 
+2026-10-25T15:30:51.0057978Z   Installing       : pcre2-utf32-10.44-1.el10.3.aarch64                 186/248 
+2026-10-25T15:30:51.0236308Z   Installing       : pcre2-devel-10.44-1.el10.3.aarch64                 187/248 
+2026-10-25T15:30:51.0322143Z   Installing       : libselinux-devel-3.10-1.el10.aarch64               188/248 
+2026-10-25T15:30:51.0346565Z   Installing       : krb5-devel-1.21.3-10.el10_2.aarch64                189/248 
+2026-10-25T15:30:51.0361894Z   Installing       : libmount-devel-2.40.2-18.el10.aarch64              190/248 
+2026-10-25T15:30:51.3505278Z   Installing       : llvm-filesystem-21.1.8-1.el10.alma.1.aarch64       191/248 
+2026-10-25T15:30:51.3526377Z   Installing       : llvm-libs-21.1.8-1.el10.alma.1.aarch64             192/248 
+2026-10-25T15:30:51.4407821Z   Installing       : mesa-libgbm-25.2.7-4.el10.alma.5.aarch64           193/248 
+2026-10-25T15:30:51.4445473Z   Installing       : mesa-dri-drivers-25.2.7-4.el10.alma.5.aarch64      194/248 
+2026-10-25T15:30:51.4474151Z   Installing       : libglvnd-egl-1:1.7.0-7.el10.aarch64                195/248 
+2026-10-25T15:30:51.4500788Z   Installing       : mesa-libEGL-25.2.7-4.el10.alma.5.aarch64           196/248 
+2026-10-25T15:30:51.4540477Z   Installing       : libglvnd-gles-1:1.7.0-7.el10.aarch64               197/248 
+2026-10-25T15:30:51.6336789Z   Installing       : vulkan-loader-1.4.328.1-1.el10.aarch64             198/248 
+2026-10-25T15:30:51.6370790Z   Installing       : mesa-vulkan-drivers-25.2.7-4.el10.alma.5.aarch64   199/248 
+2026-10-25T15:30:51.6897423Z   Installing       : vulkan-loader-devel-1.4.328.1-1.el10.aarch64       200/248 
+2026-10-25T15:30:51.6950562Z   Installing       : libwacom-data-2.14.0-4.el10_1.noarch               201/248 
+2026-10-25T15:30:51.7093428Z   Installing       : libwacom-2.14.0-4.el10_1.aarch64                   202/248 
+2026-10-25T15:30:51.7116768Z   Installing       : libinput-1.30.1-2.el10_2.aarch64                   203/248 
+2026-10-25T15:30:51.7213880Z   Running scriptlet: libinput-1.30.1-2.el10_2.aarch64                   203/248 
+2026-10-25T15:30:52.0018475Z   Installing       : libuv-1:1.52.1-1.el10_2.aarch64                    204/248 
+2026-10-25T15:30:52.0993017Z   Installing       : cmake-data-3.31.8-1.el10.noarch                    205/248 
+2026-10-25T15:30:52.1033156Z   Installing       : cmake-3.31.8-1.el10.aarch64                        206/248 
+2026-10-25T15:30:52.1054548Z   Installing       : libubsan-14.3.1-4.4.el10.alma.2.aarch64            207/248 
+2026-10-25T15:30:52.1270132Z   Installing       : libtool-ltdl-2.4.7-13.el10.aarch64                 208/248 
+2026-10-25T15:30:52.1315715Z   Installing       : unixODBC-2.3.12-6.el10.aarch64                     209/248 
+2026-10-25T15:30:52.1343792Z   Installing       : qt6-qtbase-odbc-6.10.1-1.el10.alma.1.aarch64       210/248 
+2026-10-25T15:30:52.1390450Z   Installing       : libtasn1-tools-4.20.0-5.el10_2.aarch64             211/248 
+2026-10-25T15:30:52.2359864Z   Installing       : libtasn1-devel-4.20.0-5.el10_2.aarch64             212/248 
+2026-10-25T15:30:52.2442227Z   Installing       : libstdc++-devel-14.3.1-4.4.el10.alma.2.aarch64     213/248 
+2026-10-25T15:30:52.2501208Z   Installing       : libjpeg-turbo-3.0.2-4.el10.aarch64                 214/248 
+2026-10-25T15:30:52.2748044Z   Installing       : libasan-14.3.1-4.4.el10.alma.2.aarch64             215/248 
+2026-10-25T15:30:52.2814938Z   Installing       : libX11-common-1.8.10-1.el10.noarch                 216/248 
+2026-10-25T15:30:52.2879712Z   Installing       : libX11-1.8.10-1.el10.aarch64                       217/248 
+2026-10-25T15:30:52.2901017Z   Installing       : libXext-1.3.6-3.el10.aarch64                       218/248 
+2026-10-25T15:30:52.2939206Z   Installing       : libXxf86vm-1.1.5-8.el10.aarch64                    219/248 
+2026-10-25T15:30:52.2966725Z   Installing       : libglvnd-glx-1:1.7.0-7.el10.aarch64                220/248 
+2026-10-25T15:30:52.2997802Z   Installing       : mesa-libGL-25.2.7-4.el10.alma.5.aarch64            221/248 
+2026-10-25T15:30:52.4022816Z   Installing       : glx-utils-9.0.0-8.el10.aarch64                     222/248 
+2026-10-25T15:30:52.4137901Z   Installing       : qt6-qtbase-gui-6.10.1-1.el10.alma.1.aarch64        223/248 
+2026-10-25T15:30:52.6991999Z   Installing       : qt6-qtsvg-6.10.1-1.el10.aarch64                    224/248 
+2026-10-25T15:30:52.7339739Z   Installing       : qt6-qtdeclarative-6.10.1-1.el10_2.1.aarch64        225/248 
+2026-10-25T15:30:52.7968854Z   Installing       : qt6-qtwayland-6.10.1-1.el10.aarch64                226/248 
+2026-10-25T15:30:52.8072347Z   Installing       : libX11-devel-1.8.10-1.el10.aarch64                 227/248 
+2026-10-25T15:30:52.9820832Z   Installing       : libglvnd-devel-1:1.7.0-7.el10.aarch64              228/248 
+2026-10-25T15:30:52.9974103Z   Installing       : kernel-headers-6.12.0-211.68.1.el10_2.aarch64      229/248 
+2026-10-25T15:30:53.0411778Z   Installing       : libxcrypt-devel-4.4.36-10.el10.aarch64             230/248 
+2026-10-25T15:30:53.3056528Z   Installing       : glibc-devel-2.39-128.el10_2.alma.1.aarch64         231/248 
+2026-10-25T15:30:53.4330139Z   Installing       : gcc-14.3.1-4.4.el10.alma.2.aarch64                 232/248 
+2026-10-25T15:30:53.4369189Z   Installing       : gcc-c++-14.3.1-4.4.el10.alma.2.aarch64             233/248 
+2026-10-25T15:30:53.7212267Z   Installing       : qt6-rpm-macros-6.10.1-1.el10.noarch                234/248 
+2026-10-25T15:30:54.0223037Z   Installing       : qt6-qtbase-devel-6.10.1-1.el10.alma.1.aarch64      235/248 
+2026-10-25T15:30:54.0363788Z   Installing       : qt6-qtdeclarative-devel-6.10.1-1.el10_2.1.aarch6   236/248 
+2026-10-25T15:30:54.1383875Z   Installing       : gnutls-c++-3.8.10-4.el10_2.aarch64                 237/248 
+2026-10-25T15:30:54.1460217Z   Installing       : gnutls-devel-3.8.10-4.el10_2.aarch64               238/248 
+2026-10-25T15:30:54.2366244Z   Installing       : cups-devel-1:2.4.10-18.el10_2.aarch64              239/248 
+2026-10-25T15:30:54.2810978Z   Installing       : qt6-qtbase-private-devel-6.10.1-1.el10.alma.1.aa   240/248 
+2026-10-25T15:30:54.3645301Z   Installing       : qt6-qtwayland-devel-6.10.1-1.el10.aarch64          241/248 
+2026-10-25T15:30:54.3884843Z   Installing       : glib2-devel-2.80.4-12.el10_2.22.aarch64            242/248 
+2026-10-25T15:30:54.3981257Z   Installing       : wayland-protocols-devel-1.45-1.el10.noarch         243/248 
+2026-10-25T15:30:54.4027588Z   Installing       : authselect-1.5.2-1.el10.aarch64                    244/248 
+2026-10-25T15:30:54.4059191Z   Installing       : ninja-build-1.11.1-9.el10.aarch64                  245/248 
+2026-10-25T15:30:54.4084114Z   Installing       : file-5.45-9.el10.aarch64                           246/248 
+2026-10-25T15:30:54.4160046Z   Cleanup          : python3-3.12.14-1.el10_2.aarch64                   247/248 
+2026-10-25T15:30:54.4252783Z   Cleanup          : python3-libs-3.12.14-1.el10_2.aarch64              248/248 
+2026-10-25T15:30:54.4354267Z   Running scriptlet: authselect-libs-1.5.2-1.el10.aarch64               248/248 
+2026-10-25T15:30:54.4588056Z   Running scriptlet: fontconfig-2.15.0-7.el10.aarch64                   248/248 
+2026-10-25T15:30:58.2864893Z   Running scriptlet: python3-libs-3.12.14-1.el10_2.aarch64              248/248 
+2026-10-25T15:30:58.2866001Z 
+2026-10-25T15:30:58.2866400Z Upgraded:
+2026-10-25T15:30:58.2867046Z   python3-3.12.15-1.el10_2.aarch64     python3-libs-3.12.15-1.el10_2.aarch64    
+2026-10-25T15:30:58.2867540Z Installed:
+2026-10-25T15:30:58.2867856Z   authselect-1.5.2-1.el10.aarch64                                               
+2026-10-25T15:30:58.2868348Z   authselect-libs-1.5.2-1.el10.aarch64                                          
+2026-10-25T15:30:58.2868927Z   avahi-0.9~rc2-2.el10.aarch64                                                  
+2026-10-25T15:30:58.2869573Z   avahi-devel-0.9~rc2-2.el10.aarch64                                            
+2026-10-25T15:30:58.2870104Z   avahi-libs-0.9~rc2-2.el10.aarch64                                             
+2026-10-25T15:30:58.2870588Z   chrpath-0.16-25.el10.aarch64                                                  
+2026-10-25T15:30:58.2871062Z   cmake-3.31.8-1.el10.aarch64                                                   
+2026-10-25T15:30:58.2871592Z   cmake-data-3.31.8-1.el10.noarch                                               
+2026-10-25T15:30:58.2872087Z   cmake-filesystem-3.31.8-1.el10.aarch64                                        
+2026-10-25T15:30:58.2872601Z   cpp-14.3.1-4.4.el10.alma.2.aarch64                                            
+2026-10-25T15:30:58.2873073Z   cracklib-2.9.11-8.el10.aarch64                                                
+2026-10-25T15:30:58.2873549Z   cracklib-dicts-2.9.11-8.el10.aarch64                                          
+2026-10-25T15:30:58.2874071Z   cups-devel-1:2.4.10-18.el10_2.aarch64                                         
+2026-10-25T15:30:58.2874577Z   cups-filesystem-1:2.4.10-18.el10_2.noarch                                     
+2026-10-25T15:30:58.2875068Z   cups-libs-1:2.4.10-18.el10_2.aarch64                                          
+2026-10-25T15:30:58.2875553Z   cyrus-sasl-lib-2.1.28-30.el10_2.aarch64                                       
+2026-10-25T15:30:58.2876027Z   dbus-devel-1:1.14.10-5.el10.aarch64                                           
+2026-10-25T15:30:58.2876576Z   default-fonts-core-sans-4.1-3.el10.noarch                                     
+2026-10-25T15:30:58.2877079Z   duktape-2.7.0-10.el10.aarch64                                                 
+2026-10-25T15:30:58.2877543Z   emacs-filesystem-1:29.4-14.el10_2.3.noarch                                    
+2026-10-25T15:30:58.2878055Z   file-5.45-9.el10.aarch64                                                      
+2026-10-25T15:30:58.2878524Z   fontconfig-2.15.0-7.el10.aarch64                                              
+2026-10-25T15:30:58.2879063Z   fonts-filesystem-1:2.0.5-18.el10.noarch                                       
+2026-10-25T15:30:58.2879851Z   freetype-2.13.2-8.el10.aarch64                                                
+2026-10-25T15:30:58.2880310Z   gcc-14.3.1-4.4.el10.alma.2.aarch64                                            
+2026-10-25T15:30:58.2880824Z   gcc-c++-14.3.1-4.4.el10.alma.2.aarch64                                        
+2026-10-25T15:30:58.2881644Z   gdbm-1:1.23-12.el10_0.aarch64                                                 
+2026-10-25T15:30:58.2882206Z   git-2.52.0-1.el10.aarch64                                                     
+2026-10-25T15:30:58.2882656Z   git-core-2.52.0-1.el10.aarch64                                                
+2026-10-25T15:30:58.2883120Z   git-core-doc-2.52.0-1.el10.noarch                                             
+2026-10-25T15:30:58.2883632Z   glib2-devel-2.80.4-12.el10_2.22.aarch64                                       
+2026-10-25T15:30:58.2884114Z   glibc-devel-2.39-128.el10_2.alma.1.aarch64                                    
+2026-10-25T15:30:58.2885161Z   glx-utils-9.0.0-8.el10.aarch64                                                
+2026-10-25T15:30:58.2885637Z   gnutls-c++-3.8.10-4.el10_2.aarch64                                            
+2026-10-25T15:30:58.2886104Z   gnutls-dane-3.8.10-4.el10_2.aarch64                                           
+2026-10-25T15:30:58.2886628Z   gnutls-devel-3.8.10-4.el10_2.aarch64                                          
+2026-10-25T15:30:58.2887166Z   google-noto-fonts-common-20240401-5.el10.noarch                               
+2026-10-25T15:30:58.2887734Z   google-noto-sans-vf-fonts-20240401-5.el10.noarch                              
+2026-10-25T15:30:58.2888252Z   graphite2-1.3.14-17.el10.aarch64                                              
+2026-10-25T15:30:58.2888818Z   groff-base-1.23.0-10.el10.aarch64                                             
+2026-10-25T15:30:58.2889504Z   harfbuzz-8.4.0-6.el10.aarch64                                                 
+2026-10-25T15:30:58.2890000Z   hwdata-0.379-10.8.el10.noarch                                                 
+2026-10-25T15:30:58.2890509Z   kernel-headers-6.12.0-211.68.1.el10_2.aarch64                                 
+2026-10-25T15:30:58.2891020Z   keyutils-libs-devel-1.6.3-5.el10.aarch64                                      
+2026-10-25T15:30:58.2891510Z   krb5-devel-1.21.3-10.el10_2.aarch64                                           
+2026-10-25T15:30:58.2892022Z   libICE-1.1.1-5.el10.aarch64                                                   
+2026-10-25T15:30:58.2892502Z   libSM-1.2.4-5.el10.aarch64                                                    
+2026-10-25T15:30:58.2892971Z   libX11-1.8.10-1.el10.aarch64                                                  
+2026-10-25T15:30:58.2893449Z   libX11-common-1.8.10-1.el10.noarch                                            
+2026-10-25T15:30:58.2893923Z   libX11-devel-1.8.10-1.el10.aarch64                                            
+2026-10-25T15:30:58.2894428Z   libX11-xcb-1.8.10-1.el10.aarch64                                              
+2026-10-25T15:30:58.2894908Z   libXau-1.0.11-8.el10.aarch64                                                  
+2026-10-25T15:30:58.2895413Z   libXau-devel-1.0.11-8.el10.aarch64                                            
+2026-10-25T15:30:58.2895892Z   libXext-1.3.6-3.el10.aarch64                                                  
+2026-10-25T15:30:58.2896363Z   libXxf86vm-1.1.5-8.el10.aarch64                                               
+2026-10-25T15:30:58.2896866Z   libasan-14.3.1-4.4.el10.alma.2.aarch64                                        
+2026-10-25T15:30:58.2897378Z   libatomic-14.3.1-4.4.el10.alma.2.aarch64                                      
+2026-10-25T15:30:58.2897863Z   libblkid-devel-2.40.2-18.el10.aarch64                                         
+2026-10-25T15:30:58.2898383Z   libbrotli-1.1.0-8.el10_2.aarch64                                              
+2026-10-25T15:30:58.2898862Z   libcbor-0.11.0-3.el10.aarch64                                                 
+2026-10-25T15:30:58.2899517Z   libcom_err-devel-1.47.1-5.el10.aarch64                                        
+2026-10-25T15:30:58.2900026Z   libdaemon-0.14-31.el10.aarch64                                                
+2026-10-25T15:30:58.2900487Z   libdrm-2.4.128-1.el10.aarch64                                                 
+2026-10-25T15:30:58.2901235Z   libedit-3.1-52.20230828cvs.el10.aarch64                                       
+2026-10-25T15:30:58.2901722Z   libevdev-1.13.1-6.el10.aarch64                                                
+2026-10-25T15:30:58.2902211Z   libevent-2.1.13-1.el10_2.aarch64                                              
+2026-10-25T15:30:58.2902720Z   libevent-devel-2.1.13-1.el10_2.aarch64                                        
+2026-10-25T15:30:58.2903215Z   libffi-devel-3.4.4-10.el10.aarch64                                            
+2026-10-25T15:30:58.2903732Z   libfido2-1.14.0-7.el10.aarch64                                                
+2026-10-25T15:30:58.2904306Z   libglvnd-1:1.7.0-7.el10.aarch64                                               
+2026-10-25T15:30:58.2904825Z   libglvnd-core-devel-1:1.7.0-7.el10.aarch64                                    
+2026-10-25T15:30:58.2905312Z   libglvnd-devel-1:1.7.0-7.el10.aarch64                                         
+2026-10-25T15:30:58.2905781Z   libglvnd-egl-1:1.7.0-7.el10.aarch64                                           
+2026-10-25T15:30:58.2906278Z   libglvnd-gles-1:1.7.0-7.el10.aarch64                                          
+2026-10-25T15:30:58.2906764Z   libglvnd-glx-1:1.7.0-7.el10.aarch64                                           
+2026-10-25T15:30:58.2907797Z   libglvnd-opengl-1:1.7.0-7.el10.aarch64                                        
+2026-10-25T15:30:58.2908299Z   libgudev-238-7.el10.aarch64                                                   
+2026-10-25T15:30:58.2908762Z   libicu-74.2-5.el10_0.aarch64                                                  
+2026-10-25T15:30:58.2909424Z   libidn2-devel-2.3.7-3.el10.aarch64                                            
+2026-10-25T15:30:58.2909899Z   libinput-1.30.1-2.el10_2.aarch64                                              
+2026-10-25T15:30:58.2910391Z   libjpeg-turbo-3.0.2-4.el10.aarch64                                            
+2026-10-25T15:30:58.2910920Z   libkadm5-1.21.3-10.el10_2.aarch64                                             
+2026-10-25T15:30:58.2911406Z   libmount-devel-2.40.2-18.el10.aarch64                                         
+2026-10-25T15:30:58.2911905Z   libmpc-1.3.1-7.el10.aarch64                                                   
+2026-10-25T15:30:58.2912378Z   libpciaccess-0.16-16.el10.aarch64                                             
+2026-10-25T15:30:58.2912874Z   libpkgconf-2.1.0-3.el10.aarch64                                               
+2026-10-25T15:30:58.2913371Z   libpng-2:1.6.40-11.el10_2.1.aarch64                                           
+2026-10-25T15:30:58.2913833Z   libpq-16.14-1.el10_2.aarch64                                                  
+2026-10-25T15:30:58.2914343Z   libproxy-0.5.5-4.el10.aarch64                                                 
+2026-10-25T15:30:58.2914818Z   libpwquality-1.4.5-12.el10.aarch64                                            
+2026-10-25T15:30:58.2915319Z   libselinux-devel-3.10-1.el10.aarch64                                          
+2026-10-25T15:30:58.2915848Z   libsepol-devel-3.10-1.el10.aarch64                                            
+2026-10-25T15:30:58.2916339Z   libstdc++-devel-14.3.1-4.4.el10.alma.2.aarch64                                
+2026-10-25T15:30:58.2916847Z   libtasn1-devel-4.20.0-5.el10_2.aarch64                                        
+2026-10-25T15:30:58.2917339Z   libtasn1-tools-4.20.0-5.el10_2.aarch64                                        
+2026-10-25T15:30:58.2917852Z   libtool-ltdl-2.4.7-13.el10.aarch64                                            
+2026-10-25T15:30:58.2918366Z   libubsan-14.3.1-4.4.el10.alma.2.aarch64                                       
+2026-10-25T15:30:58.2918860Z   libutempter-1.2.1-15.el10.aarch64                                             
+2026-10-25T15:30:58.2919558Z   libuv-1:1.52.1-1.el10_2.aarch64                                               
+2026-10-25T15:30:58.2920041Z   libverto-devel-0.3.2-10.el10.aarch64                                          
+2026-10-25T15:30:58.2920541Z   libwacom-2.14.0-4.el10_1.aarch64                                              
+2026-10-25T15:30:58.2921258Z   libwacom-data-2.14.0-4.el10_1.noarch                                          
+2026-10-25T15:30:58.2921782Z   libwayland-client-1.24.0-1.el10.aarch64                                       
+2026-10-25T15:30:58.2922303Z   libwayland-cursor-1.24.0-1.el10.aarch64                                       
+2026-10-25T15:30:58.2922827Z   libwayland-egl-1.24.0-1.el10.aarch64                                          
+2026-10-25T15:30:58.2923321Z   libwayland-server-1.24.0-1.el10.aarch64                                       
+2026-10-25T15:30:58.2923921Z   libxcb-1.17.0-3.el10.aarch64                                                  
+2026-10-25T15:30:58.2924387Z   libxcb-devel-1.17.0-3.el10.aarch64                                            
+2026-10-25T15:30:58.2924866Z   libxcrypt-devel-4.4.36-10.el10.aarch64                                        
+2026-10-25T15:30:58.2925406Z   libxkbcommon-1.7.0-4.el10.aarch64                                             
+2026-10-25T15:30:58.2925916Z   libxkbcommon-devel-1.7.0-4.el10.aarch64                                       
+2026-10-25T15:30:58.2926439Z   libxkbcommon-x11-1.7.0-4.el10.aarch64                                         
+2026-10-25T15:30:58.2926928Z   libxml2-devel-2.12.5-10.el10_2.4.aarch64                                      
+2026-10-25T15:30:58.2927402Z   libxshmfence-1.3.2-5.el10.aarch64                                             
+2026-10-25T15:30:58.2927950Z   llvm-filesystem-21.1.8-1.el10.alma.1.aarch64                                  
+2026-10-25T15:30:58.2928457Z   llvm-libs-21.1.8-1.el10.alma.1.aarch64                                        
+2026-10-25T15:30:58.2928947Z   make-1:4.4.1-9.el10.aarch64                                                   
+2026-10-25T15:30:58.2929620Z   mariadb-connector-c-3.4.4-2.el10_2.aarch64                                    
+2026-10-25T15:30:58.2930141Z   mariadb-connector-c-config-3.4.4-2.el10_2.noarch                              
+2026-10-25T15:30:58.2930744Z   mesa-dri-drivers-25.2.7-4.el10.alma.5.aarch64                                 
+2026-10-25T15:30:58.2931266Z   mesa-filesystem-25.2.7-4.el10.alma.5.aarch64                                  
+2026-10-25T15:30:58.2931793Z   mesa-libEGL-25.2.7-4.el10.alma.5.aarch64                                      
+2026-10-25T15:30:58.2932292Z   mesa-libGL-25.2.7-4.el10.alma.5.aarch64                                       
+2026-10-25T15:30:58.2932782Z   mesa-libgbm-25.2.7-4.el10.alma.5.aarch64                                      
+2026-10-25T15:30:58.2933356Z   mesa-vulkan-drivers-25.2.7-4.el10.alma.5.aarch64                              
+2026-10-25T15:30:58.2933847Z   mtdev-1.1.6-10.el10.aarch64                                                   
+2026-10-25T15:30:58.2934326Z   ncurses-6.4-15.20240127.el10_1.aarch64                                        
+2026-10-25T15:30:58.2934811Z   ninja-build-1.11.1-9.el10.aarch64                                             
+2026-10-25T15:30:58.2935280Z   openldap-2.6.10-1.el10.aarch64                                                
+2026-10-25T15:30:58.2935801Z   openssh-9.9p1-29.el10_2.alma.1.aarch64                                        
+2026-10-25T15:30:58.2936298Z   openssh-clients-9.9p1-29.el10_2.alma.1.aarch64                                
+2026-10-25T15:30:58.2936834Z   p11-kit-devel-0.26.4-1.el10_2.aarch64                                         
+2026-10-25T15:30:58.2937302Z   pam-1.6.1-9.el10_2.1.aarch64                                                  
+2026-10-25T15:30:58.2937766Z   pcre2-devel-10.44-1.el10.3.aarch64                                            
+2026-10-25T15:30:58.2938292Z   pcre2-utf16-10.44-1.el10.3.aarch64                                            
+2026-10-25T15:30:58.2938764Z   pcre2-utf32-10.44-1.el10.3.aarch64                                            
+2026-10-25T15:30:58.2939369Z   perl-AutoLoader-5.74-515.el10_2.noarch                                        
+2026-10-25T15:30:58.2939912Z   perl-B-1.89-515.el10_2.aarch64                                                
+2026-10-25T15:30:58.2940628Z   perl-Carp-1.54-511.el10.noarch                                                
+2026-10-25T15:30:58.2941166Z   perl-Class-Struct-0.68-515.el10_2.noarch                                      
+2026-10-25T15:30:58.2941672Z   perl-Data-Dumper-2.189-512.el10.aarch64                                       
+2026-10-25T15:30:58.2942153Z   perl-Digest-1.20-511.el10.noarch                                              
+2026-10-25T15:30:58.2942670Z   perl-Digest-MD5-2.59-6.el10.aarch64                                           
+2026-10-25T15:30:58.2943298Z   perl-DynaLoader-1.56-515.el10_2.aarch64                                       
+2026-10-25T15:30:58.2943809Z   perl-Encode-4:3.21-511.el10.aarch64                                           
+2026-10-25T15:30:58.2944290Z   perl-Errno-1.38-515.el10_2.aarch64                                            
+2026-10-25T15:30:58.2944774Z   perl-Error-1:0.17029-18.el10.noarch                                           
+2026-10-25T15:30:58.2945289Z   perl-Exporter-5.78-511.el10.noarch                                            
+2026-10-25T15:30:58.2945793Z   perl-Fcntl-1.18-515.el10_2.aarch64                                            
+2026-10-25T15:30:58.2946289Z   perl-File-Basename-2.86-515.el10_2.noarch                                     
+2026-10-25T15:30:58.2946787Z   perl-File-Path-2.18-512.el10.noarch                                           
+2026-10-25T15:30:58.2947274Z   perl-File-Temp-1:0.231.100-512.el10.noarch                                    
+2026-10-25T15:30:58.2947782Z   perl-File-stat-1.14-515.el10_2.noarch                                         
+2026-10-25T15:30:58.2948318Z   perl-FileHandle-2.05-515.el10_2.noarch                                        
+2026-10-25T15:30:58.2948826Z   perl-Getopt-Long-1:2.58-3.el10.noarch                                         
+2026-10-25T15:30:58.2949481Z   perl-Getopt-Std-1.14-515.el10_2.noarch                                        
+2026-10-25T15:30:58.2949967Z   perl-Git-2.52.0-1.el10.noarch                                                 
+2026-10-25T15:30:58.2950494Z   perl-HTTP-Tiny-0.088-512.el10.noarch                                          
+2026-10-25T15:30:58.2951000Z   perl-IO-1.55-515.el10_2.aarch64                                               
+2026-10-25T15:30:58.2951470Z   perl-IO-Socket-IP-0.42-512.el10.noarch                                        
+2026-10-25T15:30:58.2952017Z   perl-IO-Socket-SSL-2.085-3.el10.noarch                                        
+2026-10-25T15:30:58.2952513Z   perl-IPC-Open3-1.22-515.el10_2.noarch                                         
+2026-10-25T15:30:58.2953031Z   perl-MIME-Base64-3.16-511.el10.aarch64                                        
+2026-10-25T15:30:58.2953553Z   perl-Mozilla-CA-20231213-5.el10.noarch                                        
+2026-10-25T15:30:58.2954035Z   perl-NDBM_File-1.17-515.el10_2.aarch64                                        
+2026-10-25T15:30:58.2954546Z   perl-Net-SSLeay-1.94-8.el10.aarch64                                           
+2026-10-25T15:30:58.2955030Z   perl-POSIX-2.20-515.el10_2.aarch64                                            
+2026-10-25T15:30:58.2955578Z   perl-PathTools-3.91-512.el10.aarch64                                          
+2026-10-25T15:30:58.2956072Z   perl-Pod-Escapes-1:1.07-511.el10.noarch                                       
+2026-10-25T15:30:58.2956559Z   perl-Pod-Perldoc-3.28.01-512.el10.noarch                                      
+2026-10-25T15:30:58.2957090Z   perl-Pod-Simple-1:3.45-511.el10.noarch                                        
+2026-10-25T15:30:58.2957583Z   perl-Pod-Usage-4:2.03-511.el10.noarch                                         
+2026-10-25T15:30:58.2958102Z   perl-Scalar-List-Utils-5:1.63-511.el10.aarch64                                
+2026-10-25T15:30:58.2958636Z   perl-SelectSaver-1.02-515.el10_2.noarch                                       
+2026-10-25T15:30:58.2959338Z   perl-Socket-4:2.038-511.el10.aarch64                                          
+2026-10-25T15:30:58.2960130Z   perl-Storable-1:3.32-511.el10.aarch64                                         
+2026-10-25T15:30:58.2960624Z   perl-Symbol-1.09-515.el10_2.noarch                                            
+2026-10-25T15:30:58.2961178Z   perl-Term-ANSIColor-5.01-512.el10.noarch                                      
+2026-10-25T15:30:58.2961684Z   perl-Term-Cap-1.18-511.el10.noarch                                            
+2026-10-25T15:30:58.2962179Z   perl-TermReadKey-2.38-24.el10.aarch64                                         
+2026-10-25T15:30:58.2962711Z   perl-Text-ParseWords-3.31-511.el10.noarch                                     
+2026-10-25T15:30:58.2963349Z   perl-Text-Tabs+Wrap-2024.001-511.el10.noarch                                  
+2026-10-25T15:30:58.2963924Z   perl-Time-Local-2:1.350-511.el10.noarch                                       
+2026-10-25T15:30:58.2964403Z   perl-URI-5.27-3.el10_2.1.noarch                                               
+2026-10-25T15:30:58.2964897Z   perl-Unicode-Normalize-1.32-511.el10.aarch64                                  
+2026-10-25T15:30:58.2965415Z   perl-base-2.27-515.el10_2.noarch                                              
+2026-10-25T15:30:58.2966037Z   perl-constant-1.33-512.el10.noarch                                            
+2026-10-25T15:30:58.2966534Z   perl-if-0.61.000-515.el10_2.noarch                                            
+2026-10-25T15:30:58.2967062Z   perl-interpreter-4:5.40.2-515.el10_2.aarch64                                  
+2026-10-25T15:30:58.2967556Z   perl-lib-0.65-515.el10_2.aarch64                                              
+2026-10-25T15:30:58.2968067Z   perl-libnet-3.15-512.el10.noarch                                              
+2026-10-25T15:30:58.2968536Z   perl-libs-4:5.40.2-515.el10_2.aarch64                                         
+2026-10-25T15:30:58.2969015Z   perl-locale-1.12-515.el10_2.noarch                                            
+2026-10-25T15:30:58.2969721Z   perl-mro-1.29-515.el10_2.aarch64                                              
+2026-10-25T15:30:58.2970208Z   perl-overload-1.37-515.el10_2.noarch                                          
+2026-10-25T15:30:58.2970731Z   perl-overloading-0.02-515.el10_2.noarch                                       
+2026-10-25T15:30:58.2971299Z   perl-parent-1:0.241-512.el10.noarch                                           
+2026-10-25T15:30:58.2971772Z   perl-podlators-1:5.01-511.el10.noarch                                         
+2026-10-25T15:30:58.2972280Z   perl-vars-1.05-515.el10_2.noarch                                              
+2026-10-25T15:30:58.2972753Z   pkgconf-2.1.0-3.el10.aarch64                                                  
+2026-10-25T15:30:58.2973242Z   pkgconf-m4-2.1.0-3.el10.noarch                                                
+2026-10-25T15:30:58.2973736Z   pkgconf-pkg-config-2.1.0-3.el10.aarch64                                       
+2026-10-25T15:30:58.2974246Z   protobuf-c-1.5.0-6.el10.aarch64                                               
+2026-10-25T15:30:58.2974775Z   python3-packaging-24.2-2.el10.noarch                                          
+2026-10-25T15:30:58.2975269Z   qt6-filesystem-6.10.1-1.el10.aarch64                                          
+2026-10-25T15:30:58.2975772Z   qt6-qtbase-6.10.1-1.el10.alma.1.aarch64                                       
+2026-10-25T15:30:58.2976303Z   qt6-qtbase-common-6.10.1-1.el10.alma.1.noarch                                 
+2026-10-25T15:30:58.2976816Z   qt6-qtbase-devel-6.10.1-1.el10.alma.1.aarch64                                 
+2026-10-25T15:30:58.2977343Z   qt6-qtbase-gui-6.10.1-1.el10.alma.1.aarch64                                   
+2026-10-25T15:30:58.2977847Z   qt6-qtbase-mysql-6.10.1-1.el10.alma.1.aarch64                                 
+2026-10-25T15:30:58.2978388Z   qt6-qtbase-odbc-6.10.1-1.el10.alma.1.aarch64                                  
+2026-10-25T15:30:58.2978930Z   qt6-qtbase-postgresql-6.10.1-1.el10.alma.1.aarch64                            
+2026-10-25T15:30:58.2979847Z   qt6-qtbase-private-devel-6.10.1-1.el10.alma.1.aarch64                         
+2026-10-25T15:30:58.2980456Z   qt6-qtdeclarative-6.10.1-1.el10_2.1.aarch64                                   
+2026-10-25T15:30:58.2980971Z   qt6-qtdeclarative-devel-6.10.1-1.el10_2.1.aarch64                             
+2026-10-25T15:30:58.2981456Z   qt6-qtsvg-6.10.1-1.el10.aarch64                                               
+2026-10-25T15:30:58.2982085Z   qt6-qttranslations-6.10.1-1.el10.alma.2.noarch                                
+2026-10-25T15:30:58.2982588Z   qt6-qtwayland-6.10.1-1.el10.aarch64                                           
+2026-10-25T15:30:58.2983258Z   qt6-qtwayland-devel-6.10.1-1.el10.aarch64                                     
+2026-10-25T15:30:58.2983763Z   qt6-rpm-macros-6.10.1-1.el10.noarch                                           
+2026-10-25T15:30:58.2984250Z   redhat-text-vf-fonts-4.1.0-1.el10.noarch                                      
+2026-10-25T15:30:58.2984817Z   spirv-tools-libs-2025.4-1.el10.aarch64                                        
+2026-10-25T15:30:58.2985335Z   sysprof-capture-devel-47.2-1.el10.aarch64                                     
+2026-10-25T15:30:58.2985869Z   unbound-anchor-1.24.2-7.el10_2.6.aarch64                                      
+2026-10-25T15:30:58.2986368Z   unbound-libs-1.24.2-7.el10_2.6.aarch64                                        
+2026-10-25T15:30:58.2986852Z   unixODBC-2.3.12-6.el10.aarch64                                                
+2026-10-25T15:30:58.2987382Z   util-linux-2.40.2-18.el10.aarch64                                             
+2026-10-25T15:30:58.2987872Z   vim-filesystem-2:9.1.083-9.el10_2.22.noarch                                   
+2026-10-25T15:30:58.2988397Z   vulkan-headers-1.4.328.1-1.el10.noarch                                        
+2026-10-25T15:30:58.2988899Z   vulkan-loader-1.4.328.1-1.el10.aarch64                                        
+2026-10-25T15:30:58.2989551Z   vulkan-loader-devel-1.4.328.1-1.el10.aarch64                                  
+2026-10-25T15:30:58.2990104Z   wayland-devel-1.24.0-1.el10.aarch64                                           
+2026-10-25T15:30:58.2990629Z   wayland-protocols-devel-1.45-1.el10.noarch                                    
+2026-10-25T15:30:58.2991184Z   xcb-util-0.4.1-7.el10.aarch64                                                 
+2026-10-25T15:30:58.2991670Z   xcb-util-cursor-0.1.4-6.el10.aarch64                                          
+2026-10-25T15:30:58.2992174Z   xcb-util-image-0.4.1-7.el10.aarch64                                           
+2026-10-25T15:30:58.2992690Z   xcb-util-keysyms-0.4.1-7.el10.aarch64                                         
+2026-10-25T15:30:58.2993195Z   xcb-util-renderutil-0.3.10-7.el10.aarch64                                     
+2026-10-25T15:30:58.2993817Z   xcb-util-wm-0.4.2-7.el10.aarch64                                              
+2026-10-25T15:30:58.2994354Z   xkeyboard-config-2.41-3.el10.noarch                                           
+2026-10-25T15:30:58.2994861Z   xml-common-0.6.3-65.el10.noarch                                               
+2026-10-25T15:30:58.2995380Z   xorg-x11-proto-devel-2024.1-3.el10.noarch                                     
+2026-10-25T15:30:58.2995864Z   xz-devel-1:5.6.2-4.el10_2.1.aarch64                                           
+2026-10-25T15:30:58.2996334Z   zlib-ng-compat-devel-2.2.3-3.el10_1.aarch64                                   
+2026-10-25T15:30:58.2996676Z 
+2026-10-25T15:30:58.2996769Z Complete!
+2026-10-25T15:30:58.5549242Z Cloning into 'build/ecm'...
+2026-10-25T15:30:59.7641446Z HEAD is now at 09025604 GIT_SILENT Upgrade ECM version to 5.115.0.
+2026-10-25T15:30:59.7752659Z -- Could NOT find Sphinx (missing: Sphinx_BUILD_EXECUTABLE) (Required is at least version "1.2")
+2026-10-25T15:30:59.7762752Z -- Could NOT find QCollectionGenerator (missing: QCollectionGenerator_EXECUTABLE) 
+2026-10-25T15:30:59.7770149Z CMake Warning (dev) at CMakeLists.txt:92 (install):
+2026-10-25T15:30:59.7770755Z   Policy CMP0177 is not set: install() DESTINATION paths are normalized.  Run
+2026-10-25T15:30:59.7771562Z   "cmake --help-policy CMP0177" for policy details.  Use the cmake_policy
+2026-10-25T15:30:59.7772019Z   command to set the policy and suppress this warning.
+2026-10-25T15:30:59.7772551Z This warning is for project developers.  Use -Wno-dev to suppress it.
+2026-10-25T15:30:59.7772828Z 
+2026-10-25T15:30:59.7822502Z -- The following features have been disabled:
+2026-10-25T15:30:59.7822765Z 
+2026-10-25T15:30:59.7823170Z  * BUILD_HTML_DOCS, Generate HTML documentation for installed modules.
+2026-10-25T15:30:59.7824005Z  * BUILD_MAN_DOCS, Generate man page documentation for installed modules.
+2026-10-25T15:30:59.7824499Z  * BUILD_QTHELP_DOCS, Generate QtHelp documentation for installed modules.
+2026-10-25T15:30:59.7824954Z  * BUILD_TESTING, Build automated tests.
+2026-10-25T15:30:59.7825182Z 
+2026-10-25T15:30:59.7825326Z -- The following OPTIONAL packages have not been found:
+2026-10-25T15:30:59.7825578Z 
+2026-10-25T15:30:59.7826224Z  * Sphinx (required version >= 1.2), Tool to generate documentation., <https://www.sphinx-doc.org/>
+2026-10-25T15:30:59.7826806Z    Required to build documentation for Extra CMake Modules.
+2026-10-25T15:30:59.7827276Z  * QCollectionGenerator, Qt help collection generator., <https://www.qt.io/>
+2026-10-25T15:30:59.7827848Z    Required to build Extra CMake Modules documentation in Qt Help format.
+2026-10-25T15:30:59.7828168Z 
+2026-10-25T15:30:59.7836309Z -- Configuring done (0.0s)
+2026-10-25T15:30:59.7836672Z -- Generating done (0.0s)
+2026-10-25T15:30:59.7837806Z -- Build files have been written to: /work/build/ecm-build
+2026-10-25T15:30:59.7893674Z -- Install configuration: ""
+2026-10-25T15:30:59.7896049Z -- Installing: /work/build/session-deps/share/ECM/modules/CheckAtomic.cmake
+2026-10-25T15:30:59.7901195Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMAddAppIcon.cmake
+2026-10-25T15:30:59.7902332Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMAddQch.cmake
+2026-10-25T15:30:59.7902966Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMAddQtDesignerPlugin.cmake
+2026-10-25T15:30:59.7903538Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMAddTests.cmake
+2026-10-25T15:30:59.7904203Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMCheckOutboundLicense.cmake
+2026-10-25T15:30:59.7904787Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMConfiguredInstall.cmake
+2026-10-25T15:30:59.7905395Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMCoverageOption.cmake
+2026-10-25T15:30:59.7905977Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMCreateQmFromPoFiles.cmake
+2026-10-25T15:30:59.7906566Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMDeprecationSettings.cmake
+2026-10-25T15:30:59.7907197Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMEnableSanitizers.cmake
+2026-10-25T15:30:59.7907760Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMFindModuleHelpers.cmake
+2026-10-25T15:30:59.7908322Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMFindQmlModule.cmake
+2026-10-25T15:30:59.7908915Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMFindQmlModule.cmake.in
+2026-10-25T15:30:59.7909694Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMGenerateDBusServiceFile.cmake
+2026-10-25T15:30:59.7910378Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMGenerateExportHeader.cmake
+2026-10-25T15:30:59.7911260Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMGenerateHeaders.cmake
+2026-10-25T15:30:59.7912211Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMGeneratePkgConfigFile.cmake
+2026-10-25T15:30:59.7913574Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMGeneratePriFile.cmake
+2026-10-25T15:30:59.7914800Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMGenerateQmlTypes.cmake
+2026-10-25T15:30:59.7915824Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMInstallIcons.cmake
+2026-10-25T15:30:59.7917245Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMMarkAsTest.cmake
+2026-10-25T15:30:59.7918240Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMMarkNonGuiExecutable.cmake
+2026-10-25T15:30:59.7919306Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMOptionalAddSubdirectory.cmake
+2026-10-25T15:30:59.7919946Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMPackageConfigHelpers.cmake
+2026-10-25T15:30:59.7920622Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMPoQmTools.cmake
+2026-10-25T15:30:59.7922012Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMQMLModules.cmake
+2026-10-25T15:30:59.7923827Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMQchDoxygen.config.in
+2026-10-25T15:30:59.7924792Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMQchDoxygenLayout.xml
+2026-10-25T15:30:59.7925607Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMQmLoader.cpp.in
+2026-10-25T15:30:59.7926241Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMQmlModule.cmake
+2026-10-25T15:30:59.7927698Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMQmlModule.cpp.in
+2026-10-25T15:30:59.7928464Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMQmlModule.cpp.in.license
+2026-10-25T15:30:59.7929535Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMQmlModule.h.in
+2026-10-25T15:30:59.7930336Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMQmlModule.h.in.license
+2026-10-25T15:30:59.7932137Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMQtDeclareLoggingCategory.cmake
+2026-10-25T15:30:59.7932905Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMQtDeclareLoggingCategory.cpp.in
+2026-10-25T15:30:59.7934073Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMQtDeclareLoggingCategory.h.in
+2026-10-25T15:30:59.7934770Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMQueryQmake.cmake
+2026-10-25T15:30:59.7935887Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMQueryQt.cmake
+2026-10-25T15:30:59.7936904Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMSetupQtPluginMacroNames.cmake
+2026-10-25T15:30:59.7937668Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMSetupVersion.cmake
+2026-10-25T15:30:59.7938807Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMSourceVersionControl.cmake
+2026-10-25T15:30:59.7940327Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMUninstallTarget.cmake
+2026-10-25T15:30:59.7942490Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMUseFindModules.cmake
+2026-10-25T15:30:59.7944162Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMVersionHeader.h.in
+2026-10-25T15:30:59.7944856Z -- Installing: /work/build/session-deps/share/ECM/modules/ECMWinResolveSymlinks.cmake
+2026-10-25T15:30:59.7951598Z -- Installing: /work/build/session-deps/share/ECM/modules/QtVersionOption.cmake
+2026-10-25T15:30:59.7952249Z -- Installing: /work/build/session-deps/share/ECM/modules/check-outbound-license.py
+2026-10-25T15:30:59.7952864Z -- Installing: /work/build/session-deps/share/ECM/modules/ecm_uninstall.cmake.in
+2026-10-25T15:30:59.7953517Z -- Installing: /work/build/session-deps/share/ECM/test-modules/test_execute_and_compare.cmake
+2026-10-25T15:30:59.7954108Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/KDECMakeSettings.cmake
+2026-10-25T15:30:59.7954705Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/KDEClangFormat.cmake
+2026-10-25T15:30:59.7957015Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/KDECompilerSettings.cmake
+2026-10-25T15:30:59.7957755Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/KDEFrameworkCompilerLegacySettings.cmake
+2026-10-25T15:30:59.7958597Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/KDEFrameworkCompilerSettings.cmake
+2026-10-25T15:30:59.7959385Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/KDEGitCommitHooks.cmake
+2026-10-25T15:30:59.7960010Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/KDEInstallDirs.cmake
+2026-10-25T15:30:59.7960834Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/KDEInstallDirs5.cmake
+2026-10-25T15:30:59.7961418Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/KDEInstallDirs6.cmake
+2026-10-25T15:30:59.7962047Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/KDEInstallDirsCommon.cmake
+2026-10-25T15:30:59.7962678Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/KDEMetaInfoPlatformCheck.cmake
+2026-10-25T15:30:59.7963364Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/KDEPackageAppTemplates.cmake
+2026-10-25T15:30:59.7964132Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/KDESetupPrefixScript.cmake
+2026-10-25T15:30:59.7964711Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/appstreamtest.cmake
+2026-10-25T15:30:59.7965286Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/clang-format.in
+2026-10-25T15:30:59.7965816Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/prefix.sh.fish.in
+2026-10-25T15:30:59.7966318Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/prefix.sh.in
+2026-10-25T15:30:59.7966980Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/kde-git-commit-hooks/clang-format.sh
+2026-10-25T15:30:59.7967919Z -- Installing: /work/build/session-deps/share/ECM/kde-modules/kde-git-commit-hooks/pre-commit.in
+2026-10-25T15:30:59.7969289Z -- Installing: /work/build/session-deps/share/ECM/find-modules/ECMFindModuleHelpersStub.cmake
+2026-10-25T15:30:59.7970789Z -- Installing: /work/build/session-deps/share/ECM/find-modules/Find7Zip.cmake
+2026-10-25T15:30:59.7971512Z -- Installing: /work/build/session-deps/share/ECM/find-modules/Find7z.cmake
+2026-10-25T15:30:59.7973537Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindCanberra.cmake
+2026-10-25T15:30:59.7974079Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindEGL.cmake
+2026-10-25T15:30:59.7975881Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindGLIB2.cmake
+2026-10-25T15:30:59.7976442Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindGperf.cmake
+2026-10-25T15:30:59.7977270Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindGradle.cmake
+2026-10-25T15:30:59.7977881Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindIcoTool.cmake
+2026-10-25T15:30:59.7979826Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindInotify.cmake
+2026-10-25T15:30:59.7980476Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindIsoCodes.cmake
+2026-10-25T15:30:59.7981730Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindKF5.cmake
+2026-10-25T15:30:59.7982298Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindLibExiv2.cmake
+2026-10-25T15:30:59.7984261Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindLibGit2.cmake
+2026-10-25T15:30:59.7984824Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindLibMount.cmake
+2026-10-25T15:30:59.7986134Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindLibcap.cmake
+2026-10-25T15:30:59.7986840Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindOpenEXR.cmake
+2026-10-25T15:30:59.7988486Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindPhoneNumber.cmake
+2026-10-25T15:30:59.7989583Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindPoppler.cmake
+2026-10-25T15:30:59.7990151Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindPulseAudio.cmake
+2026-10-25T15:30:59.7991773Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindPythonModuleGeneration.cmake
+2026-10-25T15:30:59.7992396Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindQHelpGenerator.cmake
+2026-10-25T15:30:59.7993638Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindQtWaylandScanner.cmake
+2026-10-25T15:30:59.7994316Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindReuseTool.cmake
+2026-10-25T15:30:59.7995242Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindSasl2.cmake
+2026-10-25T15:30:59.7995890Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindSeccomp.cmake
+2026-10-25T15:30:59.7997432Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindSharedMimeInfo.cmake
+2026-10-25T15:30:59.7997995Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindTaglib.cmake
+2026-10-25T15:30:59.7999004Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindUDev.cmake
+2026-10-25T15:30:59.8000019Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindWayland.cmake
+2026-10-25T15:30:59.8001930Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindWaylandProtocols.cmake
+2026-10-25T15:30:59.8002575Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindWaylandScanner.cmake
+2026-10-25T15:30:59.8003730Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindX11_XCB.cmake
+2026-10-25T15:30:59.8005321Z -- Installing: /work/build/session-deps/share/ECM/find-modules/FindXCB.cmake
+2026-10-25T15:30:59.8005841Z -- Installing: /work/build/session-deps/share/ECM/find-modules/Findepoxy.cmake
+2026-10-25T15:30:59.8007072Z -- Installing: /work/build/session-deps/share/ECM/find-modules/Findgzip.cmake
+2026-10-25T15:30:59.8007707Z -- Installing: /work/build/session-deps/share/ECM/find-modules/GeneratePythonBindingUmbrellaModule.cmake
+2026-10-25T15:30:59.8008326Z -- Installing: /work/build/session-deps/share/ECM/find-modules/Qt5Ruleset.py
+2026-10-25T15:30:59.8010360Z -- Installing: /work/build/session-deps/share/ECM/find-modules/local.properties.cmake
+2026-10-25T15:30:59.8010917Z -- Installing: /work/build/session-deps/share/ECM/find-modules/rules_engine.py
+2026-10-25T15:30:59.8012036Z -- Installing: /work/build/session-deps/share/ECM/find-modules/run-sip.py
+2026-10-25T15:30:59.8013420Z -- Installing: /work/build/session-deps/share/ECM/find-modules/settings.gradle.cmake
+2026-10-25T15:30:59.8014739Z -- Installing: /work/build/session-deps/share/ECM/find-modules/sip_generator.py
+2026-10-25T15:30:59.8016655Z -- Installing: /work/build/session-deps/share/ECM/toolchain/Android.cmake
+2026-10-25T15:30:59.8017543Z -- Installing: /work/build/session-deps/share/ECM/toolchain/ECMAndroidDeployQt.cmake
+2026-10-25T15:30:59.8019078Z -- Installing: /work/build/session-deps/share/ECM/toolchain/deployment-file-qt514.json.in
+2026-10-25T15:30:59.8019818Z -- Installing: /work/build/session-deps/share/ECM/toolchain/deployment-file.json.in
+2026-10-25T15:30:59.8020489Z -- Installing: /work/build/session-deps/share/ECM/toolchain/generate-fastlane-metadata.py
+2026-10-25T15:30:59.8022535Z -- Installing: /work/build/session-deps/share/ECM/toolchain/hasMainSymbol.cmake
+2026-10-25T15:30:59.8023088Z -- Installing: /work/build/session-deps/share/ECM/toolchain/specifydependencies.cmake
+2026-10-25T15:30:59.8024302Z -- Installing: /work/build/session-deps/share/ECM/cmake/ECMConfig.cmake
+2026-10-25T15:30:59.8024868Z -- Installing: /work/build/session-deps/share/ECM/cmake/ECMConfigVersion.cmake
+2026-10-25T15:30:59.8068830Z Cloning into '/work/build/layer-shell-qt'...
+2026-10-25T15:31:00.3281213Z HEAD is now at 395a913 Update version number for 5.27.12 GIT_SILENT
+2026-10-25T15:31:00.3976136Z -- The C compiler identification is GNU 14.3.1
+2026-10-25T15:31:00.4748448Z -- The CXX compiler identification is GNU 14.3.1
+2026-10-25T15:31:00.4810598Z -- Detecting C compiler ABI info
+2026-10-25T15:31:00.5264829Z -- Detecting C compiler ABI info - done
+2026-10-25T15:31:00.5366267Z -- Check for working C compiler: /usr/bin/cc - skipped
+2026-10-25T15:31:00.5369016Z -- Detecting C compile features
+2026-10-25T15:31:00.5372819Z -- Detecting C compile features - done
+2026-10-25T15:31:00.5494209Z -- Detecting CXX compiler ABI info
+2026-10-25T15:31:00.6203661Z -- Detecting CXX compiler ABI info - done
+2026-10-25T15:31:00.6305188Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-10-25T15:31:00.6308303Z -- Detecting CXX compile features
+2026-10-25T15:31:00.6316605Z -- Detecting CXX compile features - done
+2026-10-25T15:31:00.7178934Z Installing in /work/build/session-deps. Run /work/build/layer-shell-build/prefix.sh to set the environment for layershellqt.
+2026-10-25T15:31:00.7204873Z fatal: HEAD does not point to a branch
+2026-10-25T15:31:00.7240515Z -- Looking for __GLIBC__
+2026-10-25T15:31:00.7717576Z -- Looking for __GLIBC__ - found
+2026-10-25T15:31:00.7719612Z -- Performing Test _OFFT_IS_64BIT
+2026-10-25T15:31:00.8472223Z -- Performing Test _OFFT_IS_64BIT - Success
+2026-10-25T15:31:00.8480307Z -- Performing Test HAVE_DATE_TIME
+2026-10-25T15:31:00.9227936Z -- Performing Test HAVE_DATE_TIME - Success
+2026-10-25T15:31:01.0825890Z -- Found Wayland_Client: /usr/lib64/libwayland-client.so (found version "1.24.0")
+2026-10-25T15:31:01.2096574Z -- Found Wayland_Server: /usr/lib64/libwayland-server.so (found version "1.24.0")
+2026-10-25T15:31:01.3346157Z -- Found Wayland_Cursor: /usr/lib64/libwayland-cursor.so (found version "1.24.0")
+2026-10-25T15:31:01.4551859Z -- Found Wayland_Egl: /usr/lib64/libwayland-egl.so (found version "18.1.0")
+2026-10-25T15:31:01.4552904Z -- Found Wayland: /usr/lib64/libwayland-client.so;/usr/lib64/libwayland-server.so;/usr/lib64/libwayland-cursor.so;/usr/lib64/libwayland-egl.so (found version "1.24.0")
+2026-10-25T15:31:01.4652107Z -- Found WaylandScanner: /usr/bin/wayland-scanner
+2026-10-25T15:31:01.4679508Z -- Performing Test HAVE_STDATOMIC
+2026-10-25T15:31:01.5794032Z -- Performing Test HAVE_STDATOMIC - Success
+2026-10-25T15:31:01.5801699Z -- Found WrapAtomic: TRUE
+2026-10-25T15:31:01.5960640Z -- Found OpenGL: /usr/lib64/libOpenGL.so
+2026-10-25T15:31:01.5968991Z -- Found WrapOpenGL: TRUE
+2026-10-25T15:31:01.6332128Z -- Found WrapVulkanHeaders: /usr/include
+2026-10-25T15:31:01.9078488Z -- Found XKB: /usr/lib64/libxkbcommon.so (found suitable version "1.7.0", minimum required is "0.9.0")
+2026-10-25T15:31:01.9098796Z CMake Warning at /usr/lib64/cmake/Qt6/QtPublicDependencyHelpers.cmake:335 (message):
+2026-10-25T15:31:01.9099800Z   This project is using headers of the WaylandClientPrivate module and will
+2026-10-25T15:31:01.9100325Z   therefore be tied to this specific Qt module build version.  Running this
+2026-10-25T15:31:01.9100862Z   project against other versions of the Qt modules may crash at any arbitrary
+2026-10-25T15:31:01.9101394Z   point.  This is not a bug, but a result of using Qt internals.  You have
+2026-10-25T15:31:01.9101753Z   been warned!
+2026-10-25T15:31:01.9101861Z 
+2026-10-25T15:31:01.9102121Z   You can disable this warning by setting QT_NO_PRIVATE_MODULE_WARNING to ON.
+2026-10-25T15:31:01.9102530Z Call Stack (most recent call first):
+2026-10-25T15:31:01.9103101Z   /usr/lib64/cmake/Qt6WaylandClientPrivate/Qt6WaylandClientPrivateConfig.cmake:58 (_qt_internal_show_private_module_warning)
+2026-10-25T15:31:01.9103790Z   /usr/lib64/cmake/Qt6/Qt6Config.cmake:247 (find_package)
+2026-10-25T15:31:01.9104140Z   CMakeLists.txt:41 (find_package)
+2026-10-25T15:31:01.9104301Z 
+2026-10-25T15:31:01.9104305Z 
+2026-10-25T15:31:01.9238889Z -- Found Wayland: /usr/lib64/libwayland-client.so;/usr/lib64/libwayland-server.so;/usr/lib64/libwayland-cursor.so;/usr/lib64/libwayland-egl.so (found suitable version "1.24.0", minimum required is "1.3") found components: Client Server
+2026-10-25T15:31:02.0793936Z -- Found WaylandProtocols: //usr/share/wayland-protocols (found version "1.45")
+2026-10-25T15:31:02.0888814Z -- Found PkgConfig: /usr/bin/pkg-config (found version "2.1.0")
+2026-10-25T15:31:02.0897196Z -- Checking for module 'xkbcommon'
+2026-10-25T15:31:02.1253913Z --   Found xkbcommon, version 1.7.0
+2026-10-25T15:31:02.2239891Z CMake Warning (dev) at /work/build/session-deps/share/ECM/kde-modules/KDEClangFormat.cmake:103 (add_custom_command):
+2026-10-25T15:31:02.2240623Z   Exactly one of PRE_BUILD, PRE_LINK, or POST_BUILD must be given.  Assuming
+2026-10-25T15:31:02.2241263Z   POST_BUILD to preserve backward compatibility.
+2026-10-25T15:31:02.2241504Z 
+2026-10-25T15:31:02.2241702Z   Policy CMP0175 is not set: add_custom_command() rejects invalid arguments.
+2026-10-25T15:31:02.2242557Z   Run "cmake --help-policy CMP0175" for policy details.  Use the cmake_policy
+2026-10-25T15:31:02.2243065Z   command to set the policy and suppress this warning.
+2026-10-25T15:31:02.2243399Z Call Stack (most recent call first):
+2026-10-25T15:31:02.2243725Z   CMakeLists.txt:60 (kde_clang_format)
+2026-10-25T15:31:02.2244118Z This warning is for project developers.  Use -Wno-dev to suppress it.
+2026-10-25T15:31:02.2244391Z 
+2026-10-25T15:31:02.2279344Z -- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY
+2026-10-25T15:31:02.3017070Z -- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY - Success
+2026-10-25T15:31:02.3022069Z -- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY
+2026-10-25T15:31:02.3760453Z -- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY - Success
+2026-10-25T15:31:02.3761792Z -- Performing Test COMPILER_HAS_DEPRECATED_ATTR
+2026-10-25T15:31:02.4500182Z -- Performing Test COMPILER_HAS_DEPRECATED_ATTR - Success
+2026-10-25T15:31:02.4557586Z -- The following OPTIONAL packages have been found:
+2026-10-25T15:31:02.4557942Z 
+2026-10-25T15:31:02.4558253Z  * Qt6WaylandScannerTools (required version >= 6.10.1)
+2026-10-25T15:31:02.4558657Z  * OpenGL
+2026-10-25T15:31:02.4558861Z  * Vulkan
+2026-10-25T15:31:02.4559258Z  * WrapVulkanHeaders
+2026-10-25T15:31:02.4559538Z  * Qt6GuiTools (required version >= 6.10.1)
+2026-10-25T15:31:02.4559887Z  * Qt6CoreTools (required version >= 6.10.1)
+2026-10-25T15:31:02.4560241Z  * Qt6DBusTools (required version >= 6.10.1)
+2026-10-25T15:31:02.4560574Z  * Qt6WaylandClient (required version >= 5.15.2)
+2026-10-25T15:31:02.4560944Z  * Qt6QmlTools (required version >= 6.10.1)
+2026-10-25T15:31:02.4561247Z  * Qt6Qml (required version >= 5.15.2)
+2026-10-25T15:31:02.4561521Z  * Qt6WaylandClientPrivate
+2026-10-25T15:31:02.4561752Z 
+2026-10-25T15:31:02.4561882Z -- The following REQUIRED packages have been found:
+2026-10-25T15:31:02.4562122Z 
+2026-10-25T15:31:02.4562241Z  * ECM (required version >= 5.102.0)
+2026-10-25T15:31:02.4562527Z  * Qt6
+2026-10-25T15:31:02.4563014Z  * WaylandScanner, Executable that converts XML protocol files to C code, <https://wayland.freedesktop.org/>
+2026-10-25T15:31:02.4564267Z  * Wayland (required version >= 1.3), C library implementation of the Wayland protocol: a protocol for a compositor to talk to its clients, <https://wayland.freedesktop.org/>
+2026-10-25T15:31:02.4565310Z  * WaylandProtocols, Specifications of extended Wayland protocols, <https://wayland.freedesktop.org/>
+2026-10-25T15:31:02.4565828Z  * PkgConfig
+2026-10-25T15:31:02.4565962Z 
+2026-10-25T15:31:02.4566146Z -- The following OPTIONAL packages have not been found:
+2026-10-25T15:31:02.4566403Z 
+2026-10-25T15:31:02.4566590Z  * Qt6QmlCompilerPlusPrivateTools (required version >= 6.10.1)
+2026-10-25T15:31:02.4566848Z 
+2026-10-25T15:31:02.4566963Z -- Configuring done (2.1s)
+2026-10-25T15:31:02.4838645Z -- Generating done (0.0s)
+2026-10-25T15:31:02.4846417Z -- Build files have been written to: /work/build/layer-shell-build
+2026-10-25T15:31:02.5132828Z [1/30] Generating wayland-xdg-shell-protocol.c
+2026-10-25T15:31:02.5135684Z [2/30] Generating wayland-xdg-shell-client-protocol.h
+2026-10-25T15:31:02.5189946Z [3/30] Generating qwayland-xdg-shell.h
+2026-10-25T15:31:02.5190362Z [4/30] Generating qwayland-xdg-shell.cpp
+2026-10-25T15:31:02.5215540Z [5/30] Generating wayland-wlr-layer-shell-unstable-v1-client-protocol.h
+2026-10-25T15:31:02.5220395Z [6/30] Generating wayland-wlr-layer-shell-unstable-v1-protocol.c
+2026-10-25T15:31:02.5262848Z [7/30] Generating qwayland-wlr-layer-shell-unstable-v1.h
+2026-10-25T15:31:02.5267018Z [8/30] Generating qwayland-wlr-layer-shell-unstable-v1.cpp
+2026-10-25T15:31:02.9525279Z [9/30] Automatic MOC for target LayerShellQtInterface
+2026-10-25T15:31:02.9933010Z [10/30] Building C object src/CMakeFiles/LayerShellQtInterface.dir/wayland-xdg-shell-protocol.c.o
+2026-10-25T15:31:04.0022835Z [11/30] Building CXX object src/CMakeFiles/LayerShellQtInterface.dir/qwayland-xdg-shell.cpp.o
+2026-10-25T15:31:04.0420307Z [12/30] Building C object src/CMakeFiles/LayerShellQtInterface.dir/wayland-wlr-layer-shell-unstable-v1-protocol.c.o
+2026-10-25T15:31:04.7398185Z [13/30] Building CXX object src/CMakeFiles/LayerShellQtInterface.dir/LayerShellQtInterface_autogen/mocs_compilation.cpp.o
+2026-10-25T15:31:04.9463629Z [14/30] Building CXX object src/CMakeFiles/LayerShellQtInterface.dir/qwayland-wlr-layer-shell-unstable-v1.cpp.o
+2026-10-25T15:31:06.6587448Z [15/30] Building CXX object src/CMakeFiles/LayerShellQtInterface.dir/interfaces/window.cpp.o
+2026-10-25T15:31:06.8334937Z [16/30] Building CXX object src/CMakeFiles/LayerShellQtInterface.dir/qwaylandlayersurface.cpp.o
+2026-10-25T15:31:08.1574486Z [17/30] Building CXX object src/CMakeFiles/LayerShellQtInterface.dir/interfaces/shell.cpp.o
+2026-10-25T15:31:08.8360940Z [18/30] Building CXX object src/CMakeFiles/LayerShellQtInterface.dir/qwaylandlayershellintegration.cpp.o
+2026-10-25T15:31:09.5472116Z [19/30] Building CXX object src/CMakeFiles/LayerShellQtInterface.dir/qwaylandlayershell.cpp.o
+2026-10-25T15:31:10.0566919Z [20/30] Building CXX object src/CMakeFiles/LayerShellQtInterface.dir/layershellqt_logging.cpp.o
+2026-10-25T15:31:10.1805429Z [21/30] Linking CXX shared library bin/libLayerShellQtInterface.so.5.27.12
+2026-10-25T15:31:10.1862773Z [22/30] Creating library symlink bin/libLayerShellQtInterface.so.5 bin/libLayerShellQtInterface.so
+2026-10-25T15:31:10.2107231Z [23/30] Automatic MOC for target layershellqt-test
+2026-10-25T15:31:10.2230709Z [24/30] Building CXX object tests/CMakeFiles/layershellqt-test.dir/layershellqt-test_autogen/mocs_compilation.cpp.o
+2026-10-25T15:31:10.4250079Z [25/30] Automatic MOC for target layer-shell
+2026-10-25T15:31:10.4376307Z [26/30] Building CXX object src/CMakeFiles/layer-shell.dir/layer-shell_autogen/mocs_compilation.cpp.o
+2026-10-25T15:31:11.9453815Z [27/30] Building CXX object src/CMakeFiles/layer-shell.dir/qwaylandlayershellintegrationplugin.cpp.o
+2026-10-25T15:31:12.0602301Z [28/30] Building CXX object tests/CMakeFiles/layershellqt-test.dir/main.cpp.o
+2026-10-25T15:31:12.0608704Z /work/build/layer-shell-qt/tests/main.cpp:45:10: warning: 'virtual void BasicWindow::paintEvent(QPaintEvent*)' can be marked override [-Wsuggest-override]
+2026-10-25T15:31:12.0609768Z    45 |     void paintEvent(QPaintEvent *)
+2026-10-25T15:31:12.0610175Z       |          ^~~~~~~~~~
+2026-10-25T15:31:12.0676721Z [29/30] Linking CXX shared library bin/liblayer-shell.so
+2026-10-25T15:31:12.2651287Z [30/30] Linking CXX executable bin/layershellqt-test
+2026-10-25T15:31:12.2715230Z -- Install configuration: "Release"
+2026-10-25T15:31:12.2717517Z -- Installing: /work/build/session-deps/lib/plugins/wayland-shell-integration/liblayer-shell.so
+2026-10-25T15:31:12.2721056Z -- Set non-toolchain portion of runtime path of "/work/build/session-deps/lib/plugins/wayland-shell-integration/liblayer-shell.so" to "/work/build/session-deps/"
+2026-10-25T15:31:12.2721917Z -- Installing: /work/build/session-deps/lib/libLayerShellQtInterface.so.5.27.12
+2026-10-25T15:31:12.2723657Z -- Installing: /work/build/session-deps/lib/libLayerShellQtInterface.so.5
+2026-10-25T15:31:12.2724578Z -- Set non-toolchain portion of runtime path of "/work/build/session-deps/lib/libLayerShellQtInterface.so.5.27.12" to "/work/build/session-deps/"
+2026-10-25T15:31:12.2725496Z -- Installing: /work/build/session-deps/lib/libLayerShellQtInterface.so
+2026-10-25T15:31:12.2726279Z -- Installing: /work/build/session-deps/include/LayerShellQt/Shell
+2026-10-25T15:31:12.2727842Z -- Installing: /work/build/session-deps/include/LayerShellQt/Window
+2026-10-25T15:31:12.2729369Z -- Installing: /work/build/session-deps/include/LayerShellQt/shell.h
+2026-10-25T15:31:12.2730310Z -- Installing: /work/build/session-deps/include/LayerShellQt/window.h
+2026-10-25T15:31:12.2732059Z -- Installing: /work/build/session-deps/include/LayerShellQt/layershellqt_export.h
+2026-10-25T15:31:12.2827237Z -- Installing: /work/build/session-deps/lib/cmake/LayerShellQt/LayerShellQtTargets.cmake
+2026-10-25T15:31:12.2827880Z -- Installing: /work/build/session-deps/lib/cmake/LayerShellQt/LayerShellQtTargets-release.cmake
+2026-10-25T15:31:12.2828773Z -- Installing: /work/build/session-deps/lib/cmake/LayerShellQt/LayerShellQtConfig.cmake
+2026-10-25T15:31:12.2829652Z -- Installing: /work/build/session-deps/lib/cmake/LayerShellQt/LayerShellQtConfigVersion.cmake
+2026-10-25T15:31:12.3589587Z -- The CXX compiler identification is GNU 14.3.1
+2026-10-25T15:31:12.3650144Z -- Detecting CXX compiler ABI info
+2026-10-25T15:31:12.4348386Z -- Detecting CXX compiler ABI info - done
+2026-10-25T15:31:12.4446251Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-10-25T15:31:12.4448831Z -- Detecting CXX compile features
+2026-10-25T15:31:12.4456383Z -- Detecting CXX compile features - done
+2026-10-25T15:31:12.4695747Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+2026-10-25T15:31:12.5486710Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+2026-10-25T15:31:12.5492906Z -- Found Threads: TRUE
+2026-10-25T15:31:12.5560271Z -- Performing Test HAVE_STDATOMIC
+2026-10-25T15:31:12.6628307Z -- Performing Test HAVE_STDATOMIC - Success
+2026-10-25T15:31:12.6635084Z -- Found WrapAtomic: TRUE
+2026-10-25T15:31:12.6807062Z -- Found OpenGL: /usr/lib64/libOpenGL.so
+2026-10-25T15:31:12.6815035Z -- Found WrapOpenGL: TRUE
+2026-10-25T15:31:12.7178027Z -- Found WrapVulkanHeaders: /usr/include
+2026-10-25T15:31:12.8360495Z -- Found PkgConfig: /usr/bin/pkg-config (found version "2.1.0")
+2026-10-25T15:31:12.8367137Z -- Checking for module 'gio-unix-2.0'
+2026-10-25T15:31:12.8700004Z --   Found gio-unix-2.0, version 2.80.4
+2026-10-25T15:31:12.9709755Z CMake Warning (dev) at /usr/lib64/cmake/Qt6Core/Qt6CoreMacros.cmake:3506 (message):
+2026-10-25T15:31:12.9710318Z   Qt policy QTP0001 is not set: ':/qt/qml/' is the default resource prefix
+2026-10-25T15:31:12.9710796Z   for QML modules.  Check https://doc.qt.io/qt-6/qt-cmake-policy-qtp0001.html
+2026-10-25T15:31:12.9711242Z   for policy details.  Use the qt_policy command to set the policy and
+2026-10-25T15:31:12.9711572Z   suppress this warning.
+2026-10-25T15:31:12.9711705Z 
+2026-10-25T15:31:12.9711786Z Call Stack (most recent call first):
+2026-10-25T15:31:12.9712149Z   /usr/lib64/cmake/Qt6Qml/Qt6QmlMacros.cmake:741 (__qt_internal_setup_policy)
+2026-10-25T15:31:12.9712594Z   /usr/lib64/cmake/Qt6Qml/Qt6QmlMacros.cmake:1418 (qt6_add_qml_module)
+2026-10-25T15:31:12.9712935Z   CMakeLists.txt:10 (qt_add_qml_module)
+2026-10-25T15:31:12.9713261Z This warning is for project developers.  Use -Wno-dev to suppress it.
+2026-10-25T15:31:12.9713519Z 
+2026-10-25T15:31:13.3463626Z -- Configuring done (1.1s)
+2026-10-25T15:31:13.3877941Z -- Generating done (0.0s)
+2026-10-25T15:31:13.3884844Z -- Build files have been written to: /work/build/shell
+2026-10-25T15:31:13.4191494Z [1/62] Running rcc for resource brand
+2026-10-25T15:31:13.4196015Z [2/62] Copying tamber-shell qml sources into build dir
+2026-10-25T15:31:13.4245760Z [3/62] Copying tamber-shell qml resources into build dir
+2026-10-25T15:31:13.4459826Z [4/62] Populating .qmlls.ini file at /work/build/shell/.qt/.qmlls.build.ini
+2026-10-25T15:31:13.4967857Z [5/62] Running qmlimportscanner for launch-probe
+2026-10-25T15:31:13.5296397Z [6/62] Automatic MOC and UIC for target launch-probe
+2026-10-25T15:31:13.5802489Z [7/62] Running qmlimportscanner for shell-ui-test
+2026-10-25T15:31:13.9205684Z [8/62] Automatic MOC and UIC for target launcher-test
+2026-10-25T15:31:13.9725515Z [9/62] Running qmlimportscanner for tamber-desktop
+2026-10-25T15:31:14.1264689Z [10/62] Automatic MOC and UIC for target shell-ui-test
+2026-10-25T15:31:14.1786232Z [11/62] Running qmlimportscanner for session-test
+2026-10-25T15:31:14.3798012Z [12/62] Automatic MOC and UIC for target tamber-desktop
+2026-10-25T15:31:14.4300082Z [13/62] Running qmlimportscanner for theme-preview
+2026-10-25T15:31:14.4575893Z [14/62] Automatic MOC and UIC for target theme-preview
+2026-10-25T15:31:14.5078290Z [15/62] Running qmlimportscanner for tamber-shell
+2026-10-25T15:31:14.7052352Z [16/62] Automatic MOC and UIC for target session-test
+2026-10-25T15:31:14.7114410Z [17/62] Automatic MOC and UIC for target tamber-shell
+2026-10-25T15:31:16.0368058Z [18/62] Building CXX object CMakeFiles/launcher-test.dir/launcher-test_autogen/mocs_compilation.cpp.o
+2026-10-25T15:31:18.0295607Z [19/62] Building CXX object CMakeFiles/launcher-test.dir/tests/launcher_test.cpp.o
+2026-10-25T15:31:18.0347302Z [20/62] Running rcc for resource qmake_TamberShell
+2026-10-25T15:31:18.0501617Z [21/62] Generating .rcc/qmlcache/tamber-shell_qmlcache_loader.cpp
+2026-10-25T15:31:18.0566975Z [22/62] Running rcc for resource tamber-shell_raw_qml_0
+2026-10-25T15:31:18.0590729Z [23/62] Running AUTOMOC file extraction for target tamber-shell
+2026-10-25T15:31:18.0657492Z [24/62] Running moc --collect-json for target tamber-shell
+2026-10-25T15:31:18.1041172Z [25/62] Automatic QML type registration for target tamber-shell
+2026-10-25T15:31:18.1894302Z [26/62] Generating .rcc/qmlcache/tamber-shell_Main_qml.cpp, .rcc/qmlcache/tamber-shell_Main_qml.cpp.aotstats
+2026-10-25T15:31:18.5648686Z [27/62] Building CXX object CMakeFiles/launcher-test.dir/Launcher.cpp.o
+2026-10-25T15:31:19.4896354Z [28/62] Building CXX object CMakeFiles/tamber-shell.dir/tamber-shell_autogen/mocs_compilation.cpp.o
+2026-10-25T15:31:20.5946080Z [29/62] Building CXX object CMakeFiles/tamber-shell.dir/main.cpp.o
+2026-10-25T15:31:21.9818301Z [30/62] Building CXX object CMakeFiles/tamber-shell.dir/tamber-shell_qmltyperegistrations.cpp.o
+2026-10-25T15:31:22.0048830Z [31/62] Building CXX object CMakeFiles/tamber-shell.dir/.qt/rcc/qrc_qmake_TamberShell.cpp.o
+2026-10-25T15:31:22.0390398Z [32/62] Building CXX object CMakeFiles/tamber-shell.dir/Launcher.cpp.o
+2026-10-25T15:31:23.9186009Z [33/62] Building CXX object CMakeFiles/tamber-shell.dir/.rcc/qmlcache/tamber-shell_qmlcache_loader.cpp.o
+2026-10-25T15:31:23.9449917Z [34/62] Building CXX object CMakeFiles/tamber-shell.dir/.qt/rcc/qrc_tamber-shell_raw_qml_0.cpp.o
+2026-10-25T15:31:23.9689409Z [35/62] Building CXX object CMakeFiles/tamber-shell.dir/.qt/rcc/qrc_brand.cpp.o
+2026-10-25T15:31:24.0759993Z [36/62] Linking CXX executable launcher-test
+2026-10-25T15:31:24.0858168Z [37/62] Building CXX object CMakeFiles/launch-probe.dir/launch-probe_autogen/mocs_compilation.cpp.o
+2026-10-25T15:31:24.3321452Z [38/62] Building CXX object CMakeFiles/tamber-shell.dir/.rcc/qmlcache/tamber-shell_Main_qml.cpp.o
+2026-10-25T15:31:24.5961991Z [39/62] Linking CXX executable tamber-shell
+2026-10-25T15:31:25.8816745Z [40/62] Building CXX object CMakeFiles/launch-probe.dir/tests/launch_probe.cpp.o
+2026-10-25T15:31:25.9350306Z [41/62] Building CXX object CMakeFiles/shell-ui-test.dir/shell-ui-test_autogen/mocs_compilation.cpp.o
+2026-10-25T15:31:26.1528088Z [42/62] Linking CXX executable launch-probe
+2026-10-25T15:31:28.7151920Z [43/62] Building CXX object CMakeFiles/shell-ui-test.dir/Launcher.cpp.o
+2026-10-25T15:31:28.7395695Z [44/62] Building CXX object CMakeFiles/shell-ui-test.dir/.qt/rcc/qrc_brand.cpp.o
+2026-10-25T15:31:28.7480026Z [45/62] Running rcc for resource desktop
+2026-10-25T15:31:28.7531372Z [46/62] Running rcc for resource artwork
+2026-10-25T15:31:30.5534811Z [47/62] Building CXX object CMakeFiles/tamber-desktop.dir/tamber-desktop_autogen/mocs_compilation.cpp.o
+2026-10-25T15:31:30.5877468Z [48/62] Building CXX object CMakeFiles/shell-ui-test.dir/tests/shell_ui_test.cpp.o
+2026-10-25T15:31:30.8592320Z [49/62] Linking CXX executable shell-ui-test
+2026-10-25T15:31:33.1769926Z [50/62] Building CXX object CMakeFiles/tamber-desktop.dir/desktop/main.cpp.o
+2026-10-25T15:31:34.1079818Z [51/62] Building CXX object CMakeFiles/tamber-desktop.dir/desktop/Session.cpp.o
+2026-10-25T15:31:34.1355482Z [52/62] Building CXX object CMakeFiles/tamber-desktop.dir/.qt/rcc/qrc_desktop.cpp.o
+2026-10-25T15:31:34.1618111Z [53/62] Building CXX object CMakeFiles/tamber-desktop.dir/.qt/rcc/qrc_artwork.cpp.o
+2026-10-25T15:31:35.7202472Z [54/62] Building CXX object CMakeFiles/tamber-desktop.dir/Launcher.cpp.o
+2026-10-25T15:31:35.8785357Z [55/62] Building CXX object CMakeFiles/session-test.dir/session-test_autogen/mocs_compilation.cpp.o
+2026-10-25T15:31:36.0067050Z [56/62] Linking CXX executable tamber-desktop
+2026-10-25T15:31:39.2176489Z [57/62] Building CXX object CMakeFiles/session-test.dir/desktop/Session.cpp.o
+2026-10-25T15:31:39.2302544Z [58/62] Building CXX object CMakeFiles/theme-preview.dir/theme-preview_autogen/mocs_compilation.cpp.o
+2026-10-25T15:31:40.7399756Z [59/62] Building CXX object CMakeFiles/session-test.dir/tests/session_test.cpp.o
+2026-10-25T15:31:41.0715897Z [60/62] Linking CXX executable session-test
+2026-10-25T15:31:41.1392409Z [61/62] Building CXX object CMakeFiles/theme-preview.dir/desktop/theme-preview.cpp.o
+2026-10-25T15:31:41.4044133Z [62/62] Linking CXX executable theme-preview
+2026-10-25T15:31:41.4103544Z Internal ctest changing into directory: /work/build/shell
+2026-10-25T15:31:41.4105240Z Test project /work/build/shell
+2026-10-25T15:31:41.4107894Z     Start 1: launcher
+2026-10-25T15:31:41.4763732Z 1/3 Test #1: launcher .........................   Passed    0.07 sec
+2026-10-25T15:31:41.4765426Z     Start 2: shell-ui
+2026-10-25T15:31:42.6708605Z 2/3 Test #2: shell-ui .........................   Passed    1.19 sec
+2026-10-25T15:31:42.6709766Z     Start 3: session
+2026-10-25T15:31:42.6978758Z 3/3 Test #3: session ..........................   Passed    0.03 sec
+2026-10-25T15:31:42.6981631Z 
+2026-10-25T15:31:42.6981794Z 100% tests passed, 0 tests failed out of 3
+2026-10-25T15:31:42.6981984Z 
+2026-10-25T15:31:42.6982065Z Total Test time (real) =   1.29 sec
+2026-10-25T15:31:42.7011509Z build/shell/tamber-desktop: ELF 64-bit LSB executable, ARM aarch64, version 1 (GNU/Linux), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, BuildID[sha1]=4087623530f8ad016b857a2823f28d32f8a73e60, for GNU/Linux 3.7.0, not stripped
+2026-10-25T15:31:44.1257752Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+2026-10-25T15:31:44.1258177Z with:
+2026-10-25T15:31:44.1258353Z   name: m3-alma-arm64-build
+2026-10-25T15:31:44.1258586Z   path: TamberOS/build/m3-alma-evidence/
+2026-10-25T15:31:44.1258851Z   if-no-files-found: warn
+2026-10-25T15:31:44.1259060Z   compression-level: 6
+2026-10-25T15:31:44.1259487Z   overwrite: false
+2026-10-25T15:31:44.1259680Z   include-hidden-files: false
+2026-10-25T15:31:44.1259894Z ##[endgroup]
+2026-10-25T15:31:44.2640301Z (node:3558) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-25T15:31:44.2640969Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-25T15:31:44.2691683Z With the provided path, there will be 3 files uploaded
+2026-10-25T15:31:44.2710443Z Artifact name is valid!
+2026-10-25T15:31:44.2710671Z Root directory input is valid!
+2026-10-25T15:31:44.5926129Z Beginning upload of artifact content to blob storage
+2026-10-25T15:31:44.6117276Z (node:3558) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-25T15:31:44.7983714Z Uploaded bytes 4394
+2026-10-25T15:31:44.8531197Z Finished uploading artifact content to blob storage!
+2026-10-25T15:31:44.8531874Z SHA256 digest of uploaded artifact zip is 863d607f3ec3ae876d89c2863ae1f0a0f34b387cfde26bcb0d1f2d6624eca93d
+2026-10-25T15:31:44.8533713Z Finalizing artifact upload
+2026-10-25T15:31:45.3078917Z Artifact m3-alma-arm64-build.zip successfully finalized. Artifact ID 12604925353
+2026-10-25T15:31:45.3079715Z Artifact m3-alma-arm64-build has been successfully uploaded! Final size is 4394 bytes. Artifact ID is 12604925353
+2026-10-25T15:31:45.3084693Z Artifact download URL: https://github.com/GurnoorLog/Tamberbox/actions/runs/40207240150/artifacts/12604925353
+2026-10-25T15:31:45.3284737Z Post job cleanup.
+2026-10-25T15:31:45.3989525Z [command]/usr/bin/git version
+2026-10-25T15:31:45.4025792Z git version 2.55.0
+2026-10-25T15:31:45.4070208Z Temporarily overriding HOME='/home/runner/work/_temp/920700e1-8cf2-42ac-a083-25b8e7eeeb93' before making global git config changes
+2026-10-25T15:31:45.4070940Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-25T15:31:45.4071514Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Tamberbox/Tamberbox
+2026-10-25T15:31:45.4120649Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-25T15:31:45.4130266Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-25T15:31:45.4316946Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-25T15:31:45.4347101Z http.https://github.com/.extraheader
+2026-10-25T15:31:45.4355963Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-25T15:31:45.4388771Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-25T15:31:45.4720483Z Cleaning up orphan processes
+2026-10-25T15:31:45.5146776Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

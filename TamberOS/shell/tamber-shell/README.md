@@ -28,3 +28,7 @@ launched subprocess and keyboard-driven launch of a separate Qt graphical window
 Screenshots are actual rendered QML, not concept artwork. See docs/evidence/m2/x11.
 The original mascot is loaded from the existing SVG resource. No theme assets
 were copied from WhiteSur. To undo, close the app and revert the feature branch.
+
+## M3 Wayland session
+
+The original windowed preview remains available. For the separate real Sway/layer-shell desktop, build with `TAMBER_WAYLAND_SESSION=ON` and follow `docs/m3-desktop.md`. Qt 6.4+ is supported with the pinned compatibility adaptations.

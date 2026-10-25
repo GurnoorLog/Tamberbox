@@ -1,0 +1,38 @@
+{
+  "tested_commit": "bc996e94e11f6375ce65ef1d91d3fcbf80d3940b",
+  "desktop_ci": {
+    "run": 40207240150,
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 121210693719,
+        "platform": "AlmaLinux 10.2 ARM64 / Qt 6.10.1",
+        "type": "native compilation + offscreen CTest"
+      },
+      {
+        "id": 121210693894,
+        "platform": "Ubuntu 24.04 ARM64 / Qt 6.4.2 / Sway 1.9",
+        "type": "headless Wayland/pixman runtime and real application/window integration"
+      }
+    ]
+  },
+  "existing_checks": {
+    "run": 40207240110,
+    "conclusion": "success"
+  },
+  "artifacts": [
+    {
+      "id": 12604925353,
+      "name": "m3-alma-arm64-build"
+    },
+    {
+      "id": 12604391217,
+      "name": "m3-wayland-runtime"
+    }
+  ],
+  "m2_image_sha256": "a34411e36ae11c463f546c06ee64c5d5785e69a9ab7bf7446f344bbaf1dbe988",
+  "m2_image_scripts_unchanged": true,
+  "physical_hardware_validation": "pending",
+  "sddm_authentication": "unverified",
+  "plymouth_execution": "unverified"
+}

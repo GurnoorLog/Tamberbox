@@ -49,3 +49,7 @@ Input -> Compositor -> Tamber Shell
 
 ## Quality gates
 A feature is "working" only with reproducible steps and measured results (test command, hardware, image/kernel versions, screenshots/logs). A mocked UI is clearly labeled. Hardware boot gates are in `docs/board-support.md`.
+
+## M3 implemented development session
+
+Sway manages native Wayland windows. Tamber Desktop uses LayerShellQt for wallpaper, menu bar, dock and overlays, and bounded Sway IPC commands for window actions. GIO launches normal xdg-shell clients. The headless ARM64 development choice does not determine the Ultra GPU/compositor production stack. See `m3-desktop.md`.

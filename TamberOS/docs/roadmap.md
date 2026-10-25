@@ -25,10 +25,11 @@
 - [ ] Serial output and HDMI confirm boot; machine identity recorded
 - [ ] Basic input/network/storage, no fatal regressions; backup recovery tested
 
-## M3 · Session UX
-- [ ] Select proven compositor/SDDM availability and graphics path
-- [ ] Custom boot splash / sign-in / desktop launcher
-- [ ] Keyboard and pointer access, reduced motion, shutdown and logout
+## M3 · Session UX — remote development implementation
+- [x] Select Sway for isolated Wayland development; actual board graphics and SDDM login remain pending
+- [x] Implement desktop launcher and original login/boot theme sources; authentication and boot execution remain unverified
+- [ ] Complete accessibility, shutdown/logout, multi-monitor and service integration acceptance
+- [x] Keyboard application launch and real compositor window actions in ARM64 virtual desktop
 - [x] Functional app launching and settings persistence in a session prototype (ARM64 X11; not board tested)
 
 ## M4 · Tamber modes
