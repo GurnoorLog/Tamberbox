@@ -36,14 +36,23 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   assert any(w['num']==2 and w['focused'] for w in workspaces)
   run('wtype','-M','logo','-k','1','-m','logo')
   (OUT/'workspaces.json').write_text(json.dumps(workspaces,indent=2))
+  tray=subprocess.Popen(['/usr/bin/python3',str(ROOT/'scripts/tray_fixture.py'),str(base/'tray-activated')],env=env,stdout=log,stderr=log)
+  time.sleep(.7)
   probe=run('/usr/bin/python3',str(ROOT/'scripts/waybar_probe.py'))
   (OUT/'waybar-accessibility.json').write_text(probe.stdout)
   labels=json.loads(probe.stdout)
-  for text in ['TamberOS','CPU','RAM','LAN','VOL']:
+  for text in ['TamberOS','CPU','RAM','LAN','VOL','BT n/a']:
    assert any(text in (n.get('text','')+n['name']) for n in labels), 'Missing Waybar module: '+text
+  volume=next(n for n in labels if 'VOL' in (n.get('text','')+n['name']) and n.get('rect',[0,0,0,0])[2]>0)
+  x,y,w,h=volume['rect'];run('swaymsg','seat','seat0','cursor','set',str(x+w//2+8),str(y+h//2+4))
+  before=run('pactl','get-sink-volume','@DEFAULT_SINK@').stdout
+  run(str(ROOT/'build/input-test/virtual-pointer'),str(x+w//2+8),str(y+h//2+4),'scroll');time.sleep(.5)
+  after=run('pactl','get-sink-volume','@DEFAULT_SINK@').stdout
+  assert before!=after,'Waybar volume scroll did not change null sink'
+  (OUT/'audio-scroll.txt').write_text('before: '+before+'after: '+after)
   label=next(n for n in labels if 'TamberOS' in (n.get('text','')+n['name']) and n.get('rect',[0,0,0,0])[2]>0)
-  x,y,w,h=label['rect'];run('swaymsg','seat','seat0','cursor','set',str(x+w//2),str(y+h//2))
-  run('wlrctl','pointer','click','left');wait(lambda:'TAMBER_FRAME launcher' in (OUT/'sway-session.log').read_text(),15);time.sleep(.5)
+  x,y,w,h=label['rect'];run('swaymsg','seat','seat0','cursor','set',str(x+w//2+8),str(y+h//2+4))
+  run(str(ROOT/'build/input-test/virtual-pointer'),str(x+w//2+8),str(y+h//2+4),'left');wait(lambda:'TAMBER_FRAME launcher' in (OUT/'sway-session.log').read_text(),15);time.sleep(.5)
   keyboard=subprocess.Popen(['wtype','-s','400','-d','50','Tamber Test','-s','1500','-k','Return','-s','500'],env=env)
   time.sleep(1.5);run('grim',str(OUT/'launcher.png'));assert keyboard.wait(timeout=10)==0
   def windows():
@@ -91,4 +100,6 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
  finally:
   if proc.poll() is None:
    run('swaymsg','exit',check=False);proc.wait(timeout=10)
+  if 'tray' in locals():tray.terminate();tray.wait(timeout=5)
+  run('pulseaudio','--kill',check=False)
   log.close()
