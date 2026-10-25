@@ -20,8 +20,8 @@ private slots:
   QTRY_VERIFY_WITH_TIMEOUT(s.windows().first().toMap()["minimized"].toBool(),5000);
   s.windowAction(id,"focus");QTRY_VERIFY_WITH_TIMEOUT(!s.windows().first().toMap()["minimized"].toBool(),5000);
   s.windowAction(id,"float");QTest::qWait(300);
-  s.windowAction(id,"fullscreen");QTest::qWait(300);
-  s.windowAction(id,"fullscreen");QTest::qWait(300);
+  s.windowAction(id,"fullscreen");QTRY_VERIFY_WITH_TIMEOUT(s.windows().first().toMap()["fullscreen"].toBool(),5000);
+  s.windowAction(id,"fullscreen");QTRY_VERIFY_WITH_TIMEOUT(!s.windows().first().toMap()["fullscreen"].toBool(),5000);
   s.windowAction(id,"close");QTRY_VERIFY_WITH_TIMEOUT(s.windows().isEmpty(),5000);
  }
 };

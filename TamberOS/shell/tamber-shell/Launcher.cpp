@@ -22,8 +22,12 @@ bool Launcher::launch(const QString &id) {
  if(!known){message="Application is no longer available";emit statusChanged();return false;}
  auto *app=g_desktop_app_info_new(id.toUtf8().constData()); GError *error=nullptr;
  // Delegate Desktop Entry field codes and argv parsing to GIO; never construct a shell command.
- bool ok=app && g_app_info_should_show(G_APP_INFO(app)) && g_app_info_launch(G_APP_INFO(app),nullptr,nullptr,&error);
+ auto *context=g_app_launch_context_new();
+ // Panel roles belong to this process, not to applications it launches.
+ g_app_launch_context_setenv(context,"QT_WAYLAND_SHELL_INTEGRATION","xdg-shell");
+ bool ok=app && g_app_info_should_show(G_APP_INFO(app)) && g_app_info_launch(G_APP_INFO(app),nullptr,context,&error);
  message=ok ? "Launch requested" : error ? QString::fromUtf8(error->message) : "Application could not be launched";
+ g_object_unref(context);
  if(error)g_error_free(error); if(app)g_object_unref(app);
  emit statusChanged(); if(ok)emit launchAccepted(id); return ok;
 }

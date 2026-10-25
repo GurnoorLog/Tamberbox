@@ -29,7 +29,7 @@ QVariantList Session::windowList(const QJsonObject &tree){
   const auto app=node.value("app_id").toString();
   if(!app.isEmpty() || node.value("window").isDouble()){
    QString name=node.value("name").toString();if(name.isEmpty())name=app;
-   result.append(QVariantMap{{"id",QString::number(node.value("id").toInteger())},{"title",name},{"appId",app},{"focused",node.value("focused").toBool()},{"minimized",hidden}});
+   result.append(QVariantMap{{"id",QString::number(node.value("id").toInteger())},{"title",name},{"appId",app},{"focused",node.value("focused").toBool()},{"minimized",hidden},{"fullscreen",node.value("fullscreen_mode").toInt()!=0}});
   }
   for(const auto key:{"nodes","floating_nodes"})for(const auto &child:node.value(key).toArray())visit(child.toObject(),hidden);
  };visit(tree,false);return result;
