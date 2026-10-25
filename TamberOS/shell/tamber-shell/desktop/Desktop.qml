@@ -23,6 +23,11 @@ Item {
         contentItem: Text { text: button.text; color: root.cream; font.pixelSize: 14; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter; elide: Text.ElideRight }
         background: Rectangle { radius: 10; color: button.down ? "#594034" : button.hovered ? "#484247" : "transparent"; border.width: button.activeFocus ? 2 : 0; border.color: root.accent }
     }
+    component SettingsTab: TabButton {
+        id: tab
+        contentItem: Text { text: tab.text; color: root.cream; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter; font.pixelSize: 14 }
+        background: Rectangle { color: tab.checked ? "#4b3931" : "#333237"; radius: 9; border.color: tab.activeFocus ? root.accent : "transparent" }
+    }
     component Surface: Rectangle { color: preferences.opaque ? "#29292e" : "#ed29292e"; radius: 22; border.color: "#605855"; border.width: 1 }
     Window {
         id: wallpaper
@@ -63,7 +68,8 @@ Item {
                 delegate: Action {
                     required property var modelData
                     Layout.preferredWidth: 55; Layout.preferredHeight: 54
-                    text: modelData.name.slice(0,2).toUpperCase()
+                    text: modelData.name
+                    contentItem: Image { source: "image://apps/"+modelData.appId; sourceSize.width: 40; sourceSize.height: 40; fillMode: Image.PreserveAspectFit }
                     onClicked: appLauncher.launch(modelData.appId)
                     ToolTip.visible: hovered; ToolTip.text: modelData.name
                     scale: hovered ? 1.12 : 1
@@ -126,7 +132,7 @@ Item {
             ColumnLayout {
                 anchors.fill: parent; anchors.margins: 26; spacing: 14
                 RowLayout { TextLabel { text: "System settings"; font.pixelSize: 25; Layout.fillWidth: true } Action { text: "Close"; onClicked: settingsWindow.visible=false } }
-                TabBar { id: tabs; Layout.fillWidth: true; TabButton { text: "Appearance" } TabButton { text: "Connections & sound" } TabButton { text: "Windows" } }
+                TabBar { id: tabs; Layout.fillWidth: true; SettingsTab { text: "Appearance" } SettingsTab { text: "Sound and network" } SettingsTab { text: "Windows" } }
                 StackLayout {
                     currentIndex: tabs.currentIndex; Layout.fillWidth: true; Layout.fillHeight: true
                     ColumnLayout {

@@ -11,7 +11,9 @@ void Launcher::refresh() {
   auto *app=G_APP_INFO(it->data); const char *raw=g_app_info_get_id(app);
   if(!raw || !g_app_info_should_show(app)) continue;
   QString id=QString::fromUtf8(raw); if(seen.contains(id)) continue; seen.insert(id);
-  apps.append(QVariantMap{{"appId",id},{"name",QString::fromUtf8(g_app_info_get_display_name(app))}});
+  QString iconName;auto *icon=g_app_info_get_icon(app);
+  if(icon && G_IS_THEMED_ICON(icon)){const auto names=g_themed_icon_get_names(G_THEMED_ICON(icon));if(names && names[0])iconName=QString::fromUtf8(names[0]);}
+  apps.append(QVariantMap{{"iconName",iconName},{"appId",id},{"name",QString::fromUtf8(g_app_info_get_display_name(app))}});
  }
  g_list_free_full(list,g_object_unref);
  std::sort(apps.begin(),apps.end(),[](const QVariant&a,const QVariant&b){return QString::localeAwareCompare(a.toMap()["name"].toString(),b.toMap()["name"].toString())<0;});

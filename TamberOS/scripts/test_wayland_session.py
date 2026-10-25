@@ -33,7 +33,10 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
    def walk(n):
     return ([n] if n.get('app_id')=='tamber-test' else [])+sum((walk(c) for k in ['nodes','floating_nodes'] for c in n.get(k,[])),[])
    return walk(tree)
-  wait(windows);time.sleep(.5)
+  found=wait(windows);time.sleep(.5)
+  (OUT/'launched-windows.json').write_text(json.dumps(found,indent=2)+'\n')
+  assert found[0]['rect']['y']>=40, 'Application overlaps reserved menu bar'
+  assert found[0]['rect']['y']+found[0]['rect']['height']<=636, 'Application overlaps reserved dock'
   run('grim',str(OUT/'application.png'))
   run('tamber-desktop','--command','controls');time.sleep(.5);run('grim',str(OUT/'settings.png'))
   run('wtype','-s','400','-k','Escape');time.sleep(.3)

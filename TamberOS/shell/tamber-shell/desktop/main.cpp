@@ -8,6 +8,18 @@
 #include <QLocalSocket>
 #include <QStandardPaths>
 #include <QFileInfo>
+#include <QQuickImageProvider>
+#include <QIcon>
+class AppIcons : public QQuickImageProvider {
+ Launcher *launcher;
+public:
+ explicit AppIcons(Launcher *l):QQuickImageProvider(QQuickImageProvider::Pixmap),launcher(l){}
+ QPixmap requestPixmap(const QString &id,QSize *size,const QSize &requested) override {
+  QString name;for(const auto &v:launcher->applications()){auto m=v.toMap();if(m["appId"].toString()==id){name=m["iconName"].toString();break;}}
+  QSize dimensions=requested.isValid()?requested:QSize(40,40);dimensions=dimensions.boundedTo(QSize(128,128));
+  auto result=QIcon::fromTheme(name,QIcon("qrc:/brand/application.svg")).pixmap(dimensions);if(size)*size=result.size();return result;
+ }
+};
 int main(int argc,char **argv){
  if(qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE"))qputenv("QT_QUICK_CONTROLS_STYLE","Basic");
  QGuiApplication app(argc,argv);app.setApplicationName("Tamber Desktop");app.setOrganizationName("TamberOS");
@@ -25,6 +37,6 @@ int main(int argc,char **argv){
   QObject::connect(peer,&QLocalSocket::readyRead,&session,[peer,&session]{session.dispatch(QString::fromUtf8(peer->readAll()).left(32));peer->disconnectFromServer();});
   QObject::connect(peer,&QLocalSocket::disconnected,peer,&QObject::deleteLater);
  }});
- QQmlApplicationEngine engine;engine.rootContext()->setContextProperty("session",&session);engine.rootContext()->setContextProperty("appLauncher",&launcher);
+ QQmlApplicationEngine engine;engine.addImageProvider("apps",new AppIcons(&launcher));engine.rootContext()->setContextProperty("session",&session);engine.rootContext()->setContextProperty("appLauncher",&launcher);
  engine.load(QUrl("qrc:/desktop/Desktop.qml"));if(engine.rootObjects().isEmpty())return 1;return app.exec();
 }
