@@ -2,7 +2,7 @@
 
 ## Status
 
-**Code integrated; graphical runtime and AlmaLinux deployment NOT verified.** This patch is developed from M3 and preserves M2 image, branding, and archived evidence. It does not install anything on the user device.
+**Original handoff status (superseded by the continuation results in [status.md](status.md)).** At handoff, code was integrated but graphical runtime and AlmaLinux deployment were not verified. This patch is developed from M3 and preserves M2 image, branding, and archived evidence. It does not install anything on the user device.
 
 ## Waybar
 

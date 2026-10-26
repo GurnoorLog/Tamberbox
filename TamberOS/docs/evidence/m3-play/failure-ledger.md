@@ -19,3 +19,16 @@
 
 Failed attempts are not full integration passes. Final accepted execution and
 its tested commit are recorded in ci.json and status.md.
+
+- Run 40274961568: real 2048 launch succeeded. The old compositor test assumed
+  one window and timed out after a second window opened. Changed it to track the
+  isolated terminal by ID and verify the other window survives. Cleaned up only
+  the document portal's FUSE mount inside the test's private runtime directory.
+- Run 40275382120: tray activation and workspace clicks passed. The game became
+  visible just after the fixed two-second check, causing a false-negative launch
+  assertion. Replaced the sleep with a bounded query for its exact Wayland app ID.
+  Success evidence is now written only after teardown and temporary cleanup.
+
+Final run 40275789046 and existing checks 40275789047 pass at commit
+4f07a72256d1971bb4595d343adc4a8a82db65fb. Evidence under runtime/ and alma/
+is from that passing run, not an earlier attempt.

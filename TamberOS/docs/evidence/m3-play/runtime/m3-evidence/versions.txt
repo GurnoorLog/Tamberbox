@@ -1,0 +1,4 @@
+sway version 1.9
+Waybar v0.9.24
+6.4.2
+aarch64

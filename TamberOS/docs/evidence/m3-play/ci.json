@@ -1,0 +1,51 @@
+{
+  "tested_commit": "4f07a72256d1971bb4595d343adc4a8a82db65fb",
+  "desktop_ci": {
+    "run": 40275789046,
+    "conclusion": "success",
+    "url": "https://github.com/GurnoorLog/Tamberbox/actions/runs/40275789046",
+    "jobs": [
+      {
+        "id": 121418134617,
+        "name": "alma-arm64-build",
+        "conclusion": "success",
+        "scope": "AlmaLinux 10.2 ARM64 / Qt 6.10.1 native build and four offscreen CTest targets"
+      },
+      {
+        "id": 121418134869,
+        "name": "wayland-arm64",
+        "conclusion": "success",
+        "scope": "Ubuntu 24.04 ARM64 / Sway 1.9 / Waybar 0.9.24 / Qt 6.4.2; real headless Wayland/pixman runtime"
+      }
+    ]
+  },
+  "existing_checks": {
+    "run": 40275789047,
+    "conclusion": "success",
+    "jobs": [
+      121418134383,
+      121418134537
+    ]
+  },
+  "artifacts": [
+    {
+      "id": 12630426098,
+      "name": "m3-wayland-runtime",
+      "digest": "sha256:cb57124b001257cb69ef8beaedd3ff1d786381d4194db051cb0b5c7cf4a30729"
+    },
+    {
+      "id": 12630311456,
+      "name": "m3-alma-arm64-build",
+      "digest": "sha256:40555f5db369fbaaae493f0f9ce11d0c25a581276fe218c035357592e3a5e64f"
+    }
+  ],
+  "python_tests": 35,
+  "ctest_targets": 4,
+  "real_compositor_case": "separately executed with TAMBER_TEST_SWAY=1; not skipped in window-actions.txt",
+  "physical_hardware_validation": "pending",
+  "physical_controller_test": false,
+  "controller_scope": "synthetic js_event pipe tests of actual reader; QML navigation implementation, physical mapping unverified",
+  "emulator_scope": "real subprocess argv probe, not an executed RetroArch core",
+  "m2_image_sha256": "a34411e36ae11c463f546c06ee64c5d5785e69a9ab7bf7446f344bbaf1dbe988",
+  "m2_image_rebuilt": false
+}

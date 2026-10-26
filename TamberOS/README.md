@@ -2,7 +2,7 @@
 
 **An original, AlmaLinux-based ARM64 experience for TamberBox.**
 
-> Status: **M1 complete; M2 hardware acceptance pending**. A real AlmaLinux ARM64 image candidate builds and passes offline validation. The functional Qt/QML session prototype passes ARM64 X11 tests. Neither has been verified on the Orange Pi 5 Ultra.
+> Status: **M1 accepted; M3 desktop development verified remotely; M2 hardware acceptance pending.** Updated ARM64 builds and real Sway/Waybar runtime tests pass. The Orange Pi 5 Ultra has not been tested with this desktop.
 
 TamberOS combines a Linux kernel, an AlmaLinux userspace, and new Tamber-specific user-facing software. The hardware target is the **Orange Pi 5 Ultra (RK3588, aarch64)**. The visual direction comes from the accompanying TamberBox poster: ink-black backgrounds, electric orange details, warm cream typography, restrained comic-book energy and an **original sunglasses-wearing llama mascot**.
 
@@ -21,7 +21,7 @@ TamberOS combines a Linux kernel, an AlmaLinux userspace, and new Tamber-specifi
 | Product/technical documentation | Complete initial draft |
 | Brand palette, original SVG mascot + crown | Included |
 | Clickable multipage UI mock | Included; **mock data only** |
-| Qt 6/QML desktop application scaffold | Real app launching and keyboard tests pass in ARM64 AlmaLinux/X11 CI |
+| Qt 6/QML desktop and Play library | Native ARM64 builds; real Sway/Waybar app/game launching, keyboard/pointer tests and screenshots |
 | Safe read-only hardware telemetry CLI | Implemented with unit tests |
 | System image | Built and validated offline; hardware boot pending |
 | RPM packaging and NPU integration | Not implemented |
@@ -105,6 +105,11 @@ See [verified results and limitations](docs/status.md), [exact boot chain](docs/
 
 M3 develops a real Qt/QML Wayland session on Sway independently of physical-board access. See [desktop build, controls and limitations](docs/m3-desktop.md) and [current verification](docs/status.md). The M2 image remains unchanged with hardware validation pending.
 
-### M3.5 development add-on (Waybar and games)
+### M3 Waybar / Play continuation
 
-This archive also includes a V2.a-inspired Sway-native Waybar configuration and an original Qt/QML Tamber / Play game-library view. See `docs/m3-5-integration.md`. Static checks passed, but GUI runtime testing and ARM64 recompilation of these new changes remain pending. The original M3 Git history bundle is retained unchanged; the add-on edits are not represented as a new Git commit.
+The supplied Waybar and Play add-on is now implemented in the development branch.
+See [current verification and limitations](docs/status.md),
+[Play build and interaction guide](docs/m3-play.md), and the original
+[integration handoff](docs/m3-5-integration.md). Actual ARM64 runtime captures and
+CI results are archived under `docs/evidence/m3-play`; they are separate from
+M2 physical hardware acceptance, which remains pending.

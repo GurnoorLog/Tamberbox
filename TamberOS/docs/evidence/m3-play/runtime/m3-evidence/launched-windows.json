@@ -1,0 +1,55 @@
+[
+  {
+    "id": 9,
+    "type": "con",
+    "orientation": "none",
+    "percent": 1.0,
+    "urgent": false,
+    "marks": [],
+    "focused": true,
+    "layout": "none",
+    "border": "pixel",
+    "current_border_width": 2,
+    "rect": {
+      "x": 12,
+      "y": 46,
+      "width": 1256,
+      "height": 566
+    },
+    "deco_rect": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "window_rect": {
+      "x": 2,
+      "y": 2,
+      "width": 1252,
+      "height": 562
+    },
+    "geometry": {
+      "x": 0,
+      "y": 0,
+      "width": 700,
+      "height": 500
+    },
+    "name": "Tamber-terminal",
+    "window": null,
+    "nodes": [],
+    "floating_nodes": [],
+    "focus": [],
+    "fullscreen_mode": 0,
+    "sticky": false,
+    "pid": 11397,
+    "app_id": "tamber-test",
+    "visible": true,
+    "max_render_time": 0,
+    "shell": "xdg_shell",
+    "inhibit_idle": false,
+    "idle_inhibitors": {
+      "user": "none",
+      "application": "none"
+    }
+  }
+]

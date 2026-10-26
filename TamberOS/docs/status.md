@@ -1,67 +1,65 @@
-# TamberOS M3 development status · 2026-10-25
+# TamberOS M3 Waybar / Play development — 2026-10-26
 
-**M3 desktop development proceeds remotely. M2 hardware validation remains pending.**
-The M2 image scripts, original nine concepts and sunglasses-llama mascot are
-unchanged. No physical hardware access, device write, bootloader modification,
-SDDM activation or initramfs replacement was performed.
+This continues the supplied M3.5 ZIP. M1 remains accepted. The M2 image candidate
+and image-build source remain unchanged; Orange Pi 5 Ultra hardware acceptance
+is pending. Nothing was flashed, repartitioned or installed on TamberBox.
 
-## Implemented
+## Implementation
 
-- Native Qt/QML Wayland desktop on the existing Sway compositor, with layer-shell
-  wallpaper, slim translucent top bar, centered animated dock and search overlay.
-- Real GIO application discovery and launching; launched applications use xdg-shell
-  rather than inheriting the desktop's layer role. Theme icons have an original
-  fallback. Running-window indicators come from Sway's actual window tree.
-- Focus, minimize/restore, fullscreen, floating and close operations for known
-  window IDs. Workspaces and keyboard bindings are provided by the session config.
-- Appearance controls, wallpaper intensity and reduced motion; user settings
-  persist through Qt Settings. Display-scale, PipeWire audio and NetworkManager
-  radio controls issue real bounded requests and report service/permission errors.
-- Original restrained Quiet Ridge wallpaper. SDDM login theme and Plymouth theme
-  source, with a staging script and explicitly labeled Qt-rendered design previews.
+- The Sway-compatible HANCORE V2.a adaptation supplies the only top bar when
+  Waybar is selected. The original Qt bar remains the explicit fallback.
+- Play discovers visible Game-category desktop entries, searches and launches
+  through GIO, and saves favorites, hidden entries and user-imported local covers.
+- An optional original vector cover is included. Other displayed game icons are
+  supplied by the installed games, not copied into the source distribution.
+- Explicit RetroArch profiles launch a user-supplied executable, core and ROM
+  through separate argv elements. No emulator binary, core, firmware or ROM ships.
+- Linux joystick input drives library navigation, confirm/back and favorites.
+  Physical mapping and permissions remain unverified; see the limits below.
+- Keyboard focus returns to the library after management closes. D-Bus activation
+  receives the session display environment, and image imports retain their format.
 
-## Verification scope
+## Evidence
 
-The [CI manifest](evidence/m3/ci.json) records tested commit `bc996e94e11f6375ce65ef1d91d3fcbf80d3940b`. [Desktop CI run 40207240150](https://github.com/GurnoorLog/Tamberbox/actions/runs/40207240150) and [existing checks 40207240110](https://github.com/GurnoorLog/Tamberbox/actions/runs/40207240110) both passed. Native ARM64
-Ubuntu/Sway/pixman tests launch a real terminal through keyboard search, verify
-reserved panel geometry, minimize/restore/fullscreen/close a real window, and run
-three CTest targets. A separate AlmaLinux 10.2 ARM64 container compiles the desktop
-against Qt 6.10.1 and passes the three offscreen CTest targets. The compositor
-integration case is deliberately skipped there; it executes in the Sway job.
-The AlmaLinux binary is an actual aarch64 ELF, not a cross-platform mock.
-32 Python tests and the original asset-preservation gate pass.
+[Desktop CI 40275789046](https://github.com/GurnoorLog/Tamberbox/actions/runs/40275789046)
+and [existing checks 40275789047](https://github.com/GurnoorLog/Tamberbox/actions/runs/40275789047)
+both passed for commit `4f07a72256d1971bb4595d343adc4a8a82db65fb`.
+Four CTest targets pass on AlmaLinux and Wayland. The real compositor case runs
+separately with `TAMBER_TEST_SWAY=1`; it is intentionally skipped in ordinary
+offscreen CTest. The actual joystick reader and emulator argv are tested with
+synthetic events and a subprocess probe, not physical gamepads or emulator cores.
+Full provenance is in `evidence/m3-play/ci.json`.
+Runtime screenshots come from actual ARM64 Sway/Wayland execution with software
+rendering, not generated mockups. AlmaLinux builds and offscreen tests are
+separate from the Ubuntu ARM64 graphical run. The final `result.json` is written only after clean teardown.
+The original asset-preservation gate and 35 Python tests pass.
 
-The runtime screenshots under `docs/evidence/m3/runtime` show actual rendered
-Wayland clients. The login and boot images are design previews, not authenticated
-sessions or device boot captures. Build logs, RPM inventory, compositor output
-metadata, actual window geometry and test results are included alongside them.
+## Verification boundaries
 
-## Limitations
+| Area | Scope |
+|---|---|
+| ARM64 compilation | Native Ubuntu ARM64 and AlmaLinux 10.2 ARM64 containers/runners |
+| Graphical session | Ubuntu ARM64, Sway/headless, pixman/software rendering, 1280×720 |
+| Waybar | One external bar; launcher/workspace input; actual CPU/RAM/clock/window/network labels |
+| Audio | Volume scrolling against a disposable PulseAudio null sink, not speakers |
+| Tray | Synthetic SNI client exercising real Waybar display and D-Bus activation |
+| Bluetooth | No-controller state; pairing and radio hardware untested |
+| Network | Runner's virtual Ethernet state; Wi-Fi hardware/state transitions untested |
+| Games | Installed GNOME game discovery, search, cover import and real 2048 process/window |
+| Controller | Synthetic Linux joystick event streams test the real reader; no physical gamepad validation |
+| Emulator | Profile persistence, validation and real subprocess argv probe; no RetroArch core/gameplay test |
+| M2/board | Original candidate preserved; physical boot and all board peripherals pending |
 
-No Orange Pi boot, GPU acceleration or physical peripheral result is inferred.
-Wayland runtime is verified on Ubuntu ARM64; AlmaLinux desktop compilation and
-its offscreen tests are verified separately. Integration with a complete AlmaLinux
-Sway/PipeWire/NetworkManager login session remains to be tested.
+The overall M3 production acceptance gate remains open. Full AlmaLinux graphical
+session packaging, GPU acceleration, multi-monitor/hotplug, SDDM authentication,
+Plymouth execution, physical controller mappings and emulator gameplay are not
+established by these tests. The desktop is not claimed to run on the Orange Pi.
 
-Audio/network requests need real service/device tests. Display-scale persistence,
-multiple monitors/hotplug, automatic session recovery, dock pinning/reordering,
-notifications, per-application menu export and production packaging remain open.
-Sway does not round every external application's frame; native client decorations
-remain in use. Translucency is implemented; compositor blur is not claimed.
-SDDM PAM authentication and actual Plymouth execution are unverified. Theme staging
-does not activate either component. The official bootloader reference remains
-`references/final-concept/01-bootloader-concept.png`.
+## Reproduce and roll back
 
-The desktop is a development milestone, not a production OS release. Private Qt
-API compatibility is handled explicitly by the pinned layer-shell build script;
-rebuild it for the installed Qt version. Dependencies are recorded and selected
-sources/container are pinned, but byte-identical output is not claimed.
-
-## Reproduce and test later
-
-Read [desktop build/session instructions](m3-desktop.md),
-[M2 candidate evidence](status-m2.md), and the
-[separate-card hardware validation package](m2-hardware-testing.md).
-The M2 image remains the independent headless hardware baseline. Close the nested
-session or revert the feature branch to roll back M3 development; no existing
-TamberBox installation has been changed.
+Read `m3-play.md` and `m3-desktop.md` for dependencies, exact build/test commands,
+shortcuts and isolated session startup. `status-m3.md` retains the previous M3
+report. The earlier M2 hardware-testing package remains applicable to a separate
+microSD, after explicit destination verification and approval before writing.
+Close the nested session or revert this feature branch to roll back; use
+`TAMBER_USE_WAYBAR=0` to select the original Qt bar. Play never deletes game files.

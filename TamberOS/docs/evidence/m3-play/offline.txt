@@ -35,7 +35,7 @@ test_own_session_and_fallback (test_waybar_games.WaybarGameIntegrationTest.test_
 test_sway_modules_and_no_external_commands (test_waybar_games.WaybarGameIntegrationTest.test_sway_modules_and_no_external_commands) ... ok
 
 ----------------------------------------------------------------------
-Ran 35 tests in 0.108s
+Ran 35 tests in 0.093s
 
 OK
 PASS: Required project artifacts and SVG syntax exist.
