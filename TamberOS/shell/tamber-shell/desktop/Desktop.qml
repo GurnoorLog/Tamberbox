@@ -12,12 +12,12 @@ Item {
     property string clock: Qt.formatDateTime(new Date(), "ddd  d MMM   HH:mm")
     Settings { id: preferences; category: "Desktop"; property bool reducedMotion: false; property bool opaque: false; property real wallpaperOpacity: 1 }
     Timer { interval: 1000; running: true; repeat: true; onTriggered: root.clock = Qt.formatDateTime(new Date(), "ddd  d MMM   HH:mm") }
-    function showConsole() { appsWindow.visible=false; settingsWindow.visible=false; gamesWindow.visible=false; console.toggle() }
-    function showLibrary() { console.leave(); gamesWindow.visible = !gamesWindow.visible; if(gamesWindow.visible) { appLauncher.refresh(); gameSearch.text=""; gameGrid.forceActiveFocus() } }
-    function showApps() { console.leave(); appsWindow.visible = !appsWindow.visible; if(appsWindow.visible) { search.text=""; search.forceActiveFocus() } }
-    Connections { target: session; function onOpenLauncher() { root.showApps() } function onOpenControls() { console.leave(); settingsWindow.visible=!settingsWindow.visible } function onOpenGames() { root.showConsole() } function onOpenLibrary() { root.showLibrary() } }
+    function showConsole() { appsWindow.visible=false; settingsWindow.visible=false; gamesWindow.visible=false; playMode.toggle() }
+    function showLibrary() { playMode.leave(); gamesWindow.visible = !gamesWindow.visible; if(gamesWindow.visible) { appLauncher.refresh(); gameSearch.text=""; gameGrid.forceActiveFocus() } }
+    function showApps() { playMode.leave(); appsWindow.visible = !appsWindow.visible; if(appsWindow.visible) { search.text=""; search.forceActiveFocus() } }
+    Connections { target: session; function onOpenLauncher() { root.showApps() } function onOpenControls() { playMode.leave(); settingsWindow.visible=!settingsWindow.visible } function onOpenGames() { root.showConsole() } function onOpenLibrary() { root.showLibrary() } }
     Connections { target: appLauncher; function onLaunchAccepted(id) { appsWindow.visible=false } }
-    Console { id: console; reducedMotion: preferences.reducedMotion; onReducedMotionRequested: preferences.reducedMotion=!preferences.reducedMotion; onAdvancedLibraryRequested: { leave(); root.showLibrary() } }
+    Console { id: playMode; reducedMotion: preferences.reducedMotion; onReducedMotionRequested: preferences.reducedMotion=!preferences.reducedMotion; onAdvancedLibraryRequested: { leave(); root.showLibrary() } }
     component TextLabel: Label { color: root.cream; font.pixelSize: 14 }
     component Action: Button {
         id: button
@@ -45,7 +45,7 @@ Item {
         }
     }
     Window {
-        id: bar; property bool ready: false; visible: ready && !externalBar && !console.modeActive; width: Screen.width; height: 40; color: "transparent"; flags: Qt.FramelessWindowHint
+        id: bar; property bool ready: false; visible: ready && !externalBar && !playMode.modeActive; width: Screen.width; height: 40; color: "transparent"; flags: Qt.FramelessWindowHint
         Component.onCompleted: { if(!externalBar)session.configure(bar,"bar"); ready=true }
         Rectangle { anchors.fill: parent; color: preferences.opaque ? "#252529" : "#c9252529" }
         RowLayout {
@@ -63,7 +63,7 @@ Item {
         id: dock; width: Math.min(Screen.width-32,960); height: 76; color: "transparent"; flags: Qt.FramelessWindowHint
         property bool ready: false
         Component.onCompleted: { session.configure(dock,"dock"); ready=true }
-        visible: ready && !console.modeActive
+        visible: ready && !playMode.modeActive
         Surface { width: dockItems.implicitWidth+24; height: 68; anchors.centerIn: parent; radius: 20 }
         RowLayout {
             id: dockItems; anchors.centerIn: parent; spacing: 5
