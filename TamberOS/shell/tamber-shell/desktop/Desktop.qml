@@ -12,9 +12,10 @@ Item {
     property string clock: Qt.formatDateTime(new Date(), "ddd  d MMM   HH:mm")
     Settings { id: preferences; category: "Desktop"; property bool reducedMotion: false; property bool opaque: false; property real wallpaperOpacity: 1 }
     Timer { interval: 1000; running: true; repeat: true; onTriggered: root.clock = Qt.formatDateTime(new Date(), "ddd  d MMM   HH:mm") }
+    function showConsole() { appsWindow.visible=false; settingsWindow.visible=false; gamesWindow.visible=false; console.toggle() }
     function showLibrary() { console.leave(); gamesWindow.visible = !gamesWindow.visible; if(gamesWindow.visible) { appLauncher.refresh(); gameSearch.text=""; gameGrid.forceActiveFocus() } }
     function showApps() { console.leave(); appsWindow.visible = !appsWindow.visible; if(appsWindow.visible) { search.text=""; search.forceActiveFocus() } }
-    Connections { target: session; function onOpenLauncher() { root.showApps() } function onOpenControls() { console.leave(); settingsWindow.visible=!settingsWindow.visible } function onOpenGames() { console.toggle() } function onOpenLibrary() { root.showLibrary() } }
+    Connections { target: session; function onOpenLauncher() { root.showApps() } function onOpenControls() { console.leave(); settingsWindow.visible=!settingsWindow.visible } function onOpenGames() { root.showConsole() } function onOpenLibrary() { root.showLibrary() } }
     Connections { target: appLauncher; function onLaunchAccepted(id) { appsWindow.visible=false } }
     Console { id: console; reducedMotion: preferences.reducedMotion; onReducedMotionRequested: preferences.reducedMotion=!preferences.reducedMotion; onAdvancedLibraryRequested: { leave(); root.showLibrary() } }
     component TextLabel: Label { color: root.cream; font.pixelSize: 14 }
@@ -44,8 +45,8 @@ Item {
         }
     }
     Window {
-        id: bar; visible: !externalBar && !console.modeActive; width: Screen.width; height: 40; color: "transparent"; flags: Qt.FramelessWindowHint
-        Component.onCompleted: { if(!externalBar)session.configure(bar,"bar") }
+        id: bar; property bool ready: false; visible: ready && !externalBar && !console.modeActive; width: Screen.width; height: 40; color: "transparent"; flags: Qt.FramelessWindowHint
+        Component.onCompleted: { if(!externalBar)session.configure(bar,"bar"); ready=true }
         Rectangle { anchors.fill: parent; color: preferences.opaque ? "#252529" : "#c9252529" }
         RowLayout {
             anchors.fill: parent; anchors.leftMargin: 18; anchors.rightMargin: 18; spacing: 14
@@ -60,8 +61,9 @@ Item {
     }
     Window {
         id: dock; width: Math.min(Screen.width-32,960); height: 76; color: "transparent"; flags: Qt.FramelessWindowHint
-        Component.onCompleted: session.configure(dock,"dock")
-        visible: !console.modeActive
+        property bool ready: false
+        Component.onCompleted: { session.configure(dock,"dock"); ready=true }
+        visible: ready && !console.modeActive
         Surface { width: dockItems.implicitWidth+24; height: 68; anchors.centerIn: parent; radius: 20 }
         RowLayout {
             id: dockItems; anchors.centerIn: parent; spacing: 5
@@ -90,7 +92,7 @@ Item {
                     Rectangle { width: modelData.focused ? 16 : 5; height: 3; radius: 2; anchors.bottom: parent.bottom; anchors.horizontalCenter: parent.horizontalCenter; color: modelData.minimized ? root.muted : root.accent; Behavior on width { NumberAnimation { duration: preferences.reducedMotion ? 0 : 150 } } }
                 }
             }
-            Action { text: "Play"; Layout.preferredWidth: 64; Layout.preferredHeight: 54; onClicked: console.enter(); ToolTip.visible: hovered; ToolTip.text: "Game Mode · Super+G" }
+            Action { text: "Play"; Layout.preferredWidth: 64; Layout.preferredHeight: 54; onClicked: root.showConsole(); ToolTip.visible: hovered; ToolTip.text: "Game Mode · Super+G" }
             Action { text: "⚙"; Layout.preferredWidth: 40; Layout.preferredHeight: 54; onClicked: settingsWindow.visible=!settingsWindow.visible; ToolTip.visible: hovered; ToolTip.text: "Settings and windows" }
         }
     }

@@ -13,6 +13,7 @@ Window {
     signal reducedMotionRequested()
     signal advancedLibraryRequested()
     property int section: 0
+    onSectionChanged: sectionFade.restart()
     property int selection: 0
     property int filterIndex: 0
     property int zone: 1 // 0 navigation, 1 content, 2 actions
@@ -42,7 +43,7 @@ Window {
         return items.filter(a => (a.name+" "+(a.collection || "")).toLowerCase().includes(query.toLowerCase()));
     }
     property var selected: entries.length ? entries[Math.max(0,Math.min(selection,entries.length-1))] : null
-    property bool selectedGame: selected && !!selected.platform
+    property bool selectedGame: !!selected && !!selected.platform
     property var activeWindow: selected ? session.windows.find(w => w.appId===selected.appId.replace(/\.desktop$/, "")) : null
     property color cream: "#f2eee6"
     property color muted: "#9da9b3"
@@ -60,7 +61,7 @@ Window {
     function chooseSection(n) { section=n; selection=0; details=false; query=""; search.text=""; actionIndex=0; notice="" }
     function launchSelected() {
         if(!selected)return;
-        if(activeWindow){runningId=activeWindow.id;wasFullscreen=activeWindow.fullscreen;session.windowAction(runningId,"focus");session.windowAction(runningId,"fullscreen-on");visible=false;return}
+        if(activeWindow){if(runningId!==activeWindow.id)wasFullscreen=activeWindow.fullscreen;runningId=activeWindow.id;session.windowAction(runningId,"focus");session.windowAction(runningId,"fullscreen-on");visible=false;return}
         const id=selected.appId;
         const ok=selectedGame ? gameLibrary.launch(id) : appLauncher.launch(id);
         if(ok){pendingId=id.replace(/\.desktop$/, "");waitTicks=0;visible=false;notice=""}
@@ -135,7 +136,7 @@ Window {
     Rectangle { anchors.fill: parent; gradient: Gradient { GradientStop { position: 0; color: "#222d36" } GradientStop { position: 0.65; color: "#11171d" } GradientStop { position: 1; color: "#171e26" } } }
     // Calm, original landscape asset; no purchased or scraped game art.
     Image { anchors.fill: parent; source: "qrc:/brand/wallpapers/quiet-ridge.svg"; fillMode: Image.PreserveAspectCrop; opacity: 0.12 }
-    FocusScope {
+    Item {
         id: navigation; anchors.fill: parent; focus: true
         Keys.onPressed: function(event) {
             if(event.key===Qt.Key_Escape){console.navigate("back");event.accepted=true}
@@ -170,7 +171,9 @@ Window {
                 Item { Layout.fillWidth: true }
             }
             Item {
+                id: contentPanel
                 Layout.fillWidth: true; Layout.fillHeight: true
+                NumberAnimation { id: sectionFade; target: contentPanel; property: "opacity"; from: 0.4; to: 1; duration: console.reducedMotion?0:180; easing.type: Easing.OutCubic }
                 ColumnLayout {
                     anchors.fill: parent; spacing: 16; visible: console.section!==6
                     RowLayout {
