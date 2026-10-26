@@ -17,7 +17,7 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
  (data/'applications/tamber-test.desktop').write_text('[Desktop Entry]\nType=Application\nName=Tamber Test Terminal\nExec=foot --app-id=tamber-test --title=Tamber-terminal\nTerminal=false\n')
  env=os.environ.copy();env.update(XDG_RUNTIME_DIR=str(runtime),XDG_CONFIG_HOME=str(base/'config'),XDG_DATA_HOME=str(data),XDG_DATA_DIRS=str(data)+':/usr/local/share:/usr/share',TAMBER_ROOT=str(ROOT),TAMBER_EXTERNAL_BAR='1',NO_AT_BRIDGE='0',XDG_CURRENT_DESKTOP='sway',XDG_SESSION_TYPE='wayland',WLR_BACKENDS='headless',WLR_RENDERER='pixman',WLR_HEADLESS_OUTPUTS='1',WLR_LIBINPUT_NO_DEVICES='1',QT_QPA_PLATFORM='wayland',QT_QUICK_BACKEND='software',QT_QUICK_CONTROLS_STYLE='Basic',PATH=str(ROOT/'build/shell')+':'+env['PATH'],LD_LIBRARY_PATH=str(ROOT/'build/session-deps/lib'),QT_PLUGIN_PATH=str(ROOT/'build/session-deps/lib/plugins'))
  env.pop('SWAYSOCK',None);env.pop('WAYLAND_DISPLAY',None);env.pop('DISPLAY',None)
- config=base/'sway.conf';config.write_text((ROOT/'session/sway.conf').read_text()+'\noutput HEADLESS-1 mode 1280x720\n')
+ config=base/'sway.conf';config.write_text((ROOT/'session/sway.conf').read_text().replace('exec tamber-desktop\'', 'exec gdb -batch -ex run -ex bt --args tamber-desktop\'')+'\noutput HEADLESS-1 mode 1280x720\n')
  log=(OUT/'sway-session.log').open('w')
  audio=subprocess.run(['pulseaudio','--start','--exit-idle-time=-1'],env=env,capture_output=True)
  subprocess.run(['pactl','load-module','module-null-sink','sink_name=tamber_test'],env=env,capture_output=True)
@@ -31,7 +31,7 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
  try:
   sock=wait(lambda:next(iter(runtime.glob('sway-ipc.*.sock')),None));env['SWAYSOCK']=str(sock)
   display=wait(lambda:next((p for p in runtime.glob('wayland-*') if not p.name.endswith('.lock')),None));env['WAYLAND_DISPLAY']=display.name
-  wait(lambda:(runtime/('tamber-'+display.name)).exists());wait(lambda:'Bar configured' in (OUT/'sway-session.log').read_text(),30);time.sleep(.5)
+  wait(lambda:(runtime/('tamber-'+display.name)).exists());wait(lambda:'Bar configured' in (OUT/'sway-session.log').read_text(),30);wait(lambda:'TAMBER_FRAME wallpaper' in (OUT/'sway-session.log').read_text());wait(lambda:'TAMBER_FRAME dock' in (OUT/'sway-session.log').read_text());time.sleep(1)
   run('grim',str(OUT/'desktop.png'))
   assert 'TAMBER_FRAME bar' not in (OUT/'sway-session.log').read_text(), 'Duplicate Qt bar'
   assert len(run('pgrep','-x','waybar').stdout.splitlines())==1, 'Expected one Waybar process'
