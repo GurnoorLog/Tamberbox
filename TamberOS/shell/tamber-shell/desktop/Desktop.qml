@@ -155,8 +155,8 @@ Item {
                             Rectangle {
                                 Layout.fillWidth: true; Layout.preferredHeight: 164; color: "#171c22"; radius: 10
                                 clip: true
-                                Image { anchors.fill: parent; anchors.margins: modelData.art ? 0 : 32; source: modelData.art || ("image://apps/"+modelData.appId); fillMode: modelData.art ? Image.PreserveAspectCrop : Image.PreserveAspectFit }
-                                Text { anchors.left: parent.left; anchors.bottom: parent.bottom; anchors.margins: 8; text: modelData.favorite ? "★ FAVORITE" : modelData.platform; color: "#ffffff"; style: Text.Outline; styleColor: "#111111"; font.pixelSize: 10 }
+                                Image { anchors.fill: parent; anchors.margins: modelData.art ? 0 : 32; source: modelData.art || ("image://apps/"+modelData.appId); fillMode: Image.PreserveAspectFit }
+                                Text { anchors.left: parent.left; anchors.bottom: parent.bottom; anchors.margins: 8; visible: !modelData.art && modelData.favorite; text: "★ FAVORITE"; color: "#ffffff"; style: Text.Outline; styleColor: "#111111"; font.pixelSize: 10 }
                             }
                             Text { text: modelData.name; color: "#f0f1f3"; font.pixelSize: 15; font.bold: true; elide: Text.ElideRight; Layout.fillWidth: true }
                             Text { text: modelData.platform; color: "#aab4bb"; font.pixelSize: 11 }
@@ -176,7 +176,7 @@ Item {
         }
 
         Rectangle {
-            id: manage; visible: false; Keys.onEscapePressed: visible=false; onVisibleChanged: controller.active=gamesWindow.visible&&!visible; anchors.fill: parent; anchors.margins: 20; radius: 18; color: "#24282e"; border.color: "#69727b"
+            id: manage; visible: false; Keys.onEscapePressed: visible=false; onVisibleChanged: { controller.active=gamesWindow.visible&&!visible; if(!visible&&gamesWindow.visible)gameGrid.forceActiveFocus() } anchors.fill: parent; anchors.margins: 20; radius: 18; color: "#24282e"; border.color: "#69727b"
             ColumnLayout {
                 anchors.fill: parent; anchors.margins: 24; spacing: 10
                 Text { text: "Library management"; color: "#f0f1f3"; font.pixelSize: 24 }

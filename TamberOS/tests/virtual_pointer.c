@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <time.h>
+static uint32_t timestamp(void){struct timespec t;clock_gettime(CLOCK_MONOTONIC,&t);return t.tv_sec*1000+t.tv_nsec/1000000;}
 #include "virtual-pointer.h"
 static struct zwlr_virtual_pointer_manager_v1 *manager;
 static void global(void *data,struct wl_registry *registry,uint32_t name,const char *interface,uint32_t version){
@@ -18,8 +20,8 @@ int main(int argc,char **argv){
  struct wl_registry_listener listener={global,removed};wl_registry_add_listener(registry,&listener,NULL);wl_display_roundtrip(display);if(!manager)return 4;
  struct zwlr_virtual_pointer_v1 *pointer=zwlr_virtual_pointer_manager_v1_create_virtual_pointer(manager,NULL);
  wl_display_roundtrip(display);usleep(200000);
- zwlr_virtual_pointer_v1_motion_absolute(pointer,1,atoi(argv[1]),atoi(argv[2]),1280,720);zwlr_virtual_pointer_v1_frame(pointer);wl_display_roundtrip(display);usleep(200000);
- if(!strcmp(argv[3],"scroll")){zwlr_virtual_pointer_v1_axis_source(pointer,WL_POINTER_AXIS_SOURCE_WHEEL);zwlr_virtual_pointer_v1_axis_discrete(pointer,2,WL_POINTER_AXIS_VERTICAL_SCROLL,wl_fixed_from_int(15),1);zwlr_virtual_pointer_v1_frame(pointer);}
- else {uint32_t button=!strcmp(argv[3],"right")?273:272;zwlr_virtual_pointer_v1_button(pointer,2,button,WL_POINTER_BUTTON_STATE_PRESSED);zwlr_virtual_pointer_v1_frame(pointer);wl_display_roundtrip(display);usleep(100000);zwlr_virtual_pointer_v1_button(pointer,3,button,WL_POINTER_BUTTON_STATE_RELEASED);zwlr_virtual_pointer_v1_frame(pointer);}
+ zwlr_virtual_pointer_v1_motion_absolute(pointer,timestamp(),atoi(argv[1]),atoi(argv[2]),1280,720);zwlr_virtual_pointer_v1_frame(pointer);wl_display_roundtrip(display);usleep(200000);
+ if(!strcmp(argv[3],"scroll")){zwlr_virtual_pointer_v1_axis_source(pointer,WL_POINTER_AXIS_SOURCE_WHEEL);zwlr_virtual_pointer_v1_axis_discrete(pointer,timestamp(),WL_POINTER_AXIS_VERTICAL_SCROLL,wl_fixed_from_int(15),1);zwlr_virtual_pointer_v1_frame(pointer);}
+ else {uint32_t button=!strcmp(argv[3],"right")?273:272;zwlr_virtual_pointer_v1_button(pointer,timestamp(),button,WL_POINTER_BUTTON_STATE_PRESSED);zwlr_virtual_pointer_v1_frame(pointer);wl_display_roundtrip(display);usleep(100000);zwlr_virtual_pointer_v1_button(pointer,timestamp(),button,WL_POINTER_BUTTON_STATE_RELEASED);zwlr_virtual_pointer_v1_frame(pointer);}
  wl_display_roundtrip(display);usleep(200000);zwlr_virtual_pointer_v1_destroy(pointer);wl_display_roundtrip(display);wl_display_disconnect(display);return 0;
 }

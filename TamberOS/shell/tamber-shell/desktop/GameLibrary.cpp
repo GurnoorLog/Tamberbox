@@ -36,9 +36,9 @@ void GameLibrary::favorite(const QString&id){if(!known(id))return;auto p=state["
 void GameLibrary::hide(const QString&id){if(!known(id))return;auto p=state["preferences"].toObject();auto m=p[id].toObject();m["hidden"]=true;p[id]=m;state["preferences"]=p;if(save())refresh();}
 void GameLibrary::restoreHidden(){auto p=state["preferences"].toObject();for(auto it=p.begin();it!=p.end();++it){auto m=it.value().toObject();m["hidden"]=false;it.value()=m;}state["preferences"]=p;if(save())refresh();}
 bool GameLibrary::artwork(const QString&id,const QString&path){
- if(!known(id))return false;QFileInfo f(path);QImageReader reader(path);auto size=reader.size();
+ if(!known(id))return false;QFileInfo f(path);QImageReader reader(path);auto size=reader.size();const auto format=reader.format();
  if(!f.isAbsolute()||!f.isFile()||f.size()>20*1024*1024||!size.isValid()||size.width()>8192||size.height()>8192||reader.read().isNull()){message="Choose a local image up to 20 MiB and 8192 pixels";emit changed();return false;}
- QString folder=QFileInfo(file).absolutePath()+"/art";QDir().mkpath(folder);QString dest=folder+"/"+QCryptographicHash::hash((id+QString::number(f.lastModified().toMSecsSinceEpoch())).toUtf8(),QCryptographicHash::Sha256).toHex()+"."+reader.format();
+ QString folder=QFileInfo(file).absolutePath()+"/art";QDir().mkpath(folder);QString dest=folder+"/"+QCryptographicHash::hash((id+QString::number(f.lastModified().toMSecsSinceEpoch())).toUtf8(),QCryptographicHash::Sha256).toHex()+"."+(format.isEmpty()?QByteArray("img"):format);
  if(!QFile::exists(dest)&&!QFile::copy(path,dest)){message="Artwork copy failed";emit changed();return false;}
  auto p=state["preferences"].toObject();auto m=p[id].toObject();m["art"]=QUrl::fromLocalFile(dest).toString();p[id]=m;state["preferences"]=p;if(!save())return false;refresh();return true;
 }

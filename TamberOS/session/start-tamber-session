@@ -4,6 +4,8 @@ root=$(cd "$(dirname "$0")/.." && pwd)
 export PATH="$root/build/shell:$PATH"
 export LD_LIBRARY_PATH="$root/build/session-deps/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 export QT_PLUGIN_PATH="$root/build/session-deps/lib/plugins${QT_PLUGIN_PATH:+:$QT_PLUGIN_PATH}"
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_TYPE=wayland
 export QT_QPA_PLATFORM=wayland
 export QT_QUICK_CONTROLS_STYLE=Basic
 [[ -x "$root/build/shell/tamber-desktop" ]] || { echo 'Build tamber-desktop first'; exit 2; }

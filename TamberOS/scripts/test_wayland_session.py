@@ -14,7 +14,7 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
  base=pathlib.Path(temp);runtime=base/'runtime';runtime.mkdir(mode=0o700)
  data=base/'data';(data/'applications').mkdir(parents=True)
  (data/'applications/tamber-test.desktop').write_text('[Desktop Entry]\nType=Application\nName=Tamber Test Terminal\nExec=foot --app-id=tamber-test --title=Tamber-terminal\nTerminal=false\n')
- env=os.environ.copy();env.update(XDG_RUNTIME_DIR=str(runtime),XDG_CONFIG_HOME=str(base/'config'),XDG_DATA_HOME=str(data),XDG_DATA_DIRS=str(data)+':/usr/local/share:/usr/share',TAMBER_ROOT=str(ROOT),TAMBER_EXTERNAL_BAR='1',NO_AT_BRIDGE='0',WLR_BACKENDS='headless',WLR_RENDERER='pixman',WLR_HEADLESS_OUTPUTS='1',WLR_LIBINPUT_NO_DEVICES='1',QT_QPA_PLATFORM='wayland',QT_QUICK_BACKEND='software',QT_QUICK_CONTROLS_STYLE='Basic',PATH=str(ROOT/'build/shell')+':'+env['PATH'],LD_LIBRARY_PATH=str(ROOT/'build/session-deps/lib'),QT_PLUGIN_PATH=str(ROOT/'build/session-deps/lib/plugins'))
+ env=os.environ.copy();env.update(XDG_RUNTIME_DIR=str(runtime),XDG_CONFIG_HOME=str(base/'config'),XDG_DATA_HOME=str(data),XDG_DATA_DIRS=str(data)+':/usr/local/share:/usr/share',TAMBER_ROOT=str(ROOT),TAMBER_EXTERNAL_BAR='1',NO_AT_BRIDGE='0',XDG_CURRENT_DESKTOP='sway',XDG_SESSION_TYPE='wayland',WLR_BACKENDS='headless',WLR_RENDERER='pixman',WLR_HEADLESS_OUTPUTS='1',WLR_LIBINPUT_NO_DEVICES='1',QT_QPA_PLATFORM='wayland',QT_QUICK_BACKEND='software',QT_QUICK_CONTROLS_STYLE='Basic',PATH=str(ROOT/'build/shell')+':'+env['PATH'],LD_LIBRARY_PATH=str(ROOT/'build/session-deps/lib'),QT_PLUGIN_PATH=str(ROOT/'build/session-deps/lib/plugins'))
  env.pop('SWAYSOCK',None);env.pop('WAYLAND_DISPLAY',None);env.pop('DISPLAY',None)
  config=base/'sway.conf';config.write_text((ROOT/'session/sway.conf').read_text()+'\noutput HEADLESS-1 mode 1280x720\n')
  log=(OUT/'sway-session.log').open('w')
@@ -80,7 +80,8 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   (OUT/'library-state.json').write_text(json.dumps(state,indent=2))
   run('grim',str(OUT/'game-library.png'))
   run('wtype','-M','ctrl','-k','f','-m','ctrl');time.sleep(.3)
-  run('wtype','2048');time.sleep(.5);run('grim',str(OUT/'game-search.png'))
+  run('wtype','no-game-matches-this-query');time.sleep(.4);run('grim',str(OUT/'game-empty-search.png'))
+  run('wtype','-M','ctrl','-k','a','-m','ctrl','2048');time.sleep(.5);run('grim',str(OUT/'game-search.png'))
   run('wtype','-k','Return');time.sleep(2)
   tree=run('swaymsg','-t','get_tree','-r').stdout
   (OUT/'game-window.json').write_text(tree)
@@ -91,6 +92,7 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   del env['TAMBER_TEST_SWAY']
   # Existing launcher and keyboard integration tests now run on real Wayland.
   result=run('ctest','--test-dir',str(ROOT/'build/shell'),'--output-on-failure');(OUT/'ctest.txt').write_text(result.stdout+result.stderr)
+  (OUT/'package-versions.txt').write_text(run('dpkg-query','-W','waybar','sway','gnome-2048','gnome-chess','quadrapassel','pulseaudio').stdout)
   (OUT/'outputs.json').write_text(run('swaymsg','-r','-t','get_outputs').stdout)
   (OUT/'versions.txt').write_text(run('sway','--version').stdout+run('waybar','--version').stdout+run('qmake6','-query','QT_VERSION').stdout+run('uname','-m').stdout)
   runtime_log=(OUT/'sway-session.log').read_text()
