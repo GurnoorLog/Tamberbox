@@ -116,3 +116,8 @@ Close the nested session or check out the preserved M3 branch. No system setting
 or existing Waybar config are overwritten. Back up the Tamber Desktop application
 config before downgrading; new `lastPlayed` and `collection` keys in play.json are
 additive. Games, ROMs and original cover files are never deleted by this frontend.
+
+The disposable graphical harness also requires `gdb` to capture a backtrace if the
+desktop crashes. It starts only its own Tamber process under the debugger, never
+attaches to an existing user session. Layer-shell role choices follow the
+[LayerShellQt Window interface](https://api-staging.kde.org/legacy/plasma/layer-shell-qt/html/window_8h_source.html).

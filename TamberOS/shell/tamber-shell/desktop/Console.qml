@@ -221,8 +221,9 @@ Window {
                                 RowLayout {
                                     spacing: 10
                                     Repeater {
-                                        model: playMode.selectedGame ? [playMode.activeWindow?"Resume":"Play",playMode.selected && playMode.selected.favorite?"Saved":"Favorite","Manage",playMode.details?"Less":"Details"] : [playMode.activeWindow?"Resume":"Open"]
-                                        KeyButton { required property string modelData; required property int index; text: modelData; enabled: !!playMode.selected; selected: playMode.zone===2 && playMode.actionIndex===index; Layout.preferredWidth: 110; Layout.preferredHeight: 40; onClicked: {playMode.actionIndex=index;playMode.act()} }
+                                        // Stable delegates: changing a JS array model can delete layout items during a Qt 6.4 size-hint pass.
+                                        model: 4
+                                        KeyButton { required property int index; visible: playMode.selectedGame || index===0; text: [playMode.activeWindow?"Resume":playMode.selectedGame?"Play":"Open",playMode.selected && playMode.selected.favorite?"Saved":"Favorite","Manage",playMode.details?"Less":"Details"][index]; enabled: !!playMode.selected; selected: playMode.zone===2 && playMode.actionIndex===index; Layout.preferredWidth: 110; Layout.preferredHeight: 40; onClicked: {playMode.actionIndex=index;playMode.act()} }
                                     }
                                 }
                             }
