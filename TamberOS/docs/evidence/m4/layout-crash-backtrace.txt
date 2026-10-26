@@ -1,0 +1,65 @@
+Thread 1 "tamber-desktop" received signal SIGSEGV, Segmentation fault.
+0x0000fffff75da728 in qmlAttachedPropertiesObject(QObject*, QObject* (*)(QObject*), bool) () from /lib/aarch64-linux-gnu/libQt6Qml.so.6
+#0  0x0000fffff75da728 in qmlAttachedPropertiesObject(QObject*, QObject* (*)(QObject*), bool) () at /lib/aarch64-linux-gnu/libQt6Qml.so.6
+#1  0x0000ffffec41d304 [PAC] in ??? () at /lib/aarch64-linux-gnu/libQt6QuickLayouts.so.6
+#2  0x0000fffff6e64dbc [PAC] in QGridLayoutItem::stretchFactor(Qt::Orientation) const () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#3  0x0000fffff6e67cd4 [PAC] in QGridLayoutEngine::fillRowData(QGridLayoutRowData*, double const*, double const*, Qt::Orientation, QAbstractLayoutStyleInfo const*) const () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#4  0x0000fffff6e68ff4 [PAC] in QGridLayoutEngine::ensureColumnAndRowData(QGridLayoutRowData*, QGridLayoutBox*, double const*, double const*, Qt::Orientation, QAbstractLayoutStyleInfo const*) const () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#5  0x0000fffff6e69314 [PAC] in QGridLayoutEngine::sizeHint(Qt::SizeHint, QSizeF const&, QAbstractLayoutStyleInfo const*) const () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#6  0x0000ffffec416a50 [PAC] in QQuickGridLayoutBase::sizeHint(Qt::SizeHint) const () at /lib/aarch64-linux-gnu/libQt6QuickLayouts.so.6
+#7  0x0000ffffec417bc4 [PAC] in QQuickLayoutAttached::sizeHint(Qt::SizeHint, Qt::Orientation) const () at /lib/aarch64-linux-gnu/libQt6QuickLayouts.so.6
+#8  0x0000ffffec41d094 [PAC] in QQuickLayout::effectiveSizeHints_helper(QQuickItem*, QSizeF*, QQuickLayoutAttached**, bool) () at /lib/aarch64-linux-gnu/libQt6QuickLayouts.so.6
+#9  0x0000ffffec41d210 [PAC] in ??? () at /lib/aarch64-linux-gnu/libQt6QuickLayouts.so.6
+#10 0x0000fffff6e64fa8 [PAC] in QGridLayoutItem::box(Qt::Orientation, bool, double) const () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#11 0x0000fffff6e68118 [PAC] in QGridLayoutEngine::fillRowData(QGridLayoutRowData*, double const*, double const*, Qt::Orientation, QAbstractLayoutStyleInfo const*) const () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#12 0x0000fffff6e68ff4 [PAC] in QGridLayoutEngine::ensureColumnAndRowData(QGridLayoutRowData*, QGridLayoutBox*, double const*, double const*, Qt::Orientation, QAbstractLayoutStyleInfo const*) const () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#13 0x0000fffff6e69314 [PAC] in QGridLayoutEngine::sizeHint(Qt::SizeHint, QSizeF const&, QAbstractLayoutStyleInfo const*) const () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#14 0x0000ffffec416a50 [PAC] in QQuickGridLayoutBase::sizeHint(Qt::SizeHint) const () at /lib/aarch64-linux-gnu/libQt6QuickLayouts.so.6
+#15 0x0000ffffec417bc4 [PAC] in QQuickLayoutAttached::sizeHint(Qt::SizeHint, Qt::Orientation) const () at /lib/aarch64-linux-gnu/libQt6QuickLayouts.so.6
+#16 0x0000ffffec41d094 [PAC] in QQuickLayout::effectiveSizeHints_helper(QQuickItem*, QSizeF*, QQuickLayoutAttached**, bool) () at /lib/aarch64-linux-gnu/libQt6QuickLayouts.so.6
+#17 0x0000ffffec41d210 [PAC] in ??? () at /lib/aarch64-linux-gnu/libQt6QuickLayouts.so.6
+#18 0x0000fffff6e64fa8 [PAC] in QGridLayoutItem::box(Qt::Orientation, bool, double) const () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#19 0x0000fffff6e68118 [PAC] in QGridLayoutEngine::fillRowData(QGridLayoutRowData*, double const*, double const*, Qt::Orientation, QAbstractLayoutStyleInfo const*) const () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#20 0x0000fffff6e68ff4 [PAC] in QGridLayoutEngine::ensureColumnAndRowData(QGridLayoutRowData*, QGridLayoutBox*, double const*, double const*, Qt::Orientation, QAbstractLayoutStyleInfo const*) const () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#21 0x0000fffff6e70ef4 [PAC] in QGridLayoutEngine::ensureGeometries(QSizeF const&, QAbstractLayoutStyleInfo const*) const () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#22 0x0000fffff6e69ee4 [PAC] in QGridLayoutEngine::setGeometries(QRectF const&, QAbstractLayoutStyleInfo const*) () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#23 0x0000ffffec41eb84 [PAC] in QQuickGridLayoutBase::rearrange(QSizeF const&) () at /lib/aarch64-linux-gnu/libQt6QuickLayouts.so.6
+#24 0x0000ffffec419e4c [PAC] in QQuickLayout::geometryChange(QRectF const&, QRectF const&) () at /lib/aarch64-linux-gnu/libQt6QuickLayouts.so.6
+#25 0x0000fffff7abbfd4 [PAC] in QQuickItem::setSize(QSizeF const&) () at /lib/aarch64-linux-gnu/libQt6Quick.so.6
+#26 0x0000fffff7a83d24 [PAC] in ??? () at /lib/aarch64-linux-gnu/libQt6Quick.so.6
+#27 0x0000fffff7aaeb54 [PAC] in QQuickItem::geometryChange(QRectF const&, QRectF const&) () at /lib/aarch64-linux-gnu/libQt6Quick.so.6
+#28 0x0000fffff7abbfd4 [PAC] in QQuickItem::setSize(QSizeF const&) () at /lib/aarch64-linux-gnu/libQt6Quick.so.6
+#29 0x0000ffffec41c920 [PAC] in ??? () at /lib/aarch64-linux-gnu/libQt6QuickLayouts.so.6
+#30 0x0000fffff6e6a06c [PAC] in QGridLayoutEngine::setGeometries(QRectF const&, QAbstractLayoutStyleInfo const*) () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#31 0x0000ffffec41eb84 [PAC] in QQuickGridLayoutBase::rearrange(QSizeF const&) () at /lib/aarch64-linux-gnu/libQt6QuickLayouts.so.6
+#32 0x0000ffffec419e4c [PAC] in QQuickLayout::geometryChange(QRectF const&, QRectF const&) () at /lib/aarch64-linux-gnu/libQt6QuickLayouts.so.6
+#33 0x0000fffff7abbfd4 [PAC] in QQuickItem::setSize(QSizeF const&) () at /lib/aarch64-linux-gnu/libQt6Quick.so.6
+#34 0x0000fffff7a83d24 [PAC] in ??? () at /lib/aarch64-linux-gnu/libQt6Quick.so.6
+#35 0x0000fffff7aaeb54 [PAC] in QQuickItem::geometryChange(QRectF const&, QRectF const&) () at /lib/aarch64-linux-gnu/libQt6Quick.so.6
+#36 0x0000fffff7abbfd4 [PAC] in QQuickItem::setSize(QSizeF const&) () at /lib/aarch64-linux-gnu/libQt6Quick.so.6
+#37 0x0000ffffec41c920 [PAC] in ??? () at /lib/aarch64-linux-gnu/libQt6QuickLayouts.so.6
+#38 0x0000fffff6e6a06c [PAC] in QGridLayoutEngine::setGeometries(QRectF const&, QAbstractLayoutStyleInfo const*) () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#39 0x0000ffffec41eb84 [PAC] in QQuickGridLayoutBase::rearrange(QSizeF const&) () at /lib/aarch64-linux-gnu/libQt6QuickLayouts.so.6
+#40 0x0000ffffec419e4c [PAC] in QQuickLayout::geometryChange(QRectF const&, QRectF const&) () at /lib/aarch64-linux-gnu/libQt6QuickLayouts.so.6
+#41 0x0000fffff7abbfd4 [PAC] in QQuickItem::setSize(QSizeF const&) () at /lib/aarch64-linux-gnu/libQt6Quick.so.6
+#42 0x0000fffff7a83d24 [PAC] in ??? () at /lib/aarch64-linux-gnu/libQt6Quick.so.6
+#43 0x0000fffff7aaeb54 [PAC] in QQuickItem::geometryChange(QRectF const&, QRectF const&) () at /lib/aarch64-linux-gnu/libQt6Quick.so.6
+#44 0x0000fffff7abbfd4 [PAC] in QQuickItem::setSize(QSizeF const&) () at /lib/aarch64-linux-gnu/libQt6Quick.so.6
+#45 0x0000fffff7a83d24 [PAC] in ??? () at /lib/aarch64-linux-gnu/libQt6Quick.so.6
+#46 0x0000fffff7aaeb54 [PAC] in QQuickItem::geometryChange(QRectF const&, QRectF const&) () at /lib/aarch64-linux-gnu/libQt6Quick.so.6
+#47 0x0000fffff7abbfd4 [PAC] in QQuickItem::setSize(QSizeF const&) () at /lib/aarch64-linux-gnu/libQt6Quick.so.6
+#48 0x0000fffff7b58394 [PAC] in QQuickWindow::resizeEvent(QResizeEvent*) () at /lib/aarch64-linux-gnu/libQt6Quick.so.6
+#49 0x0000fffff6c95188 [PAC] in QWindow::event(QEvent*) () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#50 0x0000fffff66c46d0 [PAC] in QCoreApplication::notifyInternal2(QObject*, QEvent*) () at /lib/aarch64-linux-gnu/libQt6Core.so.6
+#51 0x0000fffff6c476a0 [PAC] in QGuiApplicationPrivate::processGeometryChangeEvent(QWindowSystemInterfacePrivate::GeometryChangeEvent*) () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#52 0x0000fffff6c9bc68 [PAC] in QWindowSystemInterface::sendWindowSystemEvents(QFlags<QEventLoop::ProcessEventsFlag>) () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#53 0x0000fffff6f856ac [PAC] in ??? () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
+#54 0x0000fffff61ef90c [PAC] in ??? () at /lib/aarch64-linux-gnu/libglib-2.0.so.0
+#55 0x0000fffff6251c38 [PAC] in ??? () at /lib/aarch64-linux-gnu/libglib-2.0.so.0
+#56 0x0000fffff61eebc8 [PAC] in g_main_context_iteration () at /lib/aarch64-linux-gnu/libglib-2.0.so.0
+#57 0x0000fffff68cead8 [PAC] in QEventDispatcherGlib::processEvents(QFlags<QEventLoop::ProcessEventsFlag>) () at /lib/aarch64-linux-gnu/libQt6Core.so.6
+#58 0x0000fffff66cfdac [PAC] in QEventLoop::exec(QFlags<QEventLoop::ProcessEventsFlag>) () at /lib/aarch64-linux-gnu/libQt6Core.so.6
+#59 0x0000fffff66c79e0 [PAC] in QCoreApplication::exec() () at /lib/aarch64-linux-gnu/libQt6Core.so.6
+#60 0x0000aaaaaaaa00:00:29.403 [DEBUG] [sway/desktop/layer_shell.c:386] Layer surface destroyed (tamber-wallpaper)
+9ccc [PAC] in main ()
+00:00:29.405 [DEBUG] [sway/desktop/layer_shell.c:386] Layer surface destroyed (tamber-console)

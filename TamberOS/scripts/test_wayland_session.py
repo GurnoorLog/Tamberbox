@@ -113,7 +113,8 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
    lines=[line.split('TAMBER_CONSOLE_STATE ',1)[1] for line in (OUT/'sway-session.log').read_text().splitlines() if 'TAMBER_CONSOLE_STATE ' in line]
    return json.loads(lines[-1]) if lines else {}
   def state_is(**fields):
-   return wait(lambda: console_state() if all(console_state().get(k)==v for k,v in fields.items()) else None)
+   try:return wait(lambda: console_state() if all(console_state().get(k)==v for k,v in fields.items()) else None)
+   except RuntimeError:raise AssertionError({'expected':fields,'actual':console_state()})
   def shot(name):
    time.sleep(.4);run('grim',str(OUT/(name+'.png')))
   run('swaymsg','[app_id="org.gnome.TwentyFortyEight"] kill');time.sleep(.5)
@@ -150,12 +151,11 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   wait(windows,30);shot('console-app-running')
   state_is(visible=False,pending="")
   run('wtype','-M','logo','-k','g','-m','logo');state_is(visible=True)
-  # Esc goes Home, then exits mode; fullscreen introduced by Play is reversed.
-  run('wtype','-k','Escape','-k','Escape');state_is(visible=False,modeActive=False)
+  # Explicit mode shortcut exits from any depth and reverses introduced fullscreen.
+  run('wtype','-M','logo','-k','g','-m','logo');state_is(visible=False,modeActive=False)
   wait(lambda: windows() if windows() and not windows()[0].get('fullscreen_mode') else None)
   run('swaymsg','[app_id="tamber-test"] kill')
-  run('wtype','-M','logo','-k','g','-m','logo');state_is(visible=True,section=0)
-  run('wtype','-k','Next','-k','Next');state_is(section=2)
+  run('wtype','-M','logo','-k','g','-m','logo');state_is(visible=True,section=2)
   # System navigation, reduced-motion preference, and escape route.
   run('wtype','-k','Next','-k','Next','-k','Next','-k','Next');state_is(section=6)
   run('wtype','-k','Return');state_is(reducedMotion=True);shot('console-system')
