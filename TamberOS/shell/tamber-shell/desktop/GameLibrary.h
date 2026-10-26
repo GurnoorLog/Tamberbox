@@ -13,6 +13,7 @@ public:
  QString status() const { return message; }
  Q_INVOKABLE void refresh();
  Q_INVOKABLE bool launch(const QString &id);
+ Q_INVOKABLE void collection(const QString &id, const QString &name);
  Q_INVOKABLE void favorite(const QString &id);
  Q_INVOKABLE void hide(const QString &id);
  Q_INVOKABLE void restoreHidden();

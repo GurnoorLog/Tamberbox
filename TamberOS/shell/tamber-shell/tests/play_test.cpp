@@ -21,6 +21,13 @@ private slots:
   QImage image(64,64,QImage::Format_RGB32);image.fill(Qt::blue);QString path=temp.path()+"/cover.png";QVERIFY(image.save(path));QVERIFY(library.artwork(id,path));QVERIFY(library.games()[0].toMap()["art"].toString().endsWith(".png"));QVERIFY(!library.artwork(id,"https://example.com/art"));
   GameLibrary reload(&apps);QVERIFY(reload.games()[0].toMap()["favorite"].toBool());QVERIFY(!reload.games()[0].toMap()["art"].toString().isEmpty());
   QVERIFY(!library.launch("unknown"));QVERIFY(library.launch(id));
+  QVERIFY(!library.games()[0].toMap()["lastPlayed"].toString().isEmpty());
+  library.collection(id,"  Weekend  ");QCOMPARE(library.games()[0].toMap()["collection"].toString(),QString("Weekend"));
+  GameLibrary persisted(&apps);QCOMPARE(persisted.games()[0].toMap()["collection"].toString(),QString("Weekend"));
+  QVERIFY(!persisted.games()[0].toMap()["lastPlayed"].toString().isEmpty());
+  library.collection("unknown","Do not save");QCOMPARE(library.games().size(),1);
+  library.collection(id,QString(100,'x'));QCOMPARE(library.games()[0].toMap()["collection"].toString().size(),48);
+  library.collection(id,"");QVERIFY(library.games()[0].toMap()["collection"].toString().isEmpty());
   QString runner=temp.path()+"/runner",rom=temp.path()+"/game with spaces.rom",core=temp.path()+"/core.so",output=temp.path()+"/args";
   for(auto file:{rom,core}){QFile f(file);QVERIFY(f.open(QIODevice::WriteOnly));f.write("test");}
   QFile script(runner);QVERIFY(script.open(QIODevice::WriteOnly));script.write(("#!/bin/sh\nprintf '%s\\n' \"$@\" > '"+output+"'\n").toUtf8());script.close();QVERIFY(script.setPermissions(QFile::ReadOwner|QFile::WriteOwner|QFile::ExeOwner));

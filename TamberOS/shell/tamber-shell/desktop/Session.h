@@ -19,6 +19,8 @@ public:
  QString network() const { return networkState; }
  bool connected() const { return online; }
  static QVariantList windowList(const QJsonObject &tree);
+ Q_INVOKABLE void consoleState(const QString &state);
+ Q_INVOKABLE QVariantMap systemInfo() const;
  Q_INVOKABLE void configure(QWindow *window, const QString &role);
  Q_INVOKABLE void windowAction(const QString &id,const QString &action);
  Q_INVOKABLE void workspace(int number);
@@ -33,6 +35,7 @@ signals:
  void openLauncher();
  void openControls();
  void openGames();
+ void openLibrary();
 private:
  void run(const QString &program,const QStringList &args,std::function<void(bool,QString)> callback);
  void command(const QString &text);

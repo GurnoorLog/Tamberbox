@@ -1,4 +1,4 @@
-name: TamberOS M3 Wayland desktop
+name: TamberOS M4 console and desktop
 on: [push, pull_request, workflow_dispatch]
 permissions:
   contents: read
@@ -20,9 +20,9 @@ jobs:
       - name: Stage and render login and boot designs
         run: |
           python3 scripts/build_themes.py
-          mkdir -p build/m3-evidence
-          QT_QPA_PLATFORM=offscreen QT_QUICK_BACKEND=software QT_QUICK_CONTROLS_STYLE=Basic build/shell/theme-preview "$PWD/themes/sddm/tamber/Main.qml" "$PWD/build/m3-evidence/login-preview.png"
-          QT_QPA_PLATFORM=offscreen QT_QUICK_BACKEND=software QT_QUICK_CONTROLS_STYLE=Basic build/shell/theme-preview "$PWD/themes/BootPreview.qml" "$PWD/build/m3-evidence/boot-design-preview.png"
+          mkdir -p build/m4-evidence
+          QT_QPA_PLATFORM=offscreen QT_QUICK_BACKEND=software QT_QUICK_CONTROLS_STYLE=Basic build/shell/theme-preview "$PWD/themes/sddm/tamber/Main.qml" "$PWD/build/m4-evidence/login-preview.png"
+          QT_QPA_PLATFORM=offscreen QT_QUICK_BACKEND=software QT_QUICK_CONTROLS_STYLE=Basic build/shell/theme-preview "$PWD/themes/BootPreview.qml" "$PWD/build/m4-evidence/boot-design-preview.png"
       - name: Offline checks
         run: sh scripts/ci.sh
       - name: Real headless Wayland session and application interaction
@@ -32,9 +32,9 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: m3-wayland-runtime
+          name: m4-wayland-runtime
           path: |
-            build/m3-evidence/
+            build/m4-evidence/
             build/shell/*.png
           if-no-files-found: error
 
@@ -49,6 +49,6 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: m3-alma-arm64-build
+          name: m4-alma-arm64-build
           path: build/m3-alma-evidence/
           if-no-files-found: warn

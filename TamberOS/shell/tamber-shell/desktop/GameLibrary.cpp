@@ -27,10 +27,13 @@ bool GameLibrary::known(const QString &id) const{for(const auto &v:items)if(v.to
 void GameLibrary::refresh(){
  items.clear();auto prefs=state["preferences"].toObject();
  auto append=[&](QVariantMap m){auto id=m["appId"].toString();auto p=prefs[id].toObject();if(p["hidden"].toBool())return;
- m["favorite"]=p["favorite"].toBool();m["art"]=p["art"].toString();items.append(m);};
+ m["favorite"]=p["favorite"].toBool();m["art"]=p["art"].toString();m["lastPlayed"]=p["lastPlayed"].toString();m["collection"]=p["collection"].toString();items.append(m);};
  for(const auto &v:apps->applications()){auto m=v.toMap();if(m["isGame"].toBool()){m["platform"]="Native";append(m);}}
  for(const auto &v:state["profiles"].toArray()){auto m=v.toObject().toVariantMap();m["platform"]="RetroArch";append(m);}
  std::stable_sort(items.begin(),items.end(),[](const QVariant&a,const QVariant&b){auto x=a.toMap(),y=b.toMap();if(x["favorite"]!=y["favorite"])return x["favorite"].toBool();return x["name"].toString().localeAwareCompare(y["name"].toString())<0;});emit changed();
+}
+void GameLibrary::collection(const QString &id,const QString &name){
+ if(!known(id))return;auto p=state["preferences"].toObject();auto m=p[id].toObject();m["collection"]=name.trimmed().left(48);p[id]=m;state["preferences"]=p;if(save())refresh();
 }
 void GameLibrary::favorite(const QString&id){if(!known(id))return;auto p=state["preferences"].toObject();auto m=p[id].toObject();m["favorite"]=!m["favorite"].toBool();p[id]=m;state["preferences"]=p;if(save())refresh();}
 void GameLibrary::hide(const QString&id){if(!known(id))return;auto p=state["preferences"].toObject();auto m=p[id].toObject();m["hidden"]=true;p[id]=m;state["preferences"]=p;if(save())refresh();}
@@ -54,5 +57,5 @@ bool GameLibrary::launch(const QString&id){
  else for(const auto &v:state["profiles"].toArray()){auto p=v.toObject();if(p["appId"]!=id)continue;
  if(!QFileInfo(p["runner"].toString()).isExecutable()||!QFileInfo(p["rom"].toString()).isFile()||!QFileInfo(p["core"].toString()).isFile())break;
  QProcess process;process.setProgram(p["runner"].toString());process.setArguments({"-L",p["core"].toString(),p["rom"].toString()});auto env=QProcessEnvironment::systemEnvironment();env.insert("QT_WAYLAND_SHELL_INTEGRATION","xdg-shell");process.setProcessEnvironment(env);ok=process.startDetached();break;}
- if(id.startsWith("retroarch:"))message=ok?"Emulator launch requested":"Emulator, core or ROM unavailable";emit changed();if(ok)emit launched();return ok;
+ if(id.startsWith("retroarch:"))message=ok?"Emulator launch requested":"Emulator, core or ROM unavailable";if(ok){auto p=state["preferences"].toObject();auto m=p[id].toObject();m["lastPlayed"]=QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs);p[id]=m;state["preferences"]=p;save();refresh();emit launched();}else emit changed();return ok;
 }

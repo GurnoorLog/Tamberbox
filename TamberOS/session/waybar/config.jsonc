@@ -1,12 +1,12 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 30,
+  "height": 34,
   "exclusive": true,
   "fixed-center": true,
-  "margin-top": 4,
-  "margin-left": 8,
-  "margin-right": 8,
+  "margin-top": 0,
+  "margin-left": 0,
+  "margin-right": 0,
   "modules-left": [
     "custom/tamber",
     "sway/workspaces",
@@ -41,7 +41,7 @@
     }
   },
   "sway/window": {
-    "max-length": 18,
+    "max-length": 16,
     "format": "{title}",
     "rewrite": {
       "^$": "Desktop"

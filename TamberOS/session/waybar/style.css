@@ -1,28 +1,22 @@
-/* TamberOS adaptation of HANCORE-linux/waybar-themes config/V2.a (MIT).
-   Uses only installed Waybar/Sway modules; no Omarchy or Hyprland. */
-@define-color ink #000000;
-@define-color dark #1a1a1a;
-@define-color warm #e6e1d3;
-@define-color muted #bdbdbd;
-@define-color warmorange #e5a359;
-@define-color red #c14f3d;
-@define-color green #7b9c73;
-* { font-family: "JetBrainsMono Nerd Font", "DejaVu Sans Mono", monospace; font-size: 12px; font-weight: bold; min-height: 0; }
-window#waybar { background: transparent; color: @warm; }
-.modules-left, .modules-center, .modules-right { background: @ink; border: 4px solid @ink; border-radius: 6px; }
-#custom-tamber, #workspaces, #window, #clock, #tray, #cpu, #memory, #network, #pulseaudio, #bluetooth { margin: 0 2px; padding: 0 8px; border-radius: 3px; }
-#custom-tamber { background: @red; color: @ink; }
-#workspaces { padding: 0 1px; }
-#workspaces button { background: @dark; color: @muted; border-radius: 3px; margin: 0 2px; padding: 0 7px; }
-#workspaces button.focused { background: @warmorange; color: @ink; }
-#workspaces button:hover { background: @red; color: @ink; }
-#window { background: @warm; color: @ink; }
-#clock, #tray { background: @dark; color: @warm; }
-#cpu { background: @warmorange; color: @ink; }
-#memory { background: @muted; color: @ink; }
-#network { background: @green; color: @ink; }
-#pulseaudio { background: @red; color: @ink; }
-#bluetooth { background: @muted; color: @ink; }
-#cpu:hover, #memory:hover, #network:hover, #clock:hover { background: @warm; color: @ink; }
-tooltip { background: @dark; border: 1px solid @warmorange; border-radius: 6px; }
+/* Original M4 refinement of the retained HANCORE V2.a adaptation (MIT).
+   Calm neutral surfaces, one warm focus accent, no copied console assets. */
+@define-color ink #171c22;
+@define-color warm #eeeae2;
+@define-color muted #a6afb8;
+@define-color accent #dfa77c;
+* { font-family: "Inter", "Noto Sans", "DejaVu Sans", sans-serif; font-size: 12px; font-weight: 500; min-height: 0; }
+window#waybar { background: rgba(23,28,34,0.96); color: @warm; border-bottom: 1px solid #363e47; }
+.modules-left, .modules-center, .modules-right { background: transparent; }
+#custom-tamber, #window, #clock, #tray, #cpu, #memory, #network, #pulseaudio, #bluetooth { margin: 3px 2px; padding: 0 8px; border-radius: 6px; }
+#custom-tamber { color: @accent; font-weight: 700; }
+#workspaces { padding: 0 3px; }
+#workspaces button { background: transparent; color: @muted; border: none; border-radius: 6px; margin: 4px 1px; padding: 0 8px; }
+#workspaces button.focused { background: #39424c; color: @warm; box-shadow: inset 0 -2px @accent; }
+#workspaces button:hover { background: #424b55; }
+#window { color: @muted; }
+#clock { font-weight: 600; }
+#cpu, #memory, #bluetooth { color: @muted; }
+#network, #pulseaudio { color: @warm; }
+#custom-tamber:hover, #pulseaudio:hover, #network:hover { background: #303a44; }
+tooltip { background: @ink; border: 1px solid #4c5662; border-radius: 8px; }
 tooltip label { color: @warm; }

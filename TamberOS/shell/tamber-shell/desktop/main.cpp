@@ -29,7 +29,7 @@ int main(int argc,char **argv){
  const auto args=app.arguments();const int request=args.indexOf("--command");
  QLocalSocket client;client.connectToServer(socket);
  if(client.waitForConnected(150)){
-  if(request>=0&&request+1<args.size()){const auto value=args[request+1];if(value!="launcher"&&value!="controls"&&value!="games")return 2;client.write(value.toUtf8());client.waitForBytesWritten(500);return 0;}return 3;
+  if(request>=0&&request+1<args.size()){const auto value=args[request+1];if(value!="launcher"&&value!="controls"&&value!="games"&&value!="library")return 2;client.write(value.toUtf8());client.waitForBytesWritten(500);return 0;}return 3;
  }
  if(request>=0)return 4;
  if(app.platformName()!="wayland"){qCritical("Tamber desktop requires a Wayland session. Use tamber-shell for X11 preview.");return 2;}

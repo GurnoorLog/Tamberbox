@@ -9,6 +9,9 @@
 #include <QJsonArray>
 #include <QStandardPaths>
 #include <QRegularExpression>
+#include <QStorageInfo>
+#include <QDir>
+#include <QSysInfo>
 Session::Session(QObject *parent):QObject(parent){
  auto *timer=new QTimer(this);connect(timer,&QTimer::timeout,this,&Session::refresh);timer->start(1000);refresh();
 }
@@ -58,6 +61,8 @@ void Session::windowAction(const QString &id,const QString &action){
  if(action=="focus")suffix=hidden?"scratchpad show":"focus";
  else if(action=="minimize")suffix="move scratchpad";
  else if(action=="fullscreen")suffix="fullscreen toggle";
+ else if(action=="fullscreen-on")suffix="fullscreen enable";
+ else if(action=="fullscreen-off")suffix="fullscreen disable";
  else if(action=="float")suffix="floating toggle";
  else if(action=="close")suffix="kill";
  else return;
@@ -68,7 +73,7 @@ void Session::scale(double n){if(n==1||n==1.25||n==1.5||n==2)command("output * s
 void Session::volume(int direction){if(direction!=-1&&direction!=1)return;run("wpctl",{"set-volume","-l","1.0","@DEFAULT_AUDIO_SINK@",direction>0?"5%+":"5%-"},[this](bool ok,QString out){message=ok?"":out.left(160);emit changed();refresh();});}
 void Session::mute(){run("wpctl",{"set-mute","@DEFAULT_AUDIO_SINK@","toggle"},[this](bool ok,QString out){message=ok?"":out.left(160);emit changed();refresh();});}
 void Session::wifi(bool on){run("nmcli",{"radio","wifi",on?"on":"off"},[this](bool ok,QString out){message=ok?"":out.left(160);emit changed();refresh();});}
-void Session::dispatch(const QString &c){if(c=="launcher")emit openLauncher();else if(c=="controls")emit openControls();else if(c=="games")emit openGames();}
+void Session::dispatch(const QString &c){if(c=="launcher")emit openLauncher();else if(c=="controls")emit openControls();else if(c=="games")emit openGames();else if(c=="library")emit openLibrary();}
 void Session::configure(QWindow *w,const QString &role){
  if(!w)return;
  if(auto *quick=qobject_cast<QQuickWindow*>(w)){
@@ -80,5 +85,13 @@ void Session::configure(QWindow *w,const QString &role){
  if(role=="wallpaper"){layer->setLayer(L::LayerBackground);layer->setAnchors(L::Anchors(L::AnchorTop)|L::AnchorBottom|L::AnchorLeft|L::AnchorRight);layer->setExclusiveZone(-1);}
  else if(role=="bar"){layer->setLayer(L::LayerTop);layer->setAnchors(L::Anchors(L::AnchorTop)|L::AnchorLeft|L::AnchorRight);layer->setExclusiveZone(40);}
  else if(role=="dock"){layer->setLayer(L::LayerTop);layer->setAnchors(L::AnchorBottom);layer->setMargins(QMargins(0,0,0,12));layer->setExclusiveZone(84);}
+ else if(role=="console"){layer->setLayer(L::LayerOverlay);layer->setAnchors(L::Anchors(L::AnchorTop)|L::AnchorBottom|L::AnchorLeft|L::AnchorRight);layer->setExclusiveZone(-1);layer->setKeyboardInteractivity(L::KeyboardInteractivityExclusive);}
  else {layer->setLayer(L::LayerOverlay);layer->setAnchors({});layer->setExclusiveZone(-1);layer->setKeyboardInteractivity(L::KeyboardInteractivityExclusive);}
 }
+
+QVariantMap Session::systemInfo() const {
+ QStorageInfo storage(QDir::homePath());
+ return {{"os",QSysInfo::prettyProductName()},{"architecture",QSysInfo::currentCpuArchitecture()},{"kernel",QSysInfo::kernelVersion()},{"storageAvailableGiB",storage.bytesAvailable()/1073741824.0},{"storageTotalGiB",storage.bytesTotal()/1073741824.0}};
+}
+
+void Session::consoleState(const QString &state){qInfo().noquote()<<"TAMBER_CONSOLE_STATE"<<state;}
