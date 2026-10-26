@@ -23,7 +23,7 @@ Canvas {
                 ctx.beginPath();ctx.moveTo(x-width*0.10,-40);
                 ctx.bezierCurveTo(x+width*0.12+bend,height*0.25,x-width*0.14-bend,height*0.65,x+width*0.04,height+40);
                 ctx.lineWidth=halo===0?1.2:halo*5;
-                ctx.strokeStyle=halo===0?"rgba(255,202,153,"+(strength*0.72)+")":"rgba(221,112,48,"+(strength*0.025)+")";
+                ctx.strokeStyle=halo===0?"rgba(255,202,153,"+(strength*0.9)+")":"rgba(221,112,48,"+(strength*0.07)+")";
                 ctx.stroke();
             }
         }

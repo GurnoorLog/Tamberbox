@@ -179,10 +179,11 @@ Window {
                 Repeater {
                     model: playMode.sections
                     KeyButton {
+                        id: categoryButton
                         required property string modelData; required property int index
                         text: modelData; selected: playMode.section===index
-                        Layout.preferredWidth: index===0?150:modelData==="Emulators"?118:94; Layout.preferredHeight: 48
-                        contentItem: Copy { text: modelData; color: parent.selected?playMode.cream:playMode.muted; font.pixelSize: parent.selected?25:17; font.weight: parent.selected?Font.DemiBold:Font.Normal; verticalAlignment: Text.AlignVCenter }
+                        Layout.preferredWidth: contentItem.implicitWidth+24; Layout.preferredHeight: 48
+                        contentItem: Copy { text: modelData; color: categoryButton.selected?playMode.cream:playMode.muted; font.pixelSize: categoryButton.selected?25:17; font.weight: categoryButton.selected?Font.DemiBold:Font.Normal; verticalAlignment: Text.AlignVCenter }
                         background: Item { Rectangle { anchors.bottom: parent.bottom; width: 22; height: 2; radius: 1; color: playMode.accent; visible: playMode.section===index && playMode.zone===0 } }
                         onClicked: {playMode.chooseSection(index);playMode.zone=1;navigation.forceActiveFocus()}
                     }
