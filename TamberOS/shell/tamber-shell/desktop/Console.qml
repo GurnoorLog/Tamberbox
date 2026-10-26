@@ -158,12 +158,19 @@ Window {
             else if(event.key===Qt.Key_R && playMode.section===1){playMode.filterIndex=(playMode.filterIndex+1)%4;playMode.selection=0;event.accepted=true}
         }
         ColumnLayout {
-            anchors.fill: parent; anchors.leftMargin: 42; anchors.rightMargin: 42; anchors.topMargin: 24; anchors.bottomMargin: 22; spacing: 24
+            anchors.fill: parent; anchors.leftMargin: 42; anchors.rightMargin: 42; anchors.topMargin: 24; anchors.bottomMargin: 22; spacing: 18
             RowLayout {
                 Layout.fillWidth: true; spacing: 12
                 Image { source: "qrc:/brand/tamber-llama.svg"; Layout.preferredWidth: 24; Layout.preferredHeight: 32; fillMode: Image.PreserveAspectFit }
                 Copy { text: "TAMBER / PLAY"; font.pixelSize: 14; font.letterSpacing: 3; font.weight: Font.DemiBold }
                 Item { Layout.fillWidth: true }
+                TextField {
+                            id: search; Layout.preferredWidth: 240; Layout.preferredHeight: 40; color: playMode.cream; placeholderTextColor: playMode.muted; placeholderText: "Search  ·  Ctrl F"; text: playMode.query; onTextEdited: {playMode.query=text;playMode.selection=0}
+                            background: Rectangle { color: "#202a33"; radius: 10; border.color: search.activeFocus?playMode.accent:"#3b4751" }
+                            onAccepted: {navigation.forceActiveFocus();playMode.zone=1}
+                            Keys.onEscapePressed: {playMode.query="";text="";navigation.forceActiveFocus()}
+                            Keys.onDownPressed: {navigation.forceActiveFocus();playMode.zone=1}
+                        }
                 Copy { text: playMode.clock; color: playMode.cream; font.pixelSize: 16 }
                 KeyButton { text: "Return to Desktop"; onClicked: playMode.leave(); Layout.preferredHeight: 36; Layout.preferredWidth: 168 }
             }
@@ -181,6 +188,7 @@ Window {
                     }
                 }
                 Item { Layout.fillWidth: true }
+                KeyButton { visible: playMode.section===1; text: playMode.filters[playMode.filterIndex]+"  · R"; Layout.preferredWidth: 160; onClicked: {playMode.filterIndex=(playMode.filterIndex+1)%4;playMode.selection=0} }
             }
             Item {
                 id: contentPanel
@@ -188,26 +196,15 @@ Window {
                 NumberAnimation { id: sectionFade; target: contentPanel; property: "opacity"; from: 0.4; to: 1; duration: playMode.reducedMotion?0:180; easing.type: Easing.OutCubic }
                 ColumnLayout {
                     anchors.fill: parent; spacing: 16; visible: playMode.section!==6
-                    RowLayout {
-                        Copy { text: playMode.entries.length+" "+(playMode.section===2 || playMode.section===3?"applications":"games")+(playMode.section===0?" · Your collection":""); color: playMode.muted; font.pixelSize: 12; Layout.fillWidth: true }
-                        KeyButton { visible: playMode.section===1; text: playMode.filters[playMode.filterIndex]+"  · R"; Layout.preferredWidth: 160; onClicked: {playMode.filterIndex=(playMode.filterIndex+1)%4;playMode.selection=0} }
-                        TextField {
-                            id: search; Layout.preferredWidth: 240; Layout.preferredHeight: 40; color: playMode.cream; placeholderTextColor: playMode.muted; placeholderText: "Search  ·  Ctrl F"; text: playMode.query; onTextEdited: {playMode.query=text;playMode.selection=0}
-                            background: Rectangle { color: "#202a33"; radius: 10; border.color: search.activeFocus?playMode.accent:"#3b4751" }
-                            onAccepted: {navigation.forceActiveFocus();playMode.zone=1}
-                            Keys.onEscapePressed: {playMode.query="";text="";navigation.forceActiveFocus()}
-                            Keys.onDownPressed: {navigation.forceActiveFocus();playMode.zone=1}
-                        }
-                    }
                     // Horizontal focus rail remains spatially stable across game/app categories.
                     ListView {
-                        id: cards; Layout.fillWidth: true; Layout.preferredHeight: Math.min(300,playMode.height*0.39); orientation: ListView.Horizontal; spacing: 16; clip: true; model: playMode.entries; currentIndex: playMode.selection
+                        id: cards; Layout.fillWidth: true; Layout.preferredHeight: Math.min(360,playMode.height*0.35); orientation: ListView.Horizontal; spacing: 16; clip: true; model: playMode.entries; currentIndex: playMode.selection
                         highlightMoveDuration: playMode.reducedMotion?0:220
                         highlightRangeMode: ListView.ApplyRange; preferredHighlightBegin: 0; preferredHighlightEnd: width*0.45
                         delegate: Item {
                             required property var modelData; required property int index
                             property bool chosen: playMode.selection===index
-                            width: chosen?Math.min(cards.width*0.46,540):Math.max(150,cards.height*0.57)
+                            width: chosen?Math.min(cards.width*0.40,640):Math.max(150,cards.height*0.57)
                             height: cards.height
                             Behavior on width { NumberAnimation { duration: playMode.reducedMotion?0:220; easing.type: Easing.OutCubic } }
                             Rectangle {
@@ -230,7 +227,7 @@ Window {
                             anchors.fill: parent; anchors.topMargin: 8; spacing: 0
 
                             ColumnLayout {
-                                spacing: 8; Layout.fillWidth: true
+                                spacing: 8; Layout.fillWidth: true; Layout.alignment: Qt.AlignTop
                                 Copy { text: playMode.selected ? (playMode.selected.platform || "APPLICATION")+ (playMode.selected.collection?"  /  "+playMode.selected.collection:"") : "YOUR LIBRARY"; color: playMode.accent; font.pixelSize: 11; font.letterSpacing: 2; Layout.fillWidth: true }
                                 Copy { text: playMode.selected ? playMode.selected.name : "Make it yours."; color: playMode.accent; font.pixelSize: 34; font.weight: Font.DemiBold; Layout.fillWidth: true }
                                 Copy { text: playMode.details && playMode.selected ? playMode.selected.appId : playMode.selected && playMode.selected.lastPlayed ? "Last launched "+Qt.formatDateTime(new Date(playMode.selected.lastPlayed),"d MMM · HH:mm") : "Installed locally. Ready to launch."; color: playMode.muted; Layout.fillWidth: true; font.pixelSize: 13 }
