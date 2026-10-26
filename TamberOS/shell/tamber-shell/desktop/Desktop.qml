@@ -96,7 +96,7 @@ Item {
             Action { text: "⚙"; Layout.preferredWidth: 40; Layout.preferredHeight: 54; onClicked: settingsWindow.visible=!settingsWindow.visible; ToolTip.visible: hovered; ToolTip.text: "Settings and windows" }
         }
     }
-    // Original Tamber Game Library: Omikuji-inspired navigation patterns, not copied code or artwork.
+    // Original Tamber Game Library with retained advanced management controls.
     Window {
         id: gamesWindow
         width: Math.min(1050, Screen.width-50); height: Math.min(680, Screen.height-70)

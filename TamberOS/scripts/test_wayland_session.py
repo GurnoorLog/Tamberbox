@@ -121,6 +121,16 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   run('wtype','-M','logo','-k','g','-m','logo')
   state_is(visible=True,modeActive=True,width=1280,height=720,section=0)
   shot('console-home')
+  assert console_state()['focusedTileWidth']>400, 'Focused artwork should expand into a wide card'
+  initial_phase=console_state()['lightPhase']
+  wait(lambda:console_state()['lightPhase']>initial_phase)
+  run('wtype','-k','b');state_is(lightLevel=2)
+  shot('console-atmosphere-bright')
+  run('wtype','-k','b');state_is(lightLevel=0)
+  paused_phase=console_state()['lightPhase'];time.sleep(.6)
+  assert console_state()['lightPhase']==paused_phase, 'Disabled atmosphere still animates'
+  shot('console-atmosphere-off')
+  run('wtype','-k','b');state_is(lightLevel=1)
   run('wtype','-k','Right');state_is(selection=1)
   run('wtype','-k','Left','-k','Return');state_is(details=True,zone=2)
   shot('console-details')
@@ -159,6 +169,8 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   # System navigation, reduced-motion preference, and escape route.
   run('wtype','-k','Next','-k','Next','-k','Next','-k','Next');state_is(section=6)
   run('wtype','-k','Return');state_is(reducedMotion=True);shot('console-system')
+  frozen_phase=console_state()['lightPhase'];time.sleep(.6)
+  assert console_state()['lightPhase']==frozen_phase, 'Reduced motion must freeze background'
   run('wtype','-k','Escape');state_is(section=0)
   run('wtype','-k','Escape');state_is(visible=False,modeActive=False)
   shot('desktop-restored')
@@ -169,7 +181,7 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   runtime_log=(OUT/'sway-session.log').read_text()
   for problem in ['Failed to get image from provider','ReferenceError:','TypeError:']:
    assert problem not in runtime_log, problem
-  result_data={'passed':True,'backend':'headless Sway / pixman','physical_devices_used':False,'launcher_keyboard_real_process':True,'window_minimize_restore_close':True,'single_top_bar':True,'waybar_pointer_launcher':True,'waybar_workspace_click':True,'waybar_null_sink_scroll':True,'waybar_tray_fixture_activation':True,'cover_import_and_favorite':True,'workspace_shortcut':True,'installed_game_launch':True,'console_full_output':True,'console_keyboard_navigation':True,'console_game_fullscreen_handoff':True,'console_return_on_game_close':True,'console_app_launch':True,'console_exit_restores_desktop':True,'console_restores_app_fullscreen':True,'reduced_motion_toggle':True,'controller_validation':'synthetic Linux joystick events only','hardware_validation':'pending'}
+  result_data={'passed':True,'backend':'headless Sway / pixman','physical_devices_used':False,'launcher_keyboard_real_process':True,'window_minimize_restore_close':True,'single_top_bar':True,'waybar_pointer_launcher':True,'waybar_workspace_click':True,'waybar_null_sink_scroll':True,'waybar_tray_fixture_activation':True,'cover_import_and_favorite':True,'workspace_shortcut':True,'installed_game_launch':True,'console_full_output':True,'console_keyboard_navigation':True,'console_game_fullscreen_handoff':True,'console_return_on_game_close':True,'console_app_launch':True,'console_exit_restores_desktop':True,'console_restores_app_fullscreen':True,'reduced_motion_toggle':True,'expanded_focus_card':True,'procedural_background_animation':True,'background_off_and_reduced_motion_pause':True,'controller_validation':'synthetic Linux joystick events only','hardware_validation':'pending'}
  finally:
   if proc.poll() is None:
    run('swaymsg','exit',check=False);proc.wait(timeout=10)

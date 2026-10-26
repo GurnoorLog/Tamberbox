@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Window
 import QtQuick.Controls
 import QtQuick.Layouts
+import Qt.labs.settings
 
 // Original Tamber console surface. No Sony code, imagery or UI assets.
 Window {
@@ -12,6 +13,9 @@ Window {
     property bool reducedMotion: false
     signal reducedMotionRequested()
     signal advancedLibraryRequested()
+    Settings { id: atmosphere; category: "PlayAppearance"; property int lightLevel: 1 }
+    property string clock: Qt.formatTime(new Date(),"HH:mm")
+    Timer { interval: 1000; running: playMode.visible; repeat: true; onTriggered: playMode.clock=Qt.formatTime(new Date(),"HH:mm") }
     property int section: 0
     onSectionChanged: sectionFade.restart()
     property int selection: 0
@@ -26,7 +30,7 @@ Window {
     property bool wasFullscreen: false
     property int waitTicks: 0
     property var info: ({})
-    property var sections: ["Home", "Library", "Apps", "Media", "Emulators", "Favorites", "System"]
+    property var sections: ["All games", "Library", "Apps", "Media", "Emulators", "Favorites", "System"]
     property var filters: ["Installed", "Recent", "Native", "Collections"]
     property var entries: {
         let games = gameLibrary.games.slice();
@@ -46,8 +50,8 @@ Window {
     property bool selectedGame: !!selected && !!selected.platform
     property var activeWindow: selected ? session.windows.find(w => w.appId===selected.appId.replace(/\.desktop$/, "")) : null
     property color cream: "#f2eee6"
-    property color muted: "#9da9b3"
-    property color accent: "#e6ae80"
+    property color muted: "#b3aaa3"
+    property color accent: "#efb17c"
     onEntriesChanged: selection=Math.max(0,Math.min(selection,entries.length-1))
     Component.onCompleted: session.configure(playMode,"console")
     onVisibleChanged: { controller.active=visible && !manage.visible; if(visible){navigation.forceActiveFocus();info=session.systemInfo()} }
@@ -120,7 +124,7 @@ Window {
         interval: 200; running: true; repeat: true
         property string previous: ""
         onTriggered: {
-            const value=JSON.stringify({visible:playMode.visible,modeActive:playMode.modeActive,width:playMode.width,height:playMode.height,section:playMode.section,selection:playMode.selection,zone:playMode.zone,details:playMode.details,count:playMode.entries.length,selected:playMode.selected?playMode.selected.appId:"",filter:playMode.filterIndex,reducedMotion:playMode.reducedMotion,notice:playMode.notice,pending:playMode.pendingId,running:playMode.runningId});
+            const value=JSON.stringify({visible:playMode.visible,modeActive:playMode.modeActive,width:playMode.width,height:playMode.height,section:playMode.section,selection:playMode.selection,zone:playMode.zone,details:playMode.details,count:playMode.entries.length,selected:playMode.selected?playMode.selected.appId:"",filter:playMode.filterIndex,lightLevel:atmosphere.lightLevel,lightPhase:Number(lightField.phase.toFixed(3)),focusedTileWidth:cards.currentItem?Math.round(cards.currentItem.width):0,reducedMotion:playMode.reducedMotion,notice:playMode.notice,pending:playMode.pendingId,running:playMode.runningId});
             if(value!==previous){previous=value;session.consoleState(value)}
         }
     }
@@ -133,9 +137,9 @@ Window {
         contentItem: Copy { text: keyButton.text; color: keyButton.selected || keyButton.activeFocus ? "#151b21" : playMode.cream; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter }
         background: Rectangle { radius: 10; color: keyButton.selected || keyButton.activeFocus ? playMode.accent : keyButton.hovered ? "#35404a" : "#222d36"; border.color: "#45515b"; border.width: keyButton.activeFocus?2:1; Behavior on color { ColorAnimation { duration: playMode.reducedMotion?0:120 } } }
     }
-    Rectangle { anchors.fill: parent; gradient: Gradient { GradientStop { position: 0; color: "#222d36" } GradientStop { position: 0.65; color: "#11171d" } GradientStop { position: 1; color: "#171e26" } } }
-    // Calm, original landscape asset; no purchased or scraped game art.
-    Image { anchors.fill: parent; source: "qrc:/brand/wallpapers/quiet-ridge.svg"; fillMode: Image.PreserveAspectCrop; opacity: 0.12 }
+    Rectangle { anchors.fill: parent; color: "#111011" }
+    LightField { id: lightField; anchors.fill: parent; animate: playMode.visible && !playMode.reducedMotion; strength: [0,0.55,0.9][atmosphere.lightLevel] }
+    Rectangle { anchors.fill: parent; gradient: Gradient { GradientStop { position: 0; color: "#00111011" } GradientStop { position: 0.56; color: "#70111011" } GradientStop { position: 1; color: "#d9111011" } } }
     Item {
         id: navigation; anchors.fill: parent; focus: true
         Keys.onPressed: function(event) {
@@ -146,6 +150,7 @@ Window {
             else if(event.key===Qt.Key_Down){playMode.navigate("down");event.accepted=true}
             else if(event.key===Qt.Key_Return || event.key===Qt.Key_Enter){playMode.navigate("accept");event.accepted=true}
             else if(event.key===Qt.Key_F && (event.modifiers & Qt.ControlModifier)){search.forceActiveFocus();event.accepted=true}
+            else if(event.key===Qt.Key_B){atmosphere.lightLevel=(atmosphere.lightLevel+1)%3;event.accepted=true}
             else if(event.key===Qt.Key_F){playMode.favorite();event.accepted=true}
             else if(event.key===Qt.Key_M && playMode.selectedGame){manage.visible=true;coverPath.forceActiveFocus();event.accepted=true}
             else if(event.key===Qt.Key_Tab){playMode.zone=(playMode.zone+1)%3;event.accepted=true}
@@ -153,20 +158,27 @@ Window {
             else if(event.key===Qt.Key_R && playMode.section===1){playMode.filterIndex=(playMode.filterIndex+1)%4;playMode.selection=0;event.accepted=true}
         }
         ColumnLayout {
-            anchors.fill: parent; anchors.leftMargin: 52; anchors.rightMargin: 52; anchors.topMargin: 28; anchors.bottomMargin: 22; spacing: 22
+            anchors.fill: parent; anchors.leftMargin: 42; anchors.rightMargin: 42; anchors.topMargin: 24; anchors.bottomMargin: 22; spacing: 24
             RowLayout {
                 Layout.fillWidth: true; spacing: 12
                 Image { source: "qrc:/brand/tamber-llama.svg"; Layout.preferredWidth: 24; Layout.preferredHeight: 32; fillMode: Image.PreserveAspectFit }
                 Copy { text: "TAMBER / PLAY"; font.pixelSize: 14; font.letterSpacing: 3; font.weight: Font.DemiBold }
                 Item { Layout.fillWidth: true }
-                Copy { text: "GAME MODE"; color: playMode.muted; font.pixelSize: 11; font.letterSpacing: 2 }
+                Copy { text: playMode.clock; color: playMode.cream; font.pixelSize: 16 }
                 KeyButton { text: "Return to Desktop"; onClicked: playMode.leave(); Layout.preferredHeight: 36; Layout.preferredWidth: 168 }
             }
             RowLayout {
                 spacing: 8
                 Repeater {
                     model: playMode.sections
-                    KeyButton { required property string modelData; required property int index; text: modelData; selected: playMode.section===index; Layout.preferredWidth: modelData==="Emulators"?120:100; Layout.preferredHeight: 42; opacity: playMode.zone===0 || playMode.section===index ? 1 : 0.72; onClicked: {playMode.chooseSection(index);playMode.zone=1;navigation.forceActiveFocus()} }
+                    KeyButton {
+                        required property string modelData; required property int index
+                        text: modelData; selected: playMode.section===index
+                        Layout.preferredWidth: index===0?150:modelData==="Emulators"?118:94; Layout.preferredHeight: 48
+                        contentItem: Copy { text: modelData; color: parent.selected?playMode.cream:playMode.muted; font.pixelSize: parent.selected?25:17; font.weight: parent.selected?Font.DemiBold:Font.Normal; verticalAlignment: Text.AlignVCenter }
+                        background: Item { Rectangle { anchors.bottom: parent.bottom; width: 22; height: 2; radius: 1; color: playMode.accent; visible: playMode.section===index && playMode.zone===0 } }
+                        onClicked: {playMode.chooseSection(index);playMode.zone=1;navigation.forceActiveFocus()}
+                    }
                 }
                 Item { Layout.fillWidth: true }
             }
@@ -177,7 +189,7 @@ Window {
                 ColumnLayout {
                     anchors.fill: parent; spacing: 16; visible: playMode.section!==6
                     RowLayout {
-                        Copy { text: playMode.section===0 ? "Ready when you are." : playMode.sections[playMode.section]; font.pixelSize: 32; font.weight: Font.DemiBold; Layout.fillWidth: true }
+                        Copy { text: playMode.entries.length+" "+(playMode.section===2 || playMode.section===3?"applications":"games")+(playMode.section===0?" · Your collection":""); color: playMode.muted; font.pixelSize: 12; Layout.fillWidth: true }
                         KeyButton { visible: playMode.section===1; text: playMode.filters[playMode.filterIndex]+"  · R"; Layout.preferredWidth: 160; onClicked: {playMode.filterIndex=(playMode.filterIndex+1)%4;playMode.selection=0} }
                         TextField {
                             id: search; Layout.preferredWidth: 240; Layout.preferredHeight: 40; color: playMode.cream; placeholderTextColor: playMode.muted; placeholderText: "Search  ·  Ctrl F"; text: playMode.query; onTextEdited: {playMode.query=text;playMode.selection=0}
@@ -189,41 +201,45 @@ Window {
                     }
                     // Horizontal focus rail remains spatially stable across game/app categories.
                     ListView {
-                        id: cards; Layout.fillWidth: true; Layout.preferredHeight: 192; orientation: ListView.Horizontal; spacing: 16; clip: true; model: playMode.entries; currentIndex: playMode.selection
-                        highlightMoveDuration: playMode.reducedMotion?0:180
+                        id: cards; Layout.fillWidth: true; Layout.preferredHeight: Math.min(300,playMode.height*0.39); orientation: ListView.Horizontal; spacing: 16; clip: true; model: playMode.entries; currentIndex: playMode.selection
+                        highlightMoveDuration: playMode.reducedMotion?0:220
+                        highlightRangeMode: ListView.ApplyRange; preferredHighlightBegin: 0; preferredHighlightEnd: width*0.45
                         delegate: Item {
                             required property var modelData; required property int index
-                            width: 160; height: 188
+                            property bool chosen: playMode.selection===index
+                            width: chosen?Math.min(cards.width*0.46,540):Math.max(150,cards.height*0.57)
+                            height: cards.height
+                            Behavior on width { NumberAnimation { duration: playMode.reducedMotion?0:220; easing.type: Easing.OutCubic } }
                             Rectangle {
-                                anchors.fill: parent; anchors.margins: 4; radius: 16; color: playMode.selection===index?"#35414b":"#222d36"; border.width: playMode.selection===index?2:1; border.color: playMode.selection===index?playMode.accent:"#3b4751"
-                                scale: playMode.selection===index?1:0.95
-                                Behavior on scale { NumberAnimation { duration: playMode.reducedMotion?0:160; easing.type: Easing.OutCubic } }
-                                ColumnLayout {
-                                    anchors.fill: parent; anchors.margins: 12; spacing: 8
-                                    Image { source: modelData.art || (modelData.platform==="RetroArch" ? "qrc:/brand/application.svg" : "image://apps/"+modelData.appId); fillMode: Image.PreserveAspectFit; Layout.fillWidth: true; Layout.fillHeight: true; sourceSize.width: 256; sourceSize.height: 256 }
-                                    Copy { text: (modelData.favorite?"★  ":"")+modelData.name; Layout.fillWidth: true; font.pixelSize: 14; font.weight: Font.DemiBold }
+                                anchors.fill: parent; anchors.margins: 3; radius: 14; clip: true
+                                color: chosen?"#302720":"#1e1b1b"; border.width: chosen?2:1; border.color: chosen?playMode.accent:"#3a3431"
+                                Image { anchors.fill: parent; anchors.margins: 2; source: modelData.art || ""; fillMode: Image.PreserveAspectCrop; opacity: 0.18; visible: !!modelData.art }
+                                Image { anchors.fill: parent; anchors.margins: modelData.art?10:48; source: modelData.art || (modelData.platform==="RetroArch"?"qrc:/brand/application.svg":"image://apps/"+modelData.appId); fillMode: Image.PreserveAspectFit; sourceSize.width: 640; sourceSize.height: 400 }
+                                Rectangle { anchors.left: parent.left; anchors.right: parent.right; anchors.bottom: parent.bottom; height: 56; color: "#cc151212"; visible: !modelData.art
+                                    Copy { anchors.fill: parent; anchors.margins: 12; text: modelData.name; font.pixelSize: 16; font.weight: Font.DemiBold; verticalAlignment: Text.AlignVCenter }
                                 }
+                                Copy { anchors.top: parent.top; anchors.right: parent.right; anchors.margins: 14; text: "★"; color: playMode.accent; visible: !!modelData.favorite; font.pixelSize: 20 }
                             }
                             MouseArea { anchors.fill: parent; onClicked: {playMode.selection=index;playMode.zone=1;navigation.forceActiveFocus()} onDoubleClicked: playMode.launchSelected() }
                         }
                         Copy { anchors.centerIn: parent; visible: cards.count===0; width: parent.width; horizontalAlignment: Text.AlignHCenter; wrapMode: Text.Wrap; text: playMode.query ? "Nothing matches this search." : playMode.section===4 ? "Add an emulator profile from Library management." : "Nothing here yet. Your installed applications and saved library appear here."; color: playMode.muted }
                     }
                     Rectangle {
-                        Layout.fillWidth: true; Layout.fillHeight: true; radius: 18; color: "#d71b252e"; border.color: "#35414b"
+                        Layout.fillWidth: true; Layout.fillHeight: true; color: "transparent"
                         RowLayout {
-                            anchors.fill: parent; anchors.margins: 24; spacing: 24
-                            Image { visible: !!playMode.selected; source: playMode.selected ? playMode.selected.art || (playMode.selected.platform==="RetroArch"?"qrc:/brand/application.svg":"image://apps/"+playMode.selected.appId) : ""; fillMode: Image.PreserveAspectFit; Layout.preferredWidth: 140; Layout.fillHeight: true; sourceSize.width: 320; sourceSize.height: 320 }
+                            anchors.fill: parent; anchors.topMargin: 8; spacing: 0
+
                             ColumnLayout {
                                 spacing: 8; Layout.fillWidth: true
                                 Copy { text: playMode.selected ? (playMode.selected.platform || "APPLICATION")+ (playMode.selected.collection?"  /  "+playMode.selected.collection:"") : "YOUR LIBRARY"; color: playMode.accent; font.pixelSize: 11; font.letterSpacing: 2; Layout.fillWidth: true }
-                                Copy { text: playMode.selected ? playMode.selected.name : "Make it yours."; font.pixelSize: 30; font.weight: Font.DemiBold; Layout.fillWidth: true }
+                                Copy { text: playMode.selected ? playMode.selected.name : "Make it yours."; color: playMode.accent; font.pixelSize: 34; font.weight: Font.DemiBold; Layout.fillWidth: true }
                                 Copy { text: playMode.details && playMode.selected ? playMode.selected.appId : playMode.selected && playMode.selected.lastPlayed ? "Last launched "+Qt.formatDateTime(new Date(playMode.selected.lastPlayed),"d MMM · HH:mm") : "Installed locally. Ready to launch."; color: playMode.muted; Layout.fillWidth: true; font.pixelSize: 13 }
                                 RowLayout {
                                     spacing: 10
                                     Repeater {
                                         // Stable delegates: changing a JS array model can delete layout items during a Qt 6.4 size-hint pass.
                                         model: 4
-                                        KeyButton { required property int index; visible: playMode.selectedGame || index===0; text: [playMode.activeWindow?"Resume":playMode.selectedGame?"Play":"Open",playMode.selected && playMode.selected.favorite?"Saved":"Favorite","Manage",playMode.details?"Less":"Details"][index]; enabled: !!playMode.selected; selected: playMode.zone===2 && playMode.actionIndex===index; Layout.preferredWidth: 110; Layout.preferredHeight: 40; onClicked: {playMode.actionIndex=index;playMode.act()} }
+                                        KeyButton { required property int index; visible: playMode.selectedGame || index===0; text: [playMode.activeWindow?"Resume":playMode.selectedGame?"Play":"Open",playMode.selected && playMode.selected.favorite?"Saved":"Favorite","Manage",playMode.details?"Less":"Details"][index]; enabled: !!playMode.selected; selected: (playMode.zone===2 && playMode.actionIndex===index) || (playMode.zone!==2 && index===0); Layout.preferredWidth: 110; Layout.preferredHeight: 40; onClicked: {playMode.actionIndex=index;playMode.act()} }
                                     }
                                 }
                             }
@@ -254,7 +270,7 @@ Window {
             }
             RowLayout {
                 Layout.fillWidth: true
-                Copy { text: playMode.notice || "← →  Select    ↑ ↓  Move focus    Enter  Confirm    Esc  Back    PgUp / PgDn  Sections"; color: playMode.muted; font.pixelSize: 12; Layout.fillWidth: true }
+                Copy { text: playMode.notice || "← →  Select    ↑ ↓  Move focus    Enter  Confirm    Esc  Back    PgUp / PgDn  Sections    B  Atmosphere"; color: playMode.muted; font.pixelSize: 12; Layout.fillWidth: true }
                 Copy { text: playMode.zone===0?"NAVIGATION":playMode.zone===2?"ACTIONS":"BROWSE"; color: playMode.accent; font.pixelSize: 10; font.letterSpacing: 2 }
             }
         }
