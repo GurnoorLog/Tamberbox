@@ -1,0 +1,6 @@
+gnome-2048	3.38.2-3build2
+gnome-chess	1:46.0-1build1
+pulseaudio	1:16.1+dfsg1-2ubuntu10.1
+quadrapassel	1:40.2-1build2
+sway	1.9-1build2
+waybar	0.9.24-1build3

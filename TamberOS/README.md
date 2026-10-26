@@ -2,7 +2,7 @@
 
 **An original, AlmaLinux-based ARM64 experience for TamberBox.**
 
-> Status: **M1 accepted; M3 desktop development verified remotely; M2 hardware acceptance pending.** Updated ARM64 builds and real Sway/Waybar runtime tests pass. The Orange Pi 5 Ultra has not been tested with this desktop.
+> Status: **M1 accepted; M4 desktop/console development verified remotely; M2 hardware acceptance pending.** Updated ARM64 builds and real Sway/Waybar runtime tests pass. The Orange Pi 5 Ultra has not been tested with this desktop.
 
 TamberOS combines a Linux kernel, an AlmaLinux userspace, and new Tamber-specific user-facing software. The hardware target is the **Orange Pi 5 Ultra (RK3588, aarch64)**. The visual direction comes from the accompanying TamberBox poster: ink-black backgrounds, electric orange details, warm cream typography, restrained comic-book energy and an **original sunglasses-wearing llama mascot**.
 

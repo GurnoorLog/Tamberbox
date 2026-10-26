@@ -1,0 +1,14 @@
+Internal ctest changing into directory: /work/build/shell
+Test project /work/build/shell
+    Start 1: launcher
+1/4 Test #1: launcher .........................   Passed    0.06 sec
+    Start 2: shell-ui
+2/4 Test #2: shell-ui .........................   Passed    1.18 sec
+    Start 3: session
+3/4 Test #3: session ..........................   Passed    0.02 sec
+    Start 4: play
+4/4 Test #4: play .............................   Passed    0.04 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =   1.31 sec

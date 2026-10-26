@@ -1,0 +1,1 @@
+build/shell/tamber-desktop: ELF 64-bit LSB executable, ARM aarch64, version 1 (GNU/Linux), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, BuildID[sha1]=72bc110b085c97fd293a6c0e901f97f38206b892, for GNU/Linux 3.7.0, not stripped

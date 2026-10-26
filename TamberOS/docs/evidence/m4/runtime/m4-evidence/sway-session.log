@@ -1,0 +1,1197 @@
+00:00:00.000 [INFO] [sway/main.c:338] Sway version 1.9
+00:00:00.000 [INFO] [sway/main.c:339] wlroots version 0.17.1
+00:00:00.001 [INFO] [sway/main.c:120] Linux runnervm4yw5a 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:12:01 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux
+00:00:00.001 [INFO] [sway/main.c:136] Contents of /etc/lsb-release:
+00:00:00.001 [INFO] [sway/main.c:120] DISTRIB_ID=Ubuntu
+00:00:00.001 [INFO] [sway/main.c:120] DISTRIB_RELEASE=24.04
+00:00:00.001 [INFO] [sway/main.c:120] DISTRIB_CODENAME=noble
+00:00:00.001 [INFO] [sway/main.c:120] DISTRIB_DESCRIPTION="Ubuntu 24.04.5 LTS"
+00:00:00.001 [INFO] [sway/main.c:136] Contents of /etc/os-release:
+00:00:00.001 [INFO] [sway/main.c:120] PRETTY_NAME="Ubuntu 24.04.5 LTS"
+00:00:00.001 [INFO] [sway/main.c:120] NAME="Ubuntu"
+00:00:00.001 [INFO] [sway/main.c:120] VERSION_ID="24.04"
+00:00:00.001 [INFO] [sway/main.c:120] VERSION="24.04.5 LTS (Noble Numbat)"
+00:00:00.001 [INFO] [sway/main.c:120] VERSION_CODENAME=noble
+00:00:00.001 [INFO] [sway/main.c:120] ID=ubuntu
+00:00:00.001 [INFO] [sway/main.c:120] ID_LIKE=debian
+00:00:00.001 [INFO] [sway/main.c:120] HOME_URL="https://www.ubuntu.com/"
+00:00:00.001 [INFO] [sway/main.c:120] SUPPORT_URL="https://help.ubuntu.com/"
+00:00:00.001 [INFO] [sway/main.c:120] BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+00:00:00.001 [INFO] [sway/main.c:120] PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+00:00:00.001 [INFO] [sway/main.c:120] UBUNTU_CODENAME=noble
+00:00:00.001 [INFO] [sway/main.c:120] LOGO=ubuntu-logo
+00:00:00.001 [INFO] [sway/main.c:136] Contents of /etc/debian_version:
+00:00:00.001 [INFO] [sway/main.c:120] trixie/sid
+00:00:00.001 [INFO] [sway/main.c:108] LD_LIBRARY_PATH=/home/runner/work/Tamberbox/Tamberbox/TamberOS/build/session-deps/lib
+00:00:00.001 [INFO] [sway/main.c:108] LD_PRELOAD=
+00:00:00.001 [INFO] [sway/main.c:108] PATH=/home/runner/work/Tamberbox/Tamberbox/TamberOS/build/shell:/snap/bin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/home/runner/.dotnet/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+00:00:00.001 [INFO] [sway/main.c:108] SWAYSOCK=
+00:00:00.001 [INFO] [sway/main.c:376] Starting sway version 1.9
+00:00:00.001 [DEBUG] [sway/server.c:129] Initializing Wayland server
+00:00:00.001 [INFO] [wlr] [backend/backend.c:309] Loading user-specified backends due to WLR_BACKENDS: headless
+00:00:00.001 [INFO] [wlr] [backend/headless/backend.c:67] Creating headless backend
+00:00:00.001 [INFO] [wlr] [util/env.c:25] Loading WLR_RENDERER option: pixman
+00:00:00.001 [INFO] [wlr] [render/pixman/renderer.c:537] Creating pixman renderer
+00:00:00.001 [DEBUG] [wlr] [render/allocator/allocator.c:124] Trying to create shm allocator
+00:00:00.001 [DEBUG] [wlr] [render/allocator/shm.c:118] Created shm allocator
+00:00:00.001 [DEBUG] [wlr] [types/wlr_drm_lease_v1.c:710] No DRM backend supplied, failed to create wlr_drm_lease_v1_manager
+00:00:00.001 [DEBUG] [sway/server.c:264] Failed to create wlr_drm_lease_device_v1
+00:00:00.001 [INFO] [sway/server.c:265] VR will not be available
+00:00:00.001 [INFO] [wlr] [backend/headless/backend.c:67] Creating headless backend
+00:00:00.111 [INFO] [sway/config.c:416] Loading config from /tmp/tamber-wayland-97ghhurr/sway.conf
+00:00:00.111 [DEBUG] [sway/config.c:838] Read line 1: # TamberOS development session. Load explicitly; never replaces a user config.
+00:00:00.111 [DEBUG] [sway/config.c:838] Read line 2: xwayland disable
+00:00:00.111 [INFO] [sway/commands.c:381] Config command: xwayland disable
+00:00:00.111 [INFO] [sway/commands.c:404] After replacement: xwayland disable
+00:00:00.111 [DEBUG] [sway/config.c:838] Read line 3: font pango:Sans 10
+00:00:00.111 [INFO] [sway/commands.c:381] Config command: font pango:Sans 10
+00:00:00.111 [INFO] [sway/commands.c:404] After replacement: font pango:Sans 10
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 4: seat seat0 hide_cursor 3000
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: seat seat0 hide_cursor 3000
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: seat seat0 hide_cursor 3000
+00:00:00.117 [DEBUG] [sway/commands.c:436] Subcommand: hide_cursor 3000
+00:00:00.117 [DEBUG] [sway/config/seat.c:66] Adding non-wildcard seat config
+00:00:00.117 [DEBUG] [sway/config/seat.c:83] Config stored for seat seat0
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 5: default_border normal 2
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: default_border normal 2
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: default_border normal 2
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 6: titlebar_padding 10 6
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: titlebar_padding 10 6
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: titlebar_padding 10 6
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 7: client.focused #5a5148 #24272b #f1ece2 #bd8963 #5a5148
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: client.focused #5a5148 #24272b #f1ece2 #bd8963 #5a5148
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: client.focused #5a5148 #24272b #f1ece2 #bd8963 #5a5148
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 8: client.unfocused #454047 #25252a #aaa6a4 #454047 #454047
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: client.unfocused #454047 #25252a #aaa6a4 #454047 #454047
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: client.unfocused #454047 #25252a #aaa6a4 #454047 #454047
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 9: gaps inner 12
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: gaps inner 12
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: gaps inner 12
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 10: floating_modifier Mod4 normal
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: floating_modifier Mod4 normal
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: floating_modifier Mod4 normal
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 11: bindsym Mod4+Return exec foot
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: bindsym Mod4+Return exec foot
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: bindsym Mod4+Return exec foot
+00:00:00.117 [DEBUG] [sway/commands/bind.c:298] bindsym - Bound Mod4+Return to command `exec foot` for device '*'
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 12: bindsym Mod4+space exec tamber-desktop --command launcher
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: bindsym Mod4+space exec tamber-desktop --command launcher
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: bindsym Mod4+space exec tamber-desktop --command launcher
+00:00:00.117 [DEBUG] [sway/commands/bind.c:298] bindsym - Bound Mod4+space to command `exec tamber-desktop --command launcher` for device '*'
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 13: bindsym Mod4+comma exec tamber-desktop --command controls
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: bindsym Mod4+comma exec tamber-desktop --command controls
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: bindsym Mod4+comma exec tamber-desktop --command controls
+00:00:00.117 [DEBUG] [sway/commands/bind.c:298] bindsym - Bound Mod4+comma to command `exec tamber-desktop --command controls` for device '*'
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 14: bindsym Mod4+g exec tamber-desktop --command games
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: bindsym Mod4+g exec tamber-desktop --command games
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: bindsym Mod4+g exec tamber-desktop --command games
+00:00:00.117 [DEBUG] [sway/commands/bind.c:298] bindsym - Bound Mod4+g to command `exec tamber-desktop --command games` for device '*'
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 15: bindsym Mod4+Shift+g exec tamber-desktop --command library
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: bindsym Mod4+Shift+g exec tamber-desktop --command library
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: bindsym Mod4+Shift+g exec tamber-desktop --command library
+00:00:00.117 [DEBUG] [sway/commands/bind.c:298] bindsym - Bound Mod4+Shift+g to command `exec tamber-desktop --command library` for device '*'
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 16: bindsym Mod4+q kill
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: bindsym Mod4+q kill
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: bindsym Mod4+q kill
+00:00:00.117 [DEBUG] [sway/commands/bind.c:298] bindsym - Bound Mod4+q to command `kill` for device '*'
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 17: bindsym Mod4+f fullscreen toggle
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: bindsym Mod4+f fullscreen toggle
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: bindsym Mod4+f fullscreen toggle
+00:00:00.117 [DEBUG] [sway/commands/bind.c:298] bindsym - Bound Mod4+f to command `fullscreen toggle` for device '*'
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 18: bindsym Mod4+Shift+space floating toggle
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: bindsym Mod4+Shift+space floating toggle
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: bindsym Mod4+Shift+space floating toggle
+00:00:00.117 [DEBUG] [sway/commands/bind.c:298] bindsym - Bound Mod4+Shift+space to command `floating toggle` for device '*'
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 19: bindsym Mod4+Tab focus next
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: bindsym Mod4+Tab focus next
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: bindsym Mod4+Tab focus next
+00:00:00.117 [DEBUG] [sway/commands/bind.c:298] bindsym - Bound Mod4+Tab to command `focus next` for device '*'
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 20: bindsym Mod4+1 workspace number 1
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: bindsym Mod4+1 workspace number 1
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: bindsym Mod4+1 workspace number 1
+00:00:00.117 [DEBUG] [sway/commands/bind.c:298] bindsym - Bound Mod4+1 to command `workspace number 1` for device '*'
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 21: bindsym Mod4+2 workspace number 2
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: bindsym Mod4+2 workspace number 2
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: bindsym Mod4+2 workspace number 2
+00:00:00.117 [DEBUG] [sway/commands/bind.c:298] bindsym - Bound Mod4+2 to command `workspace number 2` for device '*'
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 22: bindsym Mod4+3 workspace number 3
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: bindsym Mod4+3 workspace number 3
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: bindsym Mod4+3 workspace number 3
+00:00:00.117 [DEBUG] [sway/commands/bind.c:298] bindsym - Bound Mod4+3 to command `workspace number 3` for device '*'
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 23: bindsym Mod4+4 workspace number 4
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: bindsym Mod4+4 workspace number 4
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: bindsym Mod4+4 workspace number 4
+00:00:00.117 [DEBUG] [sway/commands/bind.c:298] bindsym - Bound Mod4+4 to command `workspace number 4` for device '*'
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 24: bindsym Mod4+Shift+e exit
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: bindsym Mod4+Shift+e exit
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: bindsym Mod4+Shift+e exit
+00:00:00.117 [DEBUG] [sway/commands/bind.c:298] bindsym - Bound Mod4+Shift+e to command `exit` for device '*'
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 25: exec sh -c 'if [ "${TAMBER_EXTERNAL_BAR:-0}" = 1 ]; then exec waybar --config "$TAMBER_ROOT/session/waybar/config.jsonc" --style "$TAMBER_ROOT/session/waybar/style.css"; fi'
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: exec sh -c 'if [ "${TAMBER_EXTERNAL_BAR:-0}" = 1 ]; then exec waybar --config "$TAMBER_ROOT/session/waybar/config.jsonc" --style "$TAMBER_ROOT/session/waybar/style.css"; fi'
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: exec sh -c 'if [ "${TAMBER_EXTERNAL_BAR:-0}" = 1 ]; then exec waybar --config "$TAMBER_ROOT/session/waybar/config.jsonc" --style "$TAMBER_ROOT/session/waybar/style.css"; fi'
+00:00:00.117 [DEBUG] [sway/config.c:882] Deferring command `exec sh -c 'if [ "${TAMBER_EXTERNAL_BAR:-0}" = 1 ]; then exec waybar --config "$TAMBER_ROOT/session/waybar/config.jsonc" --style "$TAMBER_ROOT/session/waybar/style.css"; fi''
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 26: exec sh -c 'dbus-update-activation-environment WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XDG_RUNTIME_DIR; exec gdb -batch -ex run -ex bt --args tamber-desktop'
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: exec sh -c 'dbus-update-activation-environment WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XDG_RUNTIME_DIR; exec gdb -batch -ex run -ex bt --args tamber-desktop'
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: exec sh -c 'dbus-update-activation-environment WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XDG_RUNTIME_DIR; exec gdb -batch -ex run -ex bt --args tamber-desktop'
+00:00:00.117 [DEBUG] [sway/config.c:882] Deferring command `exec sh -c 'dbus-update-activation-environment WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XDG_RUNTIME_DIR; exec gdb -batch -ex run -ex bt --args tamber-desktop''
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 27: 
+00:00:00.117 [DEBUG] [sway/config.c:838] Read line 28: output HEADLESS-1 mode 1280x720
+00:00:00.117 [INFO] [sway/commands.c:381] Config command: output HEADLESS-1 mode 1280x720
+00:00:00.117 [INFO] [sway/commands.c:404] After replacement: output HEADLESS-1 mode 1280x720
+00:00:00.117 [DEBUG] [sway/commands.c:436] Subcommand: mode 1280x720
+00:00:00.117 [DEBUG] [sway/config/output.c:218] Adding non-wildcard output config
+00:00:00.117 [DEBUG] [sway/config/output.c:235] Config stored for output HEADLESS-1 (enabled: -1) (1280x720@-1.000000Hz position -1,-1 scale -1.000000 subpixel unknown transform -1) (bg (null) (null)) (power -1) (max render time: -1)
+00:00:00.117 [INFO] [sway/realtime.c:35] Failed to set scheduling priority to 1
+00:00:00.117 [INFO] [sway/server.c:384] Starting backend on wayland display 'wayland-1'
+00:00:00.117 [INFO] [wlr] [backend/headless/backend.c:17] Starting headless backend
+00:00:00.117 [DEBUG] [sway/desktop/output.c:1019] New output 0xaaf9e0f072a0: HEADLESS-1 (non-desktop: 0)
+00:00:00.117 [DEBUG] [sway/config/output.c:401] Turning on output HEADLESS-1
+00:00:00.117 [DEBUG] [sway/config/output.c:409] Set HEADLESS-1 mode to 1280x720 (-1.000000 Hz)
+00:00:00.117 [DEBUG] [sway/config/output.c:256] Assigning custom mode to HEADLESS-1
+00:00:00.117 [DEBUG] [sway/config/output.c:473] Auto-detected output scale: 1.000000
+00:00:00.117 [DEBUG] [sway/config/output.c:520] Committing output HEADLESS-1
+00:00:00.117 [DEBUG] [wlr] [types/output/render.c:168] Attaching empty buffer to output for modeset
+00:00:00.117 [DEBUG] [wlr] [types/output/swapchain.c:27] Choosing primary buffer format XR24 (0x34325258) for output 'HEADLESS-1'
+00:00:00.117 [DEBUG] [wlr] [types/output/swapchain.c:96] Testing swapchain for output 'HEADLESS-1'
+00:00:00.117 [DEBUG] [wlr] [render/swapchain.c:106] Allocating new swapchain buffer
+00:00:00.117 [DEBUG] [wlr] [render/pixman/renderer.c:152] Created pixman buffer 1280x720
+00:00:00.118 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+00:00:00.118 [DEBUG] [sway/tree/workspace.c:277] Workspace: Generating new workspace name for output HEADLESS-1
+00:00:00.118 [DEBUG] [sway/tree/workspace.c:214] Got valid workspace command for target: 'number 1'
+00:00:00.118 [DEBUG] [sway/tree/workspace.c:239] Isolated name from workspace number: '1'
+00:00:00.118 [DEBUG] [sway/tree/workspace.c:268] Workspace: Found free name 1
+00:00:00.118 [DEBUG] [sway/tree/workspace.c:214] Got valid workspace command for target: 'number 2'
+00:00:00.118 [DEBUG] [sway/tree/workspace.c:239] Isolated name from workspace number: '2'
+00:00:00.118 [DEBUG] [sway/tree/workspace.c:214] Got valid workspace command for target: 'number 3'
+00:00:00.118 [DEBUG] [sway/tree/workspace.c:239] Isolated name from workspace number: '3'
+00:00:00.118 [DEBUG] [sway/tree/workspace.c:214] Got valid workspace command for target: 'number 4'
+00:00:00.118 [DEBUG] [sway/tree/workspace.c:239] Isolated name from workspace number: '4'
+00:00:00.118 [DEBUG] [sway/tree/output.c:127] Creating default workspace 1
+00:00:00.118 [DEBUG] [sway/tree/workspace.c:65] Adding workspace 1 for output HEADLESS-1
+00:00:00.484 [DEBUG] [wlr] [xcursor/wlr_xcursor.c:225] Loaded cursor theme 'default' at size 24 (59 available cursors)
+00:00:00.484 [DEBUG] [sway/desktop/layer_shell.c:229] Usable area changed, rearranging output
+00:00:00.484 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x720@0,0
+00:00:00.484 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 12.000000
+00:00:00.484 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x720@0,0
+00:00:00.484 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 12.000000
+00:00:00.484 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0f4e850 committing with 2 instructions
+00:00:00.484 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0f4e850
+00:00:00.484 [INFO] [wlr] [backend/headless/backend.c:17] Starting headless backend
+00:00:00.484 [DEBUG] [sway/config.c:687] Running deferred commands
+00:00:00.484 [INFO] [sway/commands.c:261] Handling command 'exec sh -c 'if [ "${TAMBER_EXTERNAL_BAR:-0}" = 1 ]; then exec waybar --config "$TAMBER_ROOT/session/waybar/config.jsonc" --style "$TAMBER_ROOT/session/waybar/style.css"; fi''
+00:00:00.484 [DEBUG] [sway/commands/exec_always.c:58] Executing sh -c 'if [ "${TAMBER_EXTERNAL_BAR:-0}" = 1 ]; then exec waybar --config "$TAMBER_ROOT/session/waybar/config.jsonc" --style "$TAMBER_ROOT/session/waybar/style.css"; fi'
+00:00:00.485 [DEBUG] [sway/commands/exec_always.c:111] Child process created with pid 11402
+00:00:00.485 [DEBUG] [sway/commands/exec_always.c:113] Recording workspace for process 11402
+00:00:00.485 [INFO] [sway/commands.c:261] Handling command 'exec sh -c 'dbus-update-activation-environment WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XDG_RUNTIME_DIR; exec gdb -batch -ex run -ex bt --args tamber-desktop''
+00:00:00.485 [DEBUG] [sway/commands/exec_always.c:58] Executing sh -c 'dbus-update-activation-environment WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XDG_RUNTIME_DIR; exec gdb -batch -ex run -ex bt --args tamber-desktop'
+00:00:00.486 [DEBUG] [sway/commands/exec_always.c:111] Child process created with pid 11404
+00:00:00.486 [DEBUG] [sway/commands/exec_always.c:113] Recording workspace for process 11404
+00:00:00.486 [INFO] [sway/server.c:396] Running compositor on wayland display 'wayland-1'
+00:00:01.026 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e0f807a0 (res 0xaaf9e0f51a20)
+00:00:01.026 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e0f80bb0 (res 0xaaf9e0f51d80)
+[2026-10-26 12:55:23.768] [info] Using configuration file /home/runner/work/Tamberbox/Tamberbox/TamberOS/session/waybar/config.jsonc
+00:00:01.238 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e0f81a90 (res 0xaaf9e0f53e20)
+00:00:01.238 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e0f81ed0 (res 0xaaf9e0f4eca0)
+[2026-10-26 12:55:23.850] [info] Using CSS file /home/runner/work/Tamberbox/Tamberbox/TamberOS/session/waybar/style.css
+basic_string::_M_create
+00:00:01.287 [DEBUG] [sway/ipc-server.c:197] New client: fd 20
+00:00:01.287 [DEBUG] [sway/ipc-server.c:197] New client: fd 22
+00:00:01.288 [DEBUG] [sway/ipc-server.c:197] New client: fd 24
+00:00:01.288 [DEBUG] [sway/ipc-server.c:197] New client: fd 26
+[2026-10-26 12:55:23.863] [warning] Can't resolve nl80211 interface
+[2026-10-26 12:55:23.864] [error] findCurController() failed: no bluetooth controller found
+00:00:01.333 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e0fa88c0 (res 0xaaf9e0f5b260)
+00:00:01.333 [DEBUG] [wlr] [types/wlr_layer_shell_v1.c:460] new layer_surface 0xaaf9e0f814d0 (res 0xaaf9e0f5b380)
+00:00:01.333 [DEBUG] [sway/desktop/layer_shell.c:646] new layer surface: namespace waybar layer 2 anchor 13 size 0x34 margin 0,0,0,0,
+00:00:01.333 [DEBUG] [sway/desktop/layer_shell.c:229] Usable area changed, rearranging output
+00:00:01.333 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x686@0,34
+00:00:01.333 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:01.333 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0f57ef0 committing with 1 instructions
+00:00:01.333 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0f57ef0
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/aarch64-linux-gnu/libthread_db.so.1".
+[New Thread 0xfffff0bfec20 (LWP 11477)]
+[New Thread 0xffffefbeec20 (LWP 11478)]
+[Detaching after vfork from child process 11479]
+00:00:01.405 [DEBUG] [sway/ipc-server.c:197] New client: fd 30
+[New Thread 0xffffeebdec20 (LWP 11480)]
+00:00:01.406 [INFO] [sway/ipc-server.c:571] IPC Client 30 disconnected
+[New Thread 0xffffedbcec20 (LWP 11481)]
+[2026-10-26 12:55:24.016] [info] Bar configured (width: 1280, height: 34) for output: HEADLESS-1
+[New Thread 0xffffdfffec20 (LWP 11482)]
+[New Thread 0xffffdef40c20 (LWP 11483)]
+[New Thread 0xffffddf30c20 (LWP 11484)]
+[New Thread 0xffffcbffec20 (LWP 11485)]
+[New Thread 0xffffcafeec20 (LWP 11486)]
+00:00:05.442 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e0ff7e70 (res 0xaaf9e0f566a0)
+00:00:05.442 [DEBUG] [wlr] [types/wlr_layer_shell_v1.c:460] new layer_surface 0xaaf9e0f00f00 (res 0xaaf9e0f568e0)
+libEGL warning: failed to get driver name for fd -1
+
+libEGL warning: MESA-LOADER: failed to retrieve device information
+
+libEGL warning: failed to get driver name for fd -1
+
+MESA: error: ZINK: vkCreateInstance failed (VK_ERROR_INCOMPATIBLE_DRIVER)
+libEGL warning: egl: failed to create dri2 screen
+00:00:05.879 [DEBUG] [sway/desktop/layer_shell.c:646] new layer surface: namespace tamber-dock layer 2 anchor 2 size 960x76 margin 0,0,12,0,
+00:00:05.879 [DEBUG] [sway/desktop/layer_shell.c:229] Usable area changed, rearranging output
+00:00:05.879 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:05.879 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:05.879 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0f3bea0 committing with 1 instructions
+00:00:05.879 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0f3bea0
+00:00:05.879 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e0fa5120 (res 0xaaf9e0f340f0)
+00:00:05.879 [DEBUG] [wlr] [types/wlr_layer_shell_v1.c:460] new layer_surface 0xaaf9e0f7f620 (res 0xaaf9e0f331c0)
+00:00:05.879 [DEBUG] [sway/desktop/layer_shell.c:646] new layer surface: namespace tamber-wallpaper layer 0 anchor 15 size 0x0 margin 0,0,0,0,
+TAMBER_FRAME dock
+TAMBER_FRAME wallpaper
+TAMBER_CONSOLE_STATE {"visible":false,"modeActive":false,"width":1280,"height":720,"section":0,"selection":0,"zone":1,"details":false,"count":3,"selected":"org.gnome.TwentyFortyEight.desktop","filter":0,"reducedMotion":false,"notice":"","pending":"","running":""}
+[Detaching after vfork from child process 11487]
+00:00:06.831 [DEBUG] [sway/ipc-server.c:197] New client: fd 30
+00:00:06.831 [INFO] [sway/ipc-server.c:571] IPC Client 30 disconnected
+00:00:06.970 [DEBUG] [wlr] [types/output/render.c:187] Disabling direct scan-out on output 'HEADLESS-1' (locks: 1)
+00:00:06.972 [DEBUG] [wlr] [types/output/render.c:187] Enabling direct scan-out on output 'HEADLESS-1' (locks: 0)
+00:00:07.030 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:07.030 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+00:00:07.435 [DEBUG] [sway/commands/bind.c:619] running command for binding: workspace number 2
+00:00:07.435 [INFO] [sway/commands.c:261] Handling command 'workspace number 2'
+00:00:07.435 [DEBUG] [sway/tree/workspace.c:65] Adding workspace 2 for output HEADLESS-1
+00:00:07.435 [DEBUG] [sway/ipc-server.c:301] Sending workspace::init event
+00:00:07.435 [DEBUG] [sway/tree/workspace.c:570] Switching to workspace 0xaaf9e102b030:2
+00:00:07.435 [DEBUG] [sway/ipc-server.c:301] Sending workspace::focus event
+00:00:07.435 [DEBUG] [sway/tree/workspace.c:145] Destroying workspace '1'
+00:00:07.435 [DEBUG] [sway/ipc-server.c:301] Sending workspace::empty event
+00:00:07.435 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:07.435 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '2' at 12.000000, 46.000000
+00:00:07.435 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0f2b360 committing with 3 instructions
+00:00:07.435 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0f2b360
+00:00:07.440 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:07.440 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+00:00:07.741 [DEBUG] [sway/ipc-server.c:197] New client: fd 36
+00:00:07.742 [INFO] [sway/ipc-server.c:571] IPC Client 36 disconnected
+00:00:07.743 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:07.743 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after vfork from child process 11493]
+00:00:07.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 38
+00:00:07.790 [INFO] [sway/ipc-server.c:571] IPC Client 38 disconnected
+00:00:08.147 [DEBUG] [sway/commands/bind.c:619] running command for binding: workspace number 1
+00:00:08.147 [INFO] [sway/commands.c:261] Handling command 'workspace number 1'
+00:00:08.148 [DEBUG] [sway/tree/workspace.c:65] Adding workspace 1 for output HEADLESS-1
+00:00:08.148 [DEBUG] [sway/ipc-server.c:301] Sending workspace::init event
+00:00:08.148 [DEBUG] [sway/tree/workspace.c:570] Switching to workspace 0xaaf9e1041e80:1
+00:00:08.148 [DEBUG] [sway/ipc-server.c:301] Sending workspace::focus event
+00:00:08.148 [DEBUG] [sway/tree/workspace.c:145] Destroying workspace '2'
+00:00:08.148 [DEBUG] [sway/ipc-server.c:301] Sending workspace::empty event
+00:00:08.148 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:08.148 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:08.148 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0f54a80 committing with 3 instructions
+00:00:08.148 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0f54a80
+00:00:08.153 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:08.153 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+[Detaching after vfork from child process 11495]
+00:00:08.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 30
+00:00:08.791 [INFO] [sway/ipc-server.c:571] IPC Client 30 disconnected
+00:00:08.918 [DEBUG] [sway/input/input-manager.c:443] adding virtual pointer: '0:0:wlr_virtual_pointer_v1'
+00:00:08.918 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_pointer_v1 to seat seat0
+00:00:08.918 [DEBUG] [sway/input/seat.c:722] Applying input mapping to 0:0:wlr_virtual_pointer_v1
+00:00:08.918 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+00:00:08.925 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e1029980 (res 0xaaf9e0f56460)
+00:00:08.925 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+00:00:08.925 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+00:00:08.925 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+00:00:09.119 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+00:00:09.119 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+00:00:09.619 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_pointer_v1'
+00:00:09.619 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_pointer_v1 from seat seat0
+00:00:09.619 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+00:00:09.621 [DEBUG] [sway/input/input-manager.c:443] adding virtual pointer: '0:0:wlr_virtual_pointer_v1'
+00:00:09.621 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_pointer_v1 to seat seat0
+00:00:09.621 [DEBUG] [sway/input/seat.c:722] Applying input mapping to 0:0:wlr_virtual_pointer_v1
+00:00:09.621 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+00:00:09.621 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+00:00:09.621 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+[Detaching after vfork from child process 11500]
+00:00:09.791 [DEBUG] [sway/ipc-server.c:197] New client: fd 39
+00:00:09.791 [INFO] [sway/ipc-server.c:571] IPC Client 39 disconnected
+00:00:10.022 [INFO] [sway/commands.c:261] Handling command 'workspace --no-auto-back-and-forth "2"'
+00:00:10.022 [DEBUG] [sway/tree/workspace.c:65] Adding workspace 2 for output HEADLESS-1
+00:00:10.022 [DEBUG] [sway/ipc-server.c:301] Sending workspace::init event
+00:00:10.022 [DEBUG] [sway/tree/workspace.c:570] Switching to workspace 0xaaf9e0f51480:2
+00:00:10.022 [DEBUG] [sway/ipc-server.c:301] Sending workspace::focus event
+00:00:10.022 [DEBUG] [sway/tree/workspace.c:145] Destroying workspace '1'
+00:00:10.022 [DEBUG] [sway/ipc-server.c:301] Sending workspace::empty event
+00:00:10.022 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:10.022 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '2' at 12.000000, 46.000000
+00:00:10.022 [INFO] [sway/commands.c:261] Handling command 'move workspace to output ""'
+00:00:10.022 [INFO] [sway/commands.c:261] Handling command 'workspace --no-auto-back-and-forth "2"'
+00:00:10.022 [DEBUG] [sway/tree/workspace.c:570] Switching to workspace 0xaaf9e0f51480:2
+00:00:10.022 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:10.022 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '2' at 12.000000, 46.000000
+00:00:10.022 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0f58250 committing with 3 instructions
+00:00:10.022 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0f58250
+00:00:10.322 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_pointer_v1'
+00:00:10.322 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_pointer_v1 from seat seat0
+00:00:10.322 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+00:00:10.323 [DEBUG] [sway/ipc-server.c:197] New client: fd 30
+00:00:10.324 [INFO] [sway/ipc-server.c:571] IPC Client 30 disconnected
+00:00:10.325 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:10.325 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+00:00:10.729 [DEBUG] [sway/commands/bind.c:619] running command for binding: workspace number 1
+00:00:10.729 [INFO] [sway/commands.c:261] Handling command 'workspace number 1'
+00:00:10.729 [DEBUG] [sway/tree/workspace.c:65] Adding workspace 1 for output HEADLESS-1
+00:00:10.729 [DEBUG] [sway/ipc-server.c:301] Sending workspace::init event
+00:00:10.730 [DEBUG] [sway/tree/workspace.c:570] Switching to workspace 0xaaf9e1060670:1
+00:00:10.730 [DEBUG] [sway/ipc-server.c:301] Sending workspace::focus event
+00:00:10.730 [DEBUG] [sway/tree/workspace.c:145] Destroying workspace '2'
+00:00:10.730 [DEBUG] [sway/ipc-server.c:301] Sending workspace::empty event
+00:00:10.730 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:10.730 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:10.730 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e104a620 committing with 3 instructions
+00:00:10.730 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e104a620
+00:00:10.735 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:10.735 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+00:00:10.736 [DEBUG] [sway/ipc-server.c:197] New client: fd 30
+00:00:10.736 [INFO] [sway/commands.c:261] Handling command 'seat seat0 cursor set 1180 17'
+00:00:10.736 [DEBUG] [sway/commands.c:436] Subcommand: cursor set 1180 17
+00:00:10.736 [INFO] [sway/ipc-server.c:571] IPC Client 30 disconnected
+00:00:10.740 [DEBUG] [sway/input/input-manager.c:443] adding virtual pointer: '0:0:wlr_virtual_pointer_v1'
+00:00:10.740 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_pointer_v1 to seat seat0
+00:00:10.740 [DEBUG] [sway/input/seat.c:722] Applying input mapping to 0:0:wlr_virtual_pointer_v1
+00:00:10.740 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+00:00:10.741 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+00:00:10.741 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+[Detaching after vfork from child process 11506]
+00:00:10.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 36
+00:00:10.790 [INFO] [sway/ipc-server.c:571] IPC Client 36 disconnected
+00:00:11.342 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_pointer_v1'
+00:00:11.342 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_pointer_v1 from seat seat0
+00:00:11.342 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+[Detaching after vfork from child process 11507]
+00:00:11.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 30
+00:00:11.790 [INFO] [sway/ipc-server.c:571] IPC Client 30 disconnected
+00:00:11.847 [DEBUG] [sway/ipc-server.c:197] New client: fd 30
+00:00:11.847 [INFO] [sway/commands.c:261] Handling command 'seat seat0 cursor set 53 17'
+00:00:11.847 [DEBUG] [sway/commands.c:436] Subcommand: cursor set 53 17
+00:00:11.847 [INFO] [sway/ipc-server.c:571] IPC Client 30 disconnected
+00:00:11.848 [DEBUG] [sway/input/input-manager.c:443] adding virtual pointer: '0:0:wlr_virtual_pointer_v1'
+00:00:11.848 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_pointer_v1 to seat seat0
+00:00:11.848 [DEBUG] [sway/input/seat.c:722] Applying input mapping to 0:0:wlr_virtual_pointer_v1
+00:00:11.848 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+00:00:11.848 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+00:00:11.849 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+00:00:12.269 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e0ff71f0 (res 0xaaf9e0f5e740)
+00:00:12.269 [DEBUG] [wlr] [types/wlr_layer_shell_v1.c:460] new layer_surface 0xaaf9e0f008a0 (res 0xaaf9e0f54060)
+00:00:12.269 [DEBUG] [sway/desktop/layer_shell.c:646] new layer surface: namespace tamber-launcher layer 3 anchor 0 size 650x510 margin 0,0,0,0,
+TAMBER_FRAME launcher
+00:00:12.552 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_pointer_v1'
+00:00:12.552 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_pointer_v1 from seat seat0
+00:00:12.552 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+[Detaching after vfork from child process 11515]
+00:00:12.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 30
+00:00:12.790 [INFO] [sway/ipc-server.c:571] IPC Client 30 disconnected
+00:00:13.054 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:13.054 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after vfork from child process 11517]
+00:00:13.789 [DEBUG] [sway/ipc-server.c:197] New client: fd 37
+00:00:13.790 [INFO] [sway/ipc-server.c:571] IPC Client 37 disconnected
+00:00:14.555 [DEBUG] [wlr] [types/output/render.c:187] Disabling direct scan-out on output 'HEADLESS-1' (locks: 1)
+00:00:14.556 [DEBUG] [wlr] [types/output/render.c:187] Enabling direct scan-out on output 'HEADLESS-1' (locks: 0)
+[Detaching after vfork from child process 11520]
+00:00:14.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 37
+00:00:14.790 [INFO] [sway/ipc-server.c:571] IPC Client 37 disconnected
+00:00:15.352 [DEBUG] [wlr] [types/output/cursor.c:458] Falling back to software cursor on output 'HEADLESS-1'
+[New Thread 0xffffc112ec20 (LWP 11521)]
+[New Thread 0xffffb3acec20 (LWP 11522)]
+[Detaching after fork from child process 11523]
+[New Thread 0xffffb2abec20 (LWP 11525)]
+00:00:15.566 [DEBUG] [sway/desktop/layer_shell.c:386] Layer surface destroyed (tamber-launcher)
+00:00:15.566 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e104f7f0 committing with 2 instructions
+00:00:15.566 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e104f7f0
+[New Thread 0xffffb1aaec20 (LWP 11526)]
+00:00:15.621 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e1006070 (res 0xaaf9e1070af0)
+00:00:15.621 [DEBUG] [wlr] [types/xdg_shell/wlr_xdg_surface.c:388] new xdg_surface 0xaaf9e1063b60 (res 0xaaf9e1070f70)
+00:00:15.621 [DEBUG] [wlr] [types/wlr_xdg_decoration_v1.c:219] new xdg_toplevel_decoration 0xaaf9e1061ef0 (res 0xaaf9e10711b0)
+00:00:15.621 [DEBUG] [sway/desktop/xdg_shell.c:530] New xdg_shell toplevel title='(null)' app_id='tamber-test'
+00:00:15.621 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e1076190 (res 0xaaf9e10712d0)
+00:00:15.624 [DEBUG] [sway/ipc-server.c:327] Sending window::new event
+00:00:15.624 [DEBUG] [sway/ipc-server.c:327] Sending window::title event
+00:00:15.624 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:15.624 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:15.624 [DEBUG] [sway/tree/arrange.c:77] Arranging 0xfffff3e49188 horizontally
+00:00:15.624 [DEBUG] [sway/ipc-server.c:327] Sending window::focus event
+00:00:15.624 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e10465a0 committing with 3 instructions
+00:00:15.627 [DEBUG] [sway/desktop/transaction.c:494] Transaction 0xaaf9e10465a0 is ready
+00:00:15.627 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e10465a0
+00:00:15.627 [DEBUG] [sway/tree/container.c:1320] Container 0xaaf9e104a5f0 entered output 0xaaf9e0f2ab40
+[Detaching after vfork from child process 11547]
+00:00:15.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 47
+00:00:15.790 [INFO] [sway/ipc-server.c:571] IPC Client 47 disconnected
+[Thread 0xffffb2abec20 (LWP 11525) exited]
+00:00:16.111 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:16.111 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+00:00:16.157 [DEBUG] [sway/ipc-server.c:197] New client: fd 30
+00:00:16.158 [INFO] [sway/ipc-server.c:571] IPC Client 30 disconnected
+00:00:16.661 [DEBUG] [wlr] [types/output/render.c:187] Disabling direct scan-out on output 'HEADLESS-1' (locks: 1)
+00:00:16.662 [DEBUG] [wlr] [types/output/render.c:187] Enabling direct scan-out on output 'HEADLESS-1' (locks: 0)
+00:00:16.705 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e1073b00 (res 0xaaf9e0f5dd20)
+00:00:16.705 [DEBUG] [wlr] [types/wlr_layer_shell_v1.c:460] new layer_surface 0xaaf9e107bbb0 (res 0xaaf9e10545e0)
+00:00:16.705 [DEBUG] [sway/desktop/layer_shell.c:646] new layer surface: namespace tamber-controls layer 3 anchor 0 size 800x560 margin 0,0,0,0,
+TAMBER_FRAME controls
+[Detaching after vfork from child process 11553]
+00:00:16.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 49
+00:00:16.790 [INFO] [sway/ipc-server.c:571] IPC Client 49 disconnected
+00:00:17.211 [DEBUG] [wlr] [types/output/render.c:187] Disabling direct scan-out on output 'HEADLESS-1' (locks: 1)
+00:00:17.213 [DEBUG] [wlr] [types/output/render.c:187] Enabling direct scan-out on output 'HEADLESS-1' (locks: 0)
+00:00:17.243 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:17.243 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after vfork from child process 11556]
+00:00:17.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 51
+00:00:17.790 [INFO] [sway/ipc-server.c:571] IPC Client 51 disconnected
+00:00:18.048 [DEBUG] [sway/ipc-server.c:327] Sending window::focus event
+00:00:18.049 [DEBUG] [sway/desktop/layer_shell.c:386] Layer surface destroyed (tamber-controls)
+00:00:18.049 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e1070720 committing with 3 instructions
+00:00:18.049 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e1070720
+00:00:18.053 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:18.053 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+00:00:18.370 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e1069d50 (res 0xaaf9e1073f40)
+00:00:18.370 [DEBUG] [wlr] [types/wlr_layer_shell_v1.c:460] new layer_surface 0xaaf9e107bbb0 (res 0xaaf9e10447e0)
+00:00:18.370 [DEBUG] [sway/desktop/layer_shell.c:646] new layer surface: namespace tamber-games layer 3 anchor 0 size 1050x650 margin 0,0,0,0,
+TAMBER_FRAME games
+[Detaching after vfork from child process 11560]
+00:00:18.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 52
+00:00:18.791 [INFO] [sway/ipc-server.c:571] IPC Client 52 disconnected
+00:00:19.177 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:19.177 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+00:00:19.585 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:19.585 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+qt.qpa.wayland: Ignoring unexpected wl_keyboard.leave event. wl_surface argument does not match the current focus This is most likely a compositor bug
+00:00:19.587 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:19.587 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after vfork from child process 11563]
+00:00:19.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 53
+00:00:19.790 [INFO] [sway/ipc-server.c:571] IPC Client 53 disconnected
+00:00:19.996 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:19.996 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+qt.qpa.wayland: Ignoring unexpected wl_keyboard.leave event. wl_surface argument does not match the current focus This is most likely a compositor bug
+00:00:20.298 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:20.298 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after vfork from child process 11565]
+00:00:20.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 53
+00:00:20.790 [INFO] [sway/ipc-server.c:571] IPC Client 53 disconnected
+00:00:21.000 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:21.000 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+qt.qpa.wayland: Ignoring unexpected wl_keyboard.leave event. wl_surface argument does not match the current focus This is most likely a compositor bug
+00:00:21.002 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:21.002 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+00:00:21.414 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:21.414 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+qt.qpa.wayland: Ignoring unexpected wl_keyboard.leave event. wl_surface argument does not match the current focus This is most likely a compositor bug
+[Detaching after vfork from child process 11571]
+00:00:21.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 49
+00:00:21.791 [INFO] [sway/ipc-server.c:571] IPC Client 49 disconnected
+00:00:21.917 [DEBUG] [wlr] [types/output/render.c:187] Disabling direct scan-out on output 'HEADLESS-1' (locks: 1)
+00:00:21.918 [DEBUG] [wlr] [types/output/render.c:187] Enabling direct scan-out on output 'HEADLESS-1' (locks: 0)
+00:00:21.948 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:21.948 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+00:00:22.357 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:22.357 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+qt.qpa.wayland: Ignoring unexpected wl_keyboard.leave event. wl_surface argument does not match the current focus This is most likely a compositor bug
+00:00:22.661 [DEBUG] [wlr] [types/output/render.c:187] Disabling direct scan-out on output 'HEADLESS-1' (locks: 1)
+00:00:22.662 [DEBUG] [wlr] [types/output/render.c:187] Enabling direct scan-out on output 'HEADLESS-1' (locks: 0)
+00:00:22.694 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:22.694 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after vfork from child process 11576]
+00:00:22.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 53
+00:00:22.791 [INFO] [sway/ipc-server.c:571] IPC Client 53 disconnected
+00:00:23.102 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:23.102 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+qt.qpa.wayland: Ignoring unexpected wl_keyboard.leave event. wl_surface argument does not match the current focus This is most likely a compositor bug
+00:00:23.405 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:23.405 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after vfork from child process 11578]
+00:00:23.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 53
+00:00:23.790 [INFO] [sway/ipc-server.c:571] IPC Client 53 disconnected
+00:00:23.920 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:23.920 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+qt.qpa.wayland: Ignoring unexpected wl_keyboard.leave event. wl_surface argument does not match the current focus This is most likely a compositor bug
+00:00:24.322 [DEBUG] [wlr] [types/output/render.c:187] Disabling direct scan-out on output 'HEADLESS-1' (locks: 1)
+00:00:24.323 [DEBUG] [wlr] [types/output/render.c:187] Enabling direct scan-out on output 'HEADLESS-1' (locks: 0)
+00:00:24.353 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:24.353 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+00:00:24.779 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:24.779 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+qt.qpa.wayland: Ignoring unexpected wl_keyboard.leave event. wl_surface argument does not match the current focus This is most likely a compositor bug
+[Detaching after vfork from child process 11581]
+00:00:24.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 49
+00:00:24.791 [INFO] [sway/ipc-server.c:571] IPC Client 49 disconnected
+00:00:25.282 [DEBUG] [wlr] [types/output/render.c:187] Disabling direct scan-out on output 'HEADLESS-1' (locks: 1)
+00:00:25.283 [DEBUG] [wlr] [types/output/render.c:187] Enabling direct scan-out on output 'HEADLESS-1' (locks: 0)
+00:00:25.313 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:25.313 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after fork from child process 11584]
+00:00:25.721 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:25.721 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+00:00:25.722 [DEBUG] [sway/ipc-server.c:197] New client: fd 49
+00:00:25.723 [INFO] [sway/ipc-server.c:571] IPC Client 49 disconnected
+[New Thread 0xffffb2abec20 (LWP 11587)]
+00:00:25.727 [DEBUG] [sway/ipc-server.c:327] Sending window::focus event
+00:00:25.727 [DEBUG] [sway/desktop/layer_shell.c:386] Layer surface destroyed (tamber-games)
+00:00:25.727 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0f5dfb0 committing with 3 instructions
+00:00:25.727 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0f5dfb0
+00:00:25.743 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e103a4a0 (res 0xaaf9e1054280)
+00:00:25.743 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e0ff7aa0 (res 0xaaf9e0f5e740)
+[Detaching after vfork from child process 11595]
+00:00:25.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 55
+00:00:25.790 [INFO] [sway/ipc-server.c:571] IPC Client 55 disconnected
+libEGL warning: failed to get driver name for fd -1
+
+libEGL warning: MESA-LOADER: failed to retrieve device information
+
+libEGL warning: failed to get driver name for fd -1
+
+MESA: error: ZINK: vkCreateInstance failed (VK_ERROR_INCOMPATIBLE_DRIVER)
+libEGL warning: egl: failed to create dri2 screen
+00:00:25.874 [DEBUG] [sway/ipc-server.c:197] New client: fd 55
+00:00:25.874 [INFO] [sway/ipc-server.c:571] IPC Client 55 disconnected
+00:00:26.026 [DEBUG] [sway/ipc-server.c:197] New client: fd 55
+00:00:26.026 [INFO] [sway/ipc-server.c:571] IPC Client 55 disconnected
+00:00:26.178 [DEBUG] [sway/ipc-server.c:197] New client: fd 55
+00:00:26.178 [INFO] [sway/ipc-server.c:571] IPC Client 55 disconnected
+[Thread 0xffffb2abec20 (LWP 11587) exited]
+00:00:26.329 [DEBUG] [sway/ipc-server.c:197] New client: fd 54
+00:00:26.330 [INFO] [sway/ipc-server.c:571] IPC Client 54 disconnected
+00:00:26.481 [DEBUG] [sway/ipc-server.c:197] New client: fd 54
+00:00:26.482 [INFO] [sway/ipc-server.c:571] IPC Client 54 disconnected
+00:00:26.633 [DEBUG] [sway/ipc-server.c:197] New client: fd 54
+00:00:26.633 [INFO] [sway/ipc-server.c:571] IPC Client 54 disconnected
+00:00:26.785 [DEBUG] [sway/ipc-server.c:197] New client: fd 54
+00:00:26.785 [INFO] [sway/ipc-server.c:571] IPC Client 54 disconnected
+[Detaching after vfork from child process 11612]
+00:00:26.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 54
+00:00:26.791 [INFO] [sway/ipc-server.c:571] IPC Client 54 disconnected
+00:00:26.936 [DEBUG] [sway/ipc-server.c:197] New client: fd 54
+00:00:26.937 [INFO] [sway/ipc-server.c:571] IPC Client 54 disconnected
+00:00:27.089 [DEBUG] [sway/ipc-server.c:197] New client: fd 54
+00:00:27.090 [INFO] [sway/ipc-server.c:571] IPC Client 54 disconnected
+00:00:27.241 [DEBUG] [sway/ipc-server.c:197] New client: fd 54
+00:00:27.242 [INFO] [sway/ipc-server.c:571] IPC Client 54 disconnected
+00:00:27.393 [DEBUG] [sway/ipc-server.c:197] New client: fd 54
+00:00:27.393 [INFO] [sway/ipc-server.c:571] IPC Client 54 disconnected
+00:00:27.545 [DEBUG] [sway/ipc-server.c:197] New client: fd 54
+00:00:27.545 [INFO] [sway/ipc-server.c:571] IPC Client 54 disconnected
+00:00:27.697 [DEBUG] [sway/ipc-server.c:197] New client: fd 54
+00:00:27.697 [INFO] [sway/ipc-server.c:571] IPC Client 54 disconnected
+
+(org.gnome.TwentyFortyEight:11585): Gdk-WARNING **: 12:55:50.302: Native Windows wider than 65535 pixels are not supported
+00:00:27.739 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e105d470 (res 0xaaf9e105d820)
+00:00:27.739 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e1045670 (res 0xaaf9e1045a20)
+00:00:27.739 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e0fa6350 (res 0xaaf9e0fa6700)
+00:00:27.739 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e1006590 (res 0xaaf9e1006940)
+00:00:27.739 [DEBUG] [wlr] [types/xdg_shell/wlr_xdg_surface.c:388] new xdg_surface 0xaaf9e103ce40 (res 0xaaf9e0f7fa80)
+00:00:27.739 [DEBUG] [sway/desktop/xdg_shell.c:530] New xdg_shell toplevel title='GNOME 2048' app_id='org.gnome.TwentyFortyEight'
+00:00:27.739 [DEBUG] [wlr] [types/wlr_server_decoration.c:104] new server_decoration 0xaaf9e1006a30 (res 0xaaf9e1051d60)
+00:00:27.739 [DEBUG] [wlr] [types/wlr_xdg_activation_v1.c:306] Rejecting activate request: unknown token
+00:00:27.739 [DEBUG] [wlr] [types/wlr_xdg_activation_v1.c:112] Rejecting token commit request: serial 0 was never given to client
+00:00:27.741 [DEBUG] [wlr] [types/wlr_xdg_activation_v1.c:306] Rejecting activate request: unknown token
+[Detaching after vfork from child process 11620]
+00:00:27.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 54
+00:00:27.791 [INFO] [sway/ipc-server.c:571] IPC Client 54 disconnected
+00:00:27.848 [DEBUG] [sway/ipc-server.c:197] New client: fd 54
+00:00:27.849 [INFO] [sway/ipc-server.c:571] IPC Client 54 disconnected
+00:00:28.000 [DEBUG] [sway/ipc-server.c:197] New client: fd 54
+00:00:28.000 [INFO] [sway/ipc-server.c:571] IPC Client 54 disconnected
+00:00:28.055 [DEBUG] [sway/ipc-server.c:327] Sending window::new event
+00:00:28.055 [DEBUG] [sway/tree/view.c:421] View 0xaaf9e1072320 updated CSD to 1
+00:00:28.055 [DEBUG] [sway/ipc-server.c:327] Sending window::title event
+00:00:28.055 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:28.055 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:28.055 [DEBUG] [sway/tree/arrange.c:77] Arranging 0xfffff3e49188 horizontally
+00:00:28.055 [DEBUG] [sway/ipc-server.c:327] Sending window::focus event
+00:00:28.055 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e1070700 committing with 4 instructions
+00:00:28.061 [DEBUG] [sway/desktop/transaction.c:494] Transaction 0xaaf9e1070700 is ready
+00:00:28.061 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e1070700
+00:00:28.061 [DEBUG] [sway/tree/container.c:1320] Container 0xaaf9e103ee90 entered output 0xaaf9e0f2ab40
+00:00:28.152 [DEBUG] [sway/ipc-server.c:197] New client: fd 56
+00:00:28.152 [INFO] [sway/ipc-server.c:571] IPC Client 56 disconnected
+00:00:28.655 [DEBUG] [wlr] [types/output/render.c:187] Disabling direct scan-out on output 'HEADLESS-1' (locks: 1)
+00:00:28.656 [DEBUG] [wlr] [types/output/render.c:187] Enabling direct scan-out on output 'HEADLESS-1' (locks: 0)
+00:00:28.699 [DEBUG] [sway/ipc-server.c:197] New client: fd 48
+00:00:28.700 [INFO] [sway/ipc-server.c:571] IPC Client 48 disconnected
+00:00:28.750 [DEBUG] [sway/ipc-server.c:197] New client: fd 48
+00:00:28.750 [DEBUG] [sway/criteria.c:726] Found pair: con_id=9
+00:00:28.750 [INFO] [sway/commands.c:261] Handling command 'move scratchpad'
+00:00:28.750 [DEBUG] [sway/ipc-server.c:327] Sending window::floating event
+00:00:28.751 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:28.751 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:28.751 [DEBUG] [sway/tree/arrange.c:77] Arranging 0xfffff3e49628 horizontally
+00:00:28.751 [DEBUG] [sway/ipc-server.c:327] Sending window::move event
+00:00:28.751 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0f80170 committing with 3 instructions
+00:00:28.751 [INFO] [sway/ipc-server.c:571] IPC Client 48 disconnected
+00:00:28.761 [DEBUG] [sway/ipc-server.c:197] New client: fd 58
+00:00:28.761 [INFO] [sway/ipc-server.c:571] IPC Client 58 disconnected
+00:00:28.768 [DEBUG] [sway/desktop/transaction.c:494] Transaction 0xaaf9e0f80170 is ready
+00:00:28.768 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0f80170
+00:00:28.768 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0f3fa20 committing with 1 instructions
+00:00:28.768 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0f3fa20
+[Detaching after vfork from child process 11630]
+00:00:28.789 [DEBUG] [sway/ipc-server.c:197] New client: fd 55
+00:00:28.790 [INFO] [sway/ipc-server.c:571] IPC Client 55 disconnected
+00:00:28.802 [DEBUG] [sway/ipc-server.c:197] New client: fd 55
+00:00:28.802 [DEBUG] [sway/criteria.c:726] Found pair: con_id=9
+00:00:28.802 [INFO] [sway/commands.c:261] Handling command 'scratchpad show'
+00:00:28.802 [DEBUG] [sway/tree/container.c:726] Transformed container 0xaaf9e104a5f0 to coords (324.000000, 100.500000)
+00:00:28.802 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:28.802 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:28.802 [DEBUG] [sway/tree/arrange.c:77] Arranging 0xfffff3e495d8 horizontally
+00:00:28.802 [DEBUG] [sway/ipc-server.c:327] Sending window::focus event
+00:00:28.802 [DEBUG] [sway/ipc-server.c:327] Sending window::move event
+00:00:28.802 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0fa91d0 committing with 4 instructions
+00:00:28.802 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0fa91d0
+00:00:28.802 [INFO] [sway/ipc-server.c:571] IPC Client 55 disconnected
+00:00:28.812 [DEBUG] [sway/ipc-server.c:197] New client: fd 45
+00:00:28.812 [INFO] [sway/ipc-server.c:571] IPC Client 45 disconnected
+warn: render.c:2681: compositor is not releasing buffers immediately; expect lower rendering performance
+00:00:28.853 [DEBUG] [sway/ipc-server.c:197] New client: fd 59
+00:00:28.853 [DEBUG] [sway/criteria.c:726] Found pair: con_id=9
+00:00:28.853 [INFO] [sway/commands.c:261] Handling command 'floating toggle'
+00:00:28.853 [DEBUG] [sway/ipc-server.c:327] Sending window::move event
+00:00:28.853 [DEBUG] [sway/ipc-server.c:327] Sending window::floating event
+00:00:28.853 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:28.853 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:28.853 [DEBUG] [sway/tree/arrange.c:77] Arranging 0xfffff3e49658 horizontally
+00:00:28.853 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e103ca70 committing with 3 instructions
+00:00:28.858 [INFO] [sway/ipc-server.c:571] IPC Client 59 disconnected
+00:00:28.858 [DEBUG] [sway/desktop/transaction.c:494] Transaction 0xaaf9e103ca70 is ready
+00:00:28.858 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e103ca70
+00:00:28.863 [DEBUG] [sway/ipc-server.c:197] New client: fd 55
+00:00:28.863 [INFO] [sway/ipc-server.c:571] IPC Client 55 disconnected
+00:00:29.154 [DEBUG] [sway/ipc-server.c:197] New client: fd 58
+00:00:29.154 [DEBUG] [sway/criteria.c:726] Found pair: con_id=9
+00:00:29.154 [INFO] [sway/commands.c:261] Handling command 'fullscreen toggle'
+00:00:29.154 [DEBUG] [sway/ipc-server.c:327] Sending window::fullscreen_mode event
+00:00:29.154 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:29.154 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:29.154 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0f50130 committing with 2 instructions
+00:00:29.154 [INFO] [sway/ipc-server.c:571] IPC Client 58 disconnected
+00:00:29.159 [DEBUG] [sway/desktop/transaction.c:494] Transaction 0xaaf9e0f50130 is ready
+00:00:29.159 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0f50130
+00:00:29.164 [DEBUG] [sway/ipc-server.c:197] New client: fd 45
+00:00:29.165 [INFO] [sway/ipc-server.c:571] IPC Client 45 disconnected
+00:00:29.175 [DEBUG] [sway/desktop/output.c:611] Scanning out fullscreen view on HEADLESS-1
+00:00:29.205 [DEBUG] [sway/ipc-server.c:197] New client: fd 59
+00:00:29.205 [DEBUG] [sway/criteria.c:726] Found pair: con_id=9
+00:00:29.205 [INFO] [sway/commands.c:261] Handling command 'fullscreen toggle'
+00:00:29.205 [DEBUG] [sway/ipc-server.c:327] Sending window::fullscreen_mode event
+00:00:29.205 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:29.205 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:29.205 [DEBUG] [sway/tree/arrange.c:77] Arranging 0xfffff3e49598 horizontally
+00:00:29.205 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e105d940 committing with 3 instructions
+00:00:29.205 [INFO] [sway/ipc-server.c:571] IPC Client 59 disconnected
+00:00:29.207 [DEBUG] [sway/desktop/transaction.c:494] Transaction 0xaaf9e105d940 is ready
+00:00:29.207 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e105d940
+00:00:29.216 [DEBUG] [sway/ipc-server.c:197] New client: fd 48
+00:00:29.216 [INFO] [sway/ipc-server.c:571] IPC Client 48 disconnected
+00:00:29.257 [DEBUG] [sway/ipc-server.c:197] New client: fd 48
+00:00:29.257 [DEBUG] [sway/criteria.c:726] Found pair: con_id=9
+00:00:29.257 [INFO] [sway/commands.c:261] Handling command 'kill'
+00:00:29.257 [INFO] [sway/ipc-server.c:571] IPC Client 48 disconnected
+00:00:29.258 [DEBUG] [sway/ipc-server.c:327] Sending window::close event
+00:00:29.258 [DEBUG] [sway/ipc-server.c:327] Sending window::focus event
+00:00:29.258 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:29.258 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:29.258 [DEBUG] [sway/tree/arrange.c:77] Arranging 0xfffff3e49258 horizontally
+00:00:29.258 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0f5dfb0 committing with 4 instructions
+warn: terminal.c:1802: slave exited with signal 1 (Hangup)
+00:00:29.265 [DEBUG] [sway/desktop/transaction.c:494] Transaction 0xaaf9e0f5dfb0 is ready
+00:00:29.265 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0f5dfb0
+00:00:29.267 [DEBUG] [sway/ipc-server.c:197] New client: fd 45
+00:00:29.267 [INFO] [sway/ipc-server.c:571] IPC Client 45 disconnected
+[Detaching after vfork from child process 11643]
+00:00:29.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 37
+00:00:29.790 [INFO] [sway/ipc-server.c:571] IPC Client 37 disconnected
+00:00:30.140 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e1044480 (res 0xaaf9e0f5e1a0)
+00:00:30.140 [DEBUG] [wlr] [types/xdg_shell/wlr_xdg_surface.c:388] new xdg_surface 0xaaf9e1063b60 (res 0xaaf9e0f54960)
+00:00:30.140 [DEBUG] [wlr] [types/wlr_xdg_decoration_v1.c:219] new xdg_toplevel_decoration 0xaaf9e10700d0 (res 0xaaf9e1072d40)
+00:00:30.146 [DEBUG] [sway/desktop/xdg_shell.c:530] New xdg_shell toplevel title='Tamber Shell — development session' app_id='shell-ui-test'
+00:00:30.159 [DEBUG] [sway/ipc-server.c:327] Sending window::new event
+00:00:30.159 [DEBUG] [sway/ipc-server.c:327] Sending window::title event
+00:00:30.159 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:30.159 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:30.159 [DEBUG] [sway/tree/arrange.c:77] Arranging 0xfffff3e49188 horizontally
+00:00:30.159 [DEBUG] [sway/ipc-server.c:327] Sending window::focus event
+00:00:30.159 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e106c340 committing with 4 instructions
+00:00:30.170 [DEBUG] [sway/desktop/transaction.c:494] Transaction 0xaaf9e106c340 is ready
+00:00:30.170 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e106c340
+00:00:30.170 [DEBUG] [sway/tree/container.c:1320] Container 0xaaf9e104a5f0 entered output 0xaaf9e0f2ab40
+00:00:30.703 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e103d950 (res 0xaaf9e0f58200)
+00:00:30.703 [DEBUG] [wlr] [types/xdg_shell/wlr_xdg_surface.c:388] new xdg_surface 0xaaf9e10402a0 (res 0xaaf9e0f54060)
+00:00:30.703 [DEBUG] [wlr] [types/wlr_xdg_decoration_v1.c:219] new xdg_toplevel_decoration 0xaaf9e103fbc0 (res 0xaaf9e0f56b20)
+00:00:30.710 [DEBUG] [sway/desktop/xdg_shell.c:530] New xdg_shell toplevel title='Tamber launch integration test' app_id='launch-probe'
+[Detaching after vfork from child process 11678]
+00:00:30.789 [DEBUG] [sway/ipc-server.c:197] New client: fd 61
+00:00:30.790 [INFO] [sway/ipc-server.c:571] IPC Client 61 disconnected
+00:00:31.270 [DEBUG] [sway/ipc-server.c:327] Sending window::close event
+00:00:31.270 [DEBUG] [sway/ipc-server.c:327] Sending window::focus event
+00:00:31.270 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:31.270 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:31.270 [DEBUG] [sway/tree/arrange.c:77] Arranging 0xfffff3e49508 horizontally
+00:00:31.270 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e105d940 committing with 4 instructions
+00:00:31.278 [DEBUG] [sway/desktop/transaction.c:494] Transaction 0xaaf9e105d940 is ready
+00:00:31.278 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e105d940
+00:00:31.366 [DEBUG] [sway/ipc-server.c:197] New client: fd 45
+00:00:31.366 [DEBUG] [sway/criteria.c:726] Found pair: app_id=org.gnome.TwentyFortyEight
+00:00:31.366 [INFO] [sway/commands.c:261] Handling command 'kill'
+00:00:31.366 [INFO] [sway/ipc-server.c:571] IPC Client 45 disconnected
+
+(org.gnome.TwentyFortyEight:11585): Clutter-CRITICAL **: 12:55:53.933: Unable to create dummy onscreen: No foreign surface, and wl_shell unsupported by the compositor
+00:00:31.412 [DEBUG] [sway/ipc-server.c:327] Sending window::close event
+00:00:31.412 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:31.412 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:31.412 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e103fd40 committing with 2 instructions
+00:00:31.412 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e103fd40
+00:00:31.412 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e0fa7330 (res 0xaaf9e0f55a40)
+[Detaching after vfork from child process 11703]
+00:00:31.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 37
+00:00:31.791 [INFO] [sway/ipc-server.c:571] IPC Client 37 disconnected
+00:00:31.868 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:31.868 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+00:00:32.272 [DEBUG] [sway/commands/bind.c:619] running command for binding: exec tamber-desktop --command games
+00:00:32.272 [INFO] [sway/commands.c:261] Handling command 'exec tamber-desktop --command games'
+00:00:32.272 [DEBUG] [sway/commands/exec_always.c:58] Executing tamber-desktop --command games
+00:00:32.279 [DEBUG] [sway/commands/exec_always.c:111] Child process created with pid 11706
+00:00:32.279 [DEBUG] [sway/commands/exec_always.c:113] Recording workspace for process 11706
+00:00:32.284 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:32.284 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+00:00:32.296 [DEBUG] [sway/desktop/layer_shell.c:386] Layer surface destroyed (tamber-dock)
+00:00:32.296 [DEBUG] [sway/desktop/layer_shell.c:229] Usable area changed, rearranging output
+00:00:32.296 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x686@0,34
+00:00:32.296 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:32.296 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e103fd40 committing with 1 instructions
+00:00:32.296 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e103fd40
+00:00:32.296 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e103a4a0 (res 0xaaf9e0f5a2a0)
+00:00:32.296 [DEBUG] [wlr] [types/wlr_layer_shell_v1.c:460] new layer_surface 0xaaf9e0fd4bc0 (res 0xaaf9e0f592e0)
+00:00:32.296 [DEBUG] [sway/desktop/layer_shell.c:646] new layer surface: namespace tamber-console layer 3 anchor 15 size 0x0 margin 0,0,0,0,
+TAMBER_FRAME console
+TAMBER_CONSOLE_STATE {"visible":true,"modeActive":true,"width":1280,"height":720,"section":0,"selection":0,"zone":1,"details":false,"count":3,"selected":"org.gnome.TwentyFortyEight.desktop","filter":0,"reducedMotion":false,"notice":"","pending":"","running":""}
+[Detaching after vfork from child process 11710]
+00:00:32.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 49
+00:00:32.790 [INFO] [sway/ipc-server.c:571] IPC Client 49 disconnected
+00:00:32.989 [DEBUG] [wlr] [types/output/render.c:187] Disabling direct scan-out on output 'HEADLESS-1' (locks: 1)
+00:00:32.990 [DEBUG] [wlr] [types/output/render.c:187] Enabling direct scan-out on output 'HEADLESS-1' (locks: 0)
+00:00:33.024 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:33.024 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+00:00:33.433 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:33.433 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+TAMBER_CONSOLE_STATE {"visible":true,"modeActive":true,"width":1280,"height":720,"section":0,"selection":1,"zone":1,"details":false,"count":3,"selected":"org.gnome.Chess.desktop","filter":0,"reducedMotion":false,"notice":"","pending":"","running":""}
+00:00:33.586 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:33.586 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after vfork from child process 11714]
+00:00:33.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 53
+00:00:33.791 [INFO] [sway/ipc-server.c:571] IPC Client 53 disconnected
+00:00:33.999 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:33.999 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+TAMBER_CONSOLE_STATE {"visible":true,"modeActive":true,"width":1280,"height":720,"section":0,"selection":0,"zone":2,"details":true,"count":3,"selected":"org.gnome.TwentyFortyEight.desktop","filter":0,"reducedMotion":false,"notice":"","pending":"","running":""}
+00:00:34.552 [DEBUG] [wlr] [types/output/render.c:187] Disabling direct scan-out on output 'HEADLESS-1' (locks: 1)
+00:00:34.554 [DEBUG] [wlr] [types/output/render.c:187] Enabling direct scan-out on output 'HEADLESS-1' (locks: 0)
+00:00:34.587 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:34.587 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after vfork from child process 11717]
+00:00:34.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 53
+00:00:34.790 [INFO] [sway/ipc-server.c:571] IPC Client 53 disconnected
+00:00:35.002 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:35.002 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+TAMBER_CONSOLE_STATE {"visible":true,"modeActive":true,"width":1280,"height":720,"section":1,"selection":0,"zone":1,"details":false,"count":3,"selected":"org.gnome.TwentyFortyEight.desktop","filter":0,"reducedMotion":false,"notice":"","pending":"","running":""}
+00:00:35.555 [DEBUG] [wlr] [types/output/render.c:187] Disabling direct scan-out on output 'HEADLESS-1' (locks: 1)
+00:00:35.557 [DEBUG] [wlr] [types/output/render.c:187] Enabling direct scan-out on output 'HEADLESS-1' (locks: 0)
+00:00:35.590 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:35.590 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after vfork from child process 11720]
+00:00:35.791 [DEBUG] [sway/ipc-server.c:197] New client: fd 53
+00:00:35.791 [INFO] [sway/ipc-server.c:571] IPC Client 53 disconnected
+00:00:35.999 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:35.999 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+TAMBER_CONSOLE_STATE {"visible":true,"modeActive":true,"width":1280,"height":720,"section":1,"selection":0,"zone":1,"details":false,"count":1,"selected":"org.gnome.TwentyFortyEight.desktop","filter":1,"reducedMotion":false,"notice":"","pending":"","running":""}
+00:00:36.152 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:36.152 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+00:00:36.565 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:36.565 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+TAMBER_CONSOLE_STATE {"visible":true,"modeActive":true,"width":1280,"height":720,"section":1,"selection":0,"zone":1,"details":false,"count":0,"selected":"","filter":3,"reducedMotion":false,"notice":"","pending":"","running":""}
+00:00:36.719 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:36.719 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after vfork from child process 11723]
+00:00:36.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 53
+00:00:36.791 [INFO] [sway/ipc-server.c:571] IPC Client 53 disconnected
+00:00:37.127 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:37.127 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+TAMBER_CONSOLE_STATE {"visible":true,"modeActive":true,"width":1280,"height":720,"section":1,"selection":0,"zone":1,"details":false,"count":3,"selected":"org.gnome.TwentyFortyEight.desktop","filter":0,"reducedMotion":false,"notice":"","pending":"","running":""}
+00:00:37.431 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:37.431 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after vfork from child process 11725]
+00:00:37.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 53
+00:00:37.791 [INFO] [sway/ipc-server.c:571] IPC Client 53 disconnected
+TAMBER_CONSOLE_STATE {"visible":true,"modeActive":true,"width":1280,"height":720,"section":1,"selection":0,"zone":1,"details":false,"count":0,"selected":"","filter":0,"reducedMotion":false,"notice":"","pending":"","running":""}
+00:00:37.886 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:37.886 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+00:00:38.290 [DEBUG] [wlr] [types/output/render.c:187] Disabling direct scan-out on output 'HEADLESS-1' (locks: 1)
+00:00:38.291 [DEBUG] [wlr] [types/output/render.c:187] Enabling direct scan-out on output 'HEADLESS-1' (locks: 0)
+00:00:38.325 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:38.325 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+00:00:38.750 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:38.750 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+[Detaching after vfork from child process 11728]
+00:00:38.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 45
+00:00:38.790 [INFO] [sway/ipc-server.c:571] IPC Client 45 disconnected
+TAMBER_CONSOLE_STATE {"visible":true,"modeActive":true,"width":1280,"height":720,"section":1,"selection":0,"zone":1,"details":false,"count":1,"selected":"org.gnome.TwentyFortyEight.desktop","filter":0,"reducedMotion":false,"notice":"","pending":"","running":""}
+00:00:38.903 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:38.903 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after fork from child process 11730]
+00:00:39.320 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:39.320 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+[New Thread 0xffffb2abec20 (LWP 11732)]
+00:00:39.326 [DEBUG] [sway/desktop/layer_shell.c:386] Layer surface destroyed (tamber-console)
+00:00:39.326 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0f58910 committing with 2 instructions
+00:00:39.326 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0f58910
+00:00:39.342 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e103a4a0 (res 0xaaf9e0f29ea0)
+00:00:39.342 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e10942c0 (res 0xaaf9e0f58d40)
+libEGL warning: failed to get driver name for fd -1
+
+libEGL warning: MESA-LOADER: failed to retrieve device information
+
+libEGL warning: failed to get driver name for fd -1
+
+MESA: error: ZINK: vkCreateInstance failed (VK_ERROR_INCOMPATIBLE_DRIVER)
+libEGL warning: egl: failed to create dri2 screen
+
+(org.gnome.TwentyFortyEight:11731): Gdk-WARNING **: 12:56:01.995: Native Windows wider than 65535 pixels are not supported
+00:00:39.432 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e1044450 (res 0xaaf9e0f59d00)
+00:00:39.432 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e106fe90 (res 0xaaf9e0f58320)
+00:00:39.432 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e103d950 (res 0xaaf9e0f58200)
+00:00:39.432 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e10392c0 (res 0xaaf9e0f55140)
+00:00:39.432 [DEBUG] [wlr] [types/xdg_shell/wlr_xdg_surface.c:388] new xdg_surface 0xaaf9e1066c40 (res 0xaaf9e0f568e0)
+00:00:39.432 [DEBUG] [sway/desktop/xdg_shell.c:530] New xdg_shell toplevel title='GNOME 2048' app_id='org.gnome.TwentyFortyEight'
+00:00:39.432 [DEBUG] [wlr] [types/wlr_server_decoration.c:104] new server_decoration 0xaaf9e106a110 (res 0xaaf9e0f33930)
+00:00:39.432 [DEBUG] [wlr] [types/wlr_xdg_activation_v1.c:306] Rejecting activate request: unknown token
+00:00:39.432 [DEBUG] [wlr] [types/wlr_xdg_activation_v1.c:112] Rejecting token commit request: serial 0 was never given to client
+00:00:39.434 [DEBUG] [wlr] [types/wlr_xdg_activation_v1.c:306] Rejecting activate request: unknown token
+00:00:39.452 [DEBUG] [sway/desktop/launcher.c:85] Looking up workspace for pid 11731
+00:00:39.452 [DEBUG] [sway/ipc-server.c:327] Sending window::new event
+00:00:39.452 [DEBUG] [sway/tree/view.c:421] View 0xaaf9e1040910 updated CSD to 1
+00:00:39.452 [DEBUG] [sway/ipc-server.c:327] Sending window::title event
+00:00:39.452 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x686@0,34
+00:00:39.452 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:39.452 [DEBUG] [sway/tree/arrange.c:77] Arranging 0xfffff3e49188 horizontally
+00:00:39.452 [DEBUG] [sway/ipc-server.c:327] Sending window::focus event
+00:00:39.452 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e1084c90 committing with 3 instructions
+00:00:39.460 [DEBUG] [sway/desktop/transaction.c:494] Transaction 0xaaf9e1084c90 is ready
+00:00:39.460 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e1084c90
+00:00:39.460 [DEBUG] [sway/tree/container.c:1320] Container 0xaaf9e1041f20 entered output 0xaaf9e0f2ab40
+TAMBER_CONSOLE_STATE {"visible":false,"modeActive":true,"width":1280,"height":720,"section":1,"selection":0,"zone":2,"details":true,"count":1,"selected":"org.gnome.TwentyFortyEight.desktop","filter":0,"reducedMotion":false,"notice":"","pending":"org.gnome.TwentyFortyEight","running":""}
+00:00:39.623 [DEBUG] [sway/ipc-server.c:197] New client: fd 55
+00:00:39.623 [INFO] [sway/ipc-server.c:571] IPC Client 55 disconnected
+00:00:39.775 [DEBUG] [sway/ipc-server.c:197] New client: fd 55
+00:00:39.775 [INFO] [sway/ipc-server.c:571] IPC Client 55 disconnected
+[Detaching after vfork from child process 11752]
+00:00:39.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 55
+00:00:39.790 [INFO] [sway/ipc-server.c:571] IPC Client 55 disconnected
+[Thread 0xffffb1aaec20 (LWP 11526) exited]
+[Detaching after vfork from child process 11753]
+00:00:39.914 [DEBUG] [sway/ipc-server.c:197] New client: fd 55
+00:00:39.914 [DEBUG] [sway/criteria.c:726] Found pair: con_id=12
+00:00:39.914 [INFO] [sway/commands.c:261] Handling command 'fullscreen enable'
+00:00:39.914 [DEBUG] [sway/ipc-server.c:327] Sending window::fullscreen_mode event
+00:00:39.914 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x686@0,34
+00:00:39.914 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:39.914 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e1084c90 committing with 2 instructions
+00:00:39.915 [INFO] [sway/ipc-server.c:571] IPC Client 55 disconnected
+[Detaching after vfork from child process 11754]
+00:00:39.916 [DEBUG] [sway/ipc-server.c:197] New client: fd 55
+00:00:39.916 [DEBUG] [sway/criteria.c:726] Found pair: con_id=12
+00:00:39.916 [INFO] [sway/commands.c:261] Handling command 'focus'
+00:00:39.916 [INFO] [sway/ipc-server.c:571] IPC Client 55 disconnected
+[Detaching after vfork from child process 11755]
+00:00:39.916 [DEBUG] [sway/ipc-server.c:197] New client: fd 54
+00:00:39.917 [INFO] [sway/ipc-server.c:571] IPC Client 54 disconnected
+00:00:39.928 [DEBUG] [sway/desktop/transaction.c:494] Transaction 0xaaf9e1084c90 is ready
+00:00:39.928 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e1084c90
+00:00:39.928 [DEBUG] [sway/ipc-server.c:197] New client: fd 57
+00:00:39.929 [INFO] [sway/ipc-server.c:571] IPC Client 57 disconnected
+00:00:39.932 [DEBUG] [sway/desktop/output.c:615] Stopping fullscreen view scan out on HEADLESS-1
+TAMBER_CONSOLE_STATE {"visible":false,"modeActive":true,"width":1280,"height":720,"section":1,"selection":0,"zone":2,"details":true,"count":1,"selected":"org.gnome.TwentyFortyEight.desktop","filter":0,"reducedMotion":false,"notice":"","pending":"","running":"12"}
+00:00:40.331 [DEBUG] [wlr] [types/output/render.c:187] Disabling direct scan-out on output 'HEADLESS-1' (locks: 1)
+00:00:40.332 [DEBUG] [wlr] [types/output/render.c:187] Enabling direct scan-out on output 'HEADLESS-1' (locks: 0)
+00:00:40.362 [DEBUG] [sway/ipc-server.c:197] New client: fd 57
+00:00:40.362 [DEBUG] [sway/criteria.c:726] Found pair: app_id=org.gnome.TwentyFortyEight
+00:00:40.363 [INFO] [sway/commands.c:261] Handling command 'kill'
+00:00:40.363 [INFO] [sway/ipc-server.c:571] IPC Client 57 disconnected
+
+(org.gnome.TwentyFortyEight:11731): Clutter-CRITICAL **: 12:56:02.930: Unable to create dummy onscreen: No foreign surface, and wl_shell unsupported by the compositor
+00:00:40.366 [DEBUG] [sway/ipc-server.c:327] Sending window::close event
+00:00:40.366 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x686@0,34
+00:00:40.366 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:40.366 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0f5acc0 committing with 2 instructions
+00:00:40.366 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0f5acc0
+00:00:40.366 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e108e370 (res 0xaaf9e0f54de0)
+[Detaching after vfork from child process 11762]
+00:00:40.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 45
+00:00:40.791 [INFO] [sway/ipc-server.c:571] IPC Client 45 disconnected
+00:00:40.813 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e1073370 (res 0xaaf9e0f59760)
+00:00:40.813 [DEBUG] [wlr] [types/wlr_layer_shell_v1.c:460] new layer_surface 0xaaf9e103dfb0 (res 0xaaf9e0f3afa0)
+00:00:40.813 [DEBUG] [sway/desktop/layer_shell.c:646] new layer surface: namespace tamber-console layer 3 anchor 15 size 0x0 margin 0,0,0,0,
+TAMBER_CONSOLE_STATE {"visible":true,"modeActive":true,"width":1280,"height":720,"section":1,"selection":0,"zone":2,"details":true,"count":1,"selected":"org.gnome.TwentyFortyEight.desktop","filter":0,"reducedMotion":false,"notice":"","pending":"","running":""}
+00:00:41.368 [DEBUG] [wlr] [types/output/render.c:187] Disabling direct scan-out on output 'HEADLESS-1' (locks: 1)
+00:00:41.369 [DEBUG] [wlr] [types/output/render.c:187] Enabling direct scan-out on output 'HEADLESS-1' (locks: 0)
+00:00:41.405 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:41.405 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after vfork from child process 11765]
+00:00:41.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 53
+00:00:41.790 [INFO] [sway/ipc-server.c:571] IPC Client 53 disconnected
+00:00:41.813 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:41.813 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+TAMBER_CONSOLE_STATE {"visible":true,"modeActive":true,"width":1280,"height":720,"section":2,"selection":0,"zone":1,"details":false,"count":13,"selected":"org.gnome.TwentyFortyEight.desktop","filter":0,"reducedMotion":false,"notice":"","pending":"","running":""}
+00:00:41.966 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:41.966 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+00:00:42.422 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:42.422 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+TAMBER_CONSOLE_STATE {"visible":true,"modeActive":true,"width":1280,"height":720,"section":2,"selection":0,"zone":1,"details":false,"count":1,"selected":"tamber-test.desktop","filter":0,"reducedMotion":false,"notice":"","pending":"","running":""}
+00:00:42.575 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:42.575 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after vfork from child process 11768]
+00:00:42.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 53
+00:00:42.790 [INFO] [sway/ipc-server.c:571] IPC Client 53 disconnected
+[Detaching after fork from child process 11769]
+00:00:42.992 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:42.992 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+[New Thread 0xffffb1aaec20 (LWP 11771)]
+00:00:42.995 [DEBUG] [sway/desktop/layer_shell.c:386] Layer surface destroyed (tamber-console)
+00:00:42.995 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0f4c080 committing with 2 instructions
+00:00:42.995 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0f4c080
+00:00:43.003 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e1073370 (res 0xaaf9e0f56b20)
+00:00:43.003 [DEBUG] [wlr] [types/xdg_shell/wlr_xdg_surface.c:388] new xdg_surface 0xaaf9e1066c40 (res 0xaaf9e0f3ab20)
+00:00:43.003 [DEBUG] [wlr] [types/wlr_xdg_decoration_v1.c:219] new xdg_toplevel_decoration 0xaaf9e105fba0 (res 0xaaf9e0f59d00)
+00:00:43.003 [DEBUG] [sway/desktop/xdg_shell.c:530] New xdg_shell toplevel title='(null)' app_id='tamber-test'
+00:00:43.003 [DEBUG] [wlr] [types/wlr_xdg_activation_v1.c:306] Rejecting activate request: unknown token
+00:00:43.003 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e108e370 (res 0xaaf9e0f58200)
+00:00:43.004 [DEBUG] [sway/desktop/launcher.c:85] Looking up workspace for pid 11770
+00:00:43.004 [DEBUG] [sway/ipc-server.c:327] Sending window::new event
+00:00:43.004 [DEBUG] [sway/ipc-server.c:327] Sending window::title event
+00:00:43.004 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x686@0,34
+00:00:43.004 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:43.004 [DEBUG] [sway/tree/arrange.c:77] Arranging 0xfffff3e49188 horizontally
+00:00:43.004 [DEBUG] [sway/ipc-server.c:327] Sending window::focus event
+00:00:43.004 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e1091ed0 committing with 3 instructions
+00:00:43.006 [DEBUG] [sway/desktop/transaction.c:494] Transaction 0xaaf9e1091ed0 is ready
+00:00:43.006 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e1091ed0
+00:00:43.006 [DEBUG] [sway/tree/container.c:1320] Container 0xaaf9e1041f20 entered output 0xaaf9e0f2ab40
+TAMBER_CONSOLE_STATE {"visible":false,"modeActive":true,"width":1280,"height":720,"section":2,"selection":0,"zone":2,"details":true,"count":1,"selected":"tamber-test.desktop","filter":0,"reducedMotion":false,"notice":"","pending":"tamber-test","running":""}
+00:00:43.144 [DEBUG] [sway/ipc-server.c:197] New client: fd 45
+00:00:43.145 [INFO] [sway/ipc-server.c:571] IPC Client 45 disconnected
+[Thread 0xffffb2abec20 (LWP 11732) exited]
+00:00:43.547 [DEBUG] [wlr] [types/output/render.c:187] Disabling direct scan-out on output 'HEADLESS-1' (locks: 1)
+00:00:43.548 [DEBUG] [wlr] [types/output/render.c:187] Enabling direct scan-out on output 'HEADLESS-1' (locks: 0)
+[Detaching after vfork from child process 11793]
+00:00:43.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 55
+00:00:43.791 [INFO] [sway/ipc-server.c:571] IPC Client 55 disconnected
+[Detaching after vfork from child process 11794]
+00:00:43.885 [DEBUG] [sway/ipc-server.c:197] New client: fd 55
+00:00:43.885 [DEBUG] [sway/criteria.c:726] Found pair: con_id=13
+00:00:43.885 [INFO] [sway/commands.c:261] Handling command 'fullscreen enable'
+00:00:43.885 [DEBUG] [sway/ipc-server.c:327] Sending window::fullscreen_mode event
+00:00:43.885 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x686@0,34
+00:00:43.885 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:43.885 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e105ef10 committing with 2 instructions
+[Detaching after vfork from child process 11795]
+00:00:43.886 [DEBUG] [sway/ipc-server.c:197] New client: fd 57
+00:00:43.886 [DEBUG] [sway/criteria.c:726] Found pair: con_id=13
+00:00:43.886 [INFO] [sway/commands.c:261] Handling command 'focus'
+00:00:43.886 [INFO] [sway/ipc-server.c:571] IPC Client 57 disconnected
+00:00:43.888 [INFO] [sway/ipc-server.c:571] IPC Client 55 disconnected
+00:00:43.888 [DEBUG] [sway/desktop/transaction.c:494] Transaction 0xaaf9e105ef10 is ready
+00:00:43.888 [DEBUG] [Detaching after vfork from child process 11796]
+[sway/desktop/transaction.c:294] Applying transaction 0xaaf9e105ef10
+00:00:43.889 [DEBUG] [sway/ipc-server.c:197] New client: fd 45
+00:00:43.889 [INFO] [sway/ipc-server.c:571] IPC Client 45 disconnected
+00:00:43.904 [DEBUG] [sway/desktop/output.c:611] Scanning out fullscreen view on HEADLESS-1
+TAMBER_CONSOLE_STATE {"visible":false,"modeActive":true,"width":1280,"height":720,"section":2,"selection":0,"zone":2,"details":true,"count":1,"selected":"tamber-test.desktop","filter":0,"reducedMotion":false,"notice":"","pending":"","running":"13"}
+00:00:44.184 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:44.184 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+00:00:44.588 [DEBUG] [sway/commands/bind.c:619] running command for binding: exec tamber-desktop --command games
+00:00:44.588 [INFO] [sway/commands.c:261] Handling command 'exec tamber-desktop --command games'
+00:00:44.588 [DEBUG] [sway/commands/exec_always.c:58] Executing tamber-desktop --command games
+00:00:44.590 [DEBUG] [sway/commands/exec_always.c:111] Child process created with pid 11800
+00:00:44.590 [DEBUG] [sway/commands/exec_always.c:113] Recording workspace for process 11800
+00:00:44.594 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:44.594 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+00:00:44.606 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e103a4a0 (res 0xaaf9e10450f0)
+00:00:44.606 [DEBUG] [wlr] [types/wlr_layer_shell_v1.c:460] new layer_surface 0xaaf9e103dfb0 (res 0xaaf9e0f55260)
+00:00:44.606 [DEBUG] [sway/desktop/layer_shell.c:646] new layer surface: namespace tamber-console layer 3 anchor 15 size 0x0 margin 0,0,0,0,
+00:00:44.610 [DEBUG] [sway/desktop/output.c:615] Stopping fullscreen view scan out on HEADLESS-1
+TAMBER_CONSOLE_STATE {"visible":true,"modeActive":true,"width":1280,"height":720,"section":2,"selection":0,"zone":2,"details":true,"count":1,"selected":"tamber-test.desktop","filter":0,"reducedMotion":false,"notice":"","pending":"","running":"13"}
+00:00:44.747 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:44.747 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after vfork from child process 11805]
+00:00:44.789 [DEBUG] [sway/ipc-server.c:197] New client: fd 56
+00:00:44.790 [INFO] [sway/ipc-server.c:571] IPC Client 56 disconnected
+00:00:45.152 [DEBUG] [sway/commands/bind.c:619] running command for binding: exec tamber-desktop --command games
+00:00:45.152 [INFO] [sway/commands.c:261] Handling command 'exec tamber-desktop --command games'
+00:00:45.152 [DEBUG] [sway/commands/exec_always.c:58] Executing tamber-desktop --command games
+00:00:45.153 [DEBUG] [sway/commands/exec_always.c:111] Child process created with pid 11807
+00:00:45.153 [DEBUG] [sway/commands/exec_always.c:113] Recording workspace for process 11807
+00:00:45.158 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:45.158 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+qt.qpa.wayland: Ignoring unexpected wl_keyboard.leave event. wl_surface argument does not match the current focus This is most likely a compositor bug
+[Detaching after vfork from child process 11811]
+00:00:45.171 [DEBUG] [sway/ipc-server.c:327] Sending window::focus event
+00:00:45.171 [DEBUG] [sway/desktop/layer_shell.c:386] Layer surface destroyed (tamber-console)
+00:00:45.171 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e1006180 committing with 3 instructions
+00:00:45.171 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e1006180
+00:00:45.171 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e103a4a0 (res 0xaaf9e0f588c0)
+00:00:45.171 [DEBUG] [wlr] [types/wlr_layer_shell_v1.c:460] new layer_surface 0xaaf9e1072580 (res 0xaaf9e0f5a4e0)
+00:00:45.171 [DEBUG] [sway/desktop/layer_shell.c:646] new layer surface: namespace tamber-dock layer 2 anchor 2 size 960x76 margin 0,0,12,0,
+00:00:45.171 [DEBUG] [sway/desktop/layer_shell.c:229] Usable area changed, rearranging output
+00:00:45.171 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:45.171 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:45.171 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e1006180 committing with 2 instructions
+00:00:45.171 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e1006180
+00:00:45.171 [DEBUG] [sway/ipc-server.c:197] New client: fd 58
+00:00:45.171 [DEBUG] [sway/criteria.c:726] Found pair: con_id=13
+00:00:45.171 [INFO] [sway/commands.c:261] Handling command 'fullscreen disable'
+00:00:45.171 [DEBUG] [sway/ipc-server.c:327] Sending window::fullscreen_mode event
+00:00:45.171 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:45.171 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:45.171 [DEBUG] [sway/tree/arrange.c:77] Arranging 0xfffff3e49598 horizontally
+00:00:45.171 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e106d9d0 committing with 2 instructions
+00:00:45.171 [INFO] [sway/ipc-server.c:571] IPC Client 58 disconnected
+[Detaching after vfork from child process 11812]
+00:00:45.173 [DEBUG] [sway/ipc-server.c:197] New client: fd 56
+00:00:45.173 [INFO] [sway/ipc-server.c:571] IPC Client 56 disconnected
+00:00:45.175 [DEBUG] [sway/desktop/transaction.c:494] Transaction 0xaaf9e106d9d0 is ready
+00:00:45.175 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e106d9d0
+TAMBER_CONSOLE_STATE {"visible":false,"modeActive":false,"width":1280,"height":720,"section":2,"selection":0,"zone":2,"details":true,"count":1,"selected":"tamber-test.desktop","filter":0,"reducedMotion":false,"notice":"","pending":"","running":""}
+00:00:45.311 [DEBUG] [sway/ipc-server.c:197] New client: fd 55
+00:00:45.311 [INFO] [sway/ipc-server.c:571] IPC Client 55 disconnected
+00:00:45.312 [DEBUG] [sway/ipc-server.c:197] New client: fd 55
+00:00:45.313 [INFO] [sway/ipc-server.c:571] IPC Client 55 disconnected
+00:00:45.313 [DEBUG] [sway/ipc-server.c:197] New client: fd 55
+00:00:45.314 [INFO] [sway/ipc-server.c:571] IPC Client 55 disconnected
+00:00:45.315 [DEBUG] [sway/ipc-server.c:197] New client: fd 55
+00:00:45.315 [DEBUG] [sway/criteria.c:726] Found pair: app_id=tamber-test
+00:00:45.315 [INFO] [sway/commands.c:261] Handling command 'kill'
+00:00:45.315 [INFO] [sway/ipc-server.c:571] IPC Client 55 disconnected
+00:00:45.316 [DEBUG] [sway/ipc-server.c:327] Sending window::close event
+00:00:45.316 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:45.316 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:45.316 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e105dd40 committing with 2 instructions
+00:00:45.316 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e105dd40
+00:00:45.317 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:45.317 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+warn: terminal.c:1802: slave exited with signal 1 (Hangup)
+00:00:45.721 [DEBUG] [sway/commands/bind.c:619] running command for binding: exec tamber-desktop --command games
+00:00:45.721 [INFO] [sway/commands.c:261] Handling command 'exec tamber-desktop --command games'
+00:00:45.722 [DEBUG] [sway/commands/exec_always.c:58] Executing tamber-desktop --command games
+00:00:45.723 [DEBUG] [sway/commands/exec_always.c:111] Child process created with pid 11820
+00:00:45.723 [DEBUG] [sway/commands/exec_always.c:113] Recording workspace for process 11820
+00:00:45.728 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:45.728 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+00:00:45.739 [DEBUG] [sway/desktop/layer_shell.c:386] Layer surface destroyed (tamber-dock)
+00:00:45.739 [DEBUG] [sway/desktop/layer_shell.c:229] Usable area changed, rearranging output
+00:00:45.739 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x686@0,34
+00:00:45.739 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:45.739 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e1084c30 committing with 1 instructions
+00:00:45.739 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e1084c30
+00:00:45.739 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e108e370 (res 0xaaf9e0f58320)
+00:00:45.739 [DEBUG] [wlr] [types/wlr_layer_shell_v1.c:460] new layer_surface 0xaaf9e107bbb0 (res 0xaaf9e0f4bf10)
+00:00:45.739 [DEBUG] [sway/desktop/layer_shell.c:646] new layer surface: namespace tamber-console layer 3 anchor 15 size 0x0 margin 0,0,0,0,
+[Detaching after vfork from child process 11825]
+00:00:45.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 49
+00:00:45.790 [INFO] [sway/ipc-server.c:571] IPC Client 49 disconnected
+TAMBER_CONSOLE_STATE {"visible":true,"modeActive":true,"width":1280,"height":720,"section":2,"selection":0,"zone":2,"details":true,"count":1,"selected":"tamber-test.desktop","filter":0,"reducedMotion":false,"notice":"","pending":"","running":""}
+00:00:46.032 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:46.032 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+00:00:46.453 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:46.453 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+TAMBER_CONSOLE_STATE {"visible":true,"modeActive":true,"width":1280,"height":720,"section":6,"selection":0,"zone":1,"details":false,"count":3,"selected":"org.gnome.TwentyFortyEight.desktop","filter":0,"reducedMotion":false,"notice":"","pending":"","running":""}
+00:00:46.606 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:46.606 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after vfork from child process 11828]
+00:00:46.791 [DEBUG] [sway/ipc-server.c:197] New client: fd 53
+00:00:46.791 [INFO] [sway/ipc-server.c:571] IPC Client 53 disconnected
+00:00:47.016 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:47.016 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+TAMBER_CONSOLE_STATE {"visible":true,"modeActive":true,"width":1280,"height":720,"section":6,"selection":0,"zone":1,"details":false,"count":3,"selected":"org.gnome.TwentyFortyEight.desktop","filter":0,"reducedMotion":true,"notice":"","pending":"","running":""}
+00:00:47.570 [DEBUG] [wlr] [types/output/render.c:187] Disabling direct scan-out on output 'HEADLESS-1' (locks: 1)
+00:00:47.571 [DEBUG] [wlr] [types/output/render.c:187] Enabling direct scan-out on output 'HEADLESS-1' (locks: 0)
+00:00:47.602 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:47.602 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+[Detaching after vfork from child process 11831]
+00:00:47.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 53
+00:00:47.790 [INFO] [sway/ipc-server.c:571] IPC Client 53 disconnected
+00:00:48.011 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:48.011 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+TAMBER_CONSOLE_STATE {"visible":true,"modeActive":true,"width":1280,"height":720,"section":0,"selection":0,"zone":1,"details":false,"count":3,"selected":"org.gnome.TwentyFortyEight.desktop","filter":0,"reducedMotion":true,"notice":"","pending":"","running":""}
+00:00:48.164 [DEBUG] [sway/input/input-manager.c:411] adding virtual keyboard: '0:0:wlr_virtual_keyboard_v1'
+00:00:48.164 [DEBUG] [sway/input/seat.c:974] adding device 0:0:wlr_virtual_keyboard_v1 to seat seat0
+00:00:48.569 [DEBUG] [sway/desktop/layer_shell.c:386] Layer surface destroyed (tamber-console)
+00:00:48.569 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0f50250 committing with 2 instructions
+00:00:48.569 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0f50250
+00:00:48.569 [DEBUG] [wlr] [types/wlr_compositor.c:692] New wlr_surface 0xaaf9e108e370 (res 0xaaf9e0ff7f20)
+00:00:48.569 [DEBUG] [wlr] [types/wlr_layer_shell_v1.c:460] new layer_surface 0xaaf9e1054450 (res 0xaaf9e1091140)
+00:00:48.569 [DEBUG] [sway/desktop/layer_shell.c:646] new layer surface: namespace tamber-dock layer 2 anchor 2 size 960x76 margin 0,0,12,0,
+00:00:48.569 [DEBUG] [sway/desktop/layer_shell.c:229] Usable area changed, rearranging output
+00:00:48.569 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x590@0,34
+00:00:48.569 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 46.000000
+00:00:48.569 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0f50250 committing with 1 instructions
+00:00:48.569 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0f50250
+00:00:48.572 [DEBUG] [sway/input/input-manager.c:202] removing device: '0:0:wlr_virtual_keyboard_v1'
+00:00:48.572 [DEBUG] [sway/input/seat.c:994] removing device 0:0:wlr_virtual_keyboard_v1 from seat seat0
+TAMBER_CONSOLE_STATE {"visible":false,"modeActive":false,"width":1280,"height":720,"section":0,"selection":0,"zone":1,"details":false,"count":3,"selected":"org.gnome.TwentyFortyEight.desktop","filter":0,"reducedMotion":true,"notice":"","pending":"","running":""}
+[Detaching after vfork from child process 11833]
+00:00:48.790 [DEBUG] [sway/ipc-server.c:197] New client: fd 49
+00:00:48.791 [INFO] [sway/ipc-server.c:571] IPC Client 49 disconnected
+00:00:49.127 [DEBUG] [wlr] [types/output/render.c:187] Disabling direct scan-out on output 'HEADLESS-1' (locks: 1)
+00:00:49.128 [DEBUG] [wlr] [types/output/render.c:187] Enabling direct scan-out on output 'HEADLESS-1' (locks: 0)
+00:00:49.171 [DEBUG] [sway/ipc-server.c:197] New client: fd 49
+00:00:49.171 [INFO] [sway/ipc-server.c:571] IPC Client 49 disconnected
+00:00:49.213 [DEBUG] [sway/ipc-server.c:197] New client: fd 49
+00:00:49.213 [INFO] [sway/commands.c:261] Handling command 'exit'
+00:00:49.213 [INFO] [sway/main.c:418] Shutting down sway
+00:00:49.213 [DEBUG] [sway/desktop/layer_shell.c:386] Layer surface destroyed (waybar)
+00:00:49.213 [DEBUG] [sway/desktop/layer_shell.c:229] Usable area changed, rearranging output
+00:00:49.213 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x624@0,0
+00:00:49.213 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 12.000000
+00:00:49.213 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0f4e850 committing with 1 instructions
+00:00:49.213 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0f4e850
+00:00:49.213 [DEBUG] [sway/desktop/layer_shell.c:386] Layer surface destroyed (tamber-wallpaper)
+Gdk-Message: 12:56:11.779: Error reading events from display: Broken pipe
+00:00:49.214 [DEBUG] [sway/desktop/layer_shell.c:386] Layer surface destroyed (tamber-dock)
+00:00:49.214 [DEBUG] [sway/desktop/layer_shell.c:229] Usable area changed, rearranging output
+00:00:49.214 [DEBUG] [sway/tree/arrange.c:263] Usable area for ws: 1280x720@0,0
+00:00:49.214 [DEBUG] [sway/tree/arrange.c:297] Arranging workspace '1' at 12.000000, 12.000000
+00:00:49.214 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e103fd40 committing with 1 instructions
+00:00:49.214 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e103fd40
+00:00:49.214 [DEBUG] [sway/tree/output.c:264] Disabling output 'HEADLESS-1'
+00:00:49.214 [DEBUG] [sway/tree/workspace.c:145] Destroying workspace '1'
+00:00:49.214 [DEBUG] [sway/ipc-server.c:301] Sending workspace::empty event
+The Wayland connection broke. Did the Wayland compositor die?
+00:00:49.214 [DEBUG] [sway/tree/output.c:287] Destroying output 'HEADLESS-1'
+00:00:49.214 [DEBUG] [sway/desktop/transaction.c:398] Transaction 0xaaf9e0f5a770 committing with 2 instructions
+00:00:49.214 [DEBUG] [sway/desktop/transaction.c:294] Applying transaction 0xaaf9e0f5a770
+00:00:49.215 [INFO] [sway/ipc-server.c:571] IPC Client 49 disconnected
+00:00:49.215 [INFO] [sway/ipc-server.c:571] IPC Client 26 disconnected
+00:00:49.215 [INFO] [sway/ipc-server.c:571] IPC Client 24 disconnected
+00:00:49.215 [INFO] [sway/ipc-server.c:571] IPC Client 22 disconnected
+00:00:49.215 [INFO] [sway/ipc-server.c:571] IPC Client 20 disconnected
+[Thread 0xffffb1aaec20 (LWP 11771) exited]
+[Thread 0xffffb3acec20 (LWP 11522) exited]
+[Thread 0xffffc112ec20 (LWP 11521) exited]
+[Thread 0xffffcafeec20 (LWP 11486) exited]
+[Thread 0xffffcbffec20 (LWP 11485) exited]
+[Thread 0xffffddf30c20 (LWP 11484) exited]
+[Thread 0xffffdef40c20 (LWP 11483) exited]
+[Thread 0xffffdfffec20 (LWP 11482) exited]
+[Thread 0xffffedbcec20 (LWP 11481) exited]
+[Thread 0xffffeebdec20 (LWP 11480) exited]
+[Thread 0xffffefbeec20 (LWP 11478) exited]
+[Thread 0xfffff71dd020 (LWP 11415) exited]
+[Thread 0xfffff0bfec20 (LWP 11477) exited]
+[New process 11415]
+[Inferior 1 (process 11415) exited with code 01]
+No stack.

@@ -65,3 +65,14 @@
 18. Replace mock metrics with read-only local service.
 19. Integrate optional Ollama connectivity with explicit offline states.
 20. Create first versioned pre-alpha installer image + rollback notes.
+
+## M4 desktop / console increment (2026-10-26)
+
+- [x] Refine M3 desktop and Waybar while preserving assets
+- [x] Full-output console, keyboard navigation, search, details and installed-app launch
+- [x] Native ARM64 builds and actual headless Wayland screenshots/logs
+- [x] Fullscreen handoff, return on game close and restoration on mode exit
+- [ ] Physical controller mappings, full Alma graphical packaging and multimonitor acceptance
+- [ ] Shutdown/reboot integration, emulator gameplay and remaining original M4 AI/system goals
+
+See status.md for exact tested scope. This does not complete M2 physical hardware acceptance.

@@ -1,0 +1,30 @@
+{
+  "tested_commit": "d19c107f053ab3d93fb3124c4b7debc2a03122b0",
+  "base_m3_commit": "bb5bd388ab3819b20cccc4a509d2f2a28a119e20",
+  "desktop_run": 40325938997,
+  "checks_run": 40325939248,
+  "jobs": {
+    "wayland_arm64": 121582511538,
+    "alma_arm64": 121582511070,
+    "legacy_arm64_x11": 121582512078,
+    "offline": 121582512391
+  },
+  "all_jobs": "success",
+  "artifacts": [
+    {
+      "id": 12651461933,
+      "name": "m4-wayland-runtime",
+      "sha256": "dc6d781d5c09afa8c64d6c37ab3e5611e998e3226fcd7e675e40f5b536061388"
+    },
+    {
+      "id": 12651027790,
+      "name": "m4-alma-arm64-build",
+      "sha256": "f4f4fdc6d29f71a0e254f027a7246d28ae04bae7e6fd76a4dae46fafe78cee5c"
+    }
+  ],
+  "artifact_download_digests_verified": true,
+  "graphical_platform": "Ubuntu ARM64 Sway headless/pixman",
+  "almalinux_scope": "ARM64 compilation and offscreen CTest",
+  "hardware_validation": "pending",
+  "physical_devices_used": false
+}

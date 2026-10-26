@@ -1,0 +1,1 @@
+PASS: original assets match their recorded SHA256 values

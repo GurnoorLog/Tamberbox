@@ -1,0 +1,344 @@
+[
+  {
+    "name": "waybar",
+    "role": "application"
+  },
+  {
+    "name": "waybar",
+    "role": "frame",
+    "rect": [
+      0,
+      0,
+      1280,
+      34
+    ]
+  },
+  {
+    "name": "",
+    "role": "filler",
+    "rect": [
+      0,
+      0,
+      1280,
+      34
+    ]
+  },
+  {
+    "name": "",
+    "role": "filler",
+    "rect": [
+      0,
+      0,
+      318,
+      34
+    ]
+  },
+  {
+    "name": "",
+    "role": "panel",
+    "rect": [
+      0,
+      0,
+      107,
+      34
+    ]
+  },
+  {
+    "name": "\u25c6  TamberOS",
+    "role": "label",
+    "text": "\u25c6  TamberOS",
+    "rect": [
+      0,
+      0,
+      107,
+      34
+    ]
+  },
+  {
+    "name": "",
+    "role": "panel",
+    "rect": [
+      107,
+      0,
+      142,
+      34
+    ]
+  },
+  {
+    "name": "",
+    "role": "filler",
+    "rect": [
+      107,
+      0,
+      142,
+      34
+    ]
+  },
+  {
+    "name": "1",
+    "role": "push button",
+    "rect": [
+      110,
+      0,
+      34,
+      34
+    ]
+  },
+  {
+    "name": "2",
+    "role": "push button",
+    "rect": [
+      144,
+      0,
+      34,
+      34
+    ]
+  },
+  {
+    "name": "3",
+    "role": "push button",
+    "rect": [
+      178,
+      0,
+      34,
+      34
+    ]
+  },
+  {
+    "name": "4",
+    "role": "push button",
+    "rect": [
+      212,
+      0,
+      34,
+      34
+    ]
+  },
+  {
+    "name": "",
+    "role": "panel",
+    "rect": [
+      249,
+      0,
+      69,
+      34
+    ]
+  },
+  {
+    "name": "",
+    "role": "filler",
+    "rect": [
+      249,
+      0,
+      69,
+      34
+    ]
+  },
+  {
+    "name": "",
+    "role": "icon",
+    "rect": [
+      -2147483648,
+      -2147483648,
+      24,
+      34
+    ]
+  },
+  {
+    "name": "Desktop",
+    "role": "label",
+    "text": "Desktop",
+    "rect": [
+      249,
+      0,
+      69,
+      34
+    ]
+  },
+  {
+    "name": "",
+    "role": "filler",
+    "rect": [
+      586,
+      0,
+      108,
+      34
+    ]
+  },
+  {
+    "name": "",
+    "role": "panel",
+    "rect": [
+      586,
+      0,
+      108,
+      34
+    ]
+  },
+  {
+    "name": "12:55  26 Oct",
+    "role": "label",
+    "text": "12:55  26 Oct",
+    "rect": [
+      586,
+      0,
+      108,
+      34
+    ]
+  },
+  {
+    "name": "",
+    "role": "filler",
+    "rect": [
+      892,
+      0,
+      388,
+      34
+    ]
+  },
+  {
+    "name": "",
+    "role": "panel",
+    "rect": [
+      892,
+      0,
+      34,
+      34
+    ]
+  },
+  {
+    "name": "",
+    "role": "filler",
+    "rect": [
+      892,
+      0,
+      34,
+      34
+    ]
+  },
+  {
+    "name": "",
+    "role": "panel",
+    "rect": [
+      902,
+      3,
+      14,
+      28
+    ]
+  },
+  {
+    "name": "",
+    "role": "icon",
+    "rect": [
+      902,
+      3,
+      14,
+      28
+    ]
+  },
+  {
+    "name": "",
+    "role": "panel",
+    "rect": [
+      926,
+      0,
+      84,
+      34
+    ]
+  },
+  {
+    "name": "CPU 14%",
+    "role": "label",
+    "text": "CPU 14%",
+    "rect": [
+      926,
+      0,
+      84,
+      34
+    ]
+  },
+  {
+    "name": "",
+    "role": "panel",
+    "rect": [
+      1010,
+      0,
+      84,
+      34
+    ]
+  },
+  {
+    "name": "RAM 9%",
+    "role": "label",
+    "text": "RAM 9%",
+    "rect": [
+      1010,
+      0,
+      84,
+      34
+    ]
+  },
+  {
+    "name": "",
+    "role": "panel",
+    "rect": [
+      1094,
+      0,
+      44,
+      34
+    ]
+  },
+  {
+    "name": "LAN",
+    "role": "label",
+    "text": "LAN",
+    "rect": [
+      1094,
+      0,
+      44,
+      34
+    ]
+  },
+  {
+    "name": "",
+    "role": "panel",
+    "rect": [
+      1138,
+      0,
+      84,
+      34
+    ]
+  },
+  {
+    "name": "VOL 100%",
+    "role": "label",
+    "text": "VOL 100%",
+    "rect": [
+      1138,
+      0,
+      84,
+      34
+    ]
+  },
+  {
+    "name": "",
+    "role": "panel",
+    "rect": [
+      1222,
+      0,
+      58,
+      34
+    ]
+  },
+  {
+    "name": "BT n/a",
+    "role": "label",
+    "text": "BT n/a",
+    "rect": [
+      1222,
+      0,
+      58,
+      34
+    ]
+  }
+]

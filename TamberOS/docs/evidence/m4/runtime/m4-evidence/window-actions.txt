@@ -1,0 +1,8 @@
+********* Start testing of SessionTest *********
+Config: Using QtTest library 6.4.2, Qt 6.4.2 (arm64-little_endian-lp64 shared (dynamic) release build; by GCC 13.2.0), ubuntu 24.04
+PASS   : SessionTest::initTestCase()
+PASS   : SessionTest::parseTree()
+PASS   : SessionTest::realCompositor()
+PASS   : SessionTest::cleanupTestCase()
+Totals: 4 passed, 0 failed, 0 skipped, 0 blacklisted, 609ms
+********* Finished testing of SessionTest *********
