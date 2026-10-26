@@ -53,11 +53,13 @@
   },
   "cpu": {
     "interval": 3,
-    "format": "CPU {usage}%"
+    "format": "CPU {usage}%",
+    "min-length": 8
   },
   "memory": {
     "interval": 5,
-    "format": "RAM {percentage}%"
+    "format": "RAM {percentage}%",
+    "min-length": 8
   },
   "network": {
     "format-wifi": "Wi-Fi {signalStrength}%",
@@ -69,7 +71,8 @@
   "pulseaudio": {
     "format": "VOL {volume}%",
     "format-muted": "Muted",
-    "scroll-step": 5
+    "scroll-step": 5,
+    "min-length": 8
   },
   "bluetooth": {
     "format": "BT",

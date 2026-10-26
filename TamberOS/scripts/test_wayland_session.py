@@ -3,6 +3,7 @@
 import json,os,pathlib,subprocess,tempfile,time,shutil
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 OUT=ROOT/'build/m3-evidence';OUT.mkdir(parents=True,exist_ok=True)
+(OUT/'result.json').unlink(missing_ok=True)
 def wait(test,seconds=15):
  end=time.monotonic()+seconds
  while time.monotonic()<end:
@@ -93,10 +94,14 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   run('wtype','-M','ctrl','-k','f','-m','ctrl');time.sleep(.3)
   run('wtype','no-game-matches-this-query');time.sleep(.4);run('grim',str(OUT/'game-empty-search.png'))
   run('wtype','-M','ctrl','-k','a','-m','ctrl','2048');time.sleep(.5);run('grim',str(OUT/'game-search.png'))
-  run('wtype','-k','Return');time.sleep(2)
-  tree=run('swaymsg','-t','get_tree','-r').stdout
+  run('wtype','-k','Return')
+  def game_window():
+   tree=run('swaymsg','-t','get_tree','-r').stdout
+   def contains(node):
+    return node.get('app_id')=='org.gnome.TwentyFortyEight' or any(contains(c) for k in ['nodes','floating_nodes'] for c in node.get(k,[]))
+   return tree if contains(json.loads(tree)) else None
+  tree=wait(game_window,30);time.sleep(.5)
   (OUT/'game-window.json').write_text(tree)
-  assert '2048' in tree, 'Installed game did not launch'
   run('grim',str(OUT/'game-running.png'))
   env['TAMBER_TEST_SWAY']='1'
   result=run(str(ROOT/'build/shell/session-test'));(OUT/'window-actions.txt').write_text(result.stdout+result.stderr)
@@ -109,7 +114,7 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   runtime_log=(OUT/'sway-session.log').read_text()
   for problem in ['Failed to get image from provider','ReferenceError:','TypeError:']:
    assert problem not in runtime_log, problem
-  (OUT/'result.json').write_text(json.dumps({'passed':True,'backend':'headless Sway / pixman','physical_devices_used':False,'launcher_keyboard_real_process':True,'window_minimize_restore_close':True,'single_top_bar':True,'waybar_pointer_launcher':True,'waybar_workspace_click':True,'waybar_null_sink_scroll':True,'waybar_tray_fixture_activation':True,'cover_import_and_favorite':True,'workspace_shortcut':True,'installed_game_launch':True,'controller_validation':'synthetic Linux joystick events only','hardware_validation':'pending'},indent=2)+'\n')
+  result_data={'passed':True,'backend':'headless Sway / pixman','physical_devices_used':False,'launcher_keyboard_real_process':True,'window_minimize_restore_close':True,'single_top_bar':True,'waybar_pointer_launcher':True,'waybar_workspace_click':True,'waybar_null_sink_scroll':True,'waybar_tray_fixture_activation':True,'cover_import_and_favorite':True,'workspace_shortcut':True,'installed_game_launch':True,'controller_validation':'synthetic Linux joystick events only','hardware_validation':'pending'}
  finally:
   if proc.poll() is None:
    run('swaymsg','exit',check=False);proc.wait(timeout=10)
@@ -121,3 +126,5 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
    if not unmount:raise RuntimeError('Cannot unmount the test document portal')
    run(unmount,'-u',str(runtime/'doc'))
   log.close()
+
+(OUT/'result.json').write_text(json.dumps(result_data,indent=2)+'\n')
