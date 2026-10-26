@@ -31,6 +31,6 @@ class WaybarGameIntegrationTest(unittest.TestCase):
   self.assertIn('"isGame"',source)
   self.assertIn('gameLibrary.games.filter',qml)
   self.assertIn('appLauncher.launch(modelData.appId)',qml)
-  self.assertIn('function showGames()',qml)
+  self.assertIn('function showLibrary()',qml)
 
 if __name__=='__main__':unittest.main()

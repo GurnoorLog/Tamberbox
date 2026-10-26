@@ -113,3 +113,9 @@ See [current verification and limitations](docs/status.md),
 [integration handoff](docs/m3-5-integration.md). Actual ARM64 runtime captures and
 CI results are archived under `docs/evidence/m3-play`; they are separate from
 M2 physical hardware acceptance, which remains pending.
+
+## M4 console and desktop refinement
+
+See [M4 build and controls](docs/m4-console.md), [current results](docs/status.md),
+and [preserved M3 results](docs/status-m3-play.md). Super+G enters the full-output
+console; Super+Shift+G retains access to the advanced M3 library.
