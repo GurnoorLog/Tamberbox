@@ -17,7 +17,7 @@ class AppIcons : public QQuickImageProvider {
 public:
  explicit AppIcons(Launcher *l):QQuickImageProvider(QQuickImageProvider::Pixmap),launcher(l){}
  QPixmap requestPixmap(const QString &id,QSize *size,const QSize &requested) override {
-  QString name;for(const auto &v:launcher->applications()){auto m=v.toMap();if(m["appId"].toString()==id){name=m["iconName"].toString();break;}}
+  QString name;for(const auto &v:launcher->applications()){auto m=v.toMap();if(m["appId"].toString()==id || m["appId"].toString()==id+".desktop"){name=m["iconName"].toString();break;}}
   QSize dimensions=requested.isValid()?requested:QSize(40,40);dimensions=dimensions.boundedTo(QSize(128,128));
   auto result=QIcon::fromTheme(name,QIcon(":/brand/application.svg")).pixmap(dimensions);if(size)*size=result.size();return result;
  }

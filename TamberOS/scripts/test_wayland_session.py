@@ -148,10 +148,17 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   run('wtype','-M','ctrl','-k','f','-m','ctrl','Tamber Test');state_is(count=1)
   run('wtype','-k','Down','-k','Return','-k','Return');state_is(visible=False)
   wait(windows,30);shot('console-app-running')
-  run('swaymsg','[app_id="tamber-test"] kill');state_is(visible=True)
+  state_is(visible=False,pending="")
+  run('wtype','-M','logo','-k','g','-m','logo');state_is(visible=True)
+  # Esc goes Home, then exits mode; fullscreen introduced by Play is reversed.
+  run('wtype','-k','Escape','-k','Escape');state_is(visible=False,modeActive=False)
+  wait(lambda: windows() if windows() and not windows()[0].get('fullscreen_mode') else None)
+  run('swaymsg','[app_id="tamber-test"] kill')
+  run('wtype','-M','logo','-k','g','-m','logo');state_is(visible=True,section=0)
+  run('wtype','-k','Next','-k','Next');state_is(section=2)
   # System navigation, reduced-motion preference, and escape route.
   run('wtype','-k','Next','-k','Next','-k','Next','-k','Next');state_is(section=6)
-  run('wtype','-k','Return');shot('console-system')
+  run('wtype','-k','Return');state_is(reducedMotion=True);shot('console-system')
   run('wtype','-k','Escape');state_is(section=0)
   run('wtype','-k','Escape');state_is(visible=False,modeActive=False)
   shot('desktop-restored')
@@ -162,7 +169,7 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   runtime_log=(OUT/'sway-session.log').read_text()
   for problem in ['Failed to get image from provider','ReferenceError:','TypeError:']:
    assert problem not in runtime_log, problem
-  result_data={'passed':True,'backend':'headless Sway / pixman','physical_devices_used':False,'launcher_keyboard_real_process':True,'window_minimize_restore_close':True,'single_top_bar':True,'waybar_pointer_launcher':True,'waybar_workspace_click':True,'waybar_null_sink_scroll':True,'waybar_tray_fixture_activation':True,'cover_import_and_favorite':True,'workspace_shortcut':True,'installed_game_launch':True,'console_full_output':True,'console_keyboard_navigation':True,'console_game_fullscreen_handoff':True,'console_return_on_game_close':True,'console_app_launch':True,'console_exit_restores_desktop':True,'controller_validation':'synthetic Linux joystick events only','hardware_validation':'pending'}
+  result_data={'passed':True,'backend':'headless Sway / pixman','physical_devices_used':False,'launcher_keyboard_real_process':True,'window_minimize_restore_close':True,'single_top_bar':True,'waybar_pointer_launcher':True,'waybar_workspace_click':True,'waybar_null_sink_scroll':True,'waybar_tray_fixture_activation':True,'cover_import_and_favorite':True,'workspace_shortcut':True,'installed_game_launch':True,'console_full_output':True,'console_keyboard_navigation':True,'console_game_fullscreen_handoff':True,'console_return_on_game_close':True,'console_app_launch':True,'console_exit_restores_desktop':True,'console_restores_app_fullscreen':True,'reduced_motion_toggle':True,'controller_validation':'synthetic Linux joystick events only','hardware_validation':'pending'}
  finally:
   if proc.poll() is None:
    run('swaymsg','exit',check=False);proc.wait(timeout=10)

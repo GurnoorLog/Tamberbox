@@ -120,7 +120,7 @@ Window {
         interval: 200; running: true; repeat: true
         property string previous: ""
         onTriggered: {
-            const value=JSON.stringify({visible:playMode.visible,modeActive:playMode.modeActive,width:playMode.width,height:playMode.height,section:playMode.section,selection:playMode.selection,zone:playMode.zone,details:playMode.details,count:playMode.entries.length,selected:playMode.selected?playMode.selected.appId:"",filter:playMode.filterIndex,pending:playMode.pendingId,running:playMode.runningId});
+            const value=JSON.stringify({visible:playMode.visible,modeActive:playMode.modeActive,width:playMode.width,height:playMode.height,section:playMode.section,selection:playMode.selection,zone:playMode.zone,details:playMode.details,count:playMode.entries.length,selected:playMode.selected?playMode.selected.appId:"",filter:playMode.filterIndex,reducedMotion:playMode.reducedMotion,notice:playMode.notice,pending:playMode.pendingId,running:playMode.runningId});
             if(value!==previous){previous=value;session.consoleState(value)}
         }
     }

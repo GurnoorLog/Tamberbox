@@ -88,7 +88,7 @@ Item {
                 delegate: Item {
                     required property var modelData
                     Layout.preferredWidth: 63; Layout.preferredHeight: 54
-                    Action { anchors.fill: parent; text: modelData.title.slice(0,8); onClicked: session.windowAction(modelData.id,"focus"); ToolTip.visible: hovered; ToolTip.text: modelData.title+(modelData.minimized?" · Minimized":"") }
+                    Action { anchors.fill: parent; text: modelData.title; contentItem: Image { source: "image://apps/"+modelData.appId; sourceSize.width: 32; sourceSize.height: 32; fillMode: Image.PreserveAspectFit; anchors.margins: 10 } onClicked: session.windowAction(modelData.id,"focus"); ToolTip.visible: hovered; ToolTip.text: modelData.title+(modelData.minimized?" · Minimized":"") }
                     Rectangle { width: modelData.focused ? 16 : 5; height: 3; radius: 2; anchors.bottom: parent.bottom; anchors.horizontalCenter: parent.horizontalCenter; color: modelData.minimized ? root.muted : root.accent; Behavior on width { NumberAnimation { duration: preferences.reducedMotion ? 0 : 150 } } }
                 }
             }
