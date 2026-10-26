@@ -9,9 +9,10 @@ Exact results and limitations are recorded in status.md and evidence/m3-play.
 
 Follow m3-desktop.md for the existing Qt 6.4+ and pinned LayerShellQt build.
 On a disposable Ubuntu 24.04 ARM64 runner, install `waybar pulseaudio
-pulseaudio-utils gnome-2048 python3-pyatspi gir1.2-atspi-2.0` in addition to the
+pulseaudio-utils gnome-2048 gnome-chess quadrapassel python3-dbus python3-pyatspi gir1.2-atspi-2.0` in addition to the
 existing build/runtime dependencies. Build with `TAMBER_WAYLAND_SESSION=ON`.
-Run `dbus-run-session python3 scripts/test_wayland_session.py` as an unprivileged
+First run `sh scripts/build_virtual_pointer.sh`, then
+run `dbus-run-session python3 scripts/test_wayland_session.py` as an unprivileged
 user. The script uses headless/pixman, private XDG directories, a null audio sink,
 and the real session configuration. It does not open DRM or physical storage.
 The full command sequence is in `.github/workflows/m3-desktop.yml`.
@@ -24,7 +25,7 @@ The HANCORE adaptation's upstream MIT notice is retained in
 ## Library
 
 Super+G or right-click the TamberOS label opens Play. Arrows navigate, Enter
-launches and Escape closes; Ctrl+F focuses search. The app launcher still uses
+launches and Escape closes; Ctrl+F focuses search, F toggles favorite and Ctrl+M opens cover management. The app launcher still uses
 Super+Space. Games come from visible GIO `.desktop` entries with the exact Game
 category, plus profiles explicitly added by the user. There is no filesystem
 crawler or automatic game/cover download.

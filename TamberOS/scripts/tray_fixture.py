@@ -15,6 +15,8 @@ class Item(dbus.service.Object):
  def GetAll(self,interface):return {'Category':'ApplicationStatus','Id':'tamber-tray-test','Title':'Tamber tray fixture','Status':'Active','IconName':'','IconPixmap':dbus.Array([dbus.Struct((16,16,dbus.ByteArray(bytes([255,230,165,106])*256)),signature='iiay')],signature='(iiay)'),'ItemIsMenu':False,'Menu':dbus.ObjectPath('/StatusNotifierItem')}
  @dbus.service.method('com.canonical.dbusmenu',in_signature='iias',out_signature='u(ia{sv}av)')
  def GetLayout(self,parent,depth,properties):return (1,(0,{},[]))
+ @dbus.service.method('com.canonical.dbusmenu',in_signature='aias',out_signature='a(ia{sv})')
+ def GetGroupProperties(self,ids,properties):return [(i,{}) for i in ids]
  @dbus.service.method('org.kde.StatusNotifierItem',in_signature='ii',out_signature='')
  def Activate(self,x,y):pathlib.Path(sys.argv[1]).write_text('activated\n')
  @dbus.service.method('org.kde.StatusNotifierItem',in_signature='ii',out_signature='')

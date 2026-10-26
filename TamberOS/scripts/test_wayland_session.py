@@ -23,7 +23,10 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
  proc=subprocess.Popen(['sway','-d','-c',str(config)],env=env,stdout=log,stderr=subprocess.STDOUT)
  def run(*args,check=True):
   if args[0]=='wtype':args=(args[0],'-s','400')+args[1:]
-  return subprocess.run(args,env=env,text=True,capture_output=True,check=check,timeout=15)
+  result=subprocess.run(args,env=env,text=True,capture_output=True,timeout=30)
+  if check and result.returncode:
+   print(result.stdout+result.stderr,flush=True);result.check_returncode()
+  return result
  try:
   sock=wait(lambda:next(iter(runtime.glob('sway-ipc.*.sock')),None));env['SWAYSOCK']=str(sock)
   display=wait(lambda:next((p for p in runtime.glob('wayland-*') if not p.name.endswith('.lock')),None));env['WAYLAND_DISPLAY']=display.name
@@ -43,6 +46,14 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   labels=json.loads(probe.stdout)
   for text in ['TamberOS','CPU','RAM','LAN','VOL','BT n/a']:
    assert any(text in (n.get('text','')+n['name']) for n in labels), 'Missing Waybar module: '+text
+  tray_icon=next(n for n in labels if n['role']=='icon' and 0<=n.get('rect',[-1])[0]<1280)
+  x,y,w,h=tray_icon['rect'];run(str(ROOT/'build/input-test/virtual-pointer'),str(x+w//2+8),str(y+h//2+4),'left')
+  wait(lambda:(base/'tray-activated').exists())
+  (OUT/'tray-activation.txt').write_text((base/'tray-activated').read_text())
+  workspace_button=next(n for n in labels if n['role']=='push button' and n['name']=='2')
+  x,y,w,h=workspace_button['rect'];run(str(ROOT/'build/input-test/virtual-pointer'),str(x+w//2+8),str(y+h//2+4),'left')
+  assert any(w['num']==2 and w['focused'] for w in json.loads(run('swaymsg','-t','get_workspaces','-r').stdout))
+  run('wtype','-M','logo','-k','1','-m','logo')
   volume=next(n for n in labels if 'VOL' in (n.get('text','')+n['name']) and n.get('rect',[0,0,0,0])[2]>0)
   x,y,w,h=volume['rect'];run('swaymsg','seat','seat0','cursor','set',str(x+w//2+8),str(y+h//2+4))
   before=run('pactl','get-sink-volume','@DEFAULT_SINK@').stdout
@@ -98,10 +109,15 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   runtime_log=(OUT/'sway-session.log').read_text()
   for problem in ['Failed to get image from provider','ReferenceError:','TypeError:']:
    assert problem not in runtime_log, problem
-  (OUT/'result.json').write_text(json.dumps({'passed':True,'backend':'headless Sway / pixman','physical_devices_used':False,'launcher_keyboard_real_process':True,'window_minimize_restore_close':True,'single_top_bar':True,'workspace_shortcut':True,'installed_game_launch':True,'controller_validation':'synthetic Linux joystick events only','hardware_validation':'pending'},indent=2)+'\n')
+  (OUT/'result.json').write_text(json.dumps({'passed':True,'backend':'headless Sway / pixman','physical_devices_used':False,'launcher_keyboard_real_process':True,'window_minimize_restore_close':True,'single_top_bar':True,'waybar_pointer_launcher':True,'waybar_workspace_click':True,'waybar_null_sink_scroll':True,'waybar_tray_fixture_activation':True,'cover_import_and_favorite':True,'workspace_shortcut':True,'installed_game_launch':True,'controller_validation':'synthetic Linux joystick events only','hardware_validation':'pending'},indent=2)+'\n')
  finally:
   if proc.poll() is None:
    run('swaymsg','exit',check=False);proc.wait(timeout=10)
   if 'tray' in locals():tray.terminate();tray.wait(timeout=5)
   run('pulseaudio','--kill',check=False)
+  # The document portal may mount FUSE inside this test's private runtime dir.
+  if os.path.ismount(runtime/'doc'):
+   unmount=shutil.which('fusermount3') or shutil.which('fusermount')
+   if not unmount:raise RuntimeError('Cannot unmount the test document portal')
+   run(unmount,'-u',str(runtime/'doc'))
   log.close()

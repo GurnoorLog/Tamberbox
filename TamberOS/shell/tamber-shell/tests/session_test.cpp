@@ -14,15 +14,20 @@ private slots:
   if(qEnvironmentVariableIsEmpty("TAMBER_TEST_SWAY"))QSKIP("Explicit isolated compositor integration only");
   Session s;QTRY_VERIFY_WITH_TIMEOUT(s.connected(),5000);
   QTRY_VERIFY_WITH_TIMEOUT(!s.windows().isEmpty(),5000);
-  auto window=s.windows().first().toMap();QString id=window["id"].toString();
+  QString id;
+  for(const auto &v:s.windows())if(v.toMap()["appId"]=="tamber-test")id=v.toMap()["id"].toString();
+  QVERIFY2(!id.isEmpty(),"The isolated terminal fixture must exist");
+  const auto before=s.windows().size();
+  auto target=[&](){for(const auto &v:s.windows())if(v.toMap()["id"].toString()==id)return v.toMap();return QVariantMap{};};
   s.windowAction("1] kill; exit","close");s.windowAction(id,"unsupported");
   s.windowAction(id,"minimize");
-  QTRY_VERIFY_WITH_TIMEOUT(s.windows().first().toMap()["minimized"].toBool(),5000);
-  s.windowAction(id,"focus");QTRY_VERIFY_WITH_TIMEOUT(!s.windows().first().toMap()["minimized"].toBool(),5000);
+  QTRY_VERIFY_WITH_TIMEOUT(target()["minimized"].toBool(),5000);
+  s.windowAction(id,"focus");QTRY_VERIFY_WITH_TIMEOUT(!target()["minimized"].toBool(),5000);
   s.windowAction(id,"float");QTest::qWait(300);
-  s.windowAction(id,"fullscreen");QTRY_VERIFY_WITH_TIMEOUT(s.windows().first().toMap()["fullscreen"].toBool(),5000);
-  s.windowAction(id,"fullscreen");QTRY_VERIFY_WITH_TIMEOUT(!s.windows().first().toMap()["fullscreen"].toBool(),5000);
-  s.windowAction(id,"close");QTRY_VERIFY_WITH_TIMEOUT(s.windows().isEmpty(),5000);
+  s.windowAction(id,"fullscreen");QTRY_VERIFY_WITH_TIMEOUT(target()["fullscreen"].toBool(),5000);
+  s.windowAction(id,"fullscreen");QTRY_VERIFY_WITH_TIMEOUT(!target()["fullscreen"].toBool(),5000);
+  s.windowAction(id,"close");QTRY_VERIFY_WITH_TIMEOUT(target().isEmpty(),5000);
+  QCOMPARE(s.windows().size(),before-1);
  }
 };
 QTEST_GUILESS_MAIN(SessionTest)

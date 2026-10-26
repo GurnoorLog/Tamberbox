@@ -18,7 +18,7 @@ private slots:
   QFile other(temp.path()+"/applications/not-game.desktop");QVERIFY(other.open(QIODevice::WriteOnly));other.write("[Desktop Entry]\nType=Application\nName=Not Game\nExec=/bin/true\nCategories=NotGame;\n");other.close();
   Launcher apps;GameLibrary library(&apps);QCOMPARE(library.games().size(),1);QString id="game.desktop";
   library.favorite(id);QVERIFY(library.games()[0].toMap()["favorite"].toBool());library.hide(id);QVERIFY(library.games().isEmpty());library.restoreHidden();QCOMPARE(library.games().size(),1);
-  QImage image(64,64,QImage::Format_RGB32);image.fill(Qt::blue);QString path=temp.path()+"/cover.png";QVERIFY(image.save(path));QVERIFY(library.artwork(id,path));QVERIFY(!library.artwork(id,"https://example.com/art"));
+  QImage image(64,64,QImage::Format_RGB32);image.fill(Qt::blue);QString path=temp.path()+"/cover.png";QVERIFY(image.save(path));QVERIFY(library.artwork(id,path));QVERIFY(library.games()[0].toMap()["art"].toString().endsWith(".png"));QVERIFY(!library.artwork(id,"https://example.com/art"));
   GameLibrary reload(&apps);QVERIFY(reload.games()[0].toMap()["favorite"].toBool());QVERIFY(!reload.games()[0].toMap()["art"].toString().isEmpty());
   QVERIFY(!library.launch("unknown"));QVERIFY(library.launch(id));
   QString runner=temp.path()+"/runner",rom=temp.path()+"/game with spaces.rom",core=temp.path()+"/core.so",output=temp.path()+"/args";
