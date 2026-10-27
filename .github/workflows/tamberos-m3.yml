@@ -14,7 +14,7 @@ jobs:
       - name: Install isolated runner dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake ninja-build g++ pkg-config qt6-base-dev qt6-base-private-dev qt6-declarative-dev qt6-wayland-dev qt6-wayland-private-dev qt6-wayland qml6-module-qtqml qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-layouts qml6-module-qtqml-workerscript qml6-module-qtquick-templates qml6-module-qtquick-window qml6-module-qt-labs-settings libglib2.0-dev libqt6svg6 extra-cmake-modules libwayland-dev libxkbcommon-dev wayland-protocols sway grim wtype foot dbus-x11 librsvg2-bin waybar pulseaudio pulseaudio-utils gnome-2048 gnome-chess quadrapassel gdb python3-dbus python3-pyatspi gir1.2-atspi-2.0
+          sudo apt-get install -y fonts-inter cmake ninja-build g++ pkg-config qt6-base-dev qt6-base-private-dev qt6-declarative-dev qt6-wayland-dev qt6-wayland-private-dev qt6-wayland qml6-module-qtqml qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-layouts qml6-module-qtqml-workerscript qml6-module-qtquick-templates qml6-module-qtquick-window qml6-module-qt-labs-settings libglib2.0-dev libqt6svg6 extra-cmake-modules libwayland-dev libxkbcommon-dev wayland-protocols sway grim wtype foot dbus-x11 librsvg2-bin waybar pulseaudio pulseaudio-utils gnome-2048 gnome-chess quadrapassel gdb python3-dbus python3-pyatspi gir1.2-atspi-2.0
       - name: Build pinned Qt layer-shell and Tamber desktop
         run: |
           bash scripts/build_layer_shell.sh

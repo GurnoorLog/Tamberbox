@@ -32,6 +32,8 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   sock=wait(lambda:next(iter(runtime.glob('sway-ipc.*.sock')),None));env['SWAYSOCK']=str(sock)
   display=wait(lambda:next((p for p in runtime.glob('wayland-*') if not p.name.endswith('.lock')),None));env['WAYLAND_DISPLAY']=display.name
   wait(lambda:(runtime/('tamber-'+display.name)).exists());wait(lambda:'Bar configured' in (OUT/'sway-session.log').read_text(),30);wait(lambda:'TAMBER_FRAME wallpaper' in (OUT/'sway-session.log').read_text());wait(lambda:'TAMBER_FRAME dock' in (OUT/'sway-session.log').read_text());time.sleep(1)
+  (OUT/'font.txt').write_text(run('fc-match','Inter').stdout)
+  assert 'Inter' in (OUT/'font.txt').read_text(), 'Required Inter UI font is unavailable'
   run('grim',str(OUT/'desktop.png'))
   run('tamber-desktop','--command','controls');wait(lambda:'TAMBER_FRAME quickcontrols' in (OUT/'sway-session.log').read_text(),15);time.sleep(.5);run('grim',str(OUT/'desktop-controls.png'));run('wtype','-k','Escape')
   assert 'TAMBER_FRAME bar' not in (OUT/'sway-session.log').read_text(), 'Duplicate Qt bar'
