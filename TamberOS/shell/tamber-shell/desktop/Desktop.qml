@@ -140,6 +140,7 @@ Item {
                 delegate: Action {
                     required property var modelData
                     Layout.preferredWidth: 50; Layout.preferredHeight: 50
+                    padding: 5
                     text: modelData.name
                     contentItem: Image { source: "image://apps/"+modelData.appId; sourceSize.width: 40; sourceSize.height: 40; fillMode: Image.PreserveAspectFit }
                     onClicked: appLauncher.launch(modelData.appId)
