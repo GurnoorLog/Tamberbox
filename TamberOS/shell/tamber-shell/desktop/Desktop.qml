@@ -336,12 +336,12 @@ Item {
                         ColumnLayout { anchors.fill: parent; anchors.margins: 10; spacing: 0
                             ControlTile { Layout.fillWidth: true; text: "Wi-Fi"; detail: "Enable radio"; symbol: "wifi"; onClicked: session.wifi(true) }
                             ControlTile { Layout.fillWidth: true; text: "Disconnect"; detail: "Disable Wi-Fi"; symbol: "wifi"; onClicked: session.wifi(false) }
-                            ControlTile { Layout.fillWidth: true; text: "Network"; detail: session.network; symbol: "controls"; onClicked: { quickCenter.visible=false; settingsWindow.visible=true; tabs.currentIndex=1 } }
+                            ControlTile { Layout.fillWidth: true; text: "Network"; detail: session.network.indexOf("unavailable")>=0 ? "Unavailable" : session.network; symbol: "controls"; onClicked: { quickCenter.visible=false; settingsWindow.visible=true; tabs.currentIndex=1 } }
                         }
                     }
                     ColumnLayout { Layout.fillWidth: true; Layout.fillHeight: true; spacing: 10
                         ControlGroup { Layout.fillWidth: true; Layout.fillHeight: true
-                            ControlTile { anchors.fill: parent; anchors.margins: 10; text: "Reduced motion"; detail: preferences.reducedMotion ? "On" : "Off"; symbol: "moon"; selected: preferences.reducedMotion; onClicked: preferences.reducedMotion=!preferences.reducedMotion }
+                            ControlTile { anchors.fill: parent; anchors.margins: 10; text: "Animation"; detail: preferences.reducedMotion ? "Reduced" : "Full"; symbol: "moon"; selected: preferences.reducedMotion; onClicked: preferences.reducedMotion=!preferences.reducedMotion }
                         }
                         ControlGroup { Layout.fillWidth: true; Layout.fillHeight: true
                             ControlTile { anchors.fill: parent; anchors.margins: 10; text: "Translucency"; detail: preferences.opaque ? "Off" : "On"; symbol: "layers"; selected: !preferences.opaque; activeColor: "#9960ed"; onClicked: preferences.opaque=!preferences.opaque }
