@@ -45,7 +45,7 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   probe=run('/usr/bin/python3',str(ROOT/'scripts/waybar_probe.py'))
   (OUT/'waybar-accessibility.json').write_text(probe.stdout)
   labels=json.loads(probe.stdout)
-  for text in ['TamberOS','CPU','RAM','LAN','VOL','BT n/a']:
+  for text in ['⊞','LAN','VOL','BT n/a','☷']:
    assert any(text in (n.get('text','')+n['name']) for n in labels), 'Missing Waybar module: '+text
   tray_icon=next(n for n in labels if n['role']=='icon' and 0<=n.get('rect',[-1])[0]<1280)
   x,y,w,h=tray_icon['rect'];run(str(ROOT/'build/input-test/virtual-pointer'),str(x+w//2),str(y+h//2),'left')
@@ -62,7 +62,7 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   after=run('pactl','get-sink-volume','@DEFAULT_SINK@').stdout
   assert before!=after,'Waybar volume scroll did not change null sink'
   (OUT/'audio-scroll.txt').write_text('before: '+before+'after: '+after)
-  label=next(n for n in labels if 'TamberOS' in (n.get('text','')+n['name']) and n.get('rect',[0,0,0,0])[2]>0)
+  label=next(n for n in labels if '⊞' in (n.get('text','')+n['name']) and n.get('rect',[0,0,0,0])[2]>0)
   x,y,w,h=label['rect'];run('swaymsg','seat','seat0','cursor','set',str(x+w//2),str(y+h//2))
   run(str(ROOT/'build/input-test/virtual-pointer'),str(x+w//2),str(y+h//2),'left');wait(lambda:'TAMBER_FRAME launcher' in (OUT/'sway-session.log').read_text(),15);time.sleep(.5)
   keyboard=subprocess.Popen(['wtype','-s','400','-d','50','Tamber Test','-s','1500','-k','Return','-s','500'],env=env)
@@ -77,7 +77,8 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   assert found[0]['rect']['y']>=28, 'Application overlaps reserved menu bar'
   assert found[0]['rect']['y']+found[0]['rect']['height']<=651, 'Application overlaps reserved dock'
   run('grim',str(OUT/'application.png'))
-  run('tamber-desktop','--command','controls');wait(lambda:'TAMBER_FRAME quickcontrols' in (OUT/'sway-session.log').read_text(),15);time.sleep(.5);run('grim',str(OUT/'settings.png'))
+  controls=next(n for n in labels if '☷' in (n.get('text','')+n['name']) and n.get('rect',[0,0,0,0])[2]>0)
+  x,y,w,h=controls['rect'];run(str(ROOT/'build/input-test/virtual-pointer'),str(x+w//2),str(y+h//2),'left');wait(lambda:'TAMBER_FRAME quickcontrols' in (OUT/'sway-session.log').read_text(),15);time.sleep(.5);run('grim',str(OUT/'settings.png'))
   run('wtype','-s','400','-k','Escape');time.sleep(.3)
   run('tamber-desktop','--command','library');time.sleep(.8)
   wait(lambda:'TAMBER_FRAME games' in (OUT/'sway-session.log').read_text())
