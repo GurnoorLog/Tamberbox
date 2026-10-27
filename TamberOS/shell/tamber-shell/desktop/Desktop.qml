@@ -9,6 +9,7 @@ Item {
     property color cream: "#e5f4ff"
     property color muted: "#a4c5d7"
     property color accent: "#20cbe3"
+    property string interfaceFont: "Inter"
     function showControls() { appsWindow.visible=false; gamesWindow.visible=false; settingsWindow.visible=false; playMode.leave(); quickCenter.visible=!quickCenter.visible }
     property string clock: Qt.formatDateTime(new Date(), "ddd  d MMM   HH:mm")
     Settings { id: preferences; category: "Desktop"; property bool reducedMotion: false; property bool opaque: false; property real wallpaperOpacity: 1 }
@@ -19,20 +20,89 @@ Item {
     Connections { target: session; function onOpenLauncher() { root.showApps() } function onOpenControls() { root.showControls() } function onOpenGames() { root.showConsole() } function onOpenLibrary() { root.showLibrary() } }
     Connections { target: appLauncher; function onLaunchAccepted(id) { appsWindow.visible=false } }
     Console { id: playMode; reducedMotion: preferences.reducedMotion; onReducedMotionRequested: preferences.reducedMotion=!preferences.reducedMotion; onAdvancedLibraryRequested: { leave(); root.showLibrary() } }
-    component TextLabel: Label { color: root.cream; font.pixelSize: 14 }
+    component TextLabel: Label { font.family: root.interfaceFont; color: root.cream; font.pixelSize: 14 }
     component Action: Button {
         id: button
         focusPolicy: Qt.StrongFocus
         Accessible.name: text
-        contentItem: Text { text: button.text; color: root.cream; font.pixelSize: 14; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter; elide: Text.ElideRight }
-        background: Rectangle { radius: 10; color: button.down ? "#176384" : button.hovered ? "#20516a" : "transparent"; border.width: button.activeFocus ? 2 : 0; border.color: root.accent }
+        padding: 12
+        contentItem: Text { text: button.text; font.family: root.interfaceFont; color: root.cream; font.pixelSize: 13; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter; elide: Text.ElideRight }
+        background: Rectangle { radius: 10; color: button.down ? "#385b7890" : button.hovered ? "#286e9ab0" : "#146e9ab0"; border.width: button.activeFocus ? 2 : 0; border.color: root.accent }
+    }
+    component Glyph: Canvas {
+        property string symbol: "grid"
+        property color tint: "#f0f7fb"
+        implicitWidth: 24; implicitHeight: 24
+        onSymbolChanged: requestPaint()
+        onTintChanged: requestPaint()
+        onPaint: {
+            let c=getContext("2d"); c.reset(); c.scale(width/24,height/24); c.strokeStyle=tint; c.fillStyle=tint; c.lineWidth=1.7; c.lineCap="round"; c.lineJoin="round";
+            function line(points) { c.beginPath(); c.moveTo(points[0],points[1]); for(let i=2;i<points.length;i+=2)c.lineTo(points[i],points[i+1]);c.stroke() }
+            if(symbol==="grid") { for(let y=4;y<=16;y+=6)for(let x=4;x<=16;x+=6){c.beginPath();c.arc(x+2,y+2,1.5,0,7);c.fill()} }
+            else if(symbol==="folder") { c.beginPath();c.moveTo(3,6);c.lineTo(10,6);c.lineTo(12,9);c.lineTo(21,9);c.lineTo(21,20);c.lineTo(3,20);c.closePath();c.fill();line([3,5,9,5]); }
+            else if(symbol==="wifi") { for(let r of [5,9,13]){c.beginPath();c.arc(12,20,r,3.9,5.52);c.stroke()}c.beginPath();c.arc(12,19,1,0,7);c.fill() }
+            else if(symbol==="moon") { c.beginPath();c.arc(12,12,8,0.1,5);c.bezierCurveTo(7,10,11,16,20,13);c.fill() }
+            else if(symbol==="layers") {line([3,8,12,3,21,8,12,13,3,8]);line([3,12,12,17,21,12]);line([3,16,12,21,21,16]);}
+            else if(symbol==="volume") {line([3,10,7,10,12,5,12,19,7,14,3,14,3,10]);c.beginPath();c.arc(12,12,7,-.75,.75);c.stroke();}
+            else if(symbol==="close") {line([6,6,18,18]);line([18,6,6,18]);}
+            else if(symbol==="play") {c.beginPath();c.moveTo(8,5);c.lineTo(20,12);c.lineTo(8,19);c.closePath();c.fill();}
+            else if(symbol==="minus")line([6,12,18,12]);
+            else if(symbol==="plus") {line([6,12,18,12]);line([12,6,12,18]);}
+            else if(symbol==="sun") {c.beginPath();c.arc(12,12,4,0,7);c.stroke();for(let a=0;a<6.3;a+=Math.PI/4)line([12+7*Math.cos(a),12+7*Math.sin(a),12+10*Math.cos(a),12+10*Math.sin(a)]);}
+            else {for(let y of [6,12,18])line([3,y,21,y]);for(let xy of [[8,6],[16,12],[10,18]]){c.beginPath();c.arc(xy[0],xy[1],2.5,0,7);c.fill()}}
+        }
+    }
+    component IconAction: AbstractButton {
+        id: iconButton
+        property string symbol: "grid"
+        property color iconColor: root.cream
+        implicitWidth: 44; implicitHeight: 44
+        focusPolicy: Qt.StrongFocus
+        Accessible.name: text
+        contentItem: Item { Glyph { anchors.centerIn: parent; width: 23; height: 23; symbol: iconButton.symbol; tint: iconButton.iconColor } }
+        background: Rectangle { radius: 12; color: iconButton.down ? "#38ffffff" : iconButton.hovered ? "#18ffffff" : "transparent"; border.width: iconButton.activeFocus ? 2 : 0; border.color: root.accent }
+        ToolTip.visible: hovered; ToolTip.text: text
+    }
+    component ControlTile: AbstractButton {
+        id: tile
+        property string symbol: "layers"
+        property string detail: ""
+        property bool selected: false
+        property color activeColor: root.accent
+        implicitHeight: 64; implicitWidth: 170
+        focusPolicy: Qt.StrongFocus; Accessible.name: text+", "+detail
+        contentItem: RowLayout {
+            spacing: 10
+            Rectangle { Layout.preferredWidth: 42; Layout.preferredHeight: 42; radius: 21; color: tile.selected ? tile.activeColor : "#205f99af"; Glyph { anchors.centerIn: parent; width: 20; height: 20; symbol: tile.symbol } }
+            ColumnLayout { spacing: 3; Layout.fillWidth: true
+                TextLabel { text: tile.text; font.pixelSize: 12; font.weight: Font.DemiBold; Layout.fillWidth: true; elide: Text.ElideRight }
+                TextLabel { text: tile.detail; font.pixelSize: 11; color: root.muted; Layout.fillWidth: true; elide: Text.ElideRight }
+            }
+        }
+        background: Rectangle { radius: 12; color: tile.hovered ? "#12ffffff" : "transparent"; border.width: tile.activeFocus ? 2 : 0; border.color: root.accent }
+    }
+    component ControlGroup: Rectangle { color: "#245f8ba0"; radius: 16 }
+    component GlassSlider: Slider {
+        id: slider
+        implicitHeight: 32
+        background: Rectangle {
+            x: slider.leftPadding; y: slider.topPadding+(slider.availableHeight-height)/2
+            width: slider.availableWidth; height: 20; radius: 10; color: "#305f8fa0"
+            Rectangle { width: parent.width*slider.visualPosition; height: parent.height; radius: 10; color: "#d4e8ec" }
+        }
+        handle: Rectangle {
+            x: slider.leftPadding+slider.visualPosition*(slider.availableWidth-width)
+            y: slider.topPadding+(slider.availableHeight-height)/2
+            width: 24; height: 24; radius: 12; color: "#f5fafb"
+            border.width: slider.activeFocus ? 2 : 0; border.color: root.accent
+        }
     }
     component SettingsTab: TabButton {
         id: tab
         contentItem: Text { text: tab.text; color: root.cream; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter; font.pixelSize: 14 }
         background: Rectangle { color: tab.checked ? "#19617b" : "#163b51"; radius: 9; border.color: tab.activeFocus ? root.accent : "transparent" }
     }
-    component Surface: Rectangle { color: preferences.opaque ? "#0b2c40" : "#e00b2c40"; radius: 22; border.color: "#39738c"; border.width: 1 }
+    component Surface: Rectangle { color: preferences.opaque ? "#103347" : "#c5103347"; radius: 22; border.color: "#18ffffff"; border.width: 1 }
     Window {
         id: wallpaper
         width: Screen.width; height: Screen.height; color: "#17181c"
@@ -61,25 +131,25 @@ Item {
         property bool ready: false
         Component.onCompleted: { session.configure(dock,"dock"); ready=true }
         visible: ready && !playMode.modeActive
-        Surface { width: dockItems.implicitWidth+24; height: 56; anchors.centerIn: parent; radius: 12 }
+        Surface { width: dockItems.implicitWidth+20; height: 56; anchors.centerIn: parent; radius: 16; color: preferences.opaque ? "#183e50" : "#a6183e50" }
         RowLayout {
-            id: dockItems; anchors.centerIn: parent; spacing: 5
-            Action { text: "▦"; Layout.preferredWidth: 48; Layout.preferredHeight: 54; onClicked: root.showApps(); ToolTip.visible: hovered; ToolTip.text: "Applications · Super+Space" }
+            id: dockItems; anchors.centerIn: parent; spacing: 2
+            IconAction { text: "Applications · Super+Space"; symbol: "grid"; Layout.preferredWidth: 48; Layout.preferredHeight: 50; onClicked: root.showApps() }
             Repeater {
                 model: appLauncher.applications.slice(0,4)
                 delegate: Action {
                     required property var modelData
-                    Layout.preferredWidth: 55; Layout.preferredHeight: 54
+                    Layout.preferredWidth: 50; Layout.preferredHeight: 50
                     text: modelData.name
                     contentItem: Image { source: "image://apps/"+modelData.appId; sourceSize.width: 40; sourceSize.height: 40; fillMode: Image.PreserveAspectFit }
                     onClicked: appLauncher.launch(modelData.appId)
                     ToolTip.visible: hovered; ToolTip.text: modelData.name
                     scale: hovered ? 1.12 : 1
                     Behavior on scale { NumberAnimation { duration: preferences.reducedMotion ? 0 : 150; easing.type: Easing.OutCubic } }
-                    background: Rectangle { anchors.margins: 6; radius: 12; color: "#12435b"; border.color: parent.activeFocus ? root.accent : "#35627a" }
+                    background: Rectangle { radius: 12; color: parent.hovered ? "#20ffffff" : "transparent"; border.width: parent.activeFocus ? 2 : 0; border.color: root.accent; Behavior on color { ColorAnimation { duration: preferences.reducedMotion ? 0 : 140 } } }
                 }
             }
-            Rectangle { Layout.preferredHeight: 34; Layout.preferredWidth: 1; color: "#436f83" }
+            Rectangle { Layout.preferredHeight: 24; Layout.preferredWidth: 1; Layout.leftMargin: 7; Layout.rightMargin: 7; color: "#28ffffff" }
             Repeater {
                 model: session.windows.slice(0,6)
                 delegate: Item {
@@ -89,8 +159,8 @@ Item {
                     Rectangle { width: modelData.focused ? 16 : 5; height: 3; radius: 2; anchors.bottom: parent.bottom; anchors.horizontalCenter: parent.horizontalCenter; color: modelData.minimized ? root.muted : root.accent; Behavior on width { NumberAnimation { duration: preferences.reducedMotion ? 0 : 150 } } }
                 }
             }
-            Action { text: "Play"; Layout.preferredWidth: 64; Layout.preferredHeight: 54; onClicked: root.showConsole(); ToolTip.visible: hovered; ToolTip.text: "Game Mode · Super+G" }
-            Action { text: "⚙"; Layout.preferredWidth: 40; Layout.preferredHeight: 54; onClicked: root.showControls(); ToolTip.visible: hovered; ToolTip.text: "Settings and windows" }
+            IconAction { text: "Game Mode · Super+G"; symbol: "play"; onClicked: root.showConsole() }
+            IconAction { text: "Control center"; symbol: "controls"; onClicked: root.showControls() }
         }
     }
     // Original Tamber Game Library with retained advanced management controls.
@@ -237,39 +307,76 @@ Item {
     }
     Window {
         id: quickCenter
-        width: Math.min(400,Screen.width-24); height: Math.min(620,Screen.height-100)
+        width: Math.min(400,Screen.width-24); height: Math.min(604,Screen.height-70)
         color: "transparent"; flags: Qt.FramelessWindowHint
         Component.onCompleted: session.configure(quickCenter,"quickcontrols")
-        Surface { anchors.fill: parent; radius: 18 }
+        Surface { anchors.fill: parent; radius: 20 }
         Item { anchors.fill: parent; focus: true; Keys.onEscapePressed: quickCenter.visible=false
             ColumnLayout {
-                anchors.fill: parent; anchors.margins: 18; spacing: 14
+                anchors.fill: parent; anchors.margins: 16; spacing: 10
                 RowLayout {
-                    TextLabel { text: "Control center"; font.pixelSize: 21; font.bold: true; Layout.fillWidth: true }
-                    Action { text: "×"; onClicked: quickCenter.visible=false; Accessible.name: "Close control center" }
-                }
-                Rectangle {
-                    Layout.fillWidth: true; Layout.preferredHeight: 120; radius: 14; color: "#244f6980"
-                    ColumnLayout {
-                        anchors.fill: parent; anchors.margins: 14
-                        TextLabel { text: "Network"; font.bold: true }
-                        TextLabel { text: session.network; color: root.muted; Layout.fillWidth: true; elide: Text.ElideRight }
-                        RowLayout { Action { text: "Wi-Fi on"; onClicked: session.wifi(true) } Action { text: "Wi-Fi off"; onClicked: session.wifi(false) } }
+                    spacing: 10
+                    ControlGroup { Layout.fillWidth: true; Layout.preferredHeight: 48
+                        RowLayout { anchors.fill: parent; anchors.margins: 10; spacing: 10
+                            Rectangle { Layout.preferredWidth: 28; Layout.preferredHeight: 28; radius: 14; color: "#346d88"; Glyph { anchors.centerIn: parent; width: 16; height: 16; symbol: "grid" } }
+                            TextLabel { text: "Your workspace"; font.pixelSize: 12; Layout.fillWidth: true }
+                        }
+                    }
+                    ControlGroup { Layout.preferredWidth: 94; Layout.preferredHeight: 48
+                        Row { anchors.centerIn: parent
+                            IconAction { text: "All settings"; symbol: "controls"; onClicked: { quickCenter.visible=false; settingsWindow.visible=true } }
+                            IconAction { text: "Close control center"; symbol: "close"; onClicked: quickCenter.visible=false }
+                        }
                     }
                 }
-                GridLayout {
-                    columns: 2; Layout.fillWidth: true; columnSpacing: 10; rowSpacing: 10
-                    Action { text: preferences.reducedMotion ? "Motion · reduced" : "Motion · full"; Layout.fillWidth: true; Layout.preferredHeight: 62; onClicked: preferences.reducedMotion=!preferences.reducedMotion; background: Rectangle { radius: 14; color: "#24556b" } }
-                    Action { text: preferences.opaque ? "Panels · opaque" : "Panels · translucent"; Layout.fillWidth: true; Layout.preferredHeight: 62; onClicked: preferences.opaque=!preferences.opaque; background: Rectangle { radius: 14; color: "#24556b" } }
+                RowLayout {
+                    Layout.preferredHeight: 190; spacing: 10
+                    ControlGroup { Layout.fillWidth: true; Layout.fillHeight: true
+                        ColumnLayout { anchors.fill: parent; anchors.margins: 10; spacing: 0
+                            ControlTile { Layout.fillWidth: true; text: "Wi-Fi"; detail: "Enable radio"; symbol: "wifi"; onClicked: session.wifi(true) }
+                            ControlTile { Layout.fillWidth: true; text: "Disconnect"; detail: "Disable Wi-Fi"; symbol: "wifi"; onClicked: session.wifi(false) }
+                            ControlTile { Layout.fillWidth: true; text: "Network"; detail: session.network; symbol: "controls"; onClicked: { quickCenter.visible=false; settingsWindow.visible=true; tabs.currentIndex=1 } }
+                        }
+                    }
+                    ColumnLayout { Layout.fillWidth: true; Layout.fillHeight: true; spacing: 10
+                        ControlGroup { Layout.fillWidth: true; Layout.fillHeight: true
+                            ControlTile { anchors.fill: parent; anchors.margins: 10; text: "Reduced motion"; detail: preferences.reducedMotion ? "On" : "Off"; symbol: "moon"; selected: preferences.reducedMotion; onClicked: preferences.reducedMotion=!preferences.reducedMotion }
+                        }
+                        ControlGroup { Layout.fillWidth: true; Layout.fillHeight: true
+                            ControlTile { anchors.fill: parent; anchors.margins: 10; text: "Translucency"; detail: preferences.opaque ? "Off" : "On"; symbol: "layers"; selected: !preferences.opaque; activeColor: "#9960ed"; onClicked: preferences.opaque=!preferences.opaque }
+                        }
+                    }
                 }
-                TextLabel { text: "Wallpaper intensity"; font.bold: true }
-                Slider { Layout.fillWidth: true; from: 0; to: 1; value: preferences.wallpaperOpacity; onMoved: preferences.wallpaperOpacity=value; Accessible.name: "Wallpaper intensity" }
-                TextLabel { text: "Output audio"; font.bold: true }
-                TextLabel { text: session.audio; color: root.muted; Layout.fillWidth: true; elide: Text.ElideRight }
-                RowLayout { Action { text: "− Volume"; onClicked: session.volume(-1) } Action { text: "Mute"; onClicked: session.mute() } Action { text: "+ Volume"; onClicked: session.volume(1) } }
+                ControlGroup { Layout.fillWidth: true; Layout.preferredHeight: 88
+                    ColumnLayout { anchors.fill: parent; anchors.margins: 16; spacing: 8
+                        TextLabel { text: "Wallpaper intensity"; font.pixelSize: 12; font.weight: Font.DemiBold }
+                        RowLayout { spacing: 12; Glyph { symbol: "sun"; Layout.preferredWidth: 20; Layout.preferredHeight: 20 }
+                            GlassSlider { Layout.fillWidth: true; from: 0; to: 1; value: preferences.wallpaperOpacity; onMoved: preferences.wallpaperOpacity=value; Accessible.name: "Wallpaper intensity" }
+                        }
+                    }
+                }
+                ControlGroup { Layout.fillWidth: true; Layout.preferredHeight: 100
+                    ColumnLayout { anchors.fill: parent; anchors.margins: 14; spacing: 5
+                        RowLayout { TextLabel { text: "Output audio"; font.pixelSize: 12; font.weight: Font.DemiBold; Layout.fillWidth: true }
+                            IconAction { text: "Decrease volume"; symbol: "minus"; onClicked: session.volume(-1) }
+                            IconAction { text: "Mute or unmute"; symbol: "volume"; onClicked: session.mute() }
+                            IconAction { text: "Increase volume"; symbol: "plus"; onClicked: session.volume(1) }
+                        }
+                        TextLabel { text: session.audio; font.pixelSize: 11; color: root.muted; Layout.fillWidth: true; elide: Text.ElideRight }
+                    }
+                }
+                ControlGroup { Layout.fillWidth: true; Layout.preferredHeight: 64
+                    RowLayout { anchors.fill: parent; anchors.margins: 12; spacing: 12
+                        Rectangle { Layout.preferredWidth: 40; Layout.preferredHeight: 40; radius: 10; color: "#356a86"; Glyph { anchors.centerIn: parent; symbol: "play"; width: 21; height: 21 } }
+                        ColumnLayout { Layout.fillWidth: true; spacing: 3
+                            TextLabel { text: "Tamber / Play"; font.pixelSize: 12; font.weight: Font.DemiBold }
+                            TextLabel { text: "Open your game library"; font.pixelSize: 11; color: root.muted }
+                        }
+                        IconAction { text: "Enter Game Mode"; symbol: "play"; onClicked: root.showConsole() }
+                    }
+                }
+                TextLabel { visible: session.status.length>0; text: session.status; color: root.accent; Layout.fillWidth: true; wrapMode: Text.Wrap; font.pixelSize: 10 }
                 Item { Layout.fillHeight: true }
-                TextLabel { text: session.status; color: root.accent; wrapMode: Text.Wrap; Layout.fillWidth: true; font.pixelSize: 12 }
-                Action { text: "All settings  →"; Layout.fillWidth: true; Layout.preferredHeight: 40; onClicked: { quickCenter.visible=false; settingsWindow.visible=true } }
             }
         }
     }
@@ -290,7 +397,7 @@ Item {
                         CheckBox { text: "Reduce animation"; checked: preferences.reducedMotion; onToggled: preferences.reducedMotion=checked; palette.windowText: root.cream; palette.base: "#383238"; palette.button: "#383238"; palette.highlight: root.accent }
                         CheckBox { text: "Opaque panels"; checked: preferences.opaque; onToggled: preferences.opaque=checked; palette.windowText: root.cream; palette.base: "#383238"; palette.button: "#383238"; palette.highlight: root.accent }
                         TextLabel { text: "Wallpaper intensity"; color: root.muted }
-                        Slider { Layout.fillWidth: true; from: 0; to: 1; value: preferences.wallpaperOpacity; onMoved: preferences.wallpaperOpacity=value }
+                        GlassSlider { Layout.fillWidth: true; from: 0; to: 1; value: preferences.wallpaperOpacity; onMoved: preferences.wallpaperOpacity=value }
                         RowLayout { TextLabel { text: "Display scale (all outputs)"; Layout.fillWidth: true } Repeater { model: [1,1.25,1.5,2]; Action { required property var modelData; text: modelData+"×"; onClicked: session.scale(modelData) } } }
                         TextLabel { text: "Appearance persists. Output scale applies to this session only."; color: root.muted; font.pixelSize: 12 }
                         Item { Layout.fillHeight: true }

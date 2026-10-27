@@ -33,6 +33,7 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   display=wait(lambda:next((p for p in runtime.glob('wayland-*') if not p.name.endswith('.lock')),None));env['WAYLAND_DISPLAY']=display.name
   wait(lambda:(runtime/('tamber-'+display.name)).exists());wait(lambda:'Bar configured' in (OUT/'sway-session.log').read_text(),30);wait(lambda:'TAMBER_FRAME wallpaper' in (OUT/'sway-session.log').read_text());wait(lambda:'TAMBER_FRAME dock' in (OUT/'sway-session.log').read_text());time.sleep(1)
   run('grim',str(OUT/'desktop.png'))
+  run('tamber-desktop','--command','controls');wait(lambda:'TAMBER_FRAME quickcontrols' in (OUT/'sway-session.log').read_text(),15);time.sleep(.5);run('grim',str(OUT/'desktop-controls.png'));run('wtype','-k','Escape')
   assert 'TAMBER_FRAME bar' not in (OUT/'sway-session.log').read_text(), 'Duplicate Qt bar'
   assert len(run('pgrep','-x','waybar').stdout.splitlines())==1, 'Expected one Waybar process'
   run('wtype','-M','logo','-k','2','-m','logo');time.sleep(.3)
