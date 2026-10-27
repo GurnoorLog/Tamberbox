@@ -81,7 +81,7 @@ Item {
         }
         background: Rectangle { radius: 12; color: tile.hovered ? "#12ffffff" : "transparent"; border.width: tile.activeFocus ? 2 : 0; border.color: root.accent }
     }
-    component ControlGroup: Rectangle { color: "#245f8ba0"; radius: 16 }
+    component ControlGroup: Rectangle { color: "#10ffffff"; radius: 16 }
     component GlassSlider: Slider {
         id: slider
         implicitHeight: 32
@@ -102,7 +102,7 @@ Item {
         contentItem: Text { text: tab.text; color: root.cream; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter; font.pixelSize: 14 }
         background: Rectangle { color: tab.checked ? "#19617b" : "#163b51"; radius: 9; border.color: tab.activeFocus ? root.accent : "transparent" }
     }
-    component Surface: Rectangle { color: preferences.opaque ? "#103347" : "#c5103347"; radius: 22; border.color: "#18ffffff"; border.width: 1 }
+    component Surface: Rectangle { color: preferences.opaque ? "#103347" : "#66000000"; radius: 22; border.color: "#18ffffff"; border.width: 1 }
     Window {
         id: wallpaper
         width: Screen.width; height: Screen.height; color: "#17181c"
@@ -131,7 +131,7 @@ Item {
         property bool ready: false
         Component.onCompleted: { session.configure(dock,"dock"); ready=true }
         visible: ready && !playMode.modeActive
-        Surface { width: dockItems.implicitWidth+20; height: 56; anchors.centerIn: parent; radius: 16; color: preferences.opaque ? "#183e50" : "#a6183e50" }
+        Surface { width: dockItems.implicitWidth+20; height: 56; anchors.centerIn: parent; radius: 16; color: preferences.opaque ? "#183e50" : "#66000000" }
         RowLayout {
             id: dockItems; anchors.centerIn: parent; spacing: 2
             IconAction { text: "Applications · Super+Space"; symbol: "grid"; Layout.preferredWidth: 48; Layout.preferredHeight: 50; onClicked: root.showApps() }

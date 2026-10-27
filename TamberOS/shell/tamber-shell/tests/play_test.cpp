@@ -30,7 +30,7 @@ private slots:
   library.collection(id,"");QVERIFY(library.games()[0].toMap()["collection"].toString().isEmpty());
   QString runner=temp.path()+"/runner",rom=temp.path()+"/game with spaces.rom",core=temp.path()+"/core.so",output=temp.path()+"/args";
   for(auto file:{rom,core}){QFile f(file);QVERIFY(f.open(QIODevice::WriteOnly));f.write("test");}
-  QFile script(runner);QVERIFY(script.open(QIODevice::WriteOnly));script.write(("#!/bin/sh\nprintf '%s\\n' \"$@\" > '"+output+"'\n").toUtf8());script.close();QVERIFY(script.setPermissions(QFile::ReadOwner|QFile::WriteOwner|QFile::ExeOwner));
+  QFile script(runner);QVERIFY(script.open(QIODevice::WriteOnly));script.write(("#!/bin/sh\nprintf '%s\\n' \"$@\" > '"+output+".tmp' && mv -- '"+output+".tmp' '"+output+"'\n").toUtf8());script.close();QVERIFY(script.setPermissions(QFile::ReadOwner|QFile::WriteOwner|QFile::ExeOwner));
   QVERIFY(!library.addEmulator("Bad",runner,"/missing",core));QVERIFY(library.addEmulator("Emulated",runner,rom,core));QVERIFY(!library.addEmulator("Duplicate",runner,rom,core));
   QString profile;for(auto v:library.games())if(v.toMap()["platform"]=="RetroArch")profile=v.toMap()["appId"].toString();QVERIFY(!profile.isEmpty());QVERIFY(library.launch(profile));QTRY_VERIFY(QFile::exists(output));QFile result(output);QVERIFY(result.open(QIODevice::ReadOnly));QCOMPARE(result.readAll(),("-L\n"+core+"\n"+rom+"\n").toUtf8());
  }
