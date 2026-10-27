@@ -6,16 +6,17 @@ import Qt.labs.settings
 
 Item {
     id: root
-    property color cream: "#f1ece2"
-    property color muted: "#aaa6a4"
-    property color accent: "#dfa77c"
+    property color cream: "#e5f4ff"
+    property color muted: "#a4c5d7"
+    property color accent: "#20cbe3"
+    function showControls() { appsWindow.visible=false; gamesWindow.visible=false; settingsWindow.visible=false; playMode.leave(); quickCenter.visible=!quickCenter.visible }
     property string clock: Qt.formatDateTime(new Date(), "ddd  d MMM   HH:mm")
     Settings { id: preferences; category: "Desktop"; property bool reducedMotion: false; property bool opaque: false; property real wallpaperOpacity: 1 }
     Timer { interval: 1000; running: true; repeat: true; onTriggered: root.clock = Qt.formatDateTime(new Date(), "ddd  d MMM   HH:mm") }
-    function showConsole() { appsWindow.visible=false; settingsWindow.visible=false; gamesWindow.visible=false; playMode.toggle() }
-    function showLibrary() { playMode.leave(); gamesWindow.visible = !gamesWindow.visible; if(gamesWindow.visible) { appLauncher.refresh(); gameSearch.text=""; gameGrid.forceActiveFocus() } }
-    function showApps() { playMode.leave(); appsWindow.visible = !appsWindow.visible; if(appsWindow.visible) { search.text=""; search.forceActiveFocus() } }
-    Connections { target: session; function onOpenLauncher() { root.showApps() } function onOpenControls() { playMode.leave(); settingsWindow.visible=!settingsWindow.visible } function onOpenGames() { root.showConsole() } function onOpenLibrary() { root.showLibrary() } }
+    function showConsole() { appsWindow.visible=false; settingsWindow.visible=false; quickCenter.visible=false; gamesWindow.visible=false; playMode.toggle() }
+    function showLibrary() { quickCenter.visible=false; settingsWindow.visible=false; appsWindow.visible=false; playMode.leave(); gamesWindow.visible = !gamesWindow.visible; if(gamesWindow.visible) { appLauncher.refresh(); gameSearch.text=""; gameGrid.forceActiveFocus() } }
+    function showApps() { quickCenter.visible=false; settingsWindow.visible=false; gamesWindow.visible=false; playMode.leave(); appsWindow.visible = !appsWindow.visible; if(appsWindow.visible) { search.text=""; search.forceActiveFocus() } }
+    Connections { target: session; function onOpenLauncher() { root.showApps() } function onOpenControls() { root.showControls() } function onOpenGames() { root.showConsole() } function onOpenLibrary() { root.showLibrary() } }
     Connections { target: appLauncher; function onLaunchAccepted(id) { appsWindow.visible=false } }
     Console { id: playMode; reducedMotion: preferences.reducedMotion; onReducedMotionRequested: preferences.reducedMotion=!preferences.reducedMotion; onAdvancedLibraryRequested: { leave(); root.showLibrary() } }
     component TextLabel: Label { color: root.cream; font.pixelSize: 14 }
@@ -24,47 +25,43 @@ Item {
         focusPolicy: Qt.StrongFocus
         Accessible.name: text
         contentItem: Text { text: button.text; color: root.cream; font.pixelSize: 14; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter; elide: Text.ElideRight }
-        background: Rectangle { radius: 10; color: button.down ? "#4a3c32" : button.hovered ? "#34393e" : "transparent"; border.width: button.activeFocus ? 2 : 0; border.color: root.accent }
+        background: Rectangle { radius: 10; color: button.down ? "#176384" : button.hovered ? "#20516a" : "transparent"; border.width: button.activeFocus ? 2 : 0; border.color: root.accent }
     }
     component SettingsTab: TabButton {
         id: tab
         contentItem: Text { text: tab.text; color: root.cream; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter; font.pixelSize: 14 }
-        background: Rectangle { color: tab.checked ? "#4b3931" : "#333237"; radius: 9; border.color: tab.activeFocus ? root.accent : "transparent" }
+        background: Rectangle { color: tab.checked ? "#19617b" : "#163b51"; radius: 9; border.color: tab.activeFocus ? root.accent : "transparent" }
     }
-    component Surface: Rectangle { color: preferences.opaque ? "#212429" : "#f0212429"; radius: 22; border.color: "#45474b"; border.width: 1 }
+    component Surface: Rectangle { color: preferences.opaque ? "#0b2c40" : "#e00b2c40"; radius: 22; border.color: "#39738c"; border.width: 1 }
     Window {
         id: wallpaper
         width: Screen.width; height: Screen.height; color: "#17181c"
         flags: Qt.FramelessWindowHint
         Component.onCompleted: { session.configure(wallpaper,"wallpaper"); visible=true }
-        Image { anchors.fill: parent; source: "qrc:/brand/wallpapers/quiet-ridge.svg"; fillMode: Image.PreserveAspectCrop; opacity: preferences.wallpaperOpacity }
-        Column {
-            anchors.right: parent.right; anchors.bottom: parent.bottom; anchors.margins: 120; spacing: 9
-            Image { source: "qrc:/brand/tamber-llama.svg"; width: 66; height: 82; fillMode: Image.PreserveAspectFit; anchors.right: parent.right; opacity: 0.65 }
-            TextLabel { text: "T A M B E R O S"; font.pixelSize: 12; opacity: 0.5 }
-        }
+        Image { anchors.fill: parent; source: "qrc:/brand/wallpapers/blue-horizon.svg"; fillMode: Image.PreserveAspectCrop; opacity: preferences.wallpaperOpacity }
+
     }
     Window {
-        id: bar; property bool ready: false; visible: ready && !externalBar && !playMode.modeActive; width: Screen.width; height: 40; color: "transparent"; flags: Qt.FramelessWindowHint
+        id: bar; property bool ready: false; visible: ready && !externalBar && !playMode.modeActive; width: Screen.width; height: 28; color: "transparent"; flags: Qt.FramelessWindowHint
         Component.onCompleted: { if(!externalBar)session.configure(bar,"bar"); ready=true }
-        Rectangle { anchors.fill: parent; color: preferences.opaque ? "#252529" : "#c9252529" }
+        Rectangle { anchors.fill: parent; color: preferences.opaque ? "#082a42" : "#df082a42" }
         RowLayout {
             anchors.fill: parent; anchors.leftMargin: 18; anchors.rightMargin: 18; spacing: 14
-            Action { text: "TamberOS"; font.bold: true; onClicked: settingsWindow.visible=!settingsWindow.visible }
+            Action { text: "TamberOS"; font.bold: true; onClicked: root.showControls() }
             Action { text: "Applications"; onClicked: root.showApps() }
             Repeater { model: 4; Action { required property int index; text: (index+1).toString(); Layout.preferredWidth: 28; onClicked: session.workspace(index+1); ToolTip.visible: hovered; ToolTip.text: "Workspace "+(index+1) } }
             Item { Layout.fillWidth: true }
             TextLabel { text: session.connected ? "" : "Compositor unavailable"; color: root.accent }
-            Action { text: "Control center"; onClicked: settingsWindow.visible=!settingsWindow.visible }
+            Action { text: "Control center"; onClicked: root.showControls() }
             TextLabel { text: root.clock; font.pixelSize: 13 }
         }
     }
     Window {
-        id: dock; width: Math.min(Screen.width-32,960); height: 76; color: "transparent"; flags: Qt.FramelessWindowHint
+        id: dock; width: Math.min(Screen.width-32,960); height: 64; color: "transparent"; flags: Qt.FramelessWindowHint
         property bool ready: false
         Component.onCompleted: { session.configure(dock,"dock"); ready=true }
         visible: ready && !playMode.modeActive
-        Surface { width: dockItems.implicitWidth+24; height: 68; anchors.centerIn: parent; radius: 20 }
+        Surface { width: dockItems.implicitWidth+24; height: 56; anchors.centerIn: parent; radius: 12 }
         RowLayout {
             id: dockItems; anchors.centerIn: parent; spacing: 5
             Action { text: "▦"; Layout.preferredWidth: 48; Layout.preferredHeight: 54; onClicked: root.showApps(); ToolTip.visible: hovered; ToolTip.text: "Applications · Super+Space" }
@@ -79,10 +76,10 @@ Item {
                     ToolTip.visible: hovered; ToolTip.text: modelData.name
                     scale: hovered ? 1.12 : 1
                     Behavior on scale { NumberAnimation { duration: preferences.reducedMotion ? 0 : 150; easing.type: Easing.OutCubic } }
-                    background: Rectangle { anchors.margins: 6; radius: 12; color: "#30343a"; border.color: parent.activeFocus ? root.accent : "#484b50" }
+                    background: Rectangle { anchors.margins: 6; radius: 12; color: "#12435b"; border.color: parent.activeFocus ? root.accent : "#35627a" }
                 }
             }
-            Rectangle { Layout.preferredHeight: 34; Layout.preferredWidth: 1; color: "#675b55" }
+            Rectangle { Layout.preferredHeight: 34; Layout.preferredWidth: 1; color: "#436f83" }
             Repeater {
                 model: session.windows.slice(0,6)
                 delegate: Item {
@@ -93,7 +90,7 @@ Item {
                 }
             }
             Action { text: "Play"; Layout.preferredWidth: 64; Layout.preferredHeight: 54; onClicked: root.showConsole(); ToolTip.visible: hovered; ToolTip.text: "Game Mode · Super+G" }
-            Action { text: "⚙"; Layout.preferredWidth: 40; Layout.preferredHeight: 54; onClicked: settingsWindow.visible=!settingsWindow.visible; ToolTip.visible: hovered; ToolTip.text: "Settings and windows" }
+            Action { text: "⚙"; Layout.preferredWidth: 40; Layout.preferredHeight: 54; onClicked: root.showControls(); ToolTip.visible: hovered; ToolTip.text: "Settings and windows" }
         }
     }
     // Original Tamber Game Library with retained advanced management controls.
@@ -213,7 +210,7 @@ Item {
                 RowLayout { TextLabel { text: "Applications"; font.pixelSize: 25; Layout.fillWidth: true } Action { text: "Refresh"; onClicked: appLauncher.refresh() } Action { text: "Close"; onClicked: appsWindow.visible=false } }
                 TextField {
                     id: search; Layout.fillWidth: true; Layout.preferredHeight: 46; placeholderText: "Search your applications"; color: root.cream; font.pixelSize: 17; selectByMouse: true
-                    background: Rectangle { radius: 12; color: "#1b1c20"; border.color: search.activeFocus ? root.accent : "#65544d" }
+                    background: Rectangle { radius: 12; color: "#0b2538"; border.color: search.activeFocus ? root.accent : "#39738c" }
                     onTextChanged: results.currentIndex=0
                     Keys.onDownPressed: { results.forceActiveFocus(); results.currentIndex=0 }
                     Keys.onEscapePressed: appsWindow.visible=false
@@ -228,13 +225,51 @@ Item {
                         required property var modelData; required property int index
                         width: results.width; height: 54; text: modelData.name
                         contentItem: RowLayout { spacing: 16; Image { source: "image://apps/"+modelData.appId; sourceSize.width: 32; sourceSize.height: 32; Layout.preferredWidth: 32; Layout.preferredHeight: 32 } TextLabel { text: modelData.name; Layout.fillWidth: true; elide: Text.ElideRight } TextLabel { text: "↵"; color: root.muted } }
-                        background: Rectangle { radius: 12; color: results.currentIndex===index ? "#363b40" : "transparent"; border.color: parent.activeFocus ? root.accent : "transparent" }
+                        background: Rectangle { radius: 12; color: results.currentIndex===index ? "#215570" : "transparent"; border.color: parent.activeFocus ? root.accent : "transparent" }
                         onClicked: appLauncher.launch(modelData.appId)
                     }
                     TextLabel { anchors.centerIn: parent; visible: results.count===0; text: "No applications found"; color: root.muted }
                     ScrollBar.vertical: ScrollBar {}
                 }
                 TextLabel { text: appLauncher.status || "↑ ↓ Navigate    Enter Open    Esc Close"; color: root.muted; font.pixelSize: 12; Layout.fillWidth: true; wrapMode: Text.Wrap }
+            }
+        }
+    }
+    Window {
+        id: quickCenter
+        width: Math.min(400,Screen.width-24); height: Math.min(620,Screen.height-100)
+        color: "transparent"; flags: Qt.FramelessWindowHint
+        Component.onCompleted: session.configure(quickCenter,"quickcontrols")
+        Surface { anchors.fill: parent; radius: 18 }
+        Item { anchors.fill: parent; focus: true; Keys.onEscapePressed: quickCenter.visible=false
+            ColumnLayout {
+                anchors.fill: parent; anchors.margins: 18; spacing: 14
+                RowLayout {
+                    TextLabel { text: "Control center"; font.pixelSize: 21; font.bold: true; Layout.fillWidth: true }
+                    Action { text: "×"; onClicked: quickCenter.visible=false; Accessible.name: "Close control center" }
+                }
+                Rectangle {
+                    Layout.fillWidth: true; Layout.preferredHeight: 120; radius: 14; color: "#244f6980"
+                    ColumnLayout {
+                        anchors.fill: parent; anchors.margins: 14
+                        TextLabel { text: "Network"; font.bold: true }
+                        TextLabel { text: session.network; color: root.muted; Layout.fillWidth: true; elide: Text.ElideRight }
+                        RowLayout { Action { text: "Wi-Fi on"; onClicked: session.wifi(true) } Action { text: "Wi-Fi off"; onClicked: session.wifi(false) } }
+                    }
+                }
+                GridLayout {
+                    columns: 2; Layout.fillWidth: true; columnSpacing: 10; rowSpacing: 10
+                    Action { text: preferences.reducedMotion ? "Motion · reduced" : "Motion · full"; Layout.fillWidth: true; Layout.preferredHeight: 62; onClicked: preferences.reducedMotion=!preferences.reducedMotion; background: Rectangle { radius: 14; color: "#24556b" } }
+                    Action { text: preferences.opaque ? "Panels · opaque" : "Panels · translucent"; Layout.fillWidth: true; Layout.preferredHeight: 62; onClicked: preferences.opaque=!preferences.opaque; background: Rectangle { radius: 14; color: "#24556b" } }
+                }
+                TextLabel { text: "Wallpaper intensity"; font.bold: true }
+                Slider { Layout.fillWidth: true; from: 0; to: 1; value: preferences.wallpaperOpacity; onMoved: preferences.wallpaperOpacity=value; Accessible.name: "Wallpaper intensity" }
+                TextLabel { text: "Output audio"; font.bold: true }
+                TextLabel { text: session.audio; color: root.muted; Layout.fillWidth: true; elide: Text.ElideRight }
+                RowLayout { Action { text: "− Volume"; onClicked: session.volume(-1) } Action { text: "Mute"; onClicked: session.mute() } Action { text: "+ Volume"; onClicked: session.volume(1) } }
+                Item { Layout.fillHeight: true }
+                TextLabel { text: session.status; color: root.accent; wrapMode: Text.Wrap; Layout.fillWidth: true; font.pixelSize: 12 }
+                Action { text: "All settings  →"; Layout.fillWidth: true; Layout.preferredHeight: 40; onClicked: { quickCenter.visible=false; settingsWindow.visible=true } }
             }
         }
     }

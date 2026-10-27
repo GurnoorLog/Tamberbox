@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1440" viewBox="0 0 2560 1440">
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#05315b"/><stop offset=".55" stop-color="#0f8eb6"/><stop offset="1" stop-color="#b2e8d8"/></linearGradient>
+ <radialGradient id="light"><stop stop-color="#c4ffef" stop-opacity=".6"/><stop offset="1" stop-color="#51c8db" stop-opacity="0"/></radialGradient>
+ <linearGradient id="stone" x2="1" y2="1"><stop stop-color="#b7fff5"/><stop offset=".42" stop-color="#278ba3"/><stop offset="1" stop-color="#0a385b"/></linearGradient>
+ <linearGradient id="land" x2="0" y2="1"><stop stop-color="#1b8296"/><stop offset="1" stop-color="#061c39"/></linearGradient>
+</defs>
+<path fill="url(#sky)" d="M0 0h2560v1440H0z"/>
+<ellipse cx="1320" cy="710" rx="1100" ry="750" fill="url(#light)"/>
+<circle cx="1720" cy="250" r="145" fill="#a1e6ed" opacity=".12"/>
+<circle cx="1710" cy="220" r="140" fill="#08517a" opacity=".45"/>
+<g fill="none" stroke="#91e4e8" opacity=".14"><ellipse cx="1300" cy="640" rx="520" ry="95" transform="rotate(-20 1300 640)"/><ellipse cx="1300" cy="640" rx="560" ry="120" transform="rotate(-20 1300 640)"/></g>
+<path d="M0 1050Q200 940 430 1035T900 1000T1400 1030T1900 960T2560 1000V1440H0Z" fill="#63bdc3" opacity=".7"/>
+<path d="M0 1190L230 1020 440 1100 660 890 810 1160 1130 1060 1390 1180 1690 1000 1850 1100 2180 930 2560 1130V1440H0Z" fill="url(#land)"/>
+<path d="M0 1320Q430 1160 760 1290T1550 1300T2560 1210V1440H0Z" fill="#082b40"/>
+<g transform="translate(1270 590)"><path d="M0-270L-170 30 0 190 160 5Z" fill="url(#stone)"/><path d="M0-270L0 190 160 5Z" fill="#125474"/><path d="M0-270L-170 30 0-15Z" fill="#a0f1e5" opacity=".7"/><path d="M-170 30L0-15 160 5 0 190Z" fill="#0b375a" opacity=".5"/><path d="M0-15V190L55 95Z" fill="#39d6d3" opacity=".65"/></g>
+<g fill="#132e4a" opacity=".6"><path d="M1110 950l36-45 28 55-44 24z"/><path d="M1400 920l24-30 26 37-30 22z"/><path d="M1220 1020l16-20 19 25-21 15z"/></g>
+<path d="M0 1410Q600 1370 1160 1410T2560 1380" fill="none" stroke="#4b929e" stroke-width="2" opacity=".5"/>
+</svg>

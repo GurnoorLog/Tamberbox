@@ -4,7 +4,7 @@
 
 > Status: **M1 accepted; M4 desktop/console development verified remotely; M2 hardware acceptance pending.** Updated ARM64 builds and real Sway/Waybar runtime tests pass. The Orange Pi 5 Ultra has not been tested with this desktop.
 
-TamberOS combines a Linux kernel, an AlmaLinux userspace, and new Tamber-specific user-facing software. The hardware target is the **Orange Pi 5 Ultra (RK3588, aarch64)**. The visual direction comes from the accompanying TamberBox poster: ink-black backgrounds, electric orange details, warm cream typography, restrained comic-book energy and an **original sunglasses-wearing llama mascot**.
+TamberOS combines a Linux kernel, an AlmaLinux userspace, and new Tamber-specific user-facing software. The hardware target is the **Orange Pi 5 Ultra (RK3588, aarch64)**. The current desktop direction is a blue/cyan translucent workspace with a slim panel and right-side controls. The original branding assets and boot concepts remain preserved. See [desktop design notes](docs/desktop-blue-glass.md).
 
 ## Experience
 
@@ -119,3 +119,10 @@ M2 physical hardware acceptance, which remains pending.
 See [M4 build and controls](docs/m4-console.md), [current results](docs/status.md),
 and [preserved M3 results](docs/status-m3-play.md). Super+G enters the full-output
 console; Super+Shift+G retains access to the advanced M3 library.
+
+### Play visual refinement
+
+The console now uses an expanded artwork carousel, unboxed category navigation,
+warm animated light ribbons and a compact detail/action area. Press B to cycle
+soft, bright and off atmosphere; reduced motion pauses the animation. See
+[appearance and validation notes](docs/play-visual-refinement.md).

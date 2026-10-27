@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 34,
+  "height": 28,
   "exclusive": true,
   "fixed-center": true,
   "margin-top": 0,
@@ -17,14 +17,13 @@
   ],
   "modules-right": [
     "tray",
-    "cpu",
-    "memory",
     "network",
     "pulseaudio",
-    "bluetooth"
+    "bluetooth",
+    "custom/controls"
   ],
   "custom/tamber": {
-    "format": "\u25c6  TamberOS",
+    "format": "\u229e",
     "tooltip": "Open application launcher",
     "on-click": "tamber-desktop --command launcher",
     "on-click-right": "tamber-desktop --command games"
@@ -48,7 +47,7 @@
     }
   },
   "clock": {
-    "format": "{:%H:%M  %d %b}",
+    "format": "{:%I:%M %p}",
     "tooltip-format": "{:%A, %d %B %Y}"
   },
   "cpu": {
@@ -84,5 +83,10 @@
   "tray": {
     "icon-size": 14,
     "spacing": 7
+  },
+  "custom/controls": {
+    "format": "\u2637",
+    "tooltip": "Control center",
+    "on-click": "tamber-desktop --command controls"
   }
 }

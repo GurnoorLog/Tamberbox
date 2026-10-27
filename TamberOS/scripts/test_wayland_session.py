@@ -74,10 +74,10 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
    return walk(tree)
   found=wait(windows);time.sleep(.5)
   (OUT/'launched-windows.json').write_text(json.dumps(found,indent=2)+'\n')
-  assert found[0]['rect']['y']>=34, 'Application overlaps reserved menu bar'
-  assert found[0]['rect']['y']+found[0]['rect']['height']<=636, 'Application overlaps reserved dock'
+  assert found[0]['rect']['y']>=28, 'Application overlaps reserved menu bar'
+  assert found[0]['rect']['y']+found[0]['rect']['height']<=651, 'Application overlaps reserved dock'
   run('grim',str(OUT/'application.png'))
-  run('tamber-desktop','--command','controls');time.sleep(.5);run('grim',str(OUT/'settings.png'))
+  run('tamber-desktop','--command','controls');wait(lambda:'TAMBER_FRAME quickcontrols' in (OUT/'sway-session.log').read_text(),15);time.sleep(.5);run('grim',str(OUT/'settings.png'))
   run('wtype','-s','400','-k','Escape');time.sleep(.3)
   run('tamber-desktop','--command','library');time.sleep(.8)
   wait(lambda:'TAMBER_FRAME games' in (OUT/'sway-session.log').read_text())
