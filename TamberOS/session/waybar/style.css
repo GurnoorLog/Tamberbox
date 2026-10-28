@@ -1,19 +1,19 @@
-/* Original Qt/Wayland adaptation: slim blue glass panels. */
-@define-color ink #092b42;
-@define-color warm #e5f4ff;
-@define-color muted #a4c5d7;
-@define-color accent #20cbe3;
+/* Original TamberOS amber island surfaces. */
+@define-color ink #181512;
+@define-color warm #fff0df;
+@define-color muted #bbae9f;
+@define-color accent #ffab62;
 * { font-family: "Inter", "Noto Sans", "DejaVu Sans", sans-serif; font-size: 11px; font-weight: 500; min-height: 0; }
-window#waybar { background: rgba(6,35,57,0.88); color: @warm; border: none; }
-.modules-left, .modules-center, .modules-right { background: transparent; }
-#custom-tamber, #custom-controls, #window, #clock, #tray, #network, #pulseaudio, #bluetooth { margin: 0 2px; padding: 0 7px; border-radius: 4px; }
-#custom-tamber { color: @accent; font-size: 17px; }
+window#waybar { background: transparent; color: @warm; border: none; }
+.modules-left, .modules-center, .modules-right { background: rgba(24,21,18,0.96); border: 1px solid rgba(255,191,135,0.20); border-radius: 22px; padding: 0 8px; }
+#custom-tamber, #custom-controls, #window, #clock, #tray, #network, #pulseaudio, #bluetooth { margin: 2px; padding: 0 8px; border-radius: 18px; }
+#custom-tamber { color: @accent; font-size: 19px; }
 #workspaces { padding: 0 3px; }
-#workspaces button { background: transparent; color: @muted; border: none; border-radius: 4px; margin: 2px 1px; padding: 0 7px; }
-#workspaces button.focused { background: #1e5c79; color: @warm; box-shadow: inset 0 -2px @accent; }
-#workspaces button:hover { background: #245570; }
+#workspaces button { background: #30271f; color: @muted; border: none; border-radius: 14px; margin: 6px 2px; padding: 0 8px; transition: background 160ms ease; }
+#workspaces button.focused { background: @accent; color: @ink; }
+#workspaces button:hover { background: #754724; color: @warm; }
 #window, #bluetooth { color: @muted; }
-#clock { font-weight: 700; }
-#custom-tamber:hover, #custom-controls:hover, #pulseaudio:hover, #network:hover { background: #20516a; }
-tooltip { background: @ink; border: 1px solid #39738c; border-radius: 8px; }
+#clock { font-weight: 700; letter-spacing: 1px; padding: 0 16px; }
+#custom-tamber:hover, #custom-controls:hover, #pulseaudio:hover, #network:hover { background: #443326; }
+tooltip { background: @ink; border: 1px solid #574334; border-radius: 16px; }
 tooltip label { color: @warm; }

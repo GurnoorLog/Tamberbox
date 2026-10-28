@@ -6,9 +6,9 @@ import Qt.labs.settings
 
 Item {
     id: root
-    property color cream: "#e5f4ff"
-    property color muted: "#a4c5d7"
-    property color accent: "#20cbe3"
+    property color cream: "#fff0df"
+    property color muted: "#bbae9f"
+    property color accent: "#ffab62"
     property string interfaceFont: "Inter"
     function showControls() { appsWindow.visible=false; gamesWindow.visible=false; settingsWindow.visible=false; playMode.leave(); quickCenter.visible=!quickCenter.visible }
     property string clock: Qt.formatDateTime(new Date(), "ddd  d MMM   HH:mm")
@@ -27,11 +27,11 @@ Item {
         Accessible.name: text
         padding: 12
         contentItem: Text { text: button.text; font.family: root.interfaceFont; color: root.cream; font.pixelSize: 13; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter; elide: Text.ElideRight }
-        background: Rectangle { radius: 10; color: button.down ? "#385b7890" : button.hovered ? "#286e9ab0" : "#146e9ab0"; border.width: button.activeFocus ? 2 : 0; border.color: root.accent }
+        background: Rectangle { radius: 10; color: button.down ? "#58402c" : button.hovered ? "#443326" : "#29231f"; border.width: button.activeFocus ? 2 : 0; border.color: root.accent }
     }
     component Glyph: Canvas {
         property string symbol: "grid"
-        property color tint: "#f0f7fb"
+        property color tint: "#fff0df"
         implicitWidth: 24; implicitHeight: 24
         onSymbolChanged: requestPaint()
         onTintChanged: requestPaint()
@@ -73,7 +73,7 @@ Item {
         focusPolicy: Qt.StrongFocus; Accessible.name: text+", "+detail
         contentItem: RowLayout {
             spacing: 10
-            Rectangle { Layout.preferredWidth: 42; Layout.preferredHeight: 42; radius: 21; color: tile.selected ? tile.activeColor : "#205f99af"; Glyph { anchors.centerIn: parent; width: 20; height: 20; symbol: tile.symbol } }
+            Rectangle { Layout.preferredWidth: 42; Layout.preferredHeight: 42; radius: 21; color: tile.selected ? tile.activeColor : "#403126"; Glyph { anchors.centerIn: parent; width: 20; height: 20; symbol: tile.symbol } }
             ColumnLayout { spacing: 3; Layout.fillWidth: true
                 TextLabel { text: tile.text; font.pixelSize: 12; font.weight: Font.DemiBold; Layout.fillWidth: true; elide: Text.ElideRight }
                 TextLabel { text: tile.detail; font.pixelSize: 11; color: root.muted; Layout.fillWidth: true; elide: Text.ElideRight }
@@ -81,28 +81,28 @@ Item {
         }
         background: Rectangle { radius: 12; color: tile.hovered ? "#12ffffff" : "transparent"; border.width: tile.activeFocus ? 2 : 0; border.color: root.accent }
     }
-    component ControlGroup: Rectangle { color: "#10ffffff"; radius: 16 }
+    component ControlGroup: Rectangle { color: "#24201c"; radius: 18; border.color: "#18ffbf87" }
     component GlassSlider: Slider {
         id: slider
         implicitHeight: 32
         background: Rectangle {
             x: slider.leftPadding; y: slider.topPadding+(slider.availableHeight-height)/2
-            width: slider.availableWidth; height: 20; radius: 10; color: "#305f8fa0"
-            Rectangle { width: parent.width*slider.visualPosition; height: parent.height; radius: 10; color: "#d4e8ec" }
+            width: slider.availableWidth; height: 20; radius: 10; color: "#44362c"
+            Rectangle { width: parent.width*slider.visualPosition; height: parent.height; radius: 10; color: "#ffab62" }
         }
         handle: Rectangle {
             x: slider.leftPadding+slider.visualPosition*(slider.availableWidth-width)
             y: slider.topPadding+(slider.availableHeight-height)/2
-            width: 24; height: 24; radius: 12; color: "#f5fafb"
+            width: 24; height: 24; radius: 12; color: "#fff0df"
             border.width: slider.activeFocus ? 2 : 0; border.color: root.accent
         }
     }
     component SettingsTab: TabButton {
         id: tab
         contentItem: Text { text: tab.text; color: root.cream; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter; font.pixelSize: 14 }
-        background: Rectangle { color: tab.checked ? "#19617b" : "#163b51"; radius: 9; border.color: tab.activeFocus ? root.accent : "transparent" }
+        background: Rectangle { color: tab.checked ? "#754724" : "#29231f"; radius: 9; border.color: tab.activeFocus ? root.accent : "transparent" }
     }
-    component Surface: Rectangle { color: preferences.opaque ? "#103347" : "#66000000"; radius: 22; border.color: "#18ffffff"; border.width: 1 }
+    component Surface: Rectangle { color: preferences.opaque ? "#181512" : "#ed181512"; radius: 28; border.color: "#30ffbf87"; border.width: 1 }
     Window {
         id: wallpaper
         width: Screen.width; height: Screen.height; color: "#17181c"
@@ -114,7 +114,7 @@ Item {
     Window {
         id: bar; property bool ready: false; visible: ready && !externalBar && !playMode.modeActive; width: Screen.width; height: 28; color: "transparent"; flags: Qt.FramelessWindowHint
         Component.onCompleted: { if(!externalBar)session.configure(bar,"bar"); ready=true }
-        Rectangle { anchors.fill: parent; color: preferences.opaque ? "#082a42" : "#df082a42" }
+        Rectangle { anchors.fill: parent; color: preferences.opaque ? "#181512" : "#ed181512" }
         RowLayout {
             anchors.fill: parent; anchors.leftMargin: 18; anchors.rightMargin: 18; spacing: 14
             Action { text: "TamberOS"; font.bold: true; onClicked: root.showControls() }
@@ -131,7 +131,7 @@ Item {
         property bool ready: false
         Component.onCompleted: { session.configure(dock,"dock"); ready=true }
         visible: ready && !playMode.modeActive
-        Surface { width: dockItems.implicitWidth+20; height: 56; anchors.centerIn: parent; radius: 16; color: preferences.opaque ? "#183e50" : "#66000000" }
+        Surface { width: dockItems.implicitWidth+20; height: 56; anchors.centerIn: parent; radius: 28; color: preferences.opaque ? "#181512" : "#ed181512" }
         RowLayout {
             id: dockItems; anchors.centerIn: parent; spacing: 2
             IconAction { text: "Applications · Super+Space"; symbol: "grid"; Layout.preferredWidth: 48; Layout.preferredHeight: 50; onClicked: root.showApps() }
@@ -273,15 +273,17 @@ Item {
     }
     Window {
         id: appsWindow; width: Math.min(650,Screen.width-40); height: Math.min(510,Screen.height-100); color: "transparent"; flags: Qt.FramelessWindowHint
+        opacity: visible ? 1 : 0
+        Behavior on opacity { NumberAnimation { duration: preferences.reducedMotion ? 0 : 160; easing.type: Easing.OutCubic } }
         Component.onCompleted: session.configure(appsWindow,"launcher")
         Surface { anchors.fill: parent }
         Item { anchors.fill: parent; focus: true; Keys.onEscapePressed: appsWindow.visible=false
             ColumnLayout {
                 anchors.fill: parent; anchors.margins: 28; spacing: 16
-                RowLayout { TextLabel { text: "Applications"; font.pixelSize: 25; Layout.fillWidth: true } Action { text: "Refresh"; onClicked: appLauncher.refresh() } Action { text: "Close"; onClicked: appsWindow.visible=false } }
+                RowLayout { TextLabel { text: "Find your next move"; font.pixelSize: 25; Layout.fillWidth: true } Action { text: "Refresh"; onClicked: appLauncher.refresh() } Action { text: "Close"; onClicked: appsWindow.visible=false } }
                 TextField {
-                    id: search; Layout.fillWidth: true; Layout.preferredHeight: 46; placeholderText: "Search your applications"; color: root.cream; font.pixelSize: 17; selectByMouse: true
-                    background: Rectangle { radius: 12; color: "#0b2538"; border.color: search.activeFocus ? root.accent : "#39738c" }
+                    id: search; Layout.fillWidth: true; Layout.preferredHeight: 46; placeholderText: "Search applications…"; placeholderTextColor: root.muted; leftPadding: 18; color: root.cream; font.pixelSize: 17; selectByMouse: true
+                    background: Rectangle { radius: 12; color: "#211c18"; border.color: search.activeFocus ? root.accent : "#574334" }
                     onTextChanged: results.currentIndex=0
                     Keys.onDownPressed: { results.forceActiveFocus(); results.currentIndex=0 }
                     Keys.onEscapePressed: appsWindow.visible=false
@@ -294,9 +296,9 @@ Item {
                     Keys.onEscapePressed: appsWindow.visible=false
                     delegate: Action {
                         required property var modelData; required property int index
-                        width: results.width; height: 54; text: modelData.name
+                        width: results.width; height: 60; text: modelData.name
                         contentItem: RowLayout { spacing: 16; Image { source: "image://apps/"+modelData.appId; sourceSize.width: 32; sourceSize.height: 32; Layout.preferredWidth: 32; Layout.preferredHeight: 32 } TextLabel { text: modelData.name; Layout.fillWidth: true; elide: Text.ElideRight } TextLabel { text: "↵"; color: root.muted } }
-                        background: Rectangle { radius: 12; color: results.currentIndex===index ? "#215570" : "transparent"; border.color: parent.activeFocus ? root.accent : "transparent" }
+                        background: Rectangle { radius: 12; color: results.currentIndex===index ? "#493022" : "transparent"; border.color: parent.activeFocus ? root.accent : "transparent" }
                         onClicked: appLauncher.launch(modelData.appId)
                     }
                     TextLabel { anchors.centerIn: parent; visible: results.count===0; text: "No applications found"; color: root.muted }
@@ -308,6 +310,8 @@ Item {
     }
     Window {
         id: quickCenter
+        opacity: visible ? 1 : 0
+        Behavior on opacity { NumberAnimation { duration: preferences.reducedMotion ? 0 : 160; easing.type: Easing.OutCubic } }
         width: Math.min(400,Screen.width-24); height: Math.min(604,Screen.height-70)
         color: "transparent"; flags: Qt.FramelessWindowHint
         Component.onCompleted: session.configure(quickCenter,"quickcontrols")
@@ -319,8 +323,8 @@ Item {
                     spacing: 10
                     ControlGroup { Layout.fillWidth: true; Layout.preferredHeight: 48
                         RowLayout { anchors.fill: parent; anchors.margins: 10; spacing: 10
-                            Rectangle { Layout.preferredWidth: 28; Layout.preferredHeight: 28; radius: 14; color: "#346d88"; Glyph { anchors.centerIn: parent; width: 16; height: 16; symbol: "grid" } }
-                            TextLabel { text: "Your workspace"; font.pixelSize: 12; Layout.fillWidth: true }
+                            Rectangle { Layout.preferredWidth: 28; Layout.preferredHeight: 28; radius: 14; color: "#754724"; Glyph { anchors.centerIn: parent; width: 16; height: 16; symbol: "grid" } }
+                            TextLabel { text: "Workspace"; font.pixelSize: 12; Layout.fillWidth: true }
                         }
                     }
                     ControlGroup { Layout.preferredWidth: 94; Layout.preferredHeight: 48
@@ -344,7 +348,7 @@ Item {
                             ControlTile { anchors.fill: parent; anchors.margins: 10; text: "Animation"; detail: preferences.reducedMotion ? "Reduced" : "Full"; symbol: "moon"; selected: preferences.reducedMotion; onClicked: preferences.reducedMotion=!preferences.reducedMotion }
                         }
                         ControlGroup { Layout.fillWidth: true; Layout.fillHeight: true
-                            ControlTile { anchors.fill: parent; anchors.margins: 10; text: "Translucency"; detail: preferences.opaque ? "Off" : "On"; symbol: "layers"; selected: !preferences.opaque; activeColor: "#9960ed"; onClicked: preferences.opaque=!preferences.opaque }
+                            ControlTile { anchors.fill: parent; anchors.margins: 10; text: "Translucency"; detail: preferences.opaque ? "Off" : "On"; symbol: "layers"; selected: !preferences.opaque; activeColor: "#d98749"; onClicked: preferences.opaque=!preferences.opaque }
                         }
                     }
                 }
@@ -368,7 +372,7 @@ Item {
                 }
                 ControlGroup { Layout.fillWidth: true; Layout.preferredHeight: 64
                     RowLayout { anchors.fill: parent; anchors.margins: 12; spacing: 12
-                        Rectangle { Layout.preferredWidth: 40; Layout.preferredHeight: 40; radius: 10; color: "#356a86"; Glyph { anchors.centerIn: parent; symbol: "play"; width: 21; height: 21 } }
+                        Rectangle { Layout.preferredWidth: 40; Layout.preferredHeight: 40; radius: 10; color: "#754724"; Glyph { anchors.centerIn: parent; symbol: "play"; width: 21; height: 21 } }
                         ColumnLayout { Layout.fillWidth: true; spacing: 3
                             TextLabel { text: "Tamber / Play"; font.pixelSize: 12; font.weight: Font.DemiBold }
                             TextLabel { text: "Open your game library"; font.pixelSize: 11; color: root.muted }
@@ -383,12 +387,14 @@ Item {
     }
     Window {
         id: settingsWindow; width: Math.min(800,Screen.width-40); height: Math.min(560,Screen.height-90); color: "transparent"; flags: Qt.FramelessWindowHint
+        opacity: visible ? 1 : 0
+        Behavior on opacity { NumberAnimation { duration: preferences.reducedMotion ? 0 : 160; easing.type: Easing.OutCubic } }
         Component.onCompleted: session.configure(settingsWindow,"controls")
         Surface { anchors.fill: parent }
         Item { anchors.fill: parent; focus: true; Keys.onEscapePressed: settingsWindow.visible=false
             ColumnLayout {
                 anchors.fill: parent; anchors.margins: 26; spacing: 14
-                RowLayout { TextLabel { text: "System settings"; font.pixelSize: 25; Layout.fillWidth: true } Action { text: "Close"; onClicked: settingsWindow.visible=false } }
+                RowLayout { TextLabel { text: "Make it yours"; font.pixelSize: 25; Layout.fillWidth: true } Action { text: "Close"; onClicked: settingsWindow.visible=false } }
                 TabBar { id: tabs; Layout.fillWidth: true; background: Rectangle { color: "transparent" } SettingsTab { text: "Appearance" } SettingsTab { text: "Sound and network" } SettingsTab { text: "Windows" } }
                 StackLayout {
                     currentIndex: tabs.currentIndex; Layout.fillWidth: true; Layout.fillHeight: true
