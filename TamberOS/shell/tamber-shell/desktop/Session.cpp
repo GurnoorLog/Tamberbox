@@ -85,7 +85,7 @@ void Session::configure(QWindow *w,const QString &role){
  if(role=="wallpaper"){layer->setLayer(L::LayerBackground);layer->setAnchors(L::Anchors(L::AnchorTop)|L::AnchorBottom|L::AnchorLeft|L::AnchorRight);layer->setExclusiveZone(-1);}
  else if(role=="bar"){layer->setLayer(L::LayerTop);layer->setAnchors(L::Anchors(L::AnchorTop)|L::AnchorLeft|L::AnchorRight);layer->setExclusiveZone(28);}
  else if(role=="dock"){layer->setLayer(L::LayerTop);layer->setAnchors(L::AnchorBottom);layer->setMargins(QMargins(0,0,0,5));layer->setExclusiveZone(69);}
- else if(role=="quickcontrols"){layer->setLayer(L::LayerOverlay);layer->setAnchors(L::Anchors(L::AnchorTop)|L::AnchorRight);layer->setMargins(QMargins(0,34,10,0));layer->setExclusiveZone(-1);layer->setKeyboardInteractivity(L::KeyboardInteractivityExclusive);}
+ else if(role=="quickcontrols"){layer->setLayer(L::LayerOverlay);layer->setAnchors(L::Anchors(L::AnchorTop)|L::AnchorRight);layer->setMargins(QMargins(0,54,10,0));layer->setExclusiveZone(-1);layer->setKeyboardInteractivity(L::KeyboardInteractivityExclusive);}
  else if(role=="console"){layer->setLayer(L::LayerOverlay);layer->setAnchors(L::Anchors(L::AnchorTop)|L::AnchorBottom|L::AnchorLeft|L::AnchorRight);layer->setExclusiveZone(-1);layer->setKeyboardInteractivity(L::KeyboardInteractivityExclusive);}
  else {layer->setLayer(L::LayerOverlay);layer->setAnchors({});layer->setExclusiveZone(-1);layer->setKeyboardInteractivity(L::KeyboardInteractivityExclusive);}
 }
