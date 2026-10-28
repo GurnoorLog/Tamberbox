@@ -75,10 +75,10 @@
     "tooltip-format": "Output {volume}%"
   },
   "bluetooth": {
-    "format": "\u16d2",
-    "format-disabled": "\u16d2",
-    "format-connected": "\u16d2",
-    "format-no-controller": "\u16d2",
+    "format": "B",
+    "format-disabled": "B",
+    "format-connected": "B",
+    "format-no-controller": "B",
     "tooltip-format-no-controller": "No Bluetooth controller detected"
   },
   "tray": {

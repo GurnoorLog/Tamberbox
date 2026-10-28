@@ -8,7 +8,7 @@ window#waybar { background: transparent; color: @warm; border: none; }
 .modules-left, .modules-center, .modules-right { background: @ink; border: none; border-radius: 0 0 15px 15px; padding: 0 8px; }
 .modules-left { padding-left: 4px; padding-right: 10px; }
 .modules-right { padding-right: 4px; }
-#custom-tamber { font-size: 20px; color: @accent; margin-right: 5px; padding: 0 3px; }
+#custom-tamber { font-size: 16px; color: @accent; margin-right: 5px; padding: 0 3px; }
 #workspaces { background: #1a1b20; border-radius: 12px; margin: 5px 0 6px; padding: 0 4px; }
 #workspaces button { color: @muted; background: transparent; border: none; border-radius: 5px; font-size: 12px; min-width: 6px; padding: 0 2px; margin: 4px 0; }
 #workspaces button.focused { background: @accent; color: @accent; min-width: 15px; font-size: 0; }
