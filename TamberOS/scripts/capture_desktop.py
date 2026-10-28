@@ -3,7 +3,7 @@
 import os, pathlib, subprocess, tempfile, time
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 out=ROOT/'build/ui-capture';out.mkdir(parents=True,exist_ok=True)
-with tempfile.TemporaryDirectory(prefix='tamber-capture-', ignore_cleanup_errors=True) as temp:
+with tempfile.TemporaryDirectory(prefix='tamber-capture-', delete=False) as temp:
     base=pathlib.Path(temp);runtime=base/'runtime';runtime.mkdir(mode=0o700)
     env=os.environ.copy()
     env.update(XDG_RUNTIME_DIR=str(runtime),XDG_CONFIG_HOME=str(base/'config'),TAMBER_ROOT=str(ROOT),TAMBER_EXTERNAL_BAR='1',XDG_CURRENT_DESKTOP='sway',XDG_SESSION_TYPE='wayland',WLR_BACKENDS='headless',WLR_RENDERER='pixman',WLR_HEADLESS_OUTPUTS='1',WLR_LIBINPUT_NO_DEVICES='1',QT_QPA_PLATFORM='wayland',QT_QUICK_BACKEND='software',QT_QUICK_CONTROLS_STYLE='Basic',PATH=str(ROOT/'build/shell')+':'+env['PATH'],LD_LIBRARY_PATH=str(ROOT/'build/session-deps/lib'),QT_PLUGIN_PATH=str(ROOT/'build/session-deps/lib/plugins'))
