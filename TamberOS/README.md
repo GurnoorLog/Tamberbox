@@ -4,7 +4,7 @@
 
 > Status: **M1 accepted; M4 desktop/console development verified remotely; M2 hardware acceptance pending.** Updated ARM64 builds and real Sway/Waybar runtime tests pass. The Orange Pi 5 Ultra has not been tested with this desktop.
 
-TamberOS combines a Linux kernel, an AlmaLinux userspace, and new Tamber-specific user-facing software. The hardware target is the **Orange Pi 5 Ultra (RK3588, aarch64)**. The current desktop direction is a blue/cyan translucent workspace with a slim panel and right-side controls. The original branding assets and boot concepts remain preserved. See [desktop design notes](docs/desktop-blue-glass.md).
+TamberOS combines a Linux kernel, an AlmaLinux userspace, and new Tamber-specific user-facing software. The hardware target is the **Orange Pi 5 Ultra (RK3588, aarch64)**. The current desktop direction is a warm charcoal workspace with orange accents, floating panel islands and right-side controls. The original branding assets and boot concepts remain preserved. See [desktop design notes](docs/desktop-blue-glass.md).
 
 ## Experience
 
