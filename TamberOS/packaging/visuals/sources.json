@@ -1,0 +1,5 @@
+{
+  "status": "experimental; GPU validation pending",
+  "quickshell": {"repository":"https://github.com/Roonil/quickshell.git","commit":"6d71d1c23c02d78645e5a690077e3bbe34aa2469","license":"LGPL-3.0/GPL components; retain upstream LICENSE and LICENSE-GPL"},
+  "visualiser": {"repository":"https://github.com/Roonil/WayVes.git","commit":"4088dd16f58d422322595a59348ca0ff558ff41f","license":"Review upstream LICENSE before redistribution"}
+}

@@ -1,16 +1,15 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 36,
+  "height": 28,
   "exclusive": true,
   "fixed-center": true,
-  "margin-top": 8,
-  "margin-left": 12,
-  "margin-right": 12,
+  "margin-top": 0,
+  "margin-left": 0,
+  "margin-right": 0,
   "modules-left": [
     "custom/tamber",
-    "sway/workspaces",
-    "sway/window"
+    "sway/workspaces"
   ],
   "modules-center": [
     "clock"
@@ -31,13 +30,14 @@
   "sway/workspaces": {
     "all-outputs": true,
     "disable-scroll": true,
-    "format": "{name}",
+    "format": "\u2022",
     "persistent-workspaces": {
       "1": [],
       "2": [],
       "3": [],
       "4": []
-    }
+    },
+    "format-icons": {}
   },
   "sway/window": {
     "max-length": 16,

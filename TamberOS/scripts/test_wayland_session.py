@@ -60,7 +60,9 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   x,y,w,h=tray_icon['rect'];run(str(ROOT/'build/input-test/virtual-pointer'),str(x+w//2),str(y+h//2),'left')
   wait(lambda:(base/'tray-activated').exists())
   (OUT/'tray-activation.txt').write_text((base/'tray-activated').read_text())
-  workspace_button=next(n for n in labels if n['role']=='push button' and n['name']=='2')
+  workspace_buttons=[n for n in labels if n['role']=='push button' and n['name'] in ('1','2','3','4','•')]
+  assert len(workspace_buttons)==4, 'Expected four workspace controls'
+  workspace_button=workspace_buttons[1]
   x,y,w,h=workspace_button['rect'];run(str(ROOT/'build/input-test/virtual-pointer'),str(x+w//2),str(y+h//2),'left')
   assert any(w['num']==2 and w['focused'] for w in json.loads(run('swaymsg','-t','get_workspaces','-r').stdout))
   run('wtype','-M','logo','-k','1','-m','logo')
