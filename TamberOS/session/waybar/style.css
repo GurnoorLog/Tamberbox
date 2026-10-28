@@ -1,19 +1,21 @@
-/* Original TamberOS amber island surfaces. */
-@define-color ink #181512;
-@define-color warm #fff0df;
-@define-color muted #bbae9f;
+/* TamberOS compact edge notches. */
+@define-color ink #090a0d;
+@define-color warm #eeeeef;
+@define-color muted #8d9098;
 @define-color accent #ffab62;
-* { font-family: "Inter", "Noto Sans", "DejaVu Sans", sans-serif; font-size: 10px; font-weight: 500; min-height: 0; }
-window#waybar { background: #100e0c; color: @warm; border: none; }
-.modules-left, .modules-center, .modules-right { background: rgba(24,21,18,0.96); border: none; border-radius: 0 0 16px 16px; padding: 0 5px; }
-#custom-tamber, #custom-controls, #window, #clock, #tray, #network, #pulseaudio, #bluetooth { margin: 2px; padding: 0 8px; border-radius: 18px; }
-#custom-tamber { color: @accent; font-size: 15px; }
-#workspaces { padding: 0 3px; }
-#workspaces button { background: transparent; color: @muted; border: none; border-radius: 14px; margin: 5px 1px; padding: 0 5px; transition: background 160ms ease; }
-#workspaces button.focused { background: @accent; color: @ink; min-width: 13px; }
-#workspaces button:hover { background: #754724; color: @warm; }
-#window, #bluetooth { color: @muted; }
-#clock { font-weight: 700; letter-spacing: 1px; padding: 0 12px; }
-#custom-tamber:hover, #custom-controls:hover, #pulseaudio:hover, #network:hover { background: #443326; }
-tooltip { background: @ink; border: 1px solid #574334; border-radius: 16px; }
+* { font-family: "Inter", "DejaVu Sans", sans-serif; font-size: 9px; font-weight: 600; min-height: 0; }
+window#waybar { background: transparent; color: @warm; border: none; }
+.modules-left, .modules-center, .modules-right { background: @ink; border: none; border-radius: 0 0 15px 15px; padding: 0 8px; }
+.modules-left { padding-left: 4px; padding-right: 10px; }
+.modules-right { padding-right: 4px; }
+#custom-tamber { font-size: 20px; color: @accent; margin-right: 5px; padding: 0 3px; }
+#workspaces { background: #1a1b20; border-radius: 12px; margin: 5px 0 6px; padding: 0 4px; }
+#workspaces button { color: @muted; background: transparent; border: none; border-radius: 5px; font-size: 12px; min-width: 6px; padding: 0 2px; margin: 4px 0; }
+#workspaces button.focused { background: @accent; color: @accent; min-width: 15px; font-size: 0; }
+#workspaces button:hover { color: @warm; }
+#clock { font-size: 9px; padding: 0 5px; }
+#tray, #network, #pulseaudio, #bluetooth, #custom-controls { padding: 0 5px; margin: 0; }
+#network, #pulseaudio, #bluetooth { font-size: 12px; }
+#custom-controls { font-size: 12px; color: @accent; }
+tooltip { background: @ink; border: 1px solid #363840; border-radius: 10px; }
 tooltip label { color: @warm; }

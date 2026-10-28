@@ -110,6 +110,23 @@ Item {
         Component.onCompleted: { session.configure(wallpaper,"wallpaper"); visible=true }
         Image { anchors.fill: parent; source: "qrc:/brand/wallpapers/blue-horizon.svg"; fillMode: Image.PreserveAspectCrop; opacity: preferences.wallpaperOpacity }
 
+
+        Canvas {
+            anchors.fill: parent
+            onWidthChanged: requestPaint()
+            onHeightChanged: requestPaint()
+            onPaint: {
+                let c=getContext("2d");c.reset();c.fillStyle="#090a0d";
+                c.beginPath();c.rect(0,0,width,height);
+                let x=5,y=5,w=width-10,h=height-10,r=28;
+                c.moveTo(x+r,y);c.lineTo(x+w-r,y);c.quadraticCurveTo(x+w,y,x+w,y+r);
+                c.lineTo(x+w,y+h-r);c.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+                c.lineTo(x+r,y+h);c.quadraticCurveTo(x,y+h,x,y+h-r);
+                c.lineTo(x,y+r);c.quadraticCurveTo(x,y,x+r,y);c.closePath();
+                c.fill("evenodd");
+            }
+        }
+
     }
     Window {
         id: bar; property bool ready: false; visible: ready && !externalBar && !playMode.modeActive; width: Screen.width; height: 28; color: "transparent"; flags: Qt.FramelessWindowHint
@@ -131,6 +148,9 @@ Item {
         property bool ready: false
         Component.onCompleted: { session.configure(dock,"dock"); ready=true }
         visible: ready && !playMode.modeActive
+        opacity: dockHover.containsMouse ? 1 : 0
+        Behavior on opacity { NumberAnimation { duration: preferences.reducedMotion ? 0 : 180 } }
+        MouseArea { id: dockHover; anchors.fill: parent; hoverEnabled: true; acceptedButtons: Qt.NoButton }
         Surface { width: dockItems.implicitWidth+20; height: 56; anchors.centerIn: parent; radius: 28; color: preferences.opaque ? "#181512" : "#ed181512" }
         RowLayout {
             id: dockItems; anchors.centerIn: parent; spacing: 2

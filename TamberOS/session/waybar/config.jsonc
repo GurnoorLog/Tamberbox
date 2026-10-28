@@ -22,7 +22,7 @@
     "custom/controls"
   ],
   "custom/tamber": {
-    "format": "\u229e",
+    "format": "\u2726",
     "tooltip": "Open application launcher",
     "on-click": "tamber-desktop --command launcher",
     "on-click-right": "tamber-desktop --command games"
@@ -61,28 +61,29 @@
     "min-length": 8
   },
   "network": {
-    "format-wifi": "Wi-Fi {signalStrength}%",
-    "format-ethernet": "LAN",
-    "format-disconnected": "Offline",
+    "format-wifi": "\u25c8",
+    "format-ethernet": "\u25c8",
+    "format-disconnected": "\u25c7",
     "tooltip": true,
     "interval": 5
   },
   "pulseaudio": {
-    "format": "VOL {volume}%",
-    "format-muted": "Muted",
+    "format": "\u25d6",
+    "format-muted": "\u00d7",
     "scroll-step": 5,
-    "min-length": 8
+    "min-length": 1,
+    "tooltip-format": "Output {volume}%"
   },
   "bluetooth": {
-    "format": "BT",
-    "format-disabled": "BT off",
-    "format-connected": "BT {num_connections}",
-    "format-no-controller": "BT n/a",
+    "format": "\u16d2",
+    "format-disabled": "\u16d2",
+    "format-connected": "\u16d2",
+    "format-no-controller": "\u16d2",
     "tooltip-format-no-controller": "No Bluetooth controller detected"
   },
   "tray": {
-    "icon-size": 14,
-    "spacing": 7
+    "icon-size": 12,
+    "spacing": 5
   },
   "custom/controls": {
     "format": "\u2637",
