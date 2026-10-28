@@ -48,6 +48,12 @@ with tempfile.TemporaryDirectory(prefix='tamber-wayland-') as temp:
   probe=run('/usr/bin/python3',str(ROOT/'scripts/waybar_probe.py'))
   (OUT/'waybar-accessibility.json').write_text(probe.stdout)
   labels=json.loads(probe.stdout)
+  # GTK Wayland extents are surface-relative; translate the floating bar origin.
+  bar_config=json.loads((ROOT/'session/waybar/config.jsonc').read_text())
+  for node in labels:
+   if 'rect' in node:
+    node['rect'][0]+=bar_config.get('margin-left',0)
+    node['rect'][1]+=bar_config.get('margin-top',0)
   for text in ['⊞','LAN','VOL','BT n/a','☷']:
    assert any(text in (n.get('text','')+n['name']) for n in labels), 'Missing Waybar module: '+text
   tray_icon=next(n for n in labels if n['role']=='icon' and 0<=n.get('rect',[-1])[0]<1280)
